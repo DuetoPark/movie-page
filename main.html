@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>main</title>
+    <style>
+      /*===========================commen setting===========================*/
+      body, html, *{
+        margin:0;
+        padding:0;
+        color: ivory;
+        margin-bottom: 12px;
+      }
+      body{
+        min-width: 1200px;
+        background-color: #282724;
+      }
+      a{
+        width: 150px;
+        height: 50px;
+        background-image: url("./pictures/a배경.png");
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        color:#282724;
+        font-weight:bolder;
+      }
+      h1, h2, h3{
+        font-family: fantasy;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      img{
+        width:100%;
+      }
+      /*============================top=====================================*/
+      .top{
+        position: relative;
+      }
+      h1{
+        height: 200px;
+        font-size: 60px;
+        text-shadow: 4px 0px red;
+      }
+      .top a{
+        width: 150px;
+        height: 50px;
+        position: absolute;
+        top:50%;
+        margin-top: -25px;
+        right: 20%;
+      }
+
+      /*============================main====================================*/
+      .main{
+        position: relative;
+        flex-wrap: wrap;
+        width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      /*------------opening this week---------------*/
+      h2{
+        background-color: tomato;
+        color:#282724;
+        text-shadow: 3px 0px gold;
+        font-size: 30px;
+      }
+      h3{
+        height:100px;
+        margin-top: 100px;
+        border-top: 4px solid orange;
+        border-bottom: 4px solid orange;
+        color:orange;
+        font-size: 30px;
+      }
+      blockquote{
+        padding: 20px;
+        font-size: 28px;
+        font-family:serif;
+        text-align: center;
+      }
+      cite{
+        display:block;
+        font-size: 28px;
+        font-style: normal;
+      }
+
+      /*-----------------now playing----------------*/
+      .now_playing{
+        display: inline-block;
+        width: 370px;
+        height: 950px;
+        padding: 10px;
+      }
+      .now_playing blockquote{
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 5px;
+        font-size: 18px;
+      }
+      .now_playing cite{
+        margin: 0;
+        font-size: 16px;
+      }
+      .now_playing img{
+        position: relative;
+        height:495px;
+      }
+      dl{
+        border-left: 4px solid ivory;
+      }
+      dt, dd{
+        display: block;
+      }
+      dt{
+        padding-left: 20px;
+        margin-bottom: 0px;
+        font-size: 12px;
+        font-weight: 400;
+      }
+      dd{
+        padding-left: 50px;
+      }
+      .now_playing a{
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 18px;
+      }
+      /*============================bottom==================================*/
+      .bottom{
+        padding-top: 12px;
+        font-size: 12px;
+      }
+      .bottom_width{
+        width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .bottom ul{
+        display: inline-block;
+        display: flex;
+        flex-direction: row;
+      }
+      .bottom li{
+        list-style: none;
+        margin-right: 18px;
+      }
+      .bottom dt, .bottom dd{
+        display: inline-block;
+        padding:0;
+      }
+      .bottom dd{
+        margin-right: 6px;
+      }
+
+    </style>
+  </head>
+
+
+  <body>
+    <div class="top">
+      <h1>Movie</h1>
+      <a href="">예매확인</a>
+    </div>
+
+
+
+    <div class="main">
+      <h3>! NEW !</h3>
+      <h2>The Rocky Horror Picture Show</h2>
+      <blockquote>
+        ★★★☆(3.5) "끝으로 갈수록 정신이 혼미해진다."<br>
+        <cite>-25세, 알라잌투무빗무빗-</cite>
+      </blockquote>
+      <blockquote>
+        ★★★★☆(4.5) "다소 파격적이나 컬트영화의 매력을 여실히 보여주는 작품이다."<br>
+        <cite>-37세, 뭅뭅-</cite>
+      </blockquote>
+      <img src="./pictures/록키호러픽쳐쇼4.gif" alt="록키호러픽쳐쇼">
+      <h2>The Rocky Horror Picture Show</h2>
+
+
+
+
+      <h3>상영 중인 작품</h3>
+
+      <div class="now_playing">
+        <blockquote>
+          "눈과 귀가 즐거운 B급 호러영화"
+          <cite>-58세, 넌나의록기록키록기-</cite>
+        </blockquote>
+        <img src="./pictures/록키호러픽쳐쇼.jpg" alt="록키호러픽쳐쇼">
+        <h2>록키호러픽쳐쇼</h2>
+        <dl>
+          <dt>별점</dt>
+          <dd>★★★★☆ (4.2)</dd>
+          <dt>장르</dt>
+          <dd>판타지, 공포, 코미디, 뮤지컬</dd>
+          <dt>출연</dt>
+          <dd>
+            팀커리, 수잔 서랜든, 베리보스트윅<br>
+            리처드오브라이언, 패트리샤 퀸<br>
+            넬 캠밸, 미트 로트 외
+          </dd>
+          <dt>감독</dt>
+          <dd>짐 셔먼</dd>
+        </dl>
+        <a href="">좌석예매</a>
+      </div>
+
+
+      <div class="now_playing">
+        <blockquote>
+          "어른을 향한 아이들의 발칙한 반란!"
+          <cite>-22세, 영화20번보는사람-</cite>
+        </blockquote>
+        <img src="./pictures/마틸다.jpg" alt="마틸다">
+        <h2>마틸다</h2>
+        <dl>
+          <dt>별점</dt>
+          <dd>★★★★☆ (4.5)</dd>
+          <dt>장르</dt>
+          <dd>어린이 판타지 코미디</dd>
+          <dt>출연</dt>
+          <dd>
+            마라 윌슨, 대니 드비토<br>
+            레아 펄먼, 엠베스 데이비츠<br>
+            팸 페리스, 폴 루번스
+          </dd>
+          <dt>감독</dt>
+          <dd>대니 드비토</dd>
+        </dl>
+        <a href="">좌석예매</a>
+      </div>
+
+      <div class="now_playing">
+        <blockquote>
+          "내 인생의 첫 하이틴 영화"
+          <cite>-19세, 로우틴-</cite>
+        </blockquote>
+        <img src="./pictures/퀸카로 살아남는 법.jpg" alt="퀸카로 살아남는 법">
+        <h2>퀸카로 살아남는 법</h2>
+        <dl>
+          <dt>별점</dt>
+          <dd>★★★★☆ (4.3)</dd>
+          <dt>장르</dt>
+          <dd>코미디, 드라마</dd>
+          <dt>출연</dt>
+          <dd>
+            린제이 로한, 레이첼 맥아담스<br>
+            리지 캐플런, 레이시 샤버트<br>
+            아만다 사이프리드, 조나단 베넷<br>
+          </dd>
+          <dt>감독</dt>
+          <dd>마크 워터스</dd>
+        </dl>
+        <a href="">좌석예매</a>
+      </div>
+
+      <div class="now_playing">
+        <blockquote>
+          "진짜 있을지도 모르겠다는 생각이 들었다"
+          <cite>-27세, 윙가르디움레이오우사-</cite>
+        </blockquote>
+        <img src="./pictures/해리포터와 마법사의 돌.jpg" alt="해리포터와 마법사의 돌">
+        <h2>해리포터와 마법사의 돌</h2>
+        <dl>
+          <dt>별점</dt>
+          <dd>★★★★☆ (4.7)</dd>
+          <dt>장르</dt>
+          <dd>판타지, 가족, 모험, 액션</dd>
+          <dt>출연</dt>
+          <dd>
+            다니엘 래드클리프, 엠마 왓슨<br>
+            루퍼트 그린트, 앨런 릭먼<br>
+            리처드 해리스, 로비 콜트레인<br>
+          </dd>
+          <dt>감독</dt>
+          <dd>크리스 콜럼버스</dd>
+        </dl>
+        <a href="">좌석예매</a>
+      </div>
+
+
+      <div class="now_playing">
+        <blockquote>
+          "색감과 영상미가 아름다운 영화"
+          <cite>-32세, 무비무비-</cite>
+        </blockquote>
+        <img src="./pictures/마리앙투아네트.jpg" alt="마리앙투아네트">
+        <h2>마리앙투아네트</h2>
+        <dl>
+          <dt>별점</dt>
+          <dd>★★★★☆ (4.0)</dd>
+          <dt>장르</dt>
+          <dd>드라마</dd>
+          <dt>출연</dt>
+          <dd>
+            커스틴 던스트, 제이슨 슈왈츠먼<br>
+            주디 데이비스, 스티브 쿠건<br>
+            립 톤, 아시아 아르젠토, 로즈 번<br>
+          </dd>
+          <dt>감독</dt>
+          <dd>소피아 코폴라</dd>
+        </dl>
+        <a href="">좌석예매</a>
+      </div>
+
+
+      <div class="now_playing">
+        <blockquote>
+          "믿고 보는 짐 캐리"
+          <cite>-46세, 팔공산다람쥐-</cite>
+        </blockquote>
+        <img src="./pictures/트루먼 쇼.jpg" alt="트루먼 쇼">
+        <h2>트루먼 쇼</h2>
+        <dl>
+          <dt>별점</dt>
+          <dd>★★★★☆ (4.5)</dd>
+          <dt>장르</dt>
+          <dd>드라마, 코미디, SF</dd>
+          <dt>출연</dt>
+          <dd>
+            짐캐리, 에드 해리스<br>
+            나타샤 맥켈혼, 노아 에머리히<br>
+            로라 리니<br>
+          </dd>
+          <dt>감독</dt>
+          <dd>피터 위어</dd>
+        </dl>
+        <a href="">좌석예매</a>
+      </div>
+    </div>
+
+
+    <div class="bottom">
+      <div class="bottom_width">
+        <p>
+          홈페이지 제작은 구글 검색, 이고잉님의 생활코딩, 김버그님의 HTML&CSS는 재밌다를 참고했습니다.<br>
+        </p>
+
+        <hr>
+        <ul>
+          <li>copyright ⓒ 21XX evrything Inc. 모든 권리 보유</li>
+          <li>대한민국</li>
+          <li>회사소개</li>
+          <li>개인정보 처리방침</li>
+          <li>이용약관</li>
+          <li>법적고지</li>
+        </ul>
+
+        <dl>
+          <dt>상호명</dt>
+          <dd>: Movie</dd>
+          <dt>사업자번호</dt>
+          <dd>: 123-45-67890</dd>
+          <dt>대표자</dt>
+          <dd>: Dueto Park</dd>
+          <dt>주소</dt>
+          <dd>: 포도와 고구마의 고장</dd>
+          <dt>대표전화</dt>
+          <dd>: Tel) 03-1234-5678 FAX)03-1234-5679</dd>
+          <dt>대표메일</dt>
+          <dd>: XXXxxx@xxxxx.xx</dd>
+        </dl>
+
+      </div>
+    </div>
+  </body>
+</html>
