@@ -3,168 +3,19 @@
   <head>
     <meta charset="utf-8">
     <title>main</title>
-    <style>
-      /*===========================commen setting===========================*/
-      body, html, *{
-        margin:0;
-        padding:0;
-        color: ivory;
-        margin-bottom: 12px;
-      }
-      body{
-        min-width: 1200px;
-        background-color: #282724;
-      }
-      a{
-        width: 150px;
-        height: 50px;
-        background-image: url("./pictures/a배경.png");
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-decoration: none;
-        color:#282724;
-        font-weight:bolder;
-      }
-      h1, h2, h3{
-        font-family: fantasy;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      img{
-        width:100%;
-      }
-      /*============================top=====================================*/
-      .top{
-        position: relative;
-      }
-      h1{
-        height: 200px;
-        font-size: 60px;
-        text-shadow: 4px 0px red;
-      }
-      .top a{
-        width: 150px;
-        height: 50px;
-        position: absolute;
-        top:50%;
-        margin-top: -25px;
-        right: 20%;
-      }
+    <link rel="stylesheet" type="text/css" href="style_main.css">
 
-      /*============================main====================================*/
-      .main{
-        position: relative;
-        flex-wrap: wrap;
-        width: 1200px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      /*------------opening this week---------------*/
-      h2{
-        background-color: tomato;
-        color:#282724;
-        text-shadow: 3px 0px gold;
-        font-size: 30px;
-      }
-      h3{
-        height:100px;
-        margin-top: 100px;
-        border-top: 4px solid orange;
-        border-bottom: 4px solid orange;
-        color:orange;
-        font-size: 30px;
-      }
-      blockquote{
-        padding: 20px;
-        font-size: 28px;
-        font-family:serif;
-        text-align: center;
-      }
-      cite{
-        display:block;
-        font-size: 28px;
-        font-style: normal;
-      }
-
-      /*-----------------now playing----------------*/
-      .now_playing{
-        display: inline-block;
-        width: 370px;
-        height: 950px;
-        padding: 10px;
-      }
-      .now_playing blockquote{
-        background-color: rgba(255, 255, 255, 0.2);
-        padding: 5px;
-        font-size: 18px;
-      }
-      .now_playing cite{
-        margin: 0;
-        font-size: 16px;
-      }
-      .now_playing img{
-        position: relative;
-        height:495px;
-      }
-      dl{
-        border-left: 4px solid ivory;
-      }
-      dt, dd{
-        display: block;
-      }
-      dt{
-        padding-left: 20px;
-        margin-bottom: 0px;
-        font-size: 12px;
-        font-weight: 400;
-      }
-      dd{
-        padding-left: 50px;
-      }
-      .now_playing a{
-        margin-left: auto;
-        margin-right: auto;
-        font-size: 18px;
-      }
-      /*============================bottom==================================*/
-      .bottom{
-        padding-top: 12px;
-        font-size: 12px;
-      }
-      .bottom_width{
-        width: 1200px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .bottom ul{
-        display: inline-block;
-        display: flex;
-        flex-direction: row;
-      }
-      .bottom li{
-        list-style: none;
-        margin-right: 18px;
-      }
-      .bottom dt, .bottom dd{
-        display: inline-block;
-        padding:0;
-      }
-      .bottom dd{
-        margin-right: 6px;
-      }
-
-    </style>
   </head>
 
 
   <body>
     <div class="top">
-      <h1>Movie</h1>
-      <a href="">예매확인</a>
+      <h1><a href="main.html">Movie</a></h1>
+      <a href="user_type.html" class="reservation">예매확인</a>
     </div>
 
+
+    <div class="onerow"></div>
 
 
     <div class="main">
@@ -182,10 +33,10 @@
       <h2>The Rocky Horror Picture Show</h2>
 
 
+      <div class="onerow"></div>
 
 
       <h3>상영 중인 작품</h3>
-
       <div class="now_playing">
         <blockquote>
           "눈과 귀가 즐거운 B급 호러영화"
@@ -334,6 +185,7 @@
       </div>
     </div>
 
+    <div class="onerow"></div>
 
     <div class="bottom">
       <div class="bottom_width">

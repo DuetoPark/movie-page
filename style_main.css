@@ -1,0 +1,269 @@
+/*===========================commen setting===========================*/
+/* setting body, html */
+/* setting body - width, v-align */
+/* setting a tag - align */
+/* setting h tag - align, font family */
+/* setting img tag - width */
+/* add one row div */
+body, html, *{
+  margin:0;
+  padding:0;
+  color: ivory;
+  margin-bottom: 12px;
+}
+body{
+  background-color: #282724;
+  width:1200px;
+  min-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-weight:bolder;
+}
+h1, h2, h3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: fantasy;
+}
+img{
+  width:100%;
+}
+.onerow{
+  height: 100px;
+}
+/*============================top=====================================*/
+/* this is title area */
+/* configuration - title , reservation confirmation */
+/* setting title - size, font */
+/* setting reservation confirmation - backgound, size, location */
+.top{
+  position: relative;
+}
+h1{
+  height: 200px;
+  font-size: 60px;
+  text-shadow: 4px 0px red;
+}
+.reservation{
+  background-image: url("./pictures/a배경.png");
+  width: 150px;
+  height: 50px;
+  position: absolute;
+  top:50%;
+  margin-top: -25px;
+  right: 20%;
+  color:#282724;
+}
+
+/*============================main(main.html)===============================*/
+/* this is main area */
+/* configuration - opening this week , now playing */
+.main{
+  position: relative;
+  flex-wrap: wrap;
+}
+
+/* opening this week */
+/* tag - h2, h3, blockquote */
+/* h2 is meaning movie title and h3 is  meaning zone name*/
+/* setting h2 - background, font */
+/* setting h3 - size border, font */
+/* setting blockquote - padding, font */
+/* setting cite - display, font */
+h2{
+  background-color: tomato;
+  color:#282724;
+  text-shadow: 3px 0px gold;
+  font-size: 30px;
+}
+h3{
+  height:100px;
+  border-top: 4px solid orange;
+  border-bottom: 4px solid orange;
+  color:orange;
+  font-size: 30px;
+}
+blockquote{
+  padding: 20px;
+  font-size: 28px;
+  font-family:serif;
+  text-align: center;
+}
+cite{
+  display:block;
+  font-size: 28px;
+  font-style: normal;
+}
+
+/* now playing */
+/* tag - h2, blockquote, img, dl, a */
+/* setting class - display, size*/
+/* setting blocquote - background, padding, font */
+/* setting cite - margin, font */
+/* setting img - size */
+/* setting a - background, size, font */
+/* setting dl - display, border, font */
+.now_playing{
+  display: inline-block;
+  width: 370px;
+  height: 950px;
+  padding: 10px;
+}
+.now_playing blockquote{
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 5px;
+  font-size: 18px;
+}
+.now_playing cite{
+  margin: 0;
+  font-size: 16px;
+}
+.now_playing img{
+  height:495px;
+}
+.now_playing a{
+  background-image: url("./pictures/a배경.png");
+  width: 150px;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  color:#282724;
+  font-size: 18px;
+}
+dl{
+  border-left: 4px solid ivory;
+}
+dt, dd{
+  display: block;
+}
+dt{
+  padding-left: 20px;
+  margin-bottom: 0px;
+  font-size: 12px;
+  font-weight: 400;
+}
+dd{
+  padding-left: 50px;
+}
+
+/*============================main(user_type.html)====================*/
+/* configuration - non_members, members, sign_in */
+/* tag - h3, a */
+/* settin user_type - align */
+/* setting a - background, size, margin, border, font */
+/* a hover change background color */
+.user_type{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.user_type a{
+  background-color: rgba(255, 165, 0, 0.2);
+  width: 250px;
+  height: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 125px;
+  font-size: 40px;
+  color:ivory;
+}
+.user_type a:hover{
+  background-color: orange;
+  color: #282724;
+}
+a.sign_in{
+  background-color: rgba(255, 99, 71, 0.2);
+}
+a.sign_in:hover{
+  background-color: tomato;
+  color: #282724;
+}
+
+
+/*============================main(non_members.html)==================*/
+/* configuration - advertising, non_members_reservation */
+/* tag - h2, h3, img, form, label, input, button */
+/* setting advertising - margin */
+/* setting non_members_reservation - align */
+/* setting label - display, font */
+/* setting input - background, size, pading, border, font */
+/* setting button - background, size, margin, border, cursor */
+.grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.advertising{
+  margin-right: 12px;
+}
+.non_members_reservation{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+label{
+  display: block;
+  font-size: 24px;
+}
+input{
+  background-color: #282724;
+  width: 400px;
+  height: 44px;
+  padding: 0px 30px;
+  border:none;
+  border-bottom: 4px solid tomato;
+  outline: none;
+  font-size: 18px;
+}
+button{
+  background-color: tomato;
+  width:100px;
+  height:44px;
+  margin-left: 20px;
+  border:none;
+  outline: none;
+  cursor: pointer;
+}
+
+
+/*============================bottom==================================*/
+/* this is bottom area */
+/* configuration - reference, copyrignt, company information */
+/* setting bottom - size, align, font */
+.bottom{
+  padding-top: 12px;
+  font-size: 12px;
+}
+.bottom_width{
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* copyrignt */
+/* tag - ul */
+/* setting ul - align */
+.bottom ul{
+  display: inline-block;
+  display: flex;
+  flex-direction: row;
+}
+.bottom li{
+  list-style: none;
+  margin-right: 18px;
+}
+/* company information */
+/* tag - dl */
+/* setting dl - display, margin, padding */
+.bottom dt, .bottom dd{
+  display: inline-block;
+  padding:0;
+}
+.bottom dd{
+  margin-right: 6px;
+}
