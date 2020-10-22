@@ -8,7 +8,6 @@
 body, html, *{
   margin:0;
   padding:0;
-  color: ivory;
   margin-bottom: 12px;
 }
 body{
@@ -17,6 +16,7 @@ body{
   min-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  color: ivory;
 }
 a{
   display: flex;
@@ -24,6 +24,7 @@ a{
   align-items: center;
   text-decoration: none;
   font-weight:bolder;
+  color: ivory;
 }
 h1, h2, h3{
   display: flex;
@@ -92,7 +93,7 @@ h3{
 blockquote{
   padding: 20px;
   font-size: 28px;
-  font-family:serif;
+  font-family: 'Noto Serif KR', serif;
   text-align: center;
 }
 cite{
@@ -170,16 +171,15 @@ dd{
   margin-right: auto;
   border-radius: 125px;
   font-size: 40px;
-  color:ivory;
 }
 .user_type a:hover{
   background-color: orange;
   color: #282724;
 }
-a.sign_in{
+a.sign_in_a{
   background-color: rgba(255, 99, 71, 0.2);
 }
-a.sign_in:hover{
+a.sign_in_a:hover{
   background-color: tomato;
   color: #282724;
 }
@@ -207,11 +207,11 @@ a.sign_in:hover{
   align-items: center;
 }
 
-label{
+.non_members_reservation label{
   display: block;
   font-size: 24px;
 }
-input{
+.non_members_reservation input{
   background-color: #282724;
   width: 400px;
   height: 44px;
@@ -221,7 +221,7 @@ input{
   outline: none;
   font-size: 18px;
 }
-button{
+.non_members_reservation button{
   background-color: tomato;
   width:100px;
   height:44px;
@@ -230,6 +230,145 @@ button{
   outline: none;
   cursor: pointer;
 }
+
+/*============================main(sign_in.html)======================*/
+.movie_document_div,
+.movie_document_div form,
+.movie_document_div dl,
+.movie_document_div p,
+.sign_in_form input,
+.sign_in_form button,
+h4{
+  font-family: 'Noto Serif KR', serif;
+}
+.movie_document_div form,
+.movie_document_div dl,
+.movie_document_div p,
+h4{
+  margin: 40px 0px;
+}
+
+.movie_document_div{
+  background-color: white;
+  width: 600px;
+  padding: 40px 100px;
+  margin-left: auto;
+  margin-right: auto;
+  color: black;
+}
+h4{
+  text-align: center;
+  font-size: 18px;
+}
+h5{
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.sign_in_form{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  width:400px;
+}
+.sign_in_form input{
+  background-color: #F5F5F7;
+  border: none;
+  outline: none;
+}
+.sign_in_form button{
+  background-color: white;
+  height:50px;
+  border: 1px solid #282724;
+  outline: none;
+  cursor: pointer;
+}
+
+
+/*=============================main navigation & article common setting======*/
+.navigation_article{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+.navigation{
+  background-color: rgba(255, 225, 225, 0.2);
+  list-style:none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 50px 25px;
+  margin: 0px 25px;
+  font-size: 18px;
+}
+.navigation a:hover{
+  color: orange;
+}
+
+.article table{
+  table-layout: auto;
+  width:100%;
+  border-spacing: 0px;
+}
+.article tr{
+  border: 1px solid #bbb;
+}
+.article th{
+  padding-left: 20px;
+  margin-bottom: 0px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 400;
+}
+.article td{
+  padding: 12px 0px;
+  padding-left: 50px;
+  font-size: 18px;
+  font-weight: bolder;
+  border-bottom: 1px solid #bbb;
+}
+
+
+/*=============================main(profile.html)======================*/
+.movie_document_div button {
+  background-color: white;
+  width: 130px;
+  height:50px;
+  border: 1px solid #282724;
+  font-family: 'Noto Serif KR', serif;
+  outline: none;
+  cursor: pointer;
+}
+
+
+/*=============================main(profile_revise.html)==============*/
+
+/*=============================mian(movie_timetable.html)==================*/
+.article_movie_timetable th{
+  padding-left: 50px;
+  font-size: 18px;
+  font-weight: bolder;
+  border-bottom: 1px solid #bbb;
+}
+.article_movie_timetable ul{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0px;
+}
+.article_movie_timetable li{
+  margin-right: 12px;
+}
+
+/*=============================main(reservation_history.html)===============*/
+
+.article_reservation_history_h3{
+  background-color: orange;
+  height: 50px;
+  border: none;
+  color: #282724;
+}
+
+
 
 
 /*============================bottom==================================*/
@@ -260,6 +399,9 @@ button{
 /* company information */
 /* tag - dl */
 /* setting dl - display, margin, padding */
+.bottom dl{
+  border: none;
+}
 .bottom dt, .bottom dd{
   display: inline-block;
   padding:0;
