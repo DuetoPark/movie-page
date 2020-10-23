@@ -72,15 +72,14 @@ img{
   border-spacing: 0px;
 }
 .article th{
-  padding-left: 20px;
+  padding: 0px 20px;
   margin-bottom: 0px;
   text-align: left;
   font-size: 12px;
   font-weight: 400;
 }
 .article td{
-  padding: 12px 0px;
-  padding-left: 50px;
+  padding: 12px 25px;
   font-size: 18px;
   font-weight: bolder;
   border-bottom: 1px solid #bbb;
@@ -144,7 +143,8 @@ h5{
 #profile_revise,
 #profile_revise_save,
 #move_to_profile,
-#sign_in_button{
+#sign_in_button,
+#select_seat{
   background-color: white;
   width: 130px;
   height:50px;
@@ -370,13 +370,14 @@ a.sign_in_a:hover{
 
 
 /*=============================mian(movie_timetable.html)==================*/
-/* configuration - sidemenu, timetable */
+/* configuration - sidemenu, timetable, select seat */
 /* common setting - sign_in_form */
-/* tag - div, ul, h3, table */
+/* tag - div, ul, h3, ol, form, table, select, option, button*/
 /* setting table th - padding, font, border */
-/* setting table - first tr font */
-/* seeting article ul - list style, display, margin */
+/* seeting article ol - list style, display, margin */
 /* setting article li - margin */
+/* setting option - size, padding, margin, font */
+/* setting button - font */
 
 .article_movie_timetable th{
   padding-left: 50px;
@@ -384,8 +385,7 @@ a.sign_in_a:hover{
   font-weight: bolder;
   border-bottom: 1px solid #bbb;
 }
-
-.article_movie_timetable ul{
+.article_movie_timetable ol{
   list-style: none;
   display: flex;
   flex-direction: row;
@@ -394,14 +394,29 @@ a.sign_in_a:hover{
 }
 .article_movie_timetable li{
   margin-right: 12px;
+  margin-bottom: 0px;
 }
-
+.yellow_line_h3 {
+  background-color: orange;
+  height: 50px;
+  border: none;
+  color: #282724;
+}
+.select_seat_option{
+  width:100%;
+  padding: 6px 12px;
+  margin: 0px;
+  font-size: 18px;
+}
+#select_seat{
+  font-size: 18px;
+}
 /*=============================main(reservation_history.html)===============*/
 /* configuration - sidemenu, reservation details (lately, history) */
 /* commen setting - navigation & article*/
 /* tag - div, ul, h3, table */
 /* setting h3 - background, size, border, font */
-.article_reservation_history_h3{
+.yellow_line_h3 {
   background-color: orange;
   height: 50px;
   border: none;
@@ -410,64 +425,13 @@ a.sign_in_a:hover{
 
 
 
-/*============================main(select_seat.html)=============*/
+
+/*============================main(select_seat1.html)=============*/
 /* configuration - sidemenu, seat table */
 /* commen setting - navigation & article*/
-/* tag - div, ul, h3, p, form, input, label button, ol, table */
-/* setting p - background, margin, padding, font */
-/* setting th - padding */
-/* setting ol - list style, display, margin */
-/* setting li - margin */
-/* setting checkbox - display */
-/* setting label - cursor, padding, hover */
+/* tag - div, ul, h3, table, select, option */
 /* setting button - size, margin, font, border, cursor, hover */
-.article_p{
-  background-color: #bbb;
-  padding: 12px 0px;
-  margin: 24px 0px;
-  text-align: center;
-  color:#282724;
-}
-.article_seat_table th{
-  padding:0;
-}
-.article_seat_table ol{
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin:0;
-}
-.article_seat_table li{
-  margin:0px;
-}
-.article_seat_table input[type="checkbox"]{
-  display: none;
-}
-.article_seat_table label{
-  cursor: pointer;
-  padding: 6px;
-}
-.article_seat_table input:checked + label{
-  background-color: tomato;
-  color: #282724;
-}
-#check_seat,
-#select_seat{
-  width: 150px;
-  height: 50px;
-  margin: 24px 6px;
-  font-family: 'Noto Serif KR', serif;
-  border: none;
-  outline: none;
-  cursor: pointer;
-}
-#check_seat:hover {
-  background-color: orange;
-}
-#select_seat:hover {
-  background-color: tomato;
-}
+
 
 
 /*============================bottom==================================*/

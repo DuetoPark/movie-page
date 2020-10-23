@@ -30,6 +30,8 @@
 
         <div class="article">
           <h3>좌석예매</h3>
+
+          <h3 class="yellow_line_h3">상영시간표</h3>
           <table class="article_movie_timetable">
             <thead>
               <tr>
@@ -41,103 +43,132 @@
               <tr>
                 <th scope="row">록키호러픽쳐쇼</th>
                 <td>
-                  <ul>
-                    <li>22:45</li>
-                    <li>23:10</li>
-                    <li>23:35</li>
-                    <li>24:00</li>
-                    <li>24:25</li>
-                    <li>24:50</li>
-                  </ul>
+                  <ol>
+                    <li>20:45</li>
+                    <li>21:10</li>
+                    <li>21:35</li>
+                    <li>22:00</li>
+                    <li>22:25</li>
+                    <li>22:50</li>
+                  </ol>
                 </td>
               </tr>
               <tr>
                 <th scope="row">마틸다</th>
                 <td>
-                  <ul>
-                    <li>09:45</li>
-                    <li>10:10</li>
-                    <li>10:35</li>
-                    <li>21:00</li>
-                    <li>21:25</li>
-                    <li>21:50</li>
-                  </ul>
+                  <ol>
+                    <li>20:45</li>
+                    <li>21:10</li>
+                    <li>21:35</li>
+                    <li>22:00</li>
+                    <li>22:25</li>
+                    <li>22:50</li>
+                  </ol>
                 </td>
               </tr>
               <tr>
                 <th scope="row">퀸카로 살아남는 법</th>
                 <td>
-                  <ul>
-                    <li>18:10</li>
-                    <li>18:35</li>
-                    <li>20:00</li>
-                    <li>20:25</li>
-                    <li>20:50</li>
-                  </ul>
+                  <ol>
+                    <li>20:45</li>
+                    <li>21:10</li>
+                    <li>21:35</li>
+                    <li>22:00</li>
+                    <li>22:25</li>
+                    <li>22:50</li>
+                  </ol>
                 </td>
               </tr>
               <tr>
                 <th scope="row">해리포터와 마법사의 돌</th>
                 <td>
-                  <ul>
-                    <li>08:45</li>
-                    <li>09:10</li>
-                    <li>09:35</li>
-                    <li>10:00</li>
-                  </ul>
+                  <ol>
+                    <li>20:45</li>
+                    <li>21:10</li>
+                    <li>21:35</li>
+                    <li>22:00</li>
+                    <li>22:25</li>
+                    <li>22:50</li>
+                  </ol>
                 </td>
               </tr>
               <tr>
                 <th scope="row">마리앙투아네트</th>
                 <td>
-                  <ul>
-                    <li>18:25</li>
-                    <li>18:50</li>
-                  </ul>
+                  <ol>
+                    <li>20:45</li>
+                    <li>21:10</li>
+                    <li>21:35</li>
+                    <li>22:00</li>
+                    <li>22:25</li>
+                    <li>22:50</li>
+                  </ol>
                 </td>
               </tr>
               <tr>
                 <th scope="row">트루먼 쇼</th>
                 <td>
-                  <ul>
-                    <li>19:00</li>
-                    <li>19:25</li>
-                    <li>20:00</li>
-                    <li>20:25</li>
-                    <li>21:00</li>
-                    <li>21:25</li>
-                  </ul>
+                  <ol>
+                    <li>20:45</li>
+                    <li>21:10</li>
+                    <li>21:35</li>
+                    <li>22:00</li>
+                    <li>22:25</li>
+                    <li>22:50</li>
+                  </ol>
                 </td>
               </tr>
             </tbody>
           </table>
-          <table>
-            <thead>
+
+          <div class="onerow"></div>
+
+          <h3 class="yellow_line_h3">선택</h3>
+          <form class="" action="#" method="GET">
+            <table>
               <tr>
-                <th></th>
-                <th>1</th>
-                <th>2</th>
-                <th>3</th>
-                <th>4</th>
-                <th></th>
-                <th>5</th>
-                <th>6</th>
-                <th>7</th>
-                <th>8</th>
-                <th>9</th>
-                <th>10</th>
-                <th></th>
-                <th>11</th>
-                <th>12</th>
-                <th>13</th>
-                <th>14</th>
+                <th>영화명</th>
+                <th>인원수</th>
+                <th>상영시간</th>
+                <td rowspan="2">
+                  <button type="submit" id="select_seat">
+                    좌석 선택 ▶
+                  </button>
+                </td>
               </tr>
-
-            </thead>
-            <tbody>
-
-            </tbody>
-          </table>
+              <tr>
+                <td>
+                  <select class="select_seat_option" name="movie">
+                    <option value="rocky">록키호러픽쳐쇼</option>
+                    <option value="matilda">마틸다</option>
+                    <option value="mean">퀸카로 살아남는 법</option>
+                    <option value="harry">해리포터와 마법사의 돌</option>
+                    <option value="marie">마리앙투아네트</option>
+                    <option value="truman">트루먼 쇼</option>
+                  </select>
+                </td>
+                <td>
+                  <select class="select_seat_option" name="head_count">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </td>
+                <td>
+                  <select class="select_seat_option" name="rocky_start" id="rocky_start">
+                    <option value="1">20:45</option>
+                    <option value="2">21:10</option>
+                    <option value="3">21:35</option>
+                    <option value="4">22:00</option>
+                    <option value="5">22:25</option>
+                    <option value="6">22:50</option>
+                  </select>
+                </td>
+              </tr>
+            </table>
+          </form>
 
         </div>
 
