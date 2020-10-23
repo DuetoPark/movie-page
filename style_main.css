@@ -38,7 +38,125 @@ img{
 .onerow{
   height: 100px;
 }
-/*============================top=====================================*/
+
+/*=============================common setting -  navigation & article ======*/
+/* configuration - navigation(side menu), article(content) */
+/* tag - div, ul, h3, table */
+/* setting navigation & article - grid */
+/* setting navigation ul - background, list style, display, padding, margin, font */
+/* setting navigation a - hover:color */
+/* setting article table - table layout, size, border spacing */
+/* setting article th - padding, margin, font */
+/* setting article td - padding, font, border */
+.navigation_article{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+.navigation{
+  background-color: rgba(255, 225, 225, 0.2);
+  list-style:none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 50px 25px;
+  margin: 0px 25px;
+  font-size: 18px;
+}
+.navigation a:hover{
+  color: orange;
+}
+
+.article table{
+  table-layout: auto;
+  width:100%;
+  border-spacing: 0px;
+}
+.article th{
+  padding-left: 20px;
+  margin-bottom: 0px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 400;
+}
+.article td{
+  padding: 12px 0px;
+  padding-left: 50px;
+  font-size: 18px;
+  font-weight: bolder;
+  border-bottom: 1px solid #bbb;
+}
+
+
+/*==============================common setting - sign_in_form================*/
+/* configuration - sign_in_form, short scenario */
+/* tag - h3, h4, h5, div, form(label input, button), p */
+/* setting div & form (common point) - margin, font */
+/* setting div - background, size, padding, align */
+/* setting h - algin, font */
+/* setting form - grid, size */
+/* setting input - background, border */
+/* setting button - background, size, border, cursor */
+.movie_document_div,
+.movie_document_div form,
+.movie_document_div dl,
+.movie_document_div p,
+.sign_in_form input,
+.sign_in_form button{
+  font-family: 'Noto Serif KR', serif;
+}
+.sign_in_form{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  width:400px;
+}
+.sign_in_form input{
+  background-color: #F5F5F7;
+  border: none;
+  outline: none;
+}
+.movie_document_div form,
+.movie_document_div dl,
+.movie_document_div p{
+  margin: 40px 0px;
+}
+
+.movie_document_div{
+  background-color: white;
+  width: 600px;
+  padding: 40px 100px;
+  margin-left: auto;
+  margin-right: auto;
+  color: black;
+}
+h4{
+  margin-top: 40px;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Noto Serif KR', serif;
+}
+h5{
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+/*==============================common setting - button ==================== */
+/* background, size, border, font, cursor */
+#profile_revise,
+#profile_revise_save,
+#move_to_profile,
+#sign_in_button{
+  background-color: white;
+  width: 130px;
+  height:50px;
+  border: 1px solid #282724;
+  font-family: 'Noto Serif KR', serif;
+  outline: none;
+  cursor: pointer;
+}
+
+
+
+/*================================top=====================================*/
 /* this is title area */
 /* configuration - title , reservation confirmation */
 /* setting title - size, font */
@@ -157,7 +275,7 @@ dd{
 /* configuration - non_members, members, sign_in */
 /* tag - h3, a */
 /* settin user_type - align */
-/* setting a - background, size, margin, border, font */
+/* setting a - background, size, margin, border, font, hover */
 /* a hover change background color */
 .user_type{
   display: grid;
@@ -221,7 +339,7 @@ a.sign_in_a:hover{
   outline: none;
   font-size: 18px;
 }
-.non_members_reservation button{
+#non_members_confirm {
   background-color: tomato;
   width:100px;
   height:44px;
@@ -231,123 +349,42 @@ a.sign_in_a:hover{
   cursor: pointer;
 }
 
-/*============================main(sign_in.html)======================*/
-.movie_document_div,
-.movie_document_div form,
-.movie_document_div dl,
-.movie_document_div p,
-.sign_in_form input,
-.sign_in_form button,
-h4{
-  font-family: 'Noto Serif KR', serif;
-}
-.movie_document_div form,
-.movie_document_div dl,
-.movie_document_div p,
-h4{
-  margin: 40px 0px;
-}
-
-.movie_document_div{
-  background-color: white;
-  width: 600px;
-  padding: 40px 100px;
-  margin-left: auto;
-  margin-right: auto;
-  color: black;
-}
-h4{
-  text-align: center;
-  font-size: 18px;
-}
-h5{
-  font-size: 18px;
-  font-weight: bolder;
-}
-
-.sign_in_form{
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  width:400px;
-}
-.sign_in_form input{
-  background-color: #F5F5F7;
-  border: none;
-  outline: none;
-}
-.sign_in_form button{
-  background-color: white;
-  height:50px;
-  border: 1px solid #282724;
-  outline: none;
-  cursor: pointer;
-}
+/*============================main(sign_in.html)==========================*/
+/* configuration - sign_in_form, short scenario, button*/
+/* common setting - sign_in_form */
+/* common setting - button (sign_in_button)*/
 
 
-/*=============================main navigation & article common setting======*/
-.navigation_article{
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-}
-.navigation{
-  background-color: rgba(255, 225, 225, 0.2);
-  list-style:none;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 50px 25px;
-  margin: 0px 25px;
-  font-size: 18px;
-}
-.navigation a:hover{
-  color: orange;
-}
-
-.article table{
-  table-layout: auto;
-  width:100%;
-  border-spacing: 0px;
-}
-.article tr{
-  border: 1px solid #bbb;
-}
-.article th{
-  padding-left: 20px;
-  margin-bottom: 0px;
-  text-align: left;
-  font-size: 12px;
-  font-weight: 400;
-}
-.article td{
-  padding: 12px 0px;
-  padding-left: 50px;
-  font-size: 18px;
-  font-weight: bolder;
-  border-bottom: 1px solid #bbb;
-}
+/*=============================main(profile.html)=========================*/
+/* configuration - sidemenu, sign_in_form, short scenario, button */
+/* commen setting - navigation & article*/
+/* common setting - sign_in_form */
+/* common setting - button (profile_revise)*/
 
 
-/*=============================main(profile.html)======================*/
-.movie_document_div button {
-  background-color: white;
-  width: 130px;
-  height:50px;
-  border: 1px solid #282724;
-  font-family: 'Noto Serif KR', serif;
-  outline: none;
-  cursor: pointer;
-}
+/*=============================main(profile_revise.html)==================*/
+/* configuration - sidemenu, sign_in_form, short scenario, button */
+/* commen setting - navigation & article*/
+/* common setting - sign_in_form */
+/* common setting - button (move_to_profile)*/
 
-
-/*=============================main(profile_revise.html)==============*/
 
 /*=============================mian(movie_timetable.html)==================*/
+/* configuration - sidemenu, timetable */
+/* common setting - sign_in_form */
+/* tag - div, ul, h3, table */
+/* setting table th - padding, font, border */
+/* setting table - first tr font */
+/* seeting article ul - list style, display, margin */
+/* setting article li - margin */
+
 .article_movie_timetable th{
   padding-left: 50px;
   font-size: 18px;
   font-weight: bolder;
   border-bottom: 1px solid #bbb;
 }
+
 .article_movie_timetable ul{
   list-style: none;
   display: flex;
@@ -360,7 +397,10 @@ h5{
 }
 
 /*=============================main(reservation_history.html)===============*/
-
+/* configuration - sidemenu, reservation details (lately, history) */
+/* commen setting - navigation & article*/
+/* tag - div, ul, h3, table */
+/* setting h3 - background, size, border, font */
 .article_reservation_history_h3{
   background-color: orange;
   height: 50px;
@@ -369,6 +409,65 @@ h5{
 }
 
 
+
+/*============================main(select_seat.html)=============*/
+/* configuration - sidemenu, seat table */
+/* commen setting - navigation & article*/
+/* tag - div, ul, h3, p, form, input, label button, ol, table */
+/* setting p - background, margin, padding, font */
+/* setting th - padding */
+/* setting ol - list style, display, margin */
+/* setting li - margin */
+/* setting checkbox - display */
+/* setting label - cursor, padding, hover */
+/* setting button - size, margin, font, border, cursor, hover */
+.article_p{
+  background-color: #bbb;
+  padding: 12px 0px;
+  margin: 24px 0px;
+  text-align: center;
+  color:#282724;
+}
+.article_seat_table th{
+  padding:0;
+}
+.article_seat_table ol{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin:0;
+}
+.article_seat_table li{
+  margin:0px;
+}
+.article_seat_table input[type="checkbox"]{
+  display: none;
+}
+.article_seat_table label{
+  cursor: pointer;
+  padding: 6px;
+}
+.article_seat_table input:checked + label{
+  background-color: tomato;
+  color: #282724;
+}
+#check_seat,
+#select_seat{
+  width: 150px;
+  height: 50px;
+  margin: 24px 6px;
+  font-family: 'Noto Serif KR', serif;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+#check_seat:hover {
+  background-color: orange;
+}
+#select_seat:hover {
+  background-color: tomato;
+}
 
 
 /*============================bottom==================================*/
