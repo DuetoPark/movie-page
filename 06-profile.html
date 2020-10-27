@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie - 프로필 수정</title>
+
+    <link rel="stylesheet" type="text/css" href="style_main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500&display=swap" rel="stylesheet">
+  </head>
+
+
+  <body>
+    <header class="settingHeader">
+      <h1 class="settingTitle">
+        <a href="01-main.html" aria-label="메인 페이지로 이동">Movie</a>
+      </h1>
+    </header>
+
+
+    <main class="main-grid">
+      <nav>
+        <h2 class="sr-only">메뉴</h2>
+        <ul class="main-Menu">
+          <li>
+            <a href="06-profile.html" aria-label="현재페이지">
+              프로필 수정
+            </a>
+          </li>
+          <li>
+            <a href="08-movie-timetable.html" aria-label="좌석예매 페이지로 이동">
+              좌석예매
+            </a>
+          </li>
+          <li>
+            <a href="09-reservation-history.html" aria-label="예매내역 페이지로 이동">
+              예매내역
+            </a>
+          </li>
+          <li><a href="#">작성후기</a></li>
+          <li><a href="#">탈퇴</a></li>
+        </ul>
+      </nav>
+
+      <section class="main-content">
+        <h1 class="section-title" aria-hidden="true">프로필 수정</h1>
+        <article>
+          <h1 class="sr-only">기존 정보 확인</h1>
+
+          <div class="movie-sign-in">
+            <h1 aria-hidden="true">[기존 정보]</h1>
+            <form class="sign_in_form" action="#" method="GET">
+              <label for="user_name">[이름]</label>
+              <input type="text" placeholder="이름을 입력하세요." id="user_name" disabled value="#user_name">
+              <label for="user_age">[나이]</label>
+              <input type="number" placeholder="나이를 입력하세요." id="user_age" disabled value="#user_age">
+              <label for="user_tel">[전화 번호]</label>
+              <input type="text" placeholder="전화 번호를 입력하세요." id="user_tel" disabled value="#user_tel">
+              <label for="user_email">[이메일 주소]</label>
+              <input type="email" placeholder="이메일 주소를 입력하세요." id="user_email" disabled value="#user_email">
+              <label for="user_id">[아이디]</label>
+              <input type="text" placeholder="아이디를 입력하세요." id="user_id" disabled value="#user_id">
+            </form>
+
+            <button type="button" onclick="location.href='07-profile-revise.html'" id="profile_revise">
+              <span aria-label="프로필 수정 페이지로 이동">
+                프로필 수정하기
+              </span>
+            </button>
+
+
+            <hr>
+
+            <div>
+              <span class="sr-only">짧은 시나리오</span>
+              <h5 aria-hidden="true">시나리오</h5>
+              <p>
+                26#2 현재 - 프로필 수정 페이지<br>
+                고민끝에 내린 결정이었다. 나는 주저하지 않고 프로필 수정 메뉴를 클릭했다.<br>
+                이전에 입력해놓은 정보들을 하나하나 훑고 난 뒤, 프로필 수정하기 버튼에 마우스를 갖다댔다.<br><br>
+                그 순간, 익숙한 목소리가 뒤에서 들려왔다.<br><br>
+                ???: 프로필 수정하시려나 봐요? 프로필 수정은 그렇게 어렵지 않아요. 어떻게 아냐구요? 제가 1994년에 LA에 있었을 때.....<br><br>
+                그의 입에서 수많은 말들이 쏟아져나왔고, 나는 급히 수정하기 버튼을 눌렀다.
+              </p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <div class="onerow"></div>
+    </main>
+
+
+    <footer class="settingFooter">
+      <div class="footerSize">
+        <dl class="reference">
+          <dt>웹 페이지 제작 참조</dt>
+          <dd>
+            <strong>
+              구글에 검색하거나, 이고잉님의 생활코딩과 김버그님의 HTML은 재밌다를 참고했습니다.
+            </strong>
+          </dd>
+        </dl>
+
+        <div class="copyright">
+          <span class="sr-only">웹 페이지 정보</span>
+          <span>Copyright &copy; 21XX everything Inc. 모든 권리 보유</span>
+          <ul>
+            <li>개인정보 처리방침</li>
+            <li>웹 사이트 이용 약관</li>
+            <li>법적 고지</li>
+          </ul>
+          <span>대한민국</span>
+        </div>
+
+        <div class="company-Info">
+          <span class="sr-only">회사정보</span>
+          <dl>
+            <dt>사업자등록번호</dt>
+            <dd>: 123-45-67890</dd>
+            <dt>대표이사</dt>
+            <dd>: Park DueTo</dd>
+            <dt>주소</dt>
+            <dd>: 포도의 고장, 고구마의 고장</dd>
+            <dt>대표전화</dt>
+            <dd>: 03-1234-5678</dd>
+          </dl>
+        </div>
+
+      </div>
+    </footer>
+  </body>
+</html>

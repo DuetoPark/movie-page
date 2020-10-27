@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Movie-Log in</title>
+    <link rel="stylesheet" href="./style_login.css">
+  </head>
+
+
+  <body>
+    <main>
+      <h1>Movie 회원 로그인</h1>
+
+      <form class="sign-in-form" action="#" method="GET">
+        <label for="user_id" aria-label="아이디를 입력해주세요.">
+          (아이디)
+        </label>
+        <input type="text" id="user_id" placeholder="아이디를 입력하세요." required>
+
+        <label for="user_password" aria-label="비밀번호를 입력해주세요.">
+          (비밀번호)
+        </label>
+        <input type="password" id="user_password" placeholder="비밀번호를 입력하세요."
+          required minlength="5">
+
+        <button type="submit"
+          onclick="window.open('09-reservation-history.html'); self.close();">
+          <span aria-label="로그인 버튼, 홈페이지로 이동">
+            제출하기
+          </span>
+        </button>
+      </form>
+
+      <span class="sr-only">회사 정보</span>
+      <dl class="company_info">
+        <dt>상호명</dt>
+        <dd>: Movie</dd>
+        <dt>사업자 번호</dt>
+        <dd>: 123-45-67890</dd>
+        <dt>대표자</dt>
+        <dd>: Dueto Park</dd>
+        <dt>대표전화</dt>
+        <dd>: 03-1234-5678</dd>
+        <dt>영업시간</dt>
+        <dd>: 10:00 AM ~ 24:00 PM</dd>
+      </dl>
+
+      <img src="./pictures/의미없는 바코드.png" alt="바코드" aria-hidden="true">
+    </main>
+  </body>
+</html>

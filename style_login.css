@@ -1,0 +1,86 @@
+html, body, *{
+  margin:0;
+  padding:0;
+}
+body{
+  width:300px;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+h1,
+dl,
+form, label, input{
+  width: 100%;
+  border-bottom: 1px dashed #ddd;
+  padding: 12px 0px;
+  margin: 12px 0px;
+}
+h1{
+  font-size: 30px;
+  text-align: center;
+  padding-bottom: 40px;
+  order:1;
+}
+dl{
+  display: grid;
+  grid-template-columns: 35% 1fr;
+  order:2;
+}
+dt, dd{
+  display: inline-block;
+  font-size: 12px;
+}
+form{
+  order:3;
+}
+img{
+  order:4;
+}
+label, input{
+  height: 40px;
+  padding:0px;
+  margin: 0px;
+}
+label{
+  height: 20px;
+  font-size: 14px;
+  font-weight: bolder;
+  border:none;
+}
+input {
+  display: block;
+  border:none;
+  border-bottom: 1px solid #ddd;
+  outline: none;
+  font-size: 17px;
+}
+button{
+  background-color: tomato;
+  width:150px;
+  height: 50px;
+  margin-top: 12px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+main{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sign-in-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sr-only {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  z-index: -1;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  visibility: hidden;
+}
