@@ -469,8 +469,62 @@ a.sign-in_a:hover{
 /* tag - div, ul, h3, table, select, option */
 /* setting button - size, margin, font, border, cursor, hover */
 
+/*==========================main ( 10-main-after-login.html) ====*/
+.header-menu-user{
+  display: block;
+  width:40px;
+  height:40px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
 
 
+/*===========================main (04-login-original.html)========*/
+.login-form{
+  width:350px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  margin: 100px auto;
+  text-align: center;
+  padding: 30px 60px;
+}
+.login-form label,
+.login-form input{
+  display: block;
+}
+.login-form label{
+  margin:0;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+}
+.login-form input{
+  width: 100%;
+  margin-bottom: 32px;
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  border-bottom: 2px solid ivory;
+  outline:none;
+  font-size: 18px;
+  color:ivory;
+}
+.login-form button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:150px;
+  height: 50px;
+  background-color: ivory;
+  border-radius: 8px;
+  border: none;
+  outline:none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  margin-left: auto;
+  margin-right: auto;
+}
 /*============================ footer ==================================*/
 /* this is bottom area */
 /* configuration - reference, copyrignt, company information */
