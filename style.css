@@ -27,6 +27,12 @@ body{
   }
 }
 
+@media screen and (min-width:768px) {
+  .container{
+    min-width: 960px !important;
+  }
+}
+
 
 /* Reset CSS */
 a{
@@ -79,7 +85,7 @@ textarea:active{
   justify-content: center;
   align-items: center;
   width: 140px;
-  height: 45px;
+  height: 42px;
   border:none;
   outline: none;
   border-radius: 4px;
@@ -100,16 +106,13 @@ cite{
   font-style: normal;
 }
 
-cite::before{
-  content: '-';
-}
-
+cite::before,
 cite::after{
   content: '-';
 }
 
 
-/* Movie-heaer */
+/* Movie-header */
 .movie-header{
   display: flex;
   justify-content: center;
@@ -119,11 +122,8 @@ cite::after{
   text-align: center;
 }
 
-.movie-header .col-12:first-child{
-  margin-bottom:72px;
-}
-
 .movie-header .movie-title{
+  margin-bottom:72px;
   color: #FFFFFF;
   letter-spacing: 0.05em;
 }
@@ -142,22 +142,22 @@ cite::after{
 
 /* Advertising */
 .advertising{
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  padding:40px 0;
   background-color: #FCC4C4;
   text-align: center;
 }
 
 .advertising-title{
-  margin-bottom: 65px;
+  margin-bottom: 55px;
   color: #FFFFFF;
 }
 
 .advertising-blockquote{
-  margin-bottom: 28px;
+  margin-bottom: 18px;
   font-size: 16px;
   line-height: 1.25;
   letter-spacing: 0.01em;
@@ -181,6 +181,7 @@ cite::after{
   margin-bottom: 8px;
 }
 
+
 /* Playing */
 .playing{
   padding: 40px 0;
@@ -190,6 +191,18 @@ cite::after{
 
 .playing .row:first-child{
   margin-bottom: 70px;
+}
+
+.playing .row:nth-child(2){
+  margin-bottom: 72px;
+}
+
+.playing .col-md-4{
+  margin-bottom: 72px;
+}
+
+.playing .col-md-4:last-child{
+  margin-bottom: 0;
 }
 
 .playing-desc-blockquote{
@@ -205,11 +218,12 @@ cite::after{
   margin-bottom: 8px;
 }
 
+
 .playing-desc-title{
+  margin-bottom: 16px;
   font-size: 36px;
   line-height: 1.111111111111111;
   letter-spacing: -0.01em;
-  margin-bottom: 16px;
 }
 
 .playing-desc-details{
@@ -217,20 +231,11 @@ cite::after{
 }
 
 .playing-desc .ticketing{
-  height: 42px;
   background-color: #C4C4C4;
   box-shadow: -8px -8px 7px #FFFFFF, 3px 3px 7px #7B7B7B;
   margin: 0 auto;
   line-height: 1.333333333333333;
   letter-spacing: -0.03%;
-}
-
-.playing .col-md-4{
-  margin-bottom: 72px;
-}
-
-.playing .col-md-4:last-child{
-  margin-bottom: 0;
 }
 
 
@@ -245,6 +250,10 @@ cite::after{
 
 .footer .row{
   margin-bottom: 16px;
+}
+
+.footer .row:last-child{
+  margin-bottom: 0;
 }
 
 .footer .col-md-4{
@@ -264,9 +273,7 @@ cite::after{
   content: ' :';
 }
 
-.footer .row:last-child{
-  margin-bottom: 0;
-}
+
 
 /* >= 768px (Desktop) */
 @media screen and (min-width:768px) {
@@ -279,11 +286,181 @@ cite::after{
 
   /* Commen Setting */
   .fill-button{
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.333333333333333;
-    letter-spacing: -0.03%;
+    width:210px;
+    height:50px;
+    font-size: 22px;
+    line-height: 1.090909090909091;
+  }
+
+  /* Movie-header */
+  .movie-header .movie-title{
+    margin-bottom:42px;
+    font-size: 72px;
+    letter-spacing: -0.01em;
+  }
+
+  .movie-header .button-group{
+    font-size: 22px;
+    line-height: 1.090909090909091;
+    letter-spacing: -0.03em;
+  }
+
+  .movie-header .button-group a:first-child{
+    margin-right: 29px;
   }
 
 
+  /* Advertising */
+  .advertising{
+    height:auto;
+    padding: 80px 0;
+  }
+
+  .advertising-title{
+    margin-bottom: 79px;
+    font-size: 64px;
+  }
+
+  .advertising-blockquote{
+    margin-bottom: 88px;
+    font-size: 24px;
+    line-height: 1.333333333333333;
+    text-align: center;
+  }
+
+  .advertising-image strong{
+    font-size: 36px;
+    line-height: 1.333333333333333;
+  }
+
+  .advertising-image strong:first-child{
+    margin-bottom: 16px;
+  }
+
+  .advertising-image img{
+    margin-bottom: 16px;
+  }
+
+
+  /* Playing */
+  .playing{
+    padding: 80px 0;
+  }
+
+  .playing .row:first-child{
+    margin-bottom: 80px;
+  }
+
+  .playing .row:nth-child(2){
+    margin-bottom: 140px;
+  }
+
+  .playing .col-md-4{
+    margin-bottom: 0px;
+  }
+
+  .playing-title{
+    font-size: 64px;
+    letter-spacing: -0.03%;
+  }
+
+  .playing-desc-blockquote{
+    font-size: 16px;
+    line-height: 1.375;
+  }
+
+  .playing-desc img{
+    width: auto;
+    height: 400px;
+    margin-bottom: 16px;
+  }
+
+  .playing-desc-title{
+    font-size: 30px;
+    line-height: 1.066666666666667;
+  }
+
+  .playing-desc-details{
+    display:block;
+    margin-bottom: 56px;
+    font-size: 18px;
+    line-height: 1.111111111111111;
+    letter-spacing: -0.01em;
+  }
+
+  .playing .details-lists{
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    text-align: left;
+  }
+
+  .playing .details-lists:first-child{
+    height:22px;
+  }
+
+  .playing .details-lists:nth-child(2){
+    height:44px;
+  }
+
+  .playing .details-lists:nth-child(3){
+    height:82px;
+  }
+
+  .playing .details-lists:last-child{
+    height:22px;
+    margin-bottom: 0;
+  }
+
+  .playing .details-lists dt{
+    width: 50px;
+    margin-right: 30px;
+  }
+
+  .playing .details-lists dd{
+    width: 210px;
+    margin-right: 0;
+  }
+
+  .playing-desc .ticketing{
+    height: 50px;
+    font-size: 22px;
+    line-height: 1.090909090909091;
+  }
+
+
+  /* Footer */
+  .footer{
+    padding: 32px 0;
+  }
+
+  .footer .row:first-child{
+    margin-bottom: 24px;
+  }
+
+  .footer .row:nth-child(2){
+    margin-bottom: 8px;
+  }
+
+  .footer .col-md-4{
+    margin-bottom: 0px;
+  }
+
+  .footer .col-md-4:nth-child(2),
+  .footer .col-md-4:nth-child(3){
+    text-align: right;
+  }
+
+  .footer-company-info{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .footer-company-info .data-group{
+    width:210px;
+  }
+
+  .footer-company-info .data-group{
+    margin-bottom: 0px;
+  }
 }
