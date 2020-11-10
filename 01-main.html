@@ -1,346 +1,278 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Main</title>
 
-    <link rel="stylesheet" type="text/css" href="style_main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./grid.min.css">
+    <link rel="stylesheet" type="text/css" href="./style.css">
   </head>
 
   <body>
-    <header class="settingHeader">
-      <h1 class="settingTitle">Movie</h1>
-
-      <nav class="header-menu">
-        <strong class="sr-only">메뉴</strong>
-        <ul >
-          <li>
-            <a href="./04-login-original.html" aria-label="로그인 페이지로 이동">
-              <img src="./pictures/로그인.png" alt="로그인">
-            </a>
-          </li>
-          <li>
-            <a href="02-user-type.html" aria-label="예매확인 페이지로 이동">
-              <img src="./pictures/예매확인.png" alt="예매확인">
-            </a>
-          </li>
-        </ul>
-      </nav>
+    <header class="movie-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="movie-title">Movie</h1>
+          </div>
+          <div class="col-12">
+            <div class="button-group" lang="ko">
+              <a href="04-login.html" class="fill-button" aria-label="로그인하기">로그인</a>
+              <a href="02-user-type.html" class="fill-button" aria-label="좌석확인하기">좌석확인</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
 
+    <section class="advertising">
+      <h1 class="sr-only">Advertising</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="advertising-title">New</h1>
+            <blockquote class="advertising-blockquote">
+              <span aria-hidden="true">★★★☆ (3.5)</span>
+              "끝으로 갈수록 정신이 혼미해진다."<br/>
+              <cite>25세, 알라잌투무빗무빗</cite><br/>
+              <span aria-hidden="true">★★★★☆ (4.5)</span>
+              "다소 파격적이나 컬트영화의 매력을 여실히 보여주는 작품이다."<br/>
+              <cite>37세, 뭅뭅</cite>
+            </blockquote>
 
-    <main class="settingMain">
-      <h1 class="sr-only">신규 개봉작과 현재 상영작</h1>
-      <div class="onerow"></div>
-
-      <section>
-        <h1 class="sr-only">신규 개봉작</h1>
-        <h1 class="section-title" aria-hidden="true">! NEW !</h1>
-
-        <h2 aria-hidden="true">The Rocky Horror Picture Show</h2>
-        <h2 class="sr-only">록키호러픽쳐쇼</h2>
-
-        <div>
-          <strong class="sr-only">평점과 후기</strong>
-          <blockquote>
-            <span aria-hidden="true">★★★☆</span>
-            <span aria-label="평점 3.5점">(3.5)</span>
-            "끝으로 갈수록 정신이 혼미해진다."<br>
-            <cite aria-label="사용자 아이디 알라잌투무빗무빗">-25세, 알라잌투무빗무빗-</cite>
-          </blockquote>
-          <blockquote>
-            <span aria-hidden="true">★★★★☆</span>
-            <span aria-label="평점 4.5점">(4.5)</span>
-            "다소 파격적이나 컬트영화의 매력을 여실히 보여주는 작품이다."<br>
-            <cite aria-label="사용자 아이디 뭅뭅">-37세, 뭅뭅-</cite>
-          </blockquote>
+            <div class="advertising-image">
+              <strong>The Rocky Horror Picture Show</strong>
+              <img src="./pictures/록키호러픽쳐쇼4.gif" alt="록키호러픽쳐쇼">
+              <strong>The Rocky Horror Picture Show</strong>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <img src="./pictures/록키호러픽쳐쇼4.gif" alt="록키호러픽쳐쇼">
-
-        <h2 aria-hidden="true">The Rocky Horror Picture Show</h2>
-      </section>
-
-      <div class="onerow"></div>
-
-      <section>
-        <h1 class="section-title">! 현재 상영작 !</h1>
-
-        <article class="movie-list">
-          <div class="movie-list-info">
-            <h2>록키호러픽쳐쇼</h2>
-            <strong class="sr-only">한줄 후기</strong>
-            <blockquote>
-              "눈과 귀가 즐거운 B급 호러영화"
-              <cite aria-label="사용자 아이디 넌나의록기록키록기">
-                -58세, 넌나의록기록키록기-
-              </cite>
-            </blockquote>
-
-            <strong class="sr-only">영화정보</strong>
-            <dl>
-              <dt>별점</dt>
-              <dd>
-                <span aria-hidden="true">★★★★☆</span>
-                <span aria-label="평점 4.2점">(4.2)</span>
-              </dd>
-              <dt>장르</dt>
-              <dd>판타지, 공포, 코미디, 뮤지컬</dd>
-              <dt>출연</dt>
-              <dd>
-                팀커리, 수잔 서랜든, 베리보스트윅<br>
-                리처드오브라이언, 패트리샤 퀸<br>
-                넬 캠밸, 미트 로트 외
-              </dd>
-              <dt>감독</dt>
-              <dd>짐 셔먼</dd>
-            </dl>
-
-            <img src="./pictures/록키호러픽쳐쇼.jpg" alt="록키호러픽쳐쇼">
-
-            <a href="08-movie-timetable.html">
-              <span aria-label="좌석예매 페이지로 이동">좌석예매</span>
-            </a>
+    <section class="playing">
+      <h1 class="sr-only">Playing</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="playing-title">Now playing</h1>
           </div>
-        </article>
-
-        <article class="movie-list">
-          <div class="movie-list-info">
-            <h2>마틸다</h2>
-
-            <strong class="sr-only">한줄 후기</strong>
-            <blockquote>
-              "어른을 향한 아이들의 발칙한 반란!"
-              <cite aria-label="사용자 아이디 영화20번보는사람">
-                -22세, 영화20번보는사람-
-              </cite>
-            </blockquote>
-
-            <strong class="sr-only">영화정보</strong>
-            <dl>
-              <dt>별점</dt>
-              <dd>
-                <span aria-hidden="true">★★★★☆</span>
-                <span aria-label="평점 4.5점">(4.5)</span>
-              </dd>
-              <dt>장르</dt>
-              <dd>어린이 판타지 코미디</dd>
-              <dt>출연</dt>
-              <dd>
-                마라 윌슨, 대니 드비토<br>
-                레아 펄먼, 엠베스 데이비츠<br>
-                팸 페리스, 폴 루번스
-              </dd>
-              <dt>감독</dt>
-              <dd>대니 드비토</dd>
-            </dl>
-
-            <img src="./pictures/마틸다.jpg" alt="마틸다">
-
-            <a href="08-movie-timetable.html">
-              <span aria-label="좌석예매 페이지로 이동">좌석예매</span>
-            </a>
-          </div>
-        </article>
-
-        <article class="movie-list">
-          <div class="movie-list-info">
-            <h2>퀸카로 살아남는 법</h2>
-
-            <strong class="sr-only">한줄 후기</strong>
-            <blockquote>
-              "내 인생의 첫 하이틴 영화"
-              <cite aria-label="사용자 아이디 로우틴">
-                -19세, 로우틴-
-              </cite>
-            </blockquote>
-
-            <strong class="sr-only">영화정보</strong>
-            <dl>
-              <dt>별점</dt>
-              <dd>
-                <span aria-hidden="true">★★★★☆</span>
-                <span aria-label="평점 4.3점">(4.3)</span>
-              </dd>
-              <dt>장르</dt>
-              <dd>코미디, 드라마</dd>
-              <dt>출연</dt>
-              <dd>
-                린제이 로한, 레이첼 맥아담스<br>
-                리지 캐플런, 레이시 샤버트<br>
-                아만다 사이프리드, 조나단 베넷<br>
-              </dd>
-              <dt>감독</dt>
-              <dd>마크 워터스</dd>
-            </dl>
-
-            <img src="./pictures/퀸카로 살아남는 법.jpg" alt="퀸카로 살아남는 법">
-
-            <a href="08-movie-timetable.html">
-              <span aria-label="좌석예매 페이지로 이동">좌석예매</span>
-            </a>
-          </div>
-        </article>
-
-        <article class="movie-list">
-          <div class="movie-list-info">
-            <h2>해리포터와 마법사의 돌</h2>
-
-            <strong class="sr-only">한줄 후기</strong>
-            <blockquote>
-              "진짜 있을지도 모르겠다는 생각이 들었다"
-              <cite aria-label="사용자 아이디 윙가르디움레이오우사">
-                -27세, 윙가르디움레이오우사-
-              </cite>
-            </blockquote>
-
-            <strong class="sr-only">영화정보</strong>
-            <dl>
-              <dt>별점</dt>
-              <dd>
-                <span aria-hidden="true">★★★★☆</span>
-                <span aria-label="평점 4.7점">(4.7)</span>
-              </dd>
-              <dt>장르</dt>
-              <dd>판타지, 가족, 모험, 액션</dd>
-              <dt>출연</dt>
-              <dd>
-                다니엘 래드클리프, 엠마 왓슨<br>
-                루퍼트 그린트, 앨런 릭먼<br>
-                리처드 해리스, 로비 콜트레인<br>
-              </dd>
-              <dt>감독</dt>
-              <dd>크리스 콜럼버스</dd>
-            </dl>
-
-            <img src="./pictures/해리포터와 마법사의 돌.jpg" alt="해리포터와 마법사의 돌">
-
-            <a href="08-movie-timetable.html">
-              <span aria-label="좌석예매 페이지로 이동">좌석예매</span>
-            </a>
-          </div>
-        </article>
-
-        <article class="movie-list">
-          <div class="movie-list-info">
-            <h2>마리앙투아네트</h2>
-
-            <strong class="sr-only">한줄 후기</strong>
-            <blockquote>
-              "색감과 영상미가 아름다운 영화"
-              <cite aria-label="사용자 아이디 무비무비">
-                -32세, 무비무비-
-              </cite>
-            </blockquote>
-
-            <strong class="sr-only">영화정보</strong>
-            <dl>
-              <dt>별점</dt>
-              <dd>
-                <span aria-hidden="true">★★★★☆</span>
-                <span aria-label="평점 4.0점">(4.0)</span>
-              </dd>
-              <dt>장르</dt>
-              <dd>드라마</dd>
-              <dt>출연</dt>
-              <dd>
-                커스틴 던스트, 제이슨 슈왈츠먼<br>
-                주디 데이비스, 스티브 쿠건<br>
-                립 톤, 아시아 아르젠토, 로즈 번<br>
-              </dd>
-              <dt>감독</dt>
-              <dd>소피아 코폴라</dd>
-            </dl>
-
-            <img src="./pictures/마리앙투아네트.jpg" alt="마리앙투아네트">
-
-            <a href="08-movie-timetable.html">
-              <span aria-label="좌석예매 페이지로 이동">좌석예매</span>
-            </a>
-          </div>
-        </article>
-
-        <article class="movie-list">
-          <div class="movie-list-info">
-            <h2>트루먼 쇼</h2>
-
-            <strong class="sr-only">한줄 후기</strong>
-            <blockquote>
-              "믿고 보는 짐 캐리"
-              <cite aria-label="사용자 아이디 팔공산다람쥐">
-                -46세, 팔공산다람쥐-
-              </cite>
-            </blockquote>
-
-            <strong class="sr-only">영화정보</strong>
-            <dl>
-              <dt>별점</dt>
-              <dd>
-                <span aria-hidden="true">★★★★☆</span>
-                <span aria-label="평점 4.5점">(4.5)</span>
-              </dd>
-              <dt>장르</dt>
-              <dd>드라마, 코미디, SF</dd>
-              <dt>출연</dt>
-              <dd>
-                짐캐리, 에드 해리스<br>
-                나타샤 맥켈혼, 노아 에머리히<br>
-                로라 리니<br>
-              </dd>
-              <dt>감독</dt>
-              <dd>피터 위어</dd>
-            </dl>
-
-            <img src="./pictures/트루먼 쇼.jpg" alt="트루먼 쇼">
-
-            <a href="08-movie-timetable.html">
-              <span aria-label="좌석예매 페이지로 이동">좌석예매</span>
-            </a>
-          </div>
-        </article>
-      </section>
-
-      <div class="onerow"></div>
-    </main>
-
-
-    <footer class="settingFooter">
-      <div class="footerSize">
-        <dl class="reference">
-          <dt>웹 페이지 제작 참조</dt>
-          <dd>
-            <strong>
-              구글에 검색하거나, 이고잉님의 생활코딩과 김버그님의 HTML은 재밌다를 참고했습니다.
-            </strong>
-          </dd>
-        </dl>
-
-        <div class="copyright">
-          <span class="sr-only">웹 페이지 정보</span>
-          <span>Copyright &copy; 21XX everything Inc. 모든 권리 보유</span>
-          <ul>
-            <li>개인정보 처리방침</li>
-            <li>웹 사이트 이용 약관</li>
-            <li>법적 고지</li>
-          </ul>
-          <span>대한민국</span>
         </div>
-
-        <div class="company-Info">
-          <span class="sr-only">회사정보</span>
-          <dl>
-            <dt>사업자등록번호</dt>
-            <dd>: 123-45-67890</dd>
-            <dt>대표이사</dt>
-            <dd>: Park DueTo</dd>
-            <dt>주소</dt>
-            <dd>: 포도의 고장, 고구마의 고장</dd>
-            <dt>대표전화</dt>
-            <dd>: 03-1234-5678</dd>
-          </dl>
+        <div class="row">
+          <div class="col-12 col-md-4">
+            <div class="playing-desc">
+              <blockquote class="playing-desc-blockquote">
+                "눈과 귀가 즐거운 B급 호러영화"<br/>
+                <cite>58세, 넌나의록기록키록기</cite>
+              </blockquote>
+              <img src="./pictures/록키호러픽쳐쇼.jpg" alt="록키호러픽쳐쇼">
+              <h1 class="playing-desc-title">록키호러픽쳐쇼</h1>
+              <div class="playing-desc-details">
+                <dl>
+                  <div class="details-lists">
+                    <dt>별점</dt>
+                    <dd>★★★★☆ (4.2)</dd>
+                  </div>
+                  <div class="details-lists">
+                    <dt>장르</dt>
+                    <dd>판타지, 공포, 코미디, 뮤지컬</dd>
+                  </div>
+                  <div class="details-lists">
+                    <dt>출연</dt>
+                    <dd>팀커리, 수잔 서랜든, 베리보스트윅, 리처드오브라이언, 패트리샤 퀸, 넬 캠밸, 미트 로트 외</dd>
+                  </div>
+                  <div class="details-lists">
+                    <dt>감독</dt>
+                    <dd>짐 셔먼</dd>
+                  </div>
+                </dl>
+              </div>
+              <a href="08-movie-timetable.html" class="fill-button ticketing">Ticketing</a>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="playing-desc">
+              <blockquote class="playing-desc-blockquote">
+                “어른들을 향한 아이들의 발칙한 반란!”<br/>
+                <cite>22세, 영화20번보는사람</cite>
+              </blockquote>
+              <img src="./pictures/마틸다.jpg" alt="마틸다">
+              <h1 class="playing-desc-title">마틸다</h1>
+              <div class="playing-desc-details">
+                <dl>
+                  <div class="details-lists">
+                    <dt>별점</dt>
+                    <dd>★★★★☆ (4.5)</dd>
+                  </div>
+                  <div class="details-lists">
+                    <dt>장르</dt>
+                    <dd>어린이 판타지 코미디</dd>
+                  </div>
+                  <div class="details-lists">
+                    <dt>출연</dt>
+                    <dd>마라 윌슨, 대니 드비토, 레아 펄먼, 엠베스 데이비츠, 펨페리스, 폴 루번스</dd>
+                  </div>
+                  <div class="details-lists">
+                    <dt>감독</dt>
+                    <dd>대니 드비토</dd>
+                  </div>
+                </dl>
+              </div>
+              <a href="08-movie-timetable.html" class="fill-button ticketing">Ticketing</a>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="playing-desc">
+              <blockquote class="playing-desc-blockquote">
+                "내 인생의 첫 하이틴 영화"<br/>
+                <cite>19세, 로우틴</cite>
+              </blockquote>
+              <img src="./pictures/퀸카로 살아남는 법.jpg" alt="퀸카로 살아남는 법">
+              <h1 class="playing-desc-title">록키호러픽쳐쇼</h1>
+              <a href="08-movie-timetable.html" class="fill-button ticketing">Ticketing</a>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="playing-desc">
+              <blockquote class="playing-desc-blockquote">
+                "진짜 있을지도 모르겠다는 생각이 들었다"<br/>
+                <cite>27세, 윙가르디움레이오우사</cite>
+              </blockquote>
+              <img src="./pictures/해리포터와 마법사의 돌.jpg" alt="해리포터">
+              <h1 class="playing-desc-title">해리포터와 마법사의 돌</h1>
+              <div class="playing-desc-details">
+                <dl>
+                  <div class="details-lists">
+                    <dt>별점</dt>
+                    <dd>★★★★☆ (4.7)</dd>
+                  </div>
+                  <div class="details-lists">
+                    <dt>장르</dt>
+                    <dd>판타지, 가족, 모험, 액션</dd>
+                  </div>
+                  <div class="details-lists">
+                    <dt>출연</dt>
+                    <dd>다니엘 래드클리프, 엠마 왓슨, 루퍼트 그린트, 앨런 랙먼, 리처드 해리스, 로비 콜트레인</dd>
+                  </div>
+                  <div class="details-lists">
+                    <dt>감독</dt>
+                    <dd>크리스 콜럼버스</dd>
+                  </div>
+                </dl>
+              </div>
+              <a href="08-movie-timetable.html" class="fill-button ticketing">Ticketing</a>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="playing-desc">
+              <blockquote class="playing-desc-blockquote">
+                "색감과 영상미가 아름다운 영화"<br/>
+                <cite>32세, 무비무비</cite>
+              </blockquote>
+              <img src="./pictures/마리앙투아네트.jpg" alt="마리앙투아네트">
+              <h1 class="playing-desc-title">마리앙투아네트</h1>
+              <div class="playing-desc-details">
+                <dl>
+                  <div class="details-lists">
+                    <dt>별점</dt>
+                    <dd>★★★★☆ (4.0)</dd>
+                  </div>
+                  <div class="details-lists">
+                    <dt>장르</dt>
+                    <dd>드라마</dd>
+                  </div>
+                  <div class="details-lists">
+                    <dt>출연</dt>
+                    <dd>커스틴 던스트, 제이슨 슈왈츠먼, 주디 데이비스, 스티브 쿠건, 립 톤, 아시아 아르젠토, 로즈 번</dd>
+                  </div>
+                  <div class="details-lists">
+                    <dt>감독</dt>
+                    <dd>소피아 코폴라</dd>
+                  </div>
+                </dl>
+              </div>
+              <a href="08-movie-timetable.html" class="fill-button ticketing">Ticketing</a>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="playing-desc">
+              <blockquote class="playing-desc-blockquote">
+                "믿고 보는 짐 캐리”<br/>
+                <cite>46세, 팔공산다람쥐</cite>
+              </blockquote>
+              <img src="./pictures/트루먼 쇼.jpg" alt="트루먼 쇼">
+              <h1 class="playing-desc-title">트루먼 쇼</h1>
+              <div class="playing-desc-details">
+                <dl>
+                  <div class="details-lists">
+                    <dt>별점</dt>
+                    <dd>★★★★☆ (4.5)</dd>
+                  </div>
+                  <div class="details-lists">
+                    <dt>장르</dt>
+                    <dd>드라마, 코미디, SF</dd>
+                  </div>
+                  <div class="details-lists">
+                    <dt>출연</dt>
+                    <dd>짐캐리, 에드 해리스, 나타샤 맥켈혼, 노아 에머리히, 로라 리니</dd>
+                  </div>
+                  <div class="details-lists">
+                    <dt>감독</dt>
+                    <dd>피터 위어</dd>
+                  </div>
+                </dl>
+              </div>
+              <a href="08-movie-timetable.html" class="fill-button ticketing">Ticketing</a>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
 
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="footer-reference">
+              웹페이지 제작 참조 구글에 검색하거나, 이고잉님의 생활코딩과  김버그님의 HTML은 재밌다를 참고했습니다.
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-4">
+            Copyright © 21XX everything Inc. 모든 권리 보유
+          </div>
+          <div class="col-12 col-md-4">
+            개인정보 처리방침  웹 사이트 이용 약관 법적 고지
+          </div>
+          <div class="col-12 col-md-4">
+            대한민국
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <dl class="footer-company-info">
+              <div class="data-group">
+                <dt>사업자등록번호</dt>
+                <dd>123-45-67890</dd>
+              </div>
+              <div class="data-group">
+                <dt>대표이사</dt>
+                <dd>Park Dueto</dd>
+              </div>
+              <div class="data-group">
+                <dt>주소</dt>
+                <dd>포도의 고장, 고구마의 고장</dd>
+              </div>
+              <div class="data-group">
+                <dt>대표전화</dt>
+                <dd>03-1234-5678</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
       </div>
     </footer>
   </body>

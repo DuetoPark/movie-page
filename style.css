@@ -1,0 +1,289 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body{
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #181818;
+}
+
+.sr-only {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  z-index: -1;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+
+/* Custom Grid System - Fix countainer width */
+@media screen and (min-width:1200px) {
+  .container{
+    max-width: 960px !important;
+  }
+}
+
+
+/* Reset CSS */
+a{
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol,
+li{
+  padding-left: 0;
+  margin-left: 0;
+  list-style: none;
+}
+
+h1,
+h2{
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+input,
+textarea,
+button{
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #181818;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.333333333333333;
+  letter-spacing: -0.03%;
+}
+
+button:focus,
+button:active,
+input:focus,
+input:active,
+textarea:focus,
+textarea:active{
+  outline: none;
+  box-shadow: none;
+}
+
+
+/* Common Settings */
+.fill-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 140px;
+  height: 45px;
+  border:none;
+  outline: none;
+  border-radius: 4px;
+  background-color: #F3F3F3;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.111111111111111;
+  letter-spacing: -0.05%;
+  cursor: pointer;
+  transition: opacity 300ms ease-in-out;
+}
+
+.fill-button:hover{
+  opacity: 50%;
+}
+
+cite{
+  font-style: normal;
+}
+
+cite::before{
+  content: '-';
+}
+
+cite::after{
+  content: '-';
+}
+
+
+/* Movie-heaer */
+.movie-header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #181818;
+  text-align: center;
+}
+
+.movie-header .col-12:first-child{
+  margin-bottom:72px;
+}
+
+.movie-header .movie-title{
+  color: #FFFFFF;
+  letter-spacing: 0.05em;
+}
+
+.movie-header .button-group{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+}
+
+.movie-header .button-group a:first-child{
+  margin-right: 6px;
+}
+
+
+/* Advertising */
+.advertising{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding:40px 0;
+  background-color: #FCC4C4;
+  text-align: center;
+}
+
+.advertising-title{
+  margin-bottom: 65px;
+  color: #FFFFFF;
+}
+
+.advertising-blockquote{
+  margin-bottom: 28px;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  text-align: left;
+}
+
+.advertising-image strong{
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.111111111111111;
+  letter-spacing: 0.01em;
+}
+
+.advertising-image strong:first-child{
+  margin-bottom: 8px;
+}
+
+.advertising-image img{
+  width: 100%;
+  height: auto;
+  margin-bottom: 8px;
+}
+
+/* Playing */
+.playing{
+  padding: 40px 0;
+  background-color: #F3F3F3;
+  text-align: center;
+}
+
+.playing .row:first-child{
+  margin-bottom: 70px;
+}
+
+.playing-desc-blockquote{
+  margin-bottom: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.05em;
+}
+
+.playing-desc img{
+  width:100%;
+  height: auto;
+  margin-bottom: 8px;
+}
+
+.playing-desc-title{
+  font-size: 36px;
+  line-height: 1.111111111111111;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+}
+
+.playing-desc-details{
+  display:none;
+}
+
+.playing-desc .ticketing{
+  height: 42px;
+  background-color: #C4C4C4;
+  box-shadow: -8px -8px 7px #FFFFFF, 3px 3px 7px #7B7B7B;
+  margin: 0 auto;
+  line-height: 1.333333333333333;
+  letter-spacing: -0.03%;
+}
+
+.playing .col-md-4{
+  margin-bottom: 72px;
+}
+
+.playing .col-md-4:last-child{
+  margin-bottom: 0;
+}
+
+
+/* Footer */
+.footer{
+  padding: 40px 0;
+  background-color: #E0E0E0;
+  font-size: 12px;
+  line-height: 1.166666666666667;
+  letter-spacing: -0.01%;
+}
+
+.footer .row{
+  margin-bottom: 16px;
+}
+
+.footer .col-md-4{
+  margin-bottom: 4px;
+}
+
+.footer .col-md-4:last-child{
+  margin-bottom: 0;
+}
+
+.footer-company-info .data-group{
+  display: flex;
+  margin-bottom: 4px;
+}
+
+.footer-company-info .data-group dt::after{
+  content: ' :';
+}
+
+.footer .row:last-child{
+  margin-bottom: 0;
+}
+
+/* >= 768px (Desktop) */
+@media screen and (min-width:768px) {
+  /* Reset CSS */
+  h1,
+  h2{
+    font-size: 64px;
+  }
+
+
+  /* Commen Setting */
+  .fill-button{
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.333333333333333;
+    letter-spacing: -0.03%;
+  }
+
+
+}
