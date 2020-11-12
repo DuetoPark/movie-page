@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./grid.min.css">
     <link rel="stylesheet" type="text/css" href="./style.css">
+
+    <script src="./modal.js"></script>
   </head>
 
   <body>
@@ -17,7 +19,7 @@
           <div class="col-12">
             <h1 class="movie-title">Movie</h1>
             <div class="button-group" lang="ko">
-              <a href="04-login.html" class="fill-button" aria-label="로그인하기">로그인</a>
+              <button class="login-modal-button fill-button" aria-label="로그인하기">로그인</button>
               <a href="02-user-type.html" class="fill-button" aria-label="좌석확인하기">좌석확인</a>
             </div>
           </div>
@@ -251,7 +253,40 @@
       </div>
     </section>
 
+
+    <div class="black-bg"></div>
+    <section class="modal-wrap">
+      <h1 class="sr-only">로그인 화면</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 justify-content-center">
+            <div class="login-modal">
+              <div class="image-card">
+                <img src="./pictures/user.png" alt="Log in">
+                <h1 aria-hidden="true" class="page-title">log-in</h1>
+              </div>
+
+              <form class="login-form" action="#" method="GET">
+                <label for="id">ID</label>
+                <input type="text" id="id" placeholder="아이디를 입력하세요.">
+                <label for="password">PASSWORD</label>
+                <input type="password" id="password" placeholder="비밀번호를 입력하세요.">
+
+                <button type="submit" class="login-button">로그인</button>
+              </form>
+
+              <button type="button" class="modal-close" aria-label="로그인창 닫기"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer class="footer">
+      <span class="sr-only">
+        페이지 제작 출처 및 회사 정보를 제공합니다.
+        해당 정보가 필요하지 않다고 판단되면 넘기셔도 됩니다.
+      </span>
       <div class="container">
         <div class="row">
           <div class="col-12">
@@ -295,5 +330,21 @@
         </div>
       </div>
     </footer>
+    <script>
+    window.onload = function() {
+
+      function onClick(){
+        document.querySelector(".modal-wrap").style.display='block';
+        document.querySelector(".black-bg").style.display='block';
+      }
+      function closeModal(){
+        document.querySelector(".modal-wrap").style.display='none';
+        document.querySelector(".black-bg").style.display='none';
+      }
+
+      document.querySelector(".login-modal-button").addEventListener('click', onClick);
+      document.querySelector(".modal-close").addEventListener('click', closeModal);
+    };
+    </script>
   </body>
 </html>

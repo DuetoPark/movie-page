@@ -1,0 +1,93 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body{
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #181818;
+}
+
+.sr-only {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  z-index: -1;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+
+/* Custom Grid System - Fix countainer width */
+@media screen and (min-width:1200px) {
+  .container{
+    max-width: 960px !important;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .container{
+    min-width: 960px !important;
+  }
+}
+
+
+/* Reset CSS */
+a{
+  color: #181818;
+  text-decoration: none;
+}
+
+ol,
+ul,
+li{
+  margin-left: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+input,
+button,
+textarea{
+  border: none;
+  outline: none;
+  font-size: 18px;
+  font-family: 'Noto Sans KR', sans-serif;
+  line-height: 1.111111111111111;
+  letter-spacing: -0.01em;
+  color:#181818;
+  cursor:pointer;
+}
+
+input:focus,
+input:active,
+button:focus,
+button:active,
+textarea:focus,
+textarea:active{
+  outline: none;
+  box-shadow: none;
+}
+
+
+h1{
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.071428571428571;
+  letter-spacing: -0.01em;
+}
+
+
+/* Login-modal */
+.login-modal{
+  
+}
+
+
+
+/* >= 768px (Desktop) */
+@media screen and (min-width:768px) {
+
+}
