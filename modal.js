@@ -10,6 +10,15 @@ window.onload = function() {
     document.querySelector('.black-bg').style.display='none';
   }
 
-  document.querySelector('.login-modal-button').addEventListener('click', onClick);
   document.querySelector('.modal-close').addEventListener('click', closeModal);
+  // document.querySelector('.login-modal-button').addEventListener('click', onClick);
+  $(".login-modal-button").click(function() {
+    onClick();
+  });
+  // document.querySelector('.signin-modal-button').addEventListener('click', onClick);
+  $(".signin-modal-button").off('click').click(function() {
+    onClick();
+  });
+
+
 };

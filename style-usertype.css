@@ -171,18 +171,17 @@ textarea:active{
   }
 
 
-  /* Reset CSS */
-  h1{
-    font-size: 64px;
-    line-height: 1;
-  }
-
-
   /* Page-header */
   .page-header{
     margin-top: 120px;
     margin-bottom: 48px;
   }
+
+  .movie-title h1{
+    font-size: 64px;
+    line-height: 1;
+  }
+
 
 
   /* User-type */

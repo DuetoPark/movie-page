@@ -8,6 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./grid.min.css">
     <link rel="stylesheet" type="text/css" href="./style-usertype.css">
+    <link rel="stylesheet" type="text/css" href="./style-modal.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./modal.js"></script>
   </head>
 
 
@@ -43,7 +47,7 @@
             </a>
           </div>
           <div class="col-12 col-md-4">
-            <button class="user-type-lists">
+            <button class="signin-modal-button user-type-lists">
               <img src="./pictures/sign-in.png" alt="">
               <strong aria-label="회원가입 하기">회원가입</strong>
             </button>
@@ -101,15 +105,60 @@
       </div>
     </footer>
 
+    <!-- Modal - Signin -->
+    <div class="black-bg"></div>
+    <section class="modal-wrap">
+      <h1 class="sr-only">회원가입 화면</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="signin-modal">
+              <div class="image-card">
+                <img src="./pictures/default.png" alt="Sign in">
+                <h1 aria-hidden="true" class="page-title">sign-in</h1>
+              </div>
+
+              <div class="scrollbar-content">
+                <form class="signin-form" action="#" method="GET">
+                  <label for="userName">이름</label>
+                  <input type="text" id="userName" placeholder="이름을 입력하세요." required>
+                  <label for="userId">아이디</label>
+                  <input type="text" id="userId" placeholder="아이디를 입력하세요." required>
+                  <label for="userPassword">비밀번호</label>
+                  <input type="password" id="userPassword" placeholder="비밀번호를 입력하세요." required>
+                  <label for="userPasswordConfirm">비밀번호 확인</label>
+                  <input type="password" id="userPasswordConfirm" placeholder="비밀번호를 다시 입력하세요." required>
+                  <label for="userEmail">이메일</label>
+                  <input type="email" id="userEmail" placeholder="이메일을 입력하세요.">
+                  <label for="userBirth">생년월일(예-18890526)</label>
+                  <input type="text" id="userBirth" placeholder="생년월일을 입력하세요.">
+
+                  <div class="checkbox-group">
+                    <strong class="sr-only">정보제공 동의</strong>
+                    <div>
+                      <input type="checkbox" name="Info-consent" value="1" id="info-consent">
+                      <label for="info-consent" id="info-consent-checkbox"></label>
+                      <span>정보제공에 동의합니다.</span>
+                    </div>
+
+                    <div>
+                      <input type="checkbox" name="marketing-reception" value="1" id="marketing-reception">
+                      <label for="marketing-reception" id="marketing-reception-checkbox"></label>
+                      <span>마케팅 정보 수신에 동의합니다.</span>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="signin-button">회원가입</button>
+                </form>
+              </div>
+
+              <button type="button" class="modal-close" aria-label="회원가입창 닫기"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
 
-    <script>
-        function popup(){
-            var url = "04-login.html";
-            var name = "popup test";
-            var option = "width = 500, height = 700, top = 200, left = 600, location = no"
-            window.open(url, name, option);
-        }
-    </script>
   </body>
 </html>

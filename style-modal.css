@@ -4,6 +4,7 @@
 }
 
 body{
+  background-color: #F3F3F3;
   font-family: 'Noto Sans KR', sans-serif;
   color: #181818;
 }
@@ -33,38 +34,66 @@ body{
   }
 }
 
+/* Modal Pop-up Animation */
+@keyframes popup {
+  0%{
+    transform: translate(-50%,-55%);
+  }
+  100%{
+    transform: translate(-50%,-50%);
+  }
+}
+
+@keyframes popupLong {
+  0%{
+    top:5%;
+  }
+  100%{
+    top:10%;
+  }
+}
+
+
 
 /* Reset CSS */
 a{
-  color: #181818;
+  display: inline-block;
+  color:#181818;
   text-decoration: none;
 }
 
-ol,
 ul,
+ol,
 li{
-  margin-left: 0;
   padding-left: 0;
+  margin-left: 0;
   list-style: none;
 }
 
-input,
-button,
-textarea{
-  border: none;
-  outline: none;
-  font-size: 18px;
-  font-family: 'Noto Sans KR', sans-serif;
+h1{
+  font-weight: 700;
+  font-size: 36px;
   line-height: 1.111111111111111;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.05em;
   color:#181818;
-  cursor:pointer;
 }
 
-input:focus,
-input:active,
+input,
+textarea,
+button{
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #181818;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.333333333333333;
+  letter-spacing: -0.03%;
+}
+
 button:focus,
 button:active,
+input:focus,
+input:active,
 textarea:focus,
 textarea:active{
   outline: none;
@@ -72,22 +101,419 @@ textarea:active{
 }
 
 
-h1{
+/* Common Setting */
+.black-bg{
+  position: fixed;
+  top:0;
+  left: 0;
+  display: none;
+  width:100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.modal-wrap{
+  display: none;
+  width:100%;
+  height: 100vh;
+}
+
+.modal-close{
+  position: absolute;
+  top:16px;
+  right:16px;
+  width:25px;
+  height: 25px;
+  border:none;
+  background-color: transparent;
+  background-image: url('./pictures/close-button.png');
+  background-repeat: no-repeat;
+  background-size: 21.5px 21.5px;
+  background-position: center center;
+  cursor: pointer;
+}
+
+
+/* Login */
+.login-modal{
+  position: fixed;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+  height: 100vh;
+  background-color: #FFFFFF;
+  text-align: center;
+  animation-name: popup;
+  animation-duration: 250ms;
+  animation-timing-function: ease-in-out;
+}
+
+.login-modal .image-card{
+  margin-bottom: 16px;
+}
+
+.login-modal .image-card img{
+  width:150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 1px solid #C4C4C4;
+  margin-top: 44px;
+  margin-bottom: 12px;
+}
+
+.login-modal .page-title{
   font-size: 28px;
   font-weight: 500;
   line-height: 1.071428571428571;
   letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.login-form label{
+  display: block;
+  padding-left: 16px;
+  margin-bottom: 3px;
+  font-size: 18px;
+  line-height: 1.111111111111111;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.login-form input{
+  display: block;
+  height: 47px;
+  padding: 11px 22px;
+  border: transparent solid 2px;
+  border-radius: 8px;
+  background-color: #F3F3F3;
+}
+
+.login-form input::placeholder{
+  font-weight: 400;
+  color: #7B7B7B;
+}
+
+.login-modal input[type='text']{
+  margin-bottom: 16px;
+  transition: border 250ms ease-in-out;
+}
+
+.login-modal input[type='password']{
+  margin-bottom: 32px;
+  transition: border 250ms ease-in-out;
+}
+
+.login-modal input[type='text']:focus,
+.login-modal input[type='text']:active,
+.login-modal input[type='password']:focus,
+.login-modal input[type='password']:active{
+  border: 2px solid #FCC4C4;
+}
+
+.login-button{
+  width:100%;
+  height: 47px;
+  border: none;
+  border-radius: 8px;
+  background-color: #C4C4C4;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transition: opacity 250ms ease-in-out;
+}
+
+.login-button:hover{
+  opacity: 0.5;
+}
+
+.login-button:focus,
+.login-button:active{
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 
-/* Login-modal */
-.login-modal{
-  
+
+
+/* Singin */
+.signin-modal{
+  position: fixed;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:100%;
+  height: 100vh;
+  padding:40px 0;
+  background-color: #FFFFFF;
+  animation-name: popup;
+  animation-duration: 250ms;
+  animation-timing-function: ease-in-out;
+}
+
+.signin-modal .image-card{
+  padding: 30px 0;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.signin-modal .image-card img{
+  display: inline-block;
+  width:auto;
+  height:150px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+  border: 1px solid #7B7B7B;
+}
+
+.signin-modal .page-title{
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.071428571428571;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.scrollbar-content{
+  height: 200px;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.scrollbar-content::-webkit-scrollbar{
+  width:10px;
+}
+
+.scrollbar-content::-webkit-scrollbar-thumb{
+  background-color: #C4C4C4;
+  border-radius: 100px;
+}
+
+.scrollbar-content::-webkit-scrollbar-track{
+  background-color: #F3F3F3;
+  border-radius: 100px;
+  height:100px;
+}
+
+.signin-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signin-form label,
+.signin-form input{
+  display: block;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.111111111111111;
+  color: #181818;
+}
+
+.signin-form label{
+  padding-left: 16px;
+  margin-bottom: 3px;
+}
+
+.signin-form input{
+  height:47px;
+  padding-left: 22px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  background-color: #F3F3F3;
+}
+
+.signin-form input:nth-of-type(6){
+  margin-bottom: 16px;
+}
+
+.signin-form input::placeholder{
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.111111111111111;
+  letter-spacing: -0.01em;
+  color:#7B7B7B;
+}
+
+.checkbox-group{
+  margin-left:11px;
+  margin-bottom: 30px;
+}
+
+.checkbox-group > div{
+  display: flex;
+  /* align-items: center; */
+}
+
+.checkbox-group > div:first-of-type{
+  margin-bottom: 4px;
+}
+
+.checkbox-group span{
+  display: block;
+  height: 14px;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.checkbox-group input{
+  width: 1px;
+  height:1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+
+/* Testing */
+.checkbox-group label{
+  display: block;
+  width:14px;
+  height: 14px;
+  margin-right: 11px;
+  background-color: #C4C4C4;
+  transition: background-color 250ms ease-in-out;
+  cursor: pointer;
+}
+
+#info-consent:checked + #info-consent-checkbox,
+#marketing-reception:checked + #marketing-reception-checkbox{
+  background-color: #FCC4C4;
+}
+
+
+.signin-button{
+  height:47px;
+  border-radius: 8px;
+  background-color: #C4C4C4;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transition: opacity 250ms ease-in-out;
+}
+
+.signin-button:hover{
+  opacity: 0.5;
+}
+
+.signin-button:focus,
+.signin-button:active{
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 
 
 /* >= 768px (Desktop) */
 @media screen and (min-width:768px) {
+  /* Common Setting */
+  .modal-close{
+    top:36px;
+    right:36px;
+  }
+
+  /* Login */
+  .login-modal{
+    width:450px;
+    height:600px;
+    margin: 0 auto;
+    border-radius: 32px;
+  }
+
+  .login-modal .image-card{
+    margin-bottom: 28px;
+  }
+
+  .login-modal .image-card img{
+    width:200px;
+    height: 200px;
+    border: 1px solid #C4C4C4;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+
+  .login-modal .page-title{
+    font-size: 36px;
+    line-height: 1.055555555555556;
+  }
+
+  .login-form label{
+    padding-left: 8px;
+    font-size: 18px;
+  }
+
+  .login-form input{
+    width:290px;
+    height: 47px;
+    padding: 11px 11px;
+  }
+
+  .login-button{
+    width:290px;
+  }
+
+
+  /* Sign in */
+  .signin-modal{
+    top:10%;
+    transform: translate(-50%,0);
+    width:770px;
+    height: 80vh;
+    padding:80px 0;
+    border-radius: 32px;
+    animation-name: popupLong;
+  }
+
+  .signin-modal .image-card{
+    padding:0;
+    margin-bottom: 28px;
+  }
+
+  .signin-modal .image-card img{
+    display: inline-block;
+    height:200px;
+    margin-bottom: 8px;
+  }
+
+  .signin-modal .page-title{
+    font-size: 36px;
+    line-height: 1.055555555555556;
+  }
+
+  .scrollbar-content{
+    height: 400px;
+  }
+
+  .signin-form label{
+    padding-left: 8px;
+  }
+
+  .signin-form > input{
+    width:593px;
+    padding-left: 11px;
+  }
+
+  .checkbox-group label,
+  .checkbox-group input{
+    font-size: 15px;
+  }
+
+  .signin-button{
+    width:290px;
+    margin: 0 auto;
+  }
 
 }

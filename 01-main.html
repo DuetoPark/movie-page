@@ -8,7 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./grid.min.css">
     <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="./style-modal.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./modal.js"></script>
   </head>
 
@@ -253,35 +255,6 @@
       </div>
     </section>
 
-
-    <div class="black-bg"></div>
-    <section class="modal-wrap">
-      <h1 class="sr-only">로그인 화면</h1>
-      <div class="container">
-        <div class="row">
-          <div class="col-12 justify-content-center">
-            <div class="login-modal">
-              <div class="image-card">
-                <img src="./pictures/user.png" alt="Log in">
-                <h1 aria-hidden="true" class="page-title">log-in</h1>
-              </div>
-
-              <form class="login-form" action="#" method="GET">
-                <label for="id">ID</label>
-                <input type="text" id="id" placeholder="아이디를 입력하세요.">
-                <label for="password">PASSWORD</label>
-                <input type="password" id="password" placeholder="비밀번호를 입력하세요.">
-
-                <button type="submit" class="login-button">로그인</button>
-              </form>
-
-              <button type="button" class="modal-close" aria-label="로그인창 닫기"></button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <footer class="footer">
       <span class="sr-only">
         페이지 제작 출처 및 회사 정보를 제공합니다.
@@ -330,21 +303,36 @@
         </div>
       </div>
     </footer>
-    <script>
-    window.onload = function() {
 
-      function onClick(){
-        document.querySelector(".modal-wrap").style.display='block';
-        document.querySelector(".black-bg").style.display='block';
-      }
-      function closeModal(){
-        document.querySelector(".modal-wrap").style.display='none';
-        document.querySelector(".black-bg").style.display='none';
-      }
 
-      document.querySelector(".login-modal-button").addEventListener('click', onClick);
-      document.querySelector(".modal-close").addEventListener('click', closeModal);
-    };
-    </script>
+    <!-- Modal - Login -->
+    <div class="black-bg"></div>
+    <section class="modal-wrap">
+      <h1 class="sr-only">로그인 화면</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="login-modal">
+              <div class="image-card">
+                <img src="./pictures/user.png" alt="Log in">
+                <h1 aria-hidden="true" class="page-title">log-in</h1>
+              </div>
+
+              <form class="login-form" action="#" method="GET">
+                <label for="userId">ID</label>
+                <input type="text" id="userId" placeholder="아이디를 입력하세요.">
+                <label for="userPassword">PASSWORD</label>
+                <input type="password" id="userPassword" placeholder="비밀번호를 입력하세요.">
+
+                <button type="submit" class="login-button">로그인</button>
+              </form>
+
+              <button type="button" class="modal-close" aria-label="로그인창 닫기"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </body>
 </html>
