@@ -90,10 +90,14 @@ ul{
 }
 
 .section-subtitle{
+  position: relative;
+  left:-11px;
+  display: block;
   margin-bottom: 16px;
   font-size: 24px;
   font-weight: 500;
   line-height: 1.25;
+  color:#AB47F9;
   letter-spacing: -0.01em;
 }
 
@@ -141,6 +145,15 @@ ul{
   }
   100%{
     top:326px;
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  0%{
+    opacity: 0;
+  }
+  100%{
     opacity: 1;
   }
 }
@@ -333,12 +346,20 @@ main{
   color: #7B7B7B;
 }
 
+
+
 /* Reservation */
+.reservation{
+  padding:40px;
+  background-color: #FFFFFF;
+}
 
+.reservation .container > div.row:last-child{
+  display:none;
+}
 
-
-.time-select-form{
-  display: none;
+.reservation .option-items-movie-group{
+  margin-bottom: 49px;
 }
 
 #name1:checked ~ #timetable1,
@@ -348,4 +369,86 @@ main{
 #name5:checked ~ #timetable5,
 #name6:checked ~ #timetable6{
   display: block;
+}
+
+.reservation .option-items-movie > input{
+  position: absolute;
+  z-index: -99;
+  width:1px;
+  height:1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.reservation .option-items-movie > label{
+  display: block;
+  margin-bottom: 16px;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.428571428571429;
+  letter-spacing: -0.01em;
+  color:#7B7B7B;
+  cursor: pointer;
+  transition: color 250ms ease-in-out;
+}
+
+.reservation .option-items-movie > label:hover,
+.reservation .option-items-movie > label:active,
+.reservation .option-items-movie > label:active{
+  color:#181818;
+}
+
+#name1:checked ~ #rocky,
+#name2:checked ~ #matilda,
+#name3:checked ~ #mean,
+#name4:checked ~ #harry,
+#name5:checked ~ #marie,
+#name6:checked ~ #truman{
+  color:#181818;
+}
+
+
+.time-select-form{
+  display: none;
+  animation-name: fade;
+  animation-duration: 250ms;
+  animation-timing-function: ease-in-out;
+}
+
+.time-select-form > input{
+  position: absolute;
+  z-index: -99;
+  width:1px;
+  height:1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.time-select-form > label{
+  display: inline-block;
+  margin-right: 30px;
+  margin-bottom: 16px;
+  font-size: 20px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: #181818;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+}
+
+.time-select-form > label:hover,
+.time-select-form > label:active,
+.time-select-form > label:focus{
+  font-weight: 700;
+  color: #AB47F9;
+}
+
+#time1:checked ~ #first,
+#time2:checked ~ #second,
+#time3:checked ~ #third,
+#time4:checked ~ #fourth,
+#time5:checked ~ #fifth,
+#time6:checked ~ #sixth{
+  font-weight: 700;
+  color: #AB47F9;
 }
