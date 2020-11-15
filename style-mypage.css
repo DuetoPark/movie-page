@@ -1,0 +1,348 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body{
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #181818;
+}
+
+.sr-only {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  z-index: -1;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+/* Custom grid system - Fix container width */
+@media screen and (min-width:1200px) {
+  .container{
+    max-width: 960px !important;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .container{
+    min-width: 960px !important;
+  }
+}
+
+
+/* Reset CSS */
+a{
+  color: #181818;
+  text-decoration: none;
+}
+
+h1{
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+input,
+button,
+textarea{
+  padding:0;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.333333333333333;
+  letter-spacing: -0.01em;
+  color: #181818;
+}
+
+input:hover,
+input:active,
+input:focus,
+button:hover,
+button:active,
+button:focus,
+textarea:hover,
+textarea:active,
+textarea:focus{
+  outline: none;
+  box-shadow: none;
+}
+
+ol,
+ul{
+  padding-left: 0;
+  margin-left: 0;
+  list-style: none;
+}
+
+
+/* Common Setting */
+.section-title{
+  margin-bottom: 26px;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.3125;
+  letter-spacing: -0.03em;
+  text-align: center;
+}
+
+.section-subtitle{
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.mypage-button{
+  width:260px;
+  height: 47px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background-color: #C4C4C4;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+  font-size: 22px;
+  line-height: 1.090909090909091;
+  letter-spacing: 0.04em;
+  color: #181818;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+}
+
+.mypage-button:hover,
+.mypage-button:active,
+.mypage-button:focus{
+  background-color: #AB47F9;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+  color: #FFFFFF;
+}
+
+
+
+@keyframes pop {
+  0%{
+    top:62px;
+    opacity: 0;
+  }
+  100%{
+    top:72px;
+    opacity: 1;
+  }
+}
+
+@keyframes pop-logout {
+  0%{
+    top:316px;
+    opacity: 0;
+  }
+  100%{
+    top:326px;
+    opacity: 1;
+  }
+}
+
+
+
+
+
+/* Page - Header */
+.page-title{
+  position: fixed;
+  top:0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+  height: 72px;
+  background-color: #FFFFFF;
+}
+
+.page-title h1{
+  font-size: 48px;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.menu-button{
+  position: absolute;
+  top:50%;
+  left:15px;
+  transform: translateY(-50%);
+  display: block;
+  width:30px;
+  height:30px;
+  padding: none;
+  border:none;
+  outline: none;
+  background-color: transparent;
+  background-image: url('./pictures/3lines.png');
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  cursor: pointer;
+}
+
+.page-menu{
+  display: none;
+  position: fixed;
+  top:72px;
+  left: 0;
+  z-index: 1;
+  width:100%;
+  height:100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation-name: pop;
+  animation-duration: 250ms;
+  animation-timing-function: ease-in-out;
+}
+
+.page-menu-list{
+  padding: 21px 0 49px 0;
+  width:100%;
+  height:322px;
+  background-color: #FFFFFF;
+}
+
+.menu-list-item{
+  margin-bottom: 22px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+
+.menu-list-item:last-child{
+  margin-bottom: 0;
+}
+
+.close-button{
+  position: absolute;
+  top:10px;
+  right: 10px;
+  width:22px;
+  height: 22px;
+  border:none;
+  outline: none;
+  background-color: transparent;
+  background-image: url('./pictures/close-button.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  cursor: pointer;
+}
+
+.logout{
+  display: none;
+  position:fixed;
+  top:326px;
+  left:0;
+  width:100%;
+  z-index: 1;
+  animation-name: pop-logout;
+  animation-duration: 250ms;
+  animation-timing-function: ease-in-out;
+}
+
+.page-header .col-md-2 img{
+  display: none;
+}
+
+.page-header .logout-button{
+  display: block;
+  width:100px;
+  height:20px;
+  padding:0;
+  margin: 0 auto;
+  border:none;
+  outline: none;
+  background-color: transparent;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+
+
+/* Modifiy - Profile */
+main{
+  padding-top: 72px;
+  background-color: #F3F3F3;
+}
+
+.modify-profile{
+  padding:40px 0;
+  margin-bottom: 140px;
+  background-color: #FFFFFF;
+}
+
+.modify-profile-image-card{
+  display: none;
+}
+
+.modify-profile-info-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:100%;
+}
+
+.modify-profile-info-form label,
+.modify-profile-info-form input{
+  display: block;
+  width:100%;
+}
+
+.modify-profile-info-form label{
+  margin-bottom: 4px;
+  font-size: 18px;
+  line-height: 1.111111111111111;
+  letter-spacing: -0.01em;
+}
+
+.modify-profile-info-form input{
+  margin-bottom: 16px;
+  height: 47px;
+  padding-left: 14px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  outline: none;
+  background-color: #F3F3F3;
+  transition: all 250ms ease-in-out;
+}
+
+.modify-profile-info-form input:hover,
+.modify-profile-info-form input:active,
+.modify-profile-info-form input:focus{
+  border: 2px solid rgba(171,71,249, 0.5);
+  box-shadow: 0px 0px 5px rgba(171,71,249, 0.5);
+}
+
+.modify-profile-info-form input:last-of-type{
+  margin-bottom: 70px;
+}
+
+.modify-profile-info-form input::placeholder{
+  line-height: 1.333333333333333;
+  color: #7B7B7B;
+}
+
+
+.time-select-form{
+  display: none;
+}
+
+#name1:checked ~ #timetable1,
+#name2:checked ~ #timetable2,
+#name3:checked ~ #timetable3,
+#name4:checked ~ #timetable4,
+#name5:checked ~ #timetable5,
+#name6:checked ~ #timetable6{
+  display: block;
+}
