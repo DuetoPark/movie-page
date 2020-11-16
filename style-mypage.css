@@ -80,6 +80,16 @@ ul{
 
 
 /* Common Setting */
+section{
+  padding:40px 0;
+  margin-bottom: 140px;
+  background-color: #FFFFFF;
+}
+
+section:last-child{
+  margin-bottom: 0;
+}
+
 .section-title{
   margin-bottom: 26px;
   font-size: 32px;
@@ -91,7 +101,7 @@ ul{
 
 .section-subtitle{
   position: relative;
-  left:-11px;
+  left: -11px;
   display: block;
   margin-bottom: 16px;
   font-size: 24px;
@@ -123,6 +133,23 @@ ul{
   background-color: #AB47F9;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
   color: #FFFFFF;
+}
+
+.fill-button{
+  display: block;
+  padding: 10px 20px;
+  margin: 0 auto;
+  border: 2px solid rgba(171, 71, 249, 0.5);
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  transition: box-shadow 250ms ease-in-out;
+}
+
+.fill-button:hover,
+.fill-button:active,
+.fill-button:focus{
+  box-shadow: 0px 0px 5px rgba(171, 71, 249, 0.5);
 }
 
 
@@ -289,12 +316,6 @@ main{
   background-color: #F3F3F3;
 }
 
-.modify-profile{
-  padding:40px 0;
-  margin-bottom: 140px;
-  background-color: #FFFFFF;
-}
-
 .modify-profile-image-card{
   display: none;
 }
@@ -349,26 +370,13 @@ main{
 
 
 /* Reservation */
-.reservation{
-  padding:40px;
-  background-color: #FFFFFF;
-}
-
-.reservation .container > div.row:last-child{
-  display:none;
-}
-
-.reservation .option-items-movie-group{
+.reservation .option-items{
+  padding-left: 11px;
   margin-bottom: 49px;
 }
 
-#name1:checked ~ #timetable1,
-#name2:checked ~ #timetable2,
-#name3:checked ~ #timetable3,
-#name4:checked ~ #timetable4,
-#name5:checked ~ #timetable5,
-#name6:checked ~ #timetable6{
-  display: block;
+.reservation .option-items:last-child{
+  margin-bottom: 0;
 }
 
 .reservation .option-items-movie > input{
@@ -395,6 +403,7 @@ main{
 .reservation .option-items-movie > label:hover,
 .reservation .option-items-movie > label:active,
 .reservation .option-items-movie > label:active{
+  font-weight: 700;
   color:#181818;
 }
 
@@ -404,18 +413,12 @@ main{
 #name4:checked ~ #harry,
 #name5:checked ~ #marie,
 #name6:checked ~ #truman{
-  color:#181818;
+  font-weight: 700;
+  color: #181818;
 }
 
 
-.time-select-form{
-  display: none;
-  animation-name: fade;
-  animation-duration: 250ms;
-  animation-timing-function: ease-in-out;
-}
-
-.time-select-form > input{
+.option-items-time > input{
   position: absolute;
   z-index: -99;
   width:1px;
@@ -424,23 +427,23 @@ main{
   opacity: 0;
 }
 
-.time-select-form > label{
+.option-items-time > label{
   display: inline-block;
   margin-right: 30px;
   margin-bottom: 16px;
   font-size: 20px;
   line-height: 1.25;
   letter-spacing: -0.01em;
-  color: #181818;
+  color: #7B7B7B;
   cursor: pointer;
   transition: all 250ms ease-in-out;
 }
 
-.time-select-form > label:hover,
-.time-select-form > label:active,
-.time-select-form > label:focus{
+.reservation .option-items-time > label:active,
+.reservation .option-items-time > label:hover,
+.reservation .option-items-time > label:focus{
   font-weight: 700;
-  color: #AB47F9;
+  color: #181818;
 }
 
 #time1:checked ~ #first,
@@ -450,5 +453,224 @@ main{
 #time5:checked ~ #fifth,
 #time6:checked ~ #sixth{
   font-weight: 700;
-  color: #AB47F9;
+  color: #181818;
+}
+
+.option-items-count .radio-group{
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.option-items-count .radio-group:last-child{
+  margin-bottom: 0;
+}
+
+.option-items-count .radio-group > input{
+  position: absolute;
+  z-index: -99;
+  width:1px;
+  height:1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.option-items-count .radio-group > label{
+  display: inline-block;
+  width:20px;
+  height:20px;
+  margin-right: 16px;
+  border-radius: 50%;
+  background-color: #C4C4C4;
+  cursor: pointer;
+  transition: background-color 250ms ease-in-out;
+}
+
+#num1:checked ~ #one,
+#num2:checked ~ #two,
+#num3:checked ~ #three,
+#num4:checked ~ #four,
+#num5:checked ~ #five{
+  background-color: #AB47F9;
+}
+
+.option-items-count .radio-group > label:hover,
+.option-items-count .radio-group > label:active,
+.option-items-count .radio-group > label:focus{
+  background-color: #AB47F9;
+}
+
+.option-items-count .radio-group > label::after{
+  content : '';
+  display: block;
+  position: absolute;
+  top:50%;
+  left: 5px;
+  transform: translateY(-50%);
+  width:10px;
+  height:10px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+}
+
+.option-items-count .radio-group > span{
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.select-seat-button{
+  display: block;
+  margin: 0 auto;
+}
+
+
+/* Reservation - Confirm */
+.reservation-confirm-soon,
+.reservation-confirm-seen{
+  padding-left: 11px;
+}
+
+.reservation-confirm-lists{
+  padding-bottom: 40px;
+}
+
+.reservation-confirm-seen .reservation-confirm-lists:last-child{
+  padding-bottom: 0;
+}
+
+.reservation-confirm-lists dt{
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0.05em;
+}
+
+.reservation-confirm-lists dd{
+  margin-bottom: 32px;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.071428571428571;
+  letter-spacing: 0.05em;
+}
+
+.reservation-confirm-lists dd:last-child{
+  margin-bottom: 0;
+}
+
+.seen-confirm-button{
+  display: block;
+  margin: 0 auto 40px auto;
+}
+
+.reservation-confirm-seen{
+  display: none;
+}
+
+.reservation-confirm-seen .reservation-confirm-lists{
+  border-bottom: 2px solid #AB47F9;
+}
+
+.reservation-confirm-seen .reservation-confirm-lists:last-child{
+  border-bottom: none;
+}
+
+.pagenation{
+  display: none;
+}
+
+
+/* User - review */
+.user-review{
+  background-color: #F4F4F4;
+}
+
+.user-review .col-md-4{
+  margin-bottom: 32px;
+}
+
+.user-review .col-md-4:last-child{
+  margin-bottom: 0;
+}
+
+.user-review-items{
+  padding: 40px 11px 40px 11px;
+  border-radius: 16px;
+  background-color: #FFFFFF;
+}
+
+.user-review .col-md-4{
+  display: none;
+}
+
+.user-review .col-md-4:first-child,
+.user-review .col-md-4:nth-child(2),
+.user-review .col-md-4:nth-child(3){
+  display: block;
+}
+
+.user-review-items dt{
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0.05em;
+}
+
+.user-review-items dd{
+  margin-bottom: 16px;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.user-review-items dd:last-child{
+  margin-bottom: 0;
+}
+
+.user-review-items strong::before,
+.user-review-items strong::after{
+  content: '"';
+}
+
+
+
+
+
+/* Footer */
+.footer{
+  padding: 40px 0;
+  background-color: #E0E0E0;
+  font-size: 12px;
+  line-height: 1.166666666666667;
+  letter-spacing: -0.01%;
+}
+
+.footer .row{
+  margin-bottom: 16px;
+}
+
+.footer .row:last-child{
+  margin-bottom: 0;
+}
+
+.footer .col-md-4{
+  margin-bottom: 4px;
+}
+
+.footer .col-md-4:last-child{
+  margin-bottom: 0;
+}
+
+.footer-company-info .data-group{
+  display: flex;
+  margin-bottom: 4px;
+}
+
+.footer-company-info .data-group dt::after{
+  content: ' :';
 }

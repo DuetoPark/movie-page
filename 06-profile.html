@@ -16,8 +16,6 @@
 
 
   <body>
-
-
     <header class="page-header">
       <div class="container">
         <div class="row">
@@ -117,291 +115,78 @@
       <section class="reservation">
         <h1 class="section-title">좌석예매</h1>
         <div class="container">
-          <!-- Timetable - Mobile -->
-          <div class="row">
+          <div class="row justify-content-center">
             <div class="col-12 col-md-10">
               <form class="reservation-select-option-form" action="#" method="GET">
-                <div class="option-items-movie-group">
-                  <strong class="section-subtitle" aria-label="상영중인 영화와 시작 시간">상영시간표</strong>
+                <div class="option-items">
+                  <strong class="section-subtitle">상영시간표</strong>
                   <h2 class="sr-only">영화 선택</h2>
                   <div class="option-items-movie">
                     <input type="radio" name="movie-name" id="name1" value="1">
                     <label for="name1" id="rocky">록키호러픽쳐쇼</label>
-                    <div class="time-select-form" id="timetable1">
-                      <h2 class="sr-only">시간 선택</h2>
-                      <input type="radio" name="start-time" id="time1" value="1">
-                      <label for="time1" aria-label="오후 여덟시 45분" id="first">20:45</label>
-                      <input type="radio" name="start-time" id="time2" value="2">
-                      <label for="time2" aria-label="오후 아홉시 10분" id="second">21:10</label>
-                      <input type="radio" name="start-time" id="time3" value="3">
-                      <label for="time3" aria-label="오후 아홉시 35분" id="third">21:35</label>
-                      <input type="radio" name="start-time" id="time4" value="4">
-                      <label for="time4" aria-label="오후 열시" id="fourth">22:00</label>
-                      <input type="radio" name="start-time" id="time5" value="5">
-                      <label for="time5" aria-label="오후 열시 25분" id="fifth">22:25</label>
-                      <input type="radio" name="start-time" id="time6" value="6">
-                      <label for="time6" aria-label="오후 열시 50분" id="sixth">22:50</label>
-                    </div>
-                  </div>
-                  <div class="option-items-movie">
                     <input type="radio" name="movie-name" id="name2" value="2">
                     <label for="name2" id="matilda">마틸다</label>
-                    <div class="time-select-form" id="timetable2">
-                      <h2 class="sr-only">시간 선택</h2>
-                      <input type="radio" name="start-time" id="time1" value="1">
-                      <label for="time1" aria-label="오후 여덟시 45분">20:45</label>
-                      <input type="radio" name="start-time" id="time2" value="2">
-                      <label for="time2" aria-label="오후 아홉시 10분">21:10</label>
-                      <input type="radio" name="start-time" id="time3" value="3">
-                      <label for="time3" aria-label="오후 아홉시 35분">21:35</label>
-                      <input type="radio" name="start-time" id="time4" value="4">
-                      <label for="time4" aria-label="오후 열시">22:00</label>
-                      <input type="radio" name="start-time" id="time5" value="5">
-                      <label for="time5" aria-label="오후 열시 25분">22:25</label>
-                      <input type="radio" name="start-time" id="time6" value="6">
-                      <label for="time6" aria-label="오후 열시 50분">22:50</label>
-                    </div>
-                  </div>
-                  <div class="option-items-movie">
                     <input type="radio" name="movie-name" id="name3" value="3">
                     <label for="name3" id="mean">퀸카로 살아남는 법</label>
-                    <div class="time-select-form" id="timetable3">
-                      <h2 class="sr-only">시간 선택</h2>
-                      <input type="radio" name="start-time" id="time1" value="1">
-                      <label for="time1" aria-label="오후 여덟시 45분">20:45</label>
-                      <input type="radio" name="start-time" id="time2" value="2">
-                      <label for="time2" aria-label="오후 아홉시 10분">21:10</label>
-                      <input type="radio" name="start-time" id="time3" value="3">
-                      <label for="time3" aria-label="오후 아홉시 35분">21:35</label>
-                      <input type="radio" name="start-time" id="time4" value="4">
-                      <label for="time4" aria-label="오후 열시">22:00</label>
-                      <input type="radio" name="start-time" id="time5" value="5">
-                      <label for="time5" aria-label="오후 열시 25분">22:25</label>
-                      <input type="radio" name="start-time" id="time6" value="6">
-                      <label for="time6" aria-label="오후 열시 50분">22:50</label>
-                    </div>
-                  </div>
-                  <div class="option-items-movie">
                     <input type="radio" name="movie-name" id="name4" value="4">
                     <label for="name4" id="harry">해리포터와 마법사의 돌</label>
-                    <div class="time-select-form" id="timetable4">
-                      <h2 class="sr-only">시간 선택</h2>
-                      <input type="radio" name="start-time" id="time1" value="1">
-                      <label for="time1" aria-label="오후 여덟시 45분">20:45</label>
-                      <input type="radio" name="start-time" id="time2" value="2">
-                      <label for="time2" aria-label="오후 아홉시 10분">21:10</label>
-                      <input type="radio" name="start-time" id="time3" value="3">
-                      <label for="time3" aria-label="오후 아홉시 35분">21:35</label>
-                      <input type="radio" name="start-time" id="time4" value="4">
-                      <label for="time4" aria-label="오후 열시">22:00</label>
-                      <input type="radio" name="start-time" id="time5" value="5">
-                      <label for="time5" aria-label="오후 열시 25분">22:25</label>
-                      <input type="radio" name="start-time" id="time6" value="6">
-                      <label for="time6" aria-label="오후 열시 50분">22:50</label>
-                    </div>
-                  </div>
-                  <div class="option-items-movie">
                     <input type="radio" name="movie-name" id="name5" value="5">
                     <label for="name5" id="marie">마리앙투아네트</label>
-                    <div class="time-select-form" id="timetable5">
-                      <h2 class="sr-only">시간 선택</h2>
-                      <input type="radio" name="start-time" id="time1" value="1">
-                      <label for="time1" aria-label="오후 여덟시 45분">20:45</label>
-                      <input type="radio" name="start-time" id="time2" value="2">
-                      <label for="time2" aria-label="오후 아홉시 10분">21:10</label>
-                      <input type="radio" name="start-time" id="time3" value="3">
-                      <label for="time3" aria-label="오후 아홉시 35분">21:35</label>
-                      <input type="radio" name="start-time" id="time4" value="4">
-                      <label for="time4" aria-label="오후 열시">22:00</label>
-                      <input type="radio" name="start-time" id="time5" value="5">
-                      <label for="time5" aria-label="오후 열시 25분">22:25</label>
-                      <input type="radio" name="start-time" id="time6" value="6">
-                      <label for="time6" aria-label="오후 열시 50분">22:50</label>
-                    </div>
-                  </div>
-                  <div class="option-items-movie">
                     <input type="radio" name="movie-name" id="name6" value="6">
                     <label for="name6" id="truman">트루먼 쇼</label>
-                    <div class="time-select-form" id="timetable6">
-                      <h2 class="sr-only">시간 선택</h2>
-                      <input type="radio" name="start-time" id="time1" value="1">
-                      <label for="time1" aria-label="오후 여덟시 45분">20:45</label>
-                      <input type="radio" name="start-time" id="time2" value="2">
-                      <label for="time2" aria-label="오후 아홉시 10분">21:10</label>
-                      <input type="radio" name="start-time" id="time3" value="3">
-                      <label for="time3" aria-label="오후 아홉시 35분">21:35</label>
-                      <input type="radio" name="start-time" id="time4" value="4">
-                      <label for="time4" aria-label="오후 열시">22:00</label>
-                      <input type="radio" name="start-time" id="time5" value="5">
-                      <label for="time5" aria-label="오후 열시 25분">22:25</label>
-                      <input type="radio" name="start-time" id="time6" value="6">
-                      <label for="time6" aria-label="오후 열시 50분">22:50</label>
+                  </div>
+                </div>
+
+                <div class="option-items">
+                  <strong class="section-subtitle">시간 선택</strong>
+                  <div class="option-items-time">
+                    <input type="radio" name="start-time" id="time1" value="1">
+                    <label for="time1" aria-label="오후 여덟시 45분" id="first">20:45</label>
+                    <input type="radio" name="start-time" id="time2" value="2">
+                    <label for="time2" aria-label="오후 아홉시 10분" id="second">21:10</label>
+                    <input type="radio" name="start-time" id="time3" value="3">
+                    <label for="time3" aria-label="오후 아홉시 35분" id="third">21:35</label>
+                    <input type="radio" name="start-time" id="time4" value="4">
+                    <label for="time4" aria-label="오후 열시" id="fourth">22:00</label>
+                    <input type="radio" name="start-time" id="time5" value="5">
+                    <label for="time5" aria-label="오후 열시 25분" id="fifth">22:25</label>
+                    <input type="radio" name="start-time" id="time6" value="6">
+                    <label for="time6" aria-label="오후 열시 50분" id="sixth">22:50</label>
+                  </div>
+                </div>
+
+                <div class="option-items">
+                  <strong class="section-subtitle">인원 선택</strong>
+                  <div class="option-items-count">
+                    <div class="radio-group">
+                      <input type="radio" name="count-peaple" id="num1" value="1">
+                      <label for="num1" id="one"></label>
+                      <span>1명</span>
+                    </div>
+                    <div class="radio-group">
+                      <input type="radio" name="count-peaple" id="num2" value="2">
+                      <label for="num2" id="two"></label>
+                      <span>2명</span>
+                    </div>
+                    <div class="radio-group">
+                      <input type="radio" name="count-peaple" id="num3" value="3">
+                      <label for="num3" id="three"></label>
+                      <span>3명</span>
+                    </div>
+                    <div class="radio-group">
+                      <input type="radio" name="count-peaple" id="num4" value="4">
+                      <label for="num4" id="four"></label>
+                      <span>4명</span>
+                    </div>
+                    <div class="radio-group">
+                      <input type="radio" name="count-peaple" id="num5" value="5">
+                      <label for="num5" id="five"></label>
+                      <span>5명(최대인원)</span>
                     </div>
                   </div>
                 </div>
 
-                <div class="option-items-count">
-                  <strong class="section-subtitle">인원 선택</strong>
-                  <input type="radio" name="count-peaple" id="num1" value="1">
-                  <label for="num1" id="one"></label>
-                  <span>1명</span>
-                  <input type="radio" name="count-peaple" id="num2" value="2">
-                  <label for="num2" id="two"></label>
-                  <span>2명</span>
-                  <input type="radio" name="count-peaple" id="num3" value="3">
-                  <label for="num3" id="three"></label>
-                  <span>3명</span>
-                  <input type="radio" name="count-peaple" id="num4" value="4">
-                  <label for="num4" id="four"></label>
-                  <span>4명</span>
-                  <input type="radio" name="count-peaple" id="num5" value="5">
-                  <label for="num5" id="five"></label>
-                  <span>5명(최대인원)</span>
-                </div>
-
-                <button type="submit" name="select-seat-button">좌석 선택하기</button>
-              </form>
-            </div>
-          </div>
-
-          <!-- Timetable - Desktop -->
-          <div class="row">
-            <div class="col-12 col-md-10">
-              <form class="reservation-select-option-form" action="index.html" method="post">
-                <strong class="section-subtitle">상영시간표</strong>
-                <table>
-                  <thead class="sr-only">
-                    <tr>
-                      <th scope="col">영화</th>
-                      <th scope="col">시간 선택</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">록키호러픽쳐쇼</th>
-                      <td>
-                        <input type="radio" name="rocky-start-time" id="desktop-time1" value="1">
-                        <label for="desktop-time1" aria-label="오후 여덟시 45분">20:45</label>
-                        <input type="radio" name="rocky-start-time" id="desktop-time2" value="2">
-                        <label for="desktop-time2" aria-label="오후 아홉시 10분">21:10</label>
-                        <input type="radio" name="rocky-start-time" id="desktop-time3" value="3">
-                        <label for="desktop-time3" aria-label="오후 아홉시 35분">21:35</label>
-                        <input type="radio" name="rocky-start-time" id="desktop-time4" value="4">
-                        <label for="desktop-time4" aria-label="오후 열시">22:00</label>
-                        <input type="radio" name="rocky-start-time" id="desktop-time5" value="5">
-                        <label for="desktop-time5" aria-label="오후 열시 25분">22:25</label>
-                        <input type="radio" name="rocky-start-time" id="desktop-time6" value="6">
-                        <label for="desktop-time6" aria-label="오후 열시 50분">22:50</label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">마틸다</th>
-                      <td>
-                        <input type="radio" name="matilda-start-time" id="desktop-time1" value="1">
-                        <label for="desktop-time1" aria-label="오후 여덟시 45분">20:45</label>
-                        <input type="radio" name="matilda-start-time" id="desktop-time2" value="2">
-                        <label for="desktop-time2" aria-label="오후 아홉시 10분">21:10</label>
-                        <input type="radio" name="matilda-start-time" id="desktop-time3" value="3">
-                        <label for="desktop-time3" aria-label="오후 아홉시 35분">21:35</label>
-                        <input type="radio" name="matilda-start-time" id="desktop-time4" value="4">
-                        <label for="desktop-time4" aria-label="오후 열시">22:00</label>
-                        <input type="radio" name="matilda-start-time" id="desktop-time5" value="5">
-                        <label for="desktop-time5" aria-label="오후 열시 25분">22:25</label>
-                        <input type="radio" name="matilda-start-time" id="desktop-time6" value="6">
-                        <label for="desktop-time6" aria-label="오후 열시 50분">22:50</label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">퀸카로 살아남는 법</th>
-                      <td>
-                        <input type="radio" name="mean-start-time" id="desktop-time1" value="1">
-                        <label for="desktop-time1" aria-label="오후 여덟시 45분">20:45</label>
-                        <input type="radio" name="mean-start-time" id="desktop-time2" value="2">
-                        <label for="desktop-time2" aria-label="오후 아홉시 10분">21:10</label>
-                        <input type="radio" name="mean-start-time" id="desktop-time3" value="3">
-                        <label for="desktop-time3" aria-label="오후 아홉시 35분">21:35</label>
-                        <input type="radio" name="mean-start-time" id="desktop-time4" value="4">
-                        <label for="desktop-time4" aria-label="오후 열시">22:00</label>
-                        <input type="radio" name="mean-start-time" id="desktop-time5" value="5">
-                        <label for="desktop-time5" aria-label="오후 열시 25분">22:25</label>
-                        <input type="radio" name="mean-start-time" id="desktop-time6" value="6">
-                        <label for="desktop-time6" aria-label="오후 열시 50분">22:50</label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">해리포터와 마법사의 돌</th>
-                      <td>
-                        <input type="radio" name="harry-start-time" id="desktop-time1" value="1">
-                        <label for="desktop-time1" aria-label="오후 여덟시 45분">20:45</label>
-                        <input type="radio" name="harry-start-time" id="desktop-time2" value="2">
-                        <label for="desktop-time2" aria-label="오후 아홉시 10분">21:10</label>
-                        <input type="radio" name="harry-start-time" id="desktop-time3" value="3">
-                        <label for="desktop-time3" aria-label="오후 아홉시 35분">21:35</label>
-                        <input type="radio" name="harry-start-time" id="desktop-time4" value="4">
-                        <label for="desktop-time4" aria-label="오후 열시">22:00</label>
-                        <input type="radio" name="harry-start-time" id="desktop-time5" value="5">
-                        <label for="desktop-time5" aria-label="오후 열시 25분">22:25</label>
-                        <input type="radio" name="harry-start-time" id="desktop-time6" value="6">
-                        <label for="desktop-time6" aria-label="오후 열시 50분">22:50</label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">마리앙투아네트</th>
-                      <td>
-                        <input type="radio" name="marie-start-time" id="desktop-time1" value="1">
-                        <label for="desktop-time1" aria-label="오후 여덟시 45분">20:45</label>
-                        <input type="radio" name="marie-start-time" id="desktop-time2" value="2">
-                        <label for="desktop-time2" aria-label="오후 아홉시 10분">21:10</label>
-                        <input type="radio" name="marie-start-time" id="desktop-time3" value="3">
-                        <label for="desktop-time3" aria-label="오후 아홉시 35분">21:35</label>
-                        <input type="radio" name="marie-start-time" id="desktop-time4" value="4">
-                        <label for="desktop-time4" aria-label="오후 열시">22:00</label>
-                        <input type="radio" name="marie-start-time" id="desktop-time5" value="5">
-                        <label for="desktop-time5" aria-label="오후 열시 25분">22:25</label>
-                        <input type="radio" name="marie-start-time" id="desktop-time6" value="6">
-                        <label for="desktop-time6" aria-label="오후 열시 50분">22:50</label>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">트루먼 쇼</th>
-                      <td>
-                        <input type="radio" name="truman-start-time" id="desktop-time1" value="1">
-                        <label for="desktop-time1" aria-label="오후 여덟시 45분">20:45</label>
-                        <input type="radio" name="truman-start-time" id="desktop-time2" value="2">
-                        <label for="desktop-time2" aria-label="오후 아홉시 10분">21:10</label>
-                        <input type="radio" name="truman-start-time" id="desktop-time3" value="3">
-                        <label for="desktop-time3" aria-label="오후 아홉시 35분">21:35</label>
-                        <input type="radio" name="truman-start-time" id="desktop-time4" value="4">
-                        <label for="desktop-time4" aria-label="오후 열시">22:00</label>
-                        <input type="radio" name="truman-start-time" id="desktop-time5" value="5">
-                        <label for="desktop-time5" aria-label="오후 열시 25분">22:25</label>
-                        <input type="radio" name="truman-start-time" id="desktop-time6" value="6">
-                        <label for="desktop-time6" aria-label="오후 열시 50분">22:50</label>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <div class="option-items-count">
-                  <strong class="section-subtitle">인원 선택</strong>
-                  <input type="radio" name="count-peaple" id="num1" value="1">
-                  <label for="num1" id="one"></label>
-                  <span>1명</span>
-                  <input type="radio" name="count-peaple" id="num2" value="2">
-                  <label for="num2" id="two"></label>
-                  <span>2명</span>
-                  <input type="radio" name="count-peaple" id="num3" value="3">
-                  <label for="num3" id="three"></label>
-                  <span>3명</span>
-                  <input type="radio" name="count-peaple" id="num4" value="4">
-                  <label for="num4" id="four"></label>
-                  <span>4명</span>
-                  <input type="radio" name="count-peaple" id="num5" value="5">
-                  <label for="num5" id="five"></label>
-                  <span>5명(최대인원)</span>
-                </div>
-
-                <button type="submit" name="select-seat-button">좌석 선택하기</button>
+                <button type="submit" class="mypage-button select-seat-button">좌석 선택하기</button>
               </form>
             </div>
           </div>
@@ -411,8 +196,8 @@
       <section class="reservation-confirm">
         <h2 class="section-title">예매내역</h2>
         <div class="container">
-          <div class="row">
-            <div class="col-12 col-md-10">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
               <div class="reservation-confirm-soon">
                 <strong class="section-subtitle">관람 전 영화</strong>
                 <dl class="reservation-confirm-lists">
@@ -429,8 +214,13 @@
                 </dl>
               </div>
 
+              <button type="button" class="fill-button seen-confirm-button">
+                이전 관람내역 확인<br/>
+              </button>
+            </div>
+            <div class="col-12 col-md-6">
               <div class="reservation-confirm-seen">
-                <strong class="section-subtitle">이전 영화 관람 내역</strong>
+                <strong class="section-subtitle">이전 관람내역</strong>
                 <dl class="reservation-confirm-lists">
                   <dt>날짜</dt>
                   <dd>21XX-08-31</dd>
@@ -444,8 +234,6 @@
                   <dd>H10</dd>
                 </dl>
 
-                <button type="button" name="more-button">더보기</button>
-
                 <dl class="reservation-confirm-lists">
                   <dt>날짜</dt>
                   <dd>21XX-08-22</dd>
@@ -458,8 +246,6 @@
                   <dt>좌석</dt>
                   <dd>L8</dd>
                 </dl>
-
-                <button type="button" name="more-button">더보기</button>
 
                 <dl class="reservation-confirm-lists">
                   <dt>날짜</dt>
@@ -495,17 +281,17 @@
       <section class="user-review">
         <h2 class="section-title">작성후기</h2>
         <div class="container">
-          <div class="row">
+          <div class="row justify-content-center">
             <div class="col-12 col-md-4">
               <div class="user-review-items">
                 <dl>
-                  <dt><strong class="section-subtitle" aria-label="관람한 영화">영화</strong></dt>
-                  <dd><span>스타워즈</span></dd>
-                  <dt><strong class="section-subtitle">후기</strong></dt>
-                  <dd><p>시간이 지나도 언제나 세련된 영화</p></dd>
-                  <dt><strong class="section-subtitle">별점</strong></dt>
-                  <dd><span aria-label="별점 5점">★★★★★</span></dd>
-                  <dt><strong class="section-subtitle">날짜</strong></dt>
+                  <dt>영화</dt>
+                  <dd>스타워즈</dd>
+                  <dt>후기</dt>
+                  <dd><strong>시간이 지나도 언제나 세련된 영화</strong></dd>
+                  <dt>별점</dt>
+                  <dd><span aria-label="5점">★★★★★</span></dd>
+                  <dt>날짜</dt>
                   <dd><span aria-label="21XX년 9월 2일">21XX-09-02</span></dd>
                 </dl>
               </div>
@@ -513,13 +299,13 @@
             <div class="col-12 col-md-4">
               <div class="user-review-items">
                 <dl>
-                  <dt><strong class="section-subtitle" aria-label="관람한 영화">영화</strong></dt>
-                  <dd><span>슈퍼배드3</span></dd>
-                  <dt><strong class="section-subtitle">후기</strong></dt>
-                  <dd><p>친오빠가 이 영화를 보고나서 빠냐냐를 시도때도 없이 울부짖어서 짜증나요.</p></dd>
-                  <dt><strong class="section-subtitle">별점</strong></dt>
-                  <dd><span aria-label="별점 4점">★★★★☆</span></dd>
-                  <dt><strong class="section-subtitle">날짜</strong></dt>
+                  <dt>영화</dt>
+                  <dd>슈퍼배드3</dd>
+                  <dt>후기</dt>
+                  <dd><strong>친오빠가 이 영화를 보고나서 빠냐냐를 시도때도 없이 울부짖어서 짜증나요.</strong></dd>
+                  <dt>별점</dt>
+                  <dd><span aria-label="4점">★★★★☆</span></dd>
+                  <dt>날짜</dt>
                   <dd><span aria-label="21XX년 8월 22일">21XX-08-22</span></dd>
                 </dl>
               </div>
@@ -527,30 +313,30 @@
             <div class="col-12 col-md-4">
               <div class="user-review-items">
                 <dl>
-                  <dt><strong class="section-subtitle" aria-label="관람한 영화">영화</strong></dt>
-                  <dd><span>스페이스 오디세이</span></dd>
-                  <dt><strong class="section-subtitle">후기</strong></dt>
-                  <dd><p>왜 SF영화의 바이블인지 알 것 같다.</p></dd>
-                  <dt><strong class="section-subtitle">별점</strong></dt>
-                  <dd><span aria-label="별점 5점">★★★★★</span></dd>
-                  <dt><strong class="section-subtitle">날짜</strong></dt>
+                  <dt>영화</dt>
+                  <dd>스페이스 오디세이</dd>
+                  <dt>후기</dt>
+                  <dd><strong>왜 SF영화의 바이블인지 알 것 같다.</strong></dd>
+                  <dt>별점</dt>
+                  <dd><span aria-label="5점">★★★★★</span></dd>
+                  <dt>날짜</dt>
                   <dd><span aria-label="21XX년 7월 8일">21XX-07-08</span></dd>
                 </dl>
               </div>
             </div>
 
-            <button type="button" name="more-button">더보기</button>
+            <button type="button" class="fill-button more-button">더보기</button>
 
             <div class="col-12 col-md-4">
               <div class="user-review-items">
                 <dl>
-                  <dt><strong class="section-subtitle" aria-label="관람한 영화">영화</strong></dt>
-                  <dd><span>그랜드 부다페스트 호텔</span></dd>
-                  <dt><strong class="section-subtitle">후기</strong></dt>
-                  <dd><p>아름다운 색감으로 그려낸 무거운 주제가 인상적이다.</p></dd>
-                  <dt><strong class="section-subtitle">별점</strong></dt>
-                  <dd><span aria-label="별점 4점">★★★★☆</span></dd>
-                  <dt><strong class="section-subtitle">날짜</strong></dt>
+                  <dt>영화</dt>
+                  <dd>그랜드 부다페스트 호텔</dd>
+                  <dt>후기</dt>
+                  <dd><strong>아름다운 색감으로 그려낸 무거운 주제가 인상적이다.</strong></dd>
+                  <dt>별점</dt>
+                  <dd><span aria-label="4점">★★★★☆</span></dd>
+                  <dt>날짜</dt>
                   <dd><span aria-label="21XX년 6월 25일">21XX-06-25</span></dd>
                 </dl>
               </div>
@@ -558,13 +344,13 @@
             <div class="col-12 col-md-4">
               <div class="user-review-items">
                 <dl>
-                  <dt><strong class="section-subtitle" aria-label="관람한 영화">영화</strong></dt>
-                  <dd><span>터넷</span></dd>
-                  <dt><strong class="section-subtitle">후기</strong></dt>
-                  <dd><p>속도가 빨라서 영화를 이해하기 어렵다고 하던데, 그냥 내용이 어려운 거였네요.</p></dd>
-                  <dt><strong class="section-subtitle">별점</strong></dt>
-                  <dd><span aria-label="별점 4">★★★★☆</span></dd>
-                  <dt><strong class="section-subtitle">날짜</strong></dt>
+                  <dt>영화</dt>
+                  <dd>터넷</dd>
+                  <dt>후기</dt>
+                  <dd><strong>속도가 빨라서 영화를 이해하기 어렵다고 하던데, 그냥 내용이 어려운 거였네요.</strong></dd>
+                  <dt>별점</dt>
+                  <dd><span aria-label="4점">★★★★☆</span></dd>
+                  <dt>날짜</dt>
                   <dd><span aria-label="21XX년 6월 23일">21XX-06-23</span></dd>
                 </dl>
               </div>
@@ -572,13 +358,13 @@
             <div class="col-12 col-md-4">
               <div class="user-review-items">
                 <dl>
-                  <dt><strong class="section-subtitle" aria-label="관람한 영화">영화</strong></dt>
-                  <dd><span>미스슬로운</span></dd>
-                  <dt><strong class="section-subtitle">후기</strong></dt>
-                  <dd><p>야망있는 여자가 되겠다고 마음먹지만, 늘 그래왔듯이 오늘도 많이 먹기만 하겠지.</p></dd>
-                  <dt><strong class="section-subtitle">별점</strong></dt>
-                  <dd><span aria-label="별점 4">★★★★★</span></dd>
-                  <dt><strong class="section-subtitle">날짜</strong></dt>
+                  <dt>영화</dt>
+                  <dd>미스슬로운</dd>
+                  <dt>후기</dt>
+                  <dd><strong>야망있는 여자가 되겠다고 마음먹지만, 늘 그래왔듯이 오늘도 많이 먹기만 하겠지.</strong></dd>
+                  <dt>별점</dt>
+                  <dd><span aria-label="5점">★★★★★</span></dd>
+                  <dt>날짜</dt>
                   <dd><span aria-label="21XX년 5월 5일">21XX-05-05</span></dd>
                 </dl>
               </div>
