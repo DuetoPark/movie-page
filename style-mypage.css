@@ -176,12 +176,12 @@ section:last-child{
   }
 }
 
-@keyframes fade {
+@keyframes pop {
   0%{
-    opacity: 0;
+    top:-50px;
   }
   100%{
-    opacity: 1;
+    top:0;
   }
 }
 
@@ -589,6 +589,7 @@ main{
 }
 
 .user-review .col-md-4{
+  display: none;
   margin-bottom: 32px;
 }
 
@@ -596,20 +597,16 @@ main{
   margin-bottom: 0;
 }
 
-.user-review-items{
-  padding: 40px 11px 40px 11px;
-  border-radius: 16px;
-  background-color: #FFFFFF;
-}
-
-.user-review .col-md-4{
-  display: none;
-}
-
 .user-review .col-md-4:first-child,
 .user-review .col-md-4:nth-child(2),
 .user-review .col-md-4:nth-child(3){
   display: block;
+}
+
+.user-review-items{
+  padding: 40px 11px 40px 11px;
+  border-radius: 16px;
+  background-color: #FFFFFF;
 }
 
 .user-review-items dt{
