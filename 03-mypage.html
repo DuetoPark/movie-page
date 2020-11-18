@@ -33,16 +33,16 @@
                 <div class="page-menu-list">
                   <ul>
                     <li class="menu-list-item">
-                      <a href="#">프로필 수정</a>
+                      <a href="#modify-profile">프로필 수정</a>
                     </li>
                     <li class="menu-list-item">
-                      <a href="#">좌석예매</a>
+                      <a href="#reservation">좌석예매</a>
                     </li>
                     <li class="menu-list-item">
-                      <a href="#">예매내역</a>
+                      <a href="#reservation-confirm">예매내역</a>
                     </li>
                     <li class="menu-list-item">
-                      <a href="#">작성후기</a>
+                      <a href="#user-review">작성후기</a>
                     </li>
                   </ul>
                 </div>
@@ -61,7 +61,7 @@
     </header>
 
     <main>
-      <section class="modify-profile">
+      <section class="modify-profile" id="modify-profile">
         <h2 class="sr-only">프로필 수정</h2>
         <div class="container">
           <div class="row justify-content-center">
@@ -69,12 +69,13 @@
               <span class="section-title" aria-hidden="true">프로필 수정</span>
               <strong class="sr-only">프로필 사진 수정</strong>
               <div class="modify-profile-image-card">
-                <img src="./pictures/user.png" alt="" class="profile-image">
+                <div>
+                  <img src="./pictures/user.png" alt="" class="profile-image">
+                </div>
                 <form class="modify-profile-image-form" action="#" method="GET">
-                  <input type="file" accept=".png, jpg, jpeg" id="files" files/>
+                  <input type="file" accept="image/*" id="files" files/>
                   <label for="files" aria-label="파일선택" class="select-file">파일첨부</label>
-                  <span aria-label="파일 확장자는 jpg, jpeg, png만 가능">
-                    파일 확장자:jpg, jpeg, png</span>
+                  <span>모든 이미지 파일 가능</span>
                 </form>
               </div>
             </div>
@@ -111,7 +112,7 @@
         </div>
       </section>
 
-      <section class="reservation">
+      <section class="reservation" id="reservation">
         <h1 class="sr-only">좌석예매</h1>
         <div class="container">
           <div class="row justify-content-center">
@@ -193,7 +194,7 @@
         </div>
       </section>
 
-      <section class="reservation-confirm">
+      <section class="reservation-confirm" id="reservation-confirm">
         <h2 class="sr-only">예매내역</h2>
         <div class="container">
           <div class="row justify-content-center">
@@ -318,7 +319,7 @@
         </div>
       </section>
 
-      <section class="user-review">
+      <section class="user-review" id="user-review">
         <h2 class="section-title">작성후기</h2>
         <div class="container">
           <div class="row justify-content-center">

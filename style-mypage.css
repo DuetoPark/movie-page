@@ -765,7 +765,8 @@ main{
     content:'';
     position: absolute;
     bottom:0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width:0;
     height:5px;
     background-color: #AB47F9;
@@ -836,13 +837,23 @@ main{
     margin-bottom: 37px;
   }
 
-  .profile-image{
-    display: block;
+  .modify-profile-image-card > div{
     width: 240px;
     height: 240px;
     margin-bottom: 24px;
     border-radius: 50%;
+    overflow: hidden;
     border: 2px solid #F3F3F3;
+  }
+
+  .profile-image{
+    display: block;
+    width: 240px;
+    height: auto;
+    position: relative;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
   }
 
   .modify-profile-image-form input{
@@ -1086,35 +1097,36 @@ main{
 
   /* Footer */
   .footer{
-    padding: 40px 0;
-    background-color: #E0E0E0;
-    font-size: 12px;
-    line-height: 1.166666666666667;
-    letter-spacing: -0.01%;
+    padding: 32px 0;
   }
 
-  .footer .row{
-    margin-bottom: 16px;
+  .footer .row:first-child{
+    margin-bottom: 24px;
   }
 
-  .footer .row:last-child{
-    margin-bottom: 0;
+  .footer .row:nth-child(2){
+    margin-bottom: 8px;
   }
 
   .footer .col-md-4{
-    margin-bottom: 4px;
+    margin-bottom: 0px;
   }
 
-  .footer .col-md-4:last-child{
-    margin-bottom: 0;
+  .footer .col-md-4:nth-child(2),
+  .footer .col-md-4:nth-child(3){
+    text-align: right;
+  }
+
+  .footer-company-info{
+    display: flex;
+    justify-content: space-between;
   }
 
   .footer-company-info .data-group{
-    display: flex;
-    margin-bottom: 4px;
+    width:210px;
   }
 
-  .footer-company-info .data-group dt::after{
-    content: ' :';
+  .footer-company-info .data-group{
+    margin-bottom: 0px;
   }
 }

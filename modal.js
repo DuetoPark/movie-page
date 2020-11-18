@@ -118,4 +118,48 @@ window.onload = function() {
     reviews.fadeIn(10);
 
   });
+
+
+
+
+  // Change Profile Image
+    // let imageBefore = document.querySelector('.profile-image');
+    // let imageAfter = document.getElementById('files');
+    //
+    // $('#files').on('change', function(){
+    //
+    //   imageBefore.src = imageAfter.value;
+    //
+    // });
+    var readURL = function(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.profile-image').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+
+    $("#files").on('change', function(){
+        readURL(this);
+    });
+
+
+  // Scroll Animation
+    $(document).on('click', 'a[href^="#"]', function (event) {
+      event.preventDefault();
+
+      $('html, body').animate({
+          scrollTop: $($.attr(this, 'href')).offset().top
+      }, 500);
+    });
+
+
+
+
+
 };
