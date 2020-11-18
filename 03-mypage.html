@@ -24,41 +24,50 @@
               <h1>
                 <a href="./01-main.html">Movie</a>
               </h1>
-              <button type="button" class="menu-button" aria-label="메뉴보기"></button>
             </div>
 
-            <div class="hiddenItems">
-              <nav class="page-menu">
-                <h2 class="sr-only">마이페이지 메뉴</h2>
-                <div class="page-menu-list">
+            <button type="button" class="menu-button" aria-label="메뉴보기"></button>
+
+            <div class="logout">
+              <img src="./pictures/user.png" alt="User Dueto Park">
+              <a href="01-main.html" class="logout-button">로그아웃</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+    <nav class="page-menu">
+        <h2 class="sr-only">마이페이지 메뉴</h2>
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div>
+                <div class="page-menu-container">
                   <ul>
-                    <li class="menu-list-item">
+                    <li class="page-menu-list">
                       <a href="#modify-profile">프로필 수정</a>
                     </li>
-                    <li class="menu-list-item">
+                    <li class="page-menu-list">
                       <a href="#reservation">좌석예매</a>
                     </li>
-                    <li class="menu-list-item">
+                    <li class="page-menu-list">
                       <a href="#reservation-confirm">예매내역</a>
                     </li>
-                    <li class="menu-list-item">
+                    <li class="page-menu-list">
                       <a href="#user-review">작성후기</a>
                     </li>
                   </ul>
                 </div>
 
                 <button type="button" class="close-button"></button>
-              </nav>
-
-              <div class="logout">
-                <img src="./pictures/user.png" alt="User Dueto Park">
-                <button type="button" class="logout-button">로그아웃</button>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </header>
+      </nav>
+
 
     <main>
       <section class="modify-profile" id="modify-profile">
@@ -66,7 +75,7 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-12 col-md-4">
-              <span class="section-title" aria-hidden="true">프로필 수정</span>
+              <h2 class="section-title" aria-hidden="true">프로필 수정</h2>
               <strong class="sr-only">프로필 사진 수정</strong>
               <div class="modify-profile-image-card">
                 <div>

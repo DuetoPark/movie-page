@@ -24,13 +24,13 @@ window.onload = function() {
   });
 
 
-  // My page - Open Login
+  // My page - Open Menu
   function openMenu(){
-    document.querySelector('.hiddenItems').style.display='block';
+    document.querySelector('.page-menu').style.left='0';
   }
-  // My page - Close Login
+  // My page - Close Menu
   function closeMenu(){
-    document.querySelector('.hiddenItems').style.display='none';
+    document.querySelector('.page-menu').style.left='-100vw';
   }
 
   $(".menu-button").off('click').click(function() {
@@ -149,6 +149,9 @@ window.onload = function() {
     });
 
 
+
+
+
   // Scroll Animation
     $(document).on('click', 'a[href^="#"]', function (event) {
       event.preventDefault();
@@ -156,6 +159,8 @@ window.onload = function() {
       $('html, body').animate({
           scrollTop: $($.attr(this, 'href')).offset().top
       }, 500);
+
+      document.querySelector('.page-menu').style.left='-100vw';
     });
 
 
