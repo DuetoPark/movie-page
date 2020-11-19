@@ -1,11 +1,11 @@
 window.onload = function() {
 
 
-  // Main - Modal Open
+  // Main - Open Login Modal
   function onClick(){
     document.querySelector('.modal-wrap').style.display='block';
   }
-  // Main - Modal Close
+  // Main - Close Login Modal
   function closeModal(){
     document.querySelector('.modal-wrap').style.display='none';
   }
@@ -24,13 +24,28 @@ window.onload = function() {
   });
 
 
+
+  // Main - Event Login-button
+  $(".login-button").click(function() {
+    let userId = document.getElementById("userId").value;
+
+    location.href="01-main-after-login.html?userId="+userId;
+  });
+
+
+
+
+
+
   // My page - Open Menu
   function openMenu(){
     document.querySelector('.page-menu').style.left='0';
+    document.querySelector('.page-menu').style.opacity='1';
   }
   // My page - Close Menu
   function closeMenu(){
     document.querySelector('.page-menu').style.left='-100vw';
+    document.querySelector('.page-menu').style.opacity='0';
   }
 
   $(".menu-button").off('click').click(function() {
@@ -133,17 +148,20 @@ window.onload = function() {
     // });
     var readURL = function(input) {
         if (input.files && input.files[0]) {
+          // 업로드 된 파일을 읽는다.
             var reader = new FileReader();
 
+            // 업로드 된 파일의 읽기 동작이 성공적으로 완료될 때마다 동작한다.
             reader.onload = function (e) {
+              //클래스가 .profile-image 요소에 읽은 파일의 경로를 세팅한다.
                 $('.profile-image').attr('src', e.target.result);
             }
-
+            // FileList에서 경로를 가져온다.
             reader.readAsDataURL(input.files[0]);
         }
     }
 
-
+    // id가 files인 요소가 변화할 때 함수 실행.
     $("#files").on('change', function(){
         readURL(this);
     });
