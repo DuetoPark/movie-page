@@ -42,10 +42,11 @@
               </a>
             </div>
             <div class="col-12 col-md-4">
-              <a href="03-mypage.html" class="user-type-lists">
+              <div class="user-type-lists">
                 <img src="./pictures/user3.png" alt="">
                 <strong aria-label="회원 예약확인하기">회원</strong>
-              </a>
+                <button type="button" class="login-modal-button"></button>
+              </div>
             </div>
             <div class="col-12 col-md-4">
               <button class="signin-modal-button user-type-lists">
@@ -106,6 +107,38 @@
         </div>
       </footer>
     </div>
+
+
+
+    <!-- Modal - Login -->
+    <section class="modal-wrap">
+      <h1 class="sr-only">로그인 화면</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="login-modal">
+              <div class="image-card">
+                <img src="./pictures/user.png" alt="Log in">
+                <h1 aria-hidden="true" class="page-title">log-in</h1>
+              </div>
+
+              <form class="login-form" action="#" method="GET">
+                <label for="userId">ID</label>
+                <input type="text" id="userId" name="userId" placeholder="아이디를 입력하세요.">
+                <label for="userPassword">PASSWORD</label>
+                <input type="password" id="userPassword" name="userPassword" placeholder="비밀번호를 입력하세요.">
+
+                <a class="login-button fill-button">로그인</a>
+              </form>
+
+              <button type="button" class="modal-close" aria-label="로그인창 닫기"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
 
     <!-- Modal - Signin -->
     <!-- <div class="black-bg"></div> -->

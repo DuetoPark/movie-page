@@ -81,6 +81,12 @@ textarea:active{
   box-shadow: none;
 }
 
+.fill-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 /* Page-header */
 .page-header{
@@ -115,6 +121,19 @@ textarea:active{
 .user-type .col-md-4:nth-child(2){
   margin-bottom: 48px;
 }
+
+.user-type .col-md-4:nth-child(2) button{
+  position: absolute;
+  top:0;
+  display: block;
+  width:290px;
+  height: 190px;
+  margin: 0 auto;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+
 
 .user-type .col-md-4:last-child .user-type-lists{
   background-color: #FCC4C4;
@@ -206,6 +225,10 @@ textarea:active{
 
   .user-type .col-md-4:nth-child(2){
     margin-bottom: 0;
+  }
+
+  .user-type .col-md-4:nth-child(2) button{
+    height: 340px;
   }
 
   .user-type-lists{
