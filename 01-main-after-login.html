@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Main</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./grid.min.css">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="./style-modal.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./modal.js"></script>
+  </head>
+
+  <body>
+    <div class="total">
+      <header class="movie-header">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <h1 class="movie-title"><a href="01-main-after-login.html">Movie</a></h1>
+              <div class="button-group" lang="ko">
+                <a href="01-main.html" class="logout-button fill-button" aria-label="로그아웃하기">로그아웃</a>
+                <a href="03-mypage.html" class="fill-button" aria-label="좌석확인하기">좌석확인</a>
+              </div>
+
+              <div class="my-page">
+                <img src="./pictures/user.png" alt="profile-image">
+                <a href="03-mypage.html" class="my-page-button" aria-label="나의 페이지로 이동">My page</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="advertising">
+        <h1 class="sr-only">Advertising</h1>
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <h1 class="advertising-title">New</h1>
+              <blockquote class="advertising-blockquote">
+                <span aria-hidden="true">★★★☆ (3.5)</span>
+                "끝으로 갈수록 정신이 혼미해진다."<br/>
+                <cite>25세, 알라잌투무빗무빗</cite><br/>
+                <span aria-hidden="true">★★★★☆ (4.5)</span>
+                "다소 파격적이나 컬트영화의 매력을 여실히 보여주는 작품이다."<br/>
+                <cite>37세, 뭅뭅</cite>
+              </blockquote>
+
+              <div class="advertising-image">
+                <strong>The Rocky Horror Picture Show</strong>
+                <img src="./pictures/록키호러픽쳐쇼4.gif" alt="록키호러픽쳐쇼">
+                <strong>The Rocky Horror Picture Show</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="playing">
+        <h1 class="sr-only">Playing</h1>
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <h1 class="playing-title">Now playing</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <div class="playing-desc">
+                <blockquote class="playing-desc-blockquote">
+                  "눈과 귀가 즐거운 B급 호러영화"<br/>
+                  <cite>58세, 넌나의록기록키록기</cite>
+                </blockquote>
+                <img src="./pictures/록키호러픽쳐쇼.jpg" alt="록키호러픽쳐쇼">
+                <h1 class="playing-desc-title">록키호러픽쳐쇼</h1>
+                <div class="playing-desc-details">
+                  <dl>
+                    <div class="details-lists">
+                      <dt>별점</dt>
+                      <dd>★★★★☆ (4.2)</dd>
+                    </div>
+                    <div class="details-lists">
+                      <dt>장르</dt>
+                      <dd>판타지, 공포, 코미디, 뮤지컬</dd>
+                    </div>
+                    <div class="details-lists">
+                      <dt>출연</dt>
+                      <dd>팀커리, 수잔 서랜든, 베리보스트윅, 리처드오브라이언, 패트리샤 퀸, 넬 캠밸, 미트 로트 외</dd>
+                    </div>
+                    <div class="details-lists">
+                      <dt>감독</dt>
+                      <dd>짐 셔먼</dd>
+                    </div>
+                  </dl>
+                </div>
+                <a href="08-movie-timetable.html" class="fill-button ticketing">Ticketing</a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="playing-desc">
+                <blockquote class="playing-desc-blockquote">
+                  “어른들을 향한 아이들의 발칙한 반란!”<br/>
+                  <cite>22세, 영화20번보는사람</cite>
+                </blockquote>
+                <img src="./pictures/마틸다.jpg" alt="마틸다">
+                <h1 class="playing-desc-title">마틸다</h1>
+                <div class="playing-desc-details">
+                  <dl>
+                    <div class="details-lists">
+                      <dt>별점</dt>
+                      <dd>★★★★☆ (4.5)</dd>
+                    </div>
+                    <div class="details-lists">
+                      <dt>장르</dt>
+                      <dd>어린이 판타지 코미디</dd>
+                    </div>
+                    <div class="details-lists">
+                      <dt>출연</dt>
+                      <dd>마라 윌슨, 대니 드비토, 레아 펄먼, 엠베스 데이비츠, 펨페리스, 폴 루번스</dd>
+                    </div>
+                    <div class="details-lists">
+                      <dt>감독</dt>
+                      <dd>대니 드비토</dd>
+                    </div>
+                  </dl>
+                </div>
+                <a href="08-movie-timetable.html" class="fill-button ticketing">Ticketing</a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="playing-desc">
+                <blockquote class="playing-desc-blockquote">
+                  "내 인생의 첫 하이틴 영화"<br/>
+                  <cite>19세, 로우틴</cite>
+                </blockquote>
+                <img src="./pictures/퀸카로 살아남는 법.jpg" alt="퀸카로 살아남는 법">
+                <h1 class="playing-desc-title">록키호러픽쳐쇼</h1>
+                <div class="playing-desc-details">
+                  <dl>
+                    <div class="details-lists">
+                      <dt>별점</dt>
+                      <dd>★★★★☆ (4.3)</dd>
+                    </div>
+                    <div class="details-lists">
+                      <dt>장르</dt>
+                      <dd>코미디, 드라마</dd>
+                    </div>
+                    <div class="details-lists">
+                      <dt>출연</dt>
+                      <dd>린제이 로한, 레이첼 맥아담스, 리지 캐플런, 레이시 샤버트, 아만다 사이프리드, 조나단 베넷</dd>
+                    </div>
+                    <div class="details-lists">
+                      <dt>감독</dt>
+                      <dd>마크 워터스</dd>
+                    </div>
+                  </dl>
+                </div>
+                <a href="08-movie-timetable.html" class="fill-button ticketing">Ticketing</a>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <div class="playing-desc">
+                <blockquote class="playing-desc-blockquote">
+                  "진짜 있을지도 모르겠다는 생각이 들었다"<br/>
+                  <cite>27세, 윙가르디움레이오우사</cite>
+                </blockquote>
+                <img src="./pictures/해리포터와 마법사의 돌.jpg" alt="해리포터">
+                <h1 class="playing-desc-title">해리포터와 마법사의 돌</h1>
+                <div class="playing-desc-details">
+                  <dl>
+                    <div class="details-lists">
+                      <dt>별점</dt>
+                      <dd>★★★★☆ (4.7)</dd>
+                    </div>
+                    <div class="details-lists">
+                      <dt>장르</dt>
+                      <dd>판타지, 가족, 모험, 액션</dd>
+                    </div>
+                    <div class="details-lists">
+                      <dt>출연</dt>
+                      <dd>다니엘 래드클리프, 엠마 왓슨, 루퍼트 그린트, 앨런 랙먼, 리처드 해리스, 로비 콜트레인</dd>
+                    </div>
+                    <div class="details-lists">
+                      <dt>감독</dt>
+                      <dd>크리스 콜럼버스</dd>
+                    </div>
+                  </dl>
+                </div>
+                <a href="08-movie-timetable.html" class="fill-button ticketing">Ticketing</a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="playing-desc">
+                <blockquote class="playing-desc-blockquote">
+                  "색감과 영상미가 아름다운 영화"<br/>
+                  <cite>32세, 무비무비</cite>
+                </blockquote>
+                <img src="./pictures/마리앙투아네트.jpg" alt="마리앙투아네트">
+                <h1 class="playing-desc-title">마리앙투아네트</h1>
+                <div class="playing-desc-details">
+                  <dl>
+                    <div class="details-lists">
+                      <dt>별점</dt>
+                      <dd>★★★★☆ (4.0)</dd>
+                    </div>
+                    <div class="details-lists">
+                      <dt>장르</dt>
+                      <dd>드라마</dd>
+                    </div>
+                    <div class="details-lists">
+                      <dt>출연</dt>
+                      <dd>커스틴 던스트, 제이슨 슈왈츠먼, 주디 데이비스, 스티브 쿠건, 립 톤, 아시아 아르젠토, 로즈 번</dd>
+                    </div>
+                    <div class="details-lists">
+                      <dt>감독</dt>
+                      <dd>소피아 코폴라</dd>
+                    </div>
+                  </dl>
+                </div>
+                <a href="08-movie-timetable.html" class="fill-button ticketing">Ticketing</a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="playing-desc">
+                <blockquote class="playing-desc-blockquote">
+                  "믿고 보는 짐 캐리”<br/>
+                  <cite>46세, 팔공산다람쥐</cite>
+                </blockquote>
+                <img src="./pictures/트루먼 쇼.jpg" alt="트루먼 쇼">
+                <h1 class="playing-desc-title">트루먼 쇼</h1>
+                <div class="playing-desc-details">
+                  <dl>
+                    <div class="details-lists">
+                      <dt>별점</dt>
+                      <dd>★★★★☆ (4.5)</dd>
+                    </div>
+                    <div class="details-lists">
+                      <dt>장르</dt>
+                      <dd>드라마, 코미디, SF</dd>
+                    </div>
+                    <div class="details-lists">
+                      <dt>출연</dt>
+                      <dd>짐캐리, 에드 해리스, 나타샤 맥켈혼, 노아 에머리히, 로라 리니</dd>
+                    </div>
+                    <div class="details-lists">
+                      <dt>감독</dt>
+                      <dd>피터 위어</dd>
+                    </div>
+                  </dl>
+                </div>
+                <a href="08-movie-timetable.html" class="fill-button ticketing">Ticketing</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span class="sr-only">
+          페이지 제작 출처 및 회사 정보를 제공합니다.
+          해당 정보가 필요하지 않다고 판단되면 넘기셔도 됩니다.
+        </span>
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="footer-reference">
+                웹페이지 제작 참조 구글에 검색하거나, 이고잉님의 생활코딩과  김버그님의 HTML은 재밌다를 참고했습니다.
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-4">
+              Copyright © 21XX everything Inc. 모든 권리 보유
+            </div>
+            <div class="col-12 col-md-4">
+              개인정보 처리방침  웹 사이트 이용 약관 법적 고지
+            </div>
+            <div class="col-12 col-md-4">
+              대한민국
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <dl class="footer-company-info">
+                <div class="data-group">
+                  <dt>사업자등록번호</dt>
+                  <dd>123-45-67890</dd>
+                </div>
+                <div class="data-group">
+                  <dt>대표이사</dt>
+                  <dd>Park Dueto</dd>
+                </div>
+                <div class="data-group">
+                  <dt>주소</dt>
+                  <dd>포도의 고장, 고구마의 고장</dd>
+                </div>
+                <div class="data-group">
+                  <dt>대표전화</dt>
+                  <dd>03-1234-5678</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+
+    
+
+  </body>
+</html>
