@@ -43,10 +43,10 @@ a{
 }
 
 h1{
-  font-size: 72px;
+  font-size: 36px;
   font-weight: 700;
   line-height: 1;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.03em;
 }
 
 input,
@@ -170,6 +170,7 @@ section:last-child{
 
 
 
+
 /* Page - Header */
 .page-header{
   position: relative;
@@ -186,7 +187,6 @@ section:last-child{
 }
 
 .page-title h1{
-  font-size: 48px;
   letter-spacing: 0.05em;
   text-align: center;
 }
@@ -230,7 +230,7 @@ section:last-child{
   border:none;
   outline: none;
   background-color: transparent;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 500;
   line-height: 1;
   letter-spacing: 0.05em;
@@ -247,7 +247,7 @@ section:last-child{
   width:100vw;
   height:100vh;
   background-color: #FFFFFF;
-  transition: left 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
 }
 
 .page-menu-container{
@@ -695,6 +695,7 @@ section:last-child{
 
   .page-title h1{
     font-size: 72px;
+    letter-spacing: -0.01em;
   }
 
   .menu-button,
@@ -718,7 +719,7 @@ section:last-child{
     width:100px;
     height:50px;
     padding:0;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 400;
     line-height: 1.25;
     letter-spacing: -0.01em;
