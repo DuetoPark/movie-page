@@ -1,11 +1,13 @@
 window.onload = function() {
 
+  // Main page
 
-  // Main - Open Login Modal
+  // Login Modal
+  // Open Modal Function
   function onClick(){
     document.querySelector('.modal-wrap').style.display='block';
   }
-  // Main - Close Login Modal
+  // Close Modal Function
   function closeModal(){
     document.querySelector('.modal-wrap').style.display='none';
   }
@@ -16,19 +18,20 @@ window.onload = function() {
   });
   $(".login-modal-button").click(function() {
     onClick();
+    // 모달 열리면 배경에 블러
     document.querySelector('.total').style.filter='blur(5px)';
   });
   $(".signin-modal-button").off('click').click(function() {
     onClick();
+    // 모달 닫히면 배경 블러 삭제
     document.querySelector('.total').style.filter='blur(5px)';
   });
 
 
-
-  // Main - Event Login-button
+  // Event -  Login-button
   $(".login-button").click(function() {
     let userId = document.getElementById("userId").value;
-
+    // 로그인 버튼 누르면, 다음 페이지로 사용자 아이디 데이터 전송.
     location.href="01-main-after-login.html?userId="+userId;
   });
 
@@ -37,14 +40,15 @@ window.onload = function() {
 
 
 
-  // My page - Open Menu
+  // My page
+  // Open Menu (CSS display:none; 사용 안 함)
   function openMenu(){
-    document.querySelector('.page-menu').style.left='0';
+    document.querySelector('.page-menu').style.left='0'; // 스크린 왼쪽에서 스르륵 나옴
     document.querySelector('.page-menu').style.opacity='1';
   }
-  // My page - Close Menu
+  // Close Menu
   function closeMenu(){
-    document.querySelector('.page-menu').style.left='-100vw';
+    document.querySelector('.page-menu').style.left='-100vw'; // 스크린 왼쪽으로 튀어나감
     document.querySelector('.page-menu').style.opacity='0';
   }
 
@@ -57,15 +61,16 @@ window.onload = function() {
 
 
 
-  // My page - Open Seen Movies
+  // Open Seen Movies
+  // '이전 관람 내역' 버튼 누르면, 현제 섹션 우측에 fade-in.
   let elem = document.querySelector('.reservation-confirm-seen');
   let pagenation = document.querySelector('.reservation-confirm .col-md-4');
   let fadeInInterval;
 
   $('.seen-confirm-button').click(function(){
-
     clearInterval(fadeInInterval); //동작완료하면 멈추세용.
 
+    // Fade-in Function
     elem.fadeIn = function(timing) {
       let newValue = 0;
 
@@ -85,13 +90,14 @@ window.onload = function() {
     }
 
     elem.fadeIn(10);
+    // '이전 관람 내역'버튼 숨김
     $('.seen-confirm-button').css("display","none");
   });
 
 
 
-  // My page - Bring More Reviews
-  // Display Reviews
+  // More other Reviews
+  // '더보기' 버튼 누르면, 현제 섹션 하단에 fade-in.
   let reviews=document.querySelectorAll('.user-review .col-md-4');
 
   function moreReviews(){
@@ -101,7 +107,7 @@ window.onload = function() {
     document.querySelector('.more-button').style.display='none';
   }
 
-  // Fade-in Reviews
+  // Fade-in
   $('.more-button').off('click').click(function(){
 
     clearInterval(fadeInInterval); //동작완료하면 멈추세용.
@@ -125,15 +131,11 @@ window.onload = function() {
         for (let i = 3; i < reviews.length; i++) {
           reviews[i].style.opacity = newValue;
         }
-
-
       }, timing);
     }
     moreReviews();
     reviews.fadeIn(10);
-
   });
-
 
 
 
@@ -148,15 +150,15 @@ window.onload = function() {
     // });
     var readURL = function(input) {
         if (input.files && input.files[0]) {
-          // 업로드 된 파일을 읽는다.
+          // 업로드 된 파일을 읽음.
             var reader = new FileReader();
 
-            // 업로드 된 파일의 읽기 동작이 성공적으로 완료될 때마다 동작한다.
+            // 업로드 된 파일의 읽기 동작이 성공적으로 완료될 때마다 동작.
             reader.onload = function (e) {
-              //클래스가 .profile-image 요소에 읽은 파일의 경로를 세팅한다.
+              //클래스가 .profile-image 요소에 읽은 파일의 경로를 세팅.
                 $('.profile-image').attr('src', e.target.result);
             }
-            // FileList에서 경로를 가져온다.
+            // FileList에서 경로를 가져옴.
             reader.readAsDataURL(input.files[0]);
         }
     }
@@ -168,9 +170,8 @@ window.onload = function() {
 
 
 
-
-
   // Scroll Animation
+  //스크롤 부드럽게 이동.
     $(document).on('click', 'a[href^="#"]', function (event) {
       event.preventDefault();
 
@@ -180,6 +181,73 @@ window.onload = function() {
 
       document.querySelector('.page-menu').style.left='-100vw';
     });
+
+
+
+  // Click Event - <option-items-movie>
+  // 영화이름 누르면 '진하기 700', '글자색 #181818'로 변경.
+  let movieName = document.querySelectorAll("input[name=movie-name]");
+  let nameLabel = document.querySelectorAll("[id^=name]");
+
+  $("input[name=movie-name]").click(function(){
+    for(let i=0; i<movieName.length; i++){
+      if(movieName[i].checked){
+        nameLabel[i].style.fontWeight = '700';
+        nameLabel[i].style.color = '#181818';
+      } else{
+        nameLabel[i].style.fontWeight = '400';
+        nameLabel[i].style.color = '#C4C4C4';
+      }
+    }
+  });
+
+  // 영화시간 누르면 '진하기 700', '글자색 #181818'로 변경.
+  let startTime = document.querySelectorAll("input[name=start-time]");
+  let timeLabel = document.querySelectorAll("[id^=time]");
+
+  $("input[name=start-time]").click(function(){
+    for(let i=0; i<startTime.length; i++){
+      if(startTime[i].checked){
+        timeLabel[i].style.fontWeight = '700';
+        timeLabel[i].style.color = '#181818';
+      } else{
+        timeLabel[i].style.fontWeight = '400';
+        timeLabel[i].style.color = '#C4C4C4';
+      }
+    }
+  });
+
+
+  // 적용이 안되는 코드.
+  // 1. 자바스크립트의 변수와 제이쿼리 메소드를 함께 사용할 때
+  // movieName.click(function(){    //여기가 문제
+  //   if(movieName.checked){
+  //     nameLabel.style.fontWeight = "700";
+  //   }
+  // });
+
+  // 2. if문 안의 '동작문'에서, 객체 자체를 호출(배열 안의 '구성원'를 가져와야 함).
+  // $("input[name=movie-name]").click(function(){
+  //   if(movieName[0].checked){
+  //     nameLabel.style.fontWeight = "700";   //여기가 문제
+  //   }
+  // });
+
+  // 3. if문 안의 '조건문'에서, 객체 자체를 호출(배열 안의 '구성원'를 가져와야 함).
+  // $("input[name=movie-name]").click(function(){
+  //   if(movieName.checked){      //여기가 문제
+  //     nameLabel[0].style.fontWeight = "700";
+  //   }
+  // });
+
+  // 4. 배열의 구성원에 클릭 메소드 이용할 때
+  // $("input[name=movie-name]")[0].click(function(){      //여기가 문제
+  //   if(movieName[0].checked){
+  //     nameLabel[0].style.fontWeight = "700";
+  //   }
+  // });
+
+
 
 
 
