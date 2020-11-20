@@ -376,16 +376,12 @@ section:last-child{
   color:#181818;
 }
 
-#name1:checked ~ #rocky,
-#name2:checked ~ #matilda,
-#name3:checked ~ #mean,
-#name4:checked ~ #harry,
-#name5:checked ~ #marie,
-#name6:checked ~ #truman{
-  font-weight: 700;
-  color: #181818;
-}
 
+.option-items-time{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
 .option-items-time > input{
   position: absolute;
@@ -398,8 +394,9 @@ section:last-child{
 
 .option-items-time > label{
   display: inline-block;
-  margin-right: 30px;
+  margin-right: 15px;
   margin-bottom: 16px;
+  width:70px;
   font-size: 20px;
   line-height: 1.25;
   letter-spacing: -0.01em;
@@ -415,15 +412,6 @@ section:last-child{
   color: #181818;
 }
 
-#time1:checked ~ #first,
-#time2:checked ~ #second,
-#time3:checked ~ #third,
-#time4:checked ~ #fourth,
-#time5:checked ~ #fifth,
-#time6:checked ~ #sixth{
-  font-weight: 700;
-  color: #181818;
-}
 
 .option-items-count .radio-group{
   position: relative;
@@ -456,13 +444,6 @@ section:last-child{
   transition: background-color 250ms ease-in-out;
 }
 
-#num1:checked ~ #one,
-#num2:checked ~ #two,
-#num3:checked ~ #three,
-#num4:checked ~ #four,
-#num5:checked ~ #five{
-  background-color: #AB47F9;
-}
 
 .option-items-count .radio-group > label:hover,
 .option-items-count .radio-group > label:active,
@@ -907,6 +888,16 @@ section:last-child{
 
   .reservation .option-items{
     padding-left: 0;
+  }
+
+  .option-items-time{
+    justify-content: space-between;
+  }
+
+  .option-items-time > label{
+    margin-right: 0px;
+    margin-bottom: 0px;
+    width:100px;
   }
 
   .reservation .option-items-count{
