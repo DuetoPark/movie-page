@@ -186,14 +186,18 @@ window.onload = function() {
 
   // Click Event - <option-items-movie>
   // 영화이름 누르면 '진하기 700', '글자색 #181818'로 변경.
+  // + 선택한 영화이름 Booking Section에 출력됨.
   let movieName = document.querySelectorAll("input[name=movie-name]");
   let nameLabel = document.querySelectorAll("[id^=name]");
 
   $("input[name=movie-name]").click(function(){
     for(let i=0; i<movieName.length; i++){
       if(movieName[i].checked){
+        // 폰트 변경.
         nameLabel[i].style.fontWeight = '700';
         nameLabel[i].style.color = '#181818';
+        // Booking Section에 출력.
+        document.getElementById("seat-desc-name").innerHTML= nameLabel[i].innerHTML;
       } else{
         nameLabel[i].style.fontWeight = '400';
         nameLabel[i].style.color = '#C4C4C4';
@@ -202,14 +206,18 @@ window.onload = function() {
   });
 
   // 영화시간 누르면 '진하기 700', '글자색 #181818'로 변경.
+  // 선택한 시간 Booking Section에 출력됨.
   let startTime = document.querySelectorAll("input[name=start-time]");
   let timeLabel = document.querySelectorAll("[id^=time]");
 
   $("input[name=start-time]").click(function(){
     for(let i=0; i<startTime.length; i++){
       if(startTime[i].checked){
+        // 폰트 변경.
         timeLabel[i].style.fontWeight = '700';
         timeLabel[i].style.color = '#181818';
+        // Booking Section에 출력.
+        document.getElementById("seat-desc-time").innerHTML= timeLabel[i].innerHTML;
       } else{
         timeLabel[i].style.fontWeight = '400';
         timeLabel[i].style.color = '#C4C4C4';
@@ -244,11 +252,176 @@ window.onload = function() {
   // $("input[name=movie-name]")[0].click(function(){      //여기가 문제
   //   if(movieName[0].checked){
   //     nameLabel[0].style.fontWeight = "700";
+  //     nameLabel[0].style.color = "#181818";
   //   }
   // });
 
 
 
+  // Booking
+  // 인원수 제한(5명)
+  // '누적' 인원 5명 이상 - alert 발생 & '인원'과 '금액' 초기화
+  // '누적' 인원 5명 이하 - '최종결정금액' 계산
+  const adult = document.querySelectorAll("#adult option");
+  const teen = document.querySelectorAll("#Teenager option");
+  const child = document.querySelectorAll("#child option");
+  const prefer = document.querySelectorAll("#preferential-treatment option");
+
+  let priceOfTotal = 0;
+
+  let numOfAdult, numOfTeen, numOfChild, numOfPrefer;
+  let numOfTotal = 0;
+
+  // option 선택시, '인원수'와 '금액' 계산
+  // 이것땜에 한시간 삽질 함.
+  // 원인: Change 이벤트 안에 변수선언해서 매번 변수를 덮어쓰게 함.
+  // 해결: 변수 선언을 이벤트 선언 전에 해야 함(배열에 value push 됨).
+  // 잘하자 과거의 나야.
+  let dataSaveAdult = [0];
+  $("select[name=adult]").change(function(){
+    for(let i=0; i<adult.length; i++){
+      if(adult[i].selected){
+        numOfAdult = Number(adult[i].value);  // value 자료형 변경 (문자형 -> 정수형)
+      }
+    }
+    // Option 선택값 저장
+    dataSaveAdult.push(numOfAdult);
+    console.log("성인 ["+dataSaveAdult+"]");
+    console.log("선택인원 "+numOfAdult);
+
+
+    // 선택된 Option Value.
+    let current = dataSaveAdult[dataSaveAdult.length-1]; //현재 값.
+    let past = dataSaveAdult[dataSaveAdult.length-2]; // 이전 값.
+
+    // '누적' 인원 & 총금액
+    numOfTotal += (current - past);
+    console.log("총원 "+numOfTotal);
+    priceOfTotal += 12000 * (current - past);
+    console.log("총금액 "+priceOfTotal);
+
+    // 누적 인원수 5명 초과시,
+    // 선택한 인원과 금액이 초기화 됨.
+    if(numOfTotal>5){
+      alert("인원 선택은 최대 5명입니다.");
+      numOfTotal -= current;
+      dataSaveAdult[dataSaveAdult.length-1]="0";
+      console.log("수정된 총원 "+numOfTotal);
+      priceOfTotal -= 12000 * current;
+      console.log("수정된 총금액 "+priceOfTotal);
+      adult[0].selected = 'true';
+    }
+  });
+
+  let dataSaveTeen = [0];
+  $("select[name=Teenager]").change(function(){
+    for(let i=0; i<teen.length; i++){
+      if(teen[i].selected){
+        numOfTeen = Number(teen[i].value);
+      }
+    }
+    // Option 선택값 저장
+    dataSaveTeen.push(numOfTeen);
+    console.log("청소년 ["+dataSaveTeen+"]");
+    console.log("선택인원 "+numOfTeen);
+
+
+    // 선택된 Option Value.
+    let current = dataSaveTeen[dataSaveTeen.length-1]; //현재 값.
+    let past = dataSaveTeen[dataSaveTeen.length-2]; // 이전 값.
+
+    // '누적' 인원 & 총금액
+    numOfTotal += (current - past);
+    console.log("총원 "+numOfTotal);
+    priceOfTotal += 9000 * (current - past);
+    console.log("총금액 "+priceOfTotal);
+
+    // 누적 인원수 5명 초과시,
+    // 선택한 인원과 금액이 초기화 됨.
+    if(numOfTotal>5){
+      alert("인원 선택은 최대 5명입니다.");
+      numOfTotal -= current;
+      dataSaveTeen[dataSaveTeen.length-1]="0";
+      console.log("수정된 총원 "+numOfTotal);
+      priceOfTotal -= 9000 * current;
+      console.log("수정된 총금액 "+priceOfTotal);
+      teen[0].selected = 'true';
+    }
+  });
+
+
+  let dataSaveChild = [0];
+  $("select[name=child]").change(function(){
+    for(let i=0; i<child.length; i++){
+      if(child[i].selected){
+        numOfChild = Number(child[i].value);
+      }
+    }
+    // Option 선택값 저장
+    dataSaveChild.push(numOfChild);
+    console.log("어린이 ["+dataSaveChild+"]");
+    console.log("선택인원 "+numOfChild);
+
+
+    // 선택된 Option Value.
+    let current = dataSaveChild[dataSaveChild.length-1]; //현재 값.
+    let past = dataSaveChild[dataSaveChild.length-2]; // 이전 값.
+
+    // '누적' 인원 & 총금액
+    numOfTotal += (current - past);
+    console.log("총원 "+numOfTotal);
+    priceOfTotal += 6000 * (current - past);
+    console.log("총금액 "+priceOfTotal);
+
+    // 누적 인원수 5명 초과시,
+    // 선택한 인원과 금액이 초기화 됨.
+    if(numOfTotal>5){
+      alert("인원 선택은 최대 5명입니다.");
+      numOfTotal -= current;
+      dataSaveChild[dataSaveChild.length-1]="0";
+      console.log("수정된 총원 "+numOfTotal);
+      priceOfTotal -= 6000 * current;
+      console.log("수정된 총금액 "+priceOfTotal);
+      child[0].selected = 'true';
+    }
+  });
+
+
+  let dataSavePrefer = [0];
+  $("select[name=preferential-treatment]").change(function(){
+    for(let i=0; i<prefer.length; i++){
+      if(prefer[i].selected){
+        numOfPrefer = Number(prefer[i].value);
+      }
+    }
+    // Option 선택값 저장
+    dataSavePrefer.push(numOfPrefer);
+    console.log("우대 ["+dataSavePrefer+"]");
+    console.log("선택인원 "+numOfPrefer);
+
+
+    // 선택된 Option Value.
+    let current = dataSavePrefer[dataSavePrefer.length-1]; //현재 값.
+    let past = dataSavePrefer[dataSavePrefer.length-2]; // 이전 값.
+
+    // '누적' 인원 & 총금액
+    numOfTotal += (current - past);
+    console.log("총원 "+numOfTotal);
+    priceOfTotal += 3000 * (current - past);
+    console.log("총금액 "+priceOfTotal);
+
+    // 누적 인원수 5명 초과시,
+    // 선택한 인원과 금액이 초기화 됨.
+    if(numOfTotal>5){
+      alert("인원 선택은 최대 5명입니다.");
+      numOfTotal -= current;
+      dataSavePrefer[dataSavePrefer.length-1]="0";
+      console.log("수정된 총원 "+numOfTotal);
+      priceOfTotal -= 3000 * current;
+      console.log("수정된 총금액 "+priceOfTotal);
+      prefer[0].selected = 'true';
+    }
+  });
 
 
 
