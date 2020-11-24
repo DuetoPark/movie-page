@@ -295,7 +295,7 @@ window.onload = function() {
   // '인원' & '금액' 누적값 출력 함수.
   // 좌석예약 Booking-desc의 dd에 출력.
   function outputValue(){
-    document.getElementById("seat-desc-count").innerHTML = numOfTotal+"명";
+    document.getElementById("seat-desc-count").innerHTML = "총 "+numOfTotal+"명";
     document.getElementById("seat-desc-price").innerHTML = numberWithCommas(priceOfTotal)+"원";
   }
 
@@ -379,23 +379,39 @@ window.onload = function() {
 
 
 
-  // Checked 수 한정 함수
-  let checkedCnt = 0;
-  let boxCount = document.querySelectorAll("input[name=seat]");
+  // Checked 수 한정 함수.
+  // 1. 인원 수 지정한 만큼만 체크 가능.
+  // 2. Input:checked.value는 Booking-desc에 출력
+  // 3. 인원 수 만큼 체크되면, 모든 체크박스 선택 불가로 변경됨.
+  const checkbox = document.querySelectorAll('input[name=seat]');
+  const seatLabel = document.querySelectorAll('.booking .seat-table label');
+  let checkedSeat = []; // Input:checked 값 저장. (Output - HTML Booking-desc part)
+  const seatInHtml = document.getElementById("seat-desc-seat");
 
-  $(boxCount).click(function(obj){
-    for (let i=0; i<boxCount.length;i++){
-      if(boxCount[i].checked){
-        checkedCnt++;
-        console.log(checkedCnt);
+  $("input[name=seat]").change(function(){
+    let checkedCount = document.querySelectorAll('.seat-table input[type=checkbox]:checked').length;
+
+    for(let i=0; i<checkbox.length; i++){
+      if(checkbox[i].checked){
+        checkedSeat.push(checkbox[i].value+" ");
       }
     }
 
-    if(checkedCnt>numOfTotal){
-      obj.checked=false;
-      return false;
+    console.log(checkedCount);
+    console.log(numOfTotal);
+
+    // 인원 선택 수만큼 체크되면, 모든 체크박스 선택불가로 변경.
+    if(checkedCount>=numOfTotal){
+      for(let i=0; i<checkbox.length; i++){
+        checkbox[i].disabled = true;
+        seatLabel[i].style.opacity = "0.5";
+      }
     }
+
+    // Input:checked.value는 Booking-desc에 출력.
+    seatInHtml.innerHTML = checkedSeat.slice(checkedSeat.length - numOfTotal,checkedSeat.length);
   });
+
 
 
 };
