@@ -240,38 +240,8 @@
                   </div>
                 </div>
 
-                <!-- <div class="option-items">
-                  <strong class="section-subtitle">인원 선택</strong>
-                  <div class="option-items-count">
-                    <div class="radio-group">
-                      <input type="radio" name="count-peaple" id="num1" value="1">
-                      <label for="num1" id="one"></label>
-                      <span>1명</span>
-                    </div>
-                    <div class="radio-group">
-                      <input type="radio" name="count-peaple" id="num2" value="2">
-                      <label for="num2" id="two"></label>
-                      <span>2명</span>
-                    </div>
-                    <div class="radio-group">
-                      <input type="radio" name="count-peaple" id="num3" value="3">
-                      <label for="num3" id="three"></label>
-                      <span>3명</span>
-                    </div>
-                    <div class="radio-group">
-                      <input type="radio" name="count-peaple" id="num4" value="4">
-                      <label for="num4" id="four"></label>
-                      <span>4명</span>
-                    </div>
-                    <div class="radio-group">
-                      <input type="radio" name="count-peaple" id="num5" value="5">
-                      <label for="num5" id="five"></label>
-                      <span>5명(최대인원)</span>
-                    </div>
-                  </div>
-                </div> -->
 
-                <button type="submit" class="mypage-button select-seat-button">좌석 선택하기</button>
+                <button type="button" class="mypage-button select-seat-button" disabled>좌석 선택하기</button>
               </form>
             </div>
           </div>
@@ -280,18 +250,17 @@
 
       <section class="booking">
         <h1 class="sr-only">좌석선택</h1>
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <h1 class="section-title"></h1>
-              <div class="booking-content">
-                <form class="" action="index.html" method="post">
+        <form class="" action="index.html" method="post">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-12 col-md-5">
+                <div class="booking-content">
                   <div class="number-of-people">
-                  <span>관람인원선택</span>
+                    <strong class="section-subtitle">관람인원선택</strong>
                     <div class="age">
                       <label for="adult">어른</label>
                       <select id="adult" name="adult">
-                        <option value="0">0</option>
+                        <option value="0" selected>0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -302,7 +271,7 @@
                     <div class="age">
                       <label for="Teenager">청소년</label>
                       <select id="Teenager" name="Teenager">
-                        <option value="0">0</option>
+                        <option value="0" selected>0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -313,7 +282,7 @@
                     <div class="age">
                       <label for="child">어린이</label>
                       <select id="child" name="child">
-                        <option value="0">0</option>
+                        <option value="0" selected>0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -324,7 +293,7 @@
                     <div class="age">
                       <label for="preferential-treatment">우대</label>
                       <select id="preferential-treatment" name="preferential-treatment">
-                        <option value="0">0</option>
+                        <option value="0" selected>0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -335,6 +304,7 @@
                   </div>
 
                   <div class="seat-table">
+                    <strong class="section-subtitle">좌석선택</strong>
                     <table>
                       <thead>
                         <tr>
@@ -540,36 +510,40 @@
                       </tbody>
                     </table>
                   </div>
-                </form>
-
-                <div class="seat-desc">
-                  <dl class="">
-                    <div class="">
-                      <dt>영화이름</dt>
-                      <dd class="seat-desc-name"></dd>
-                    </div>
-                    <div class="">
-                      <dt>상영시간</dt>
-                      <dd class="seat-desc-time"></dd>
-                    </div>
-                    <div class="">
-                      <dt>인원</dt>
-                      <dd class="seat-desc-count"></dd>
-                    </div>
-                    <div class="">
-                      <dt>선택좌석</dt>
-                      <dd class="seat-desc-seat"></dd>
-                    </div>
-                    <div class="">
-                      <dt>최종결정금액</dt>
-                      <dd class="seat-desc-price"></dd>
-                    </div>
-                  </dl>
+                </div>
+              </div>
+              <div class="col-12 col-md-5">
+                <div class="booking-content">
+                  <div class="booking-desc">
+                    <strong class="section-subtitle">좌석선택확인</strong>
+                    <dl class="">
+                      <div class="booking-desc-items">
+                        <dt>영화이름</dt>
+                        <dd id="seat-desc-name"></dd>
+                      </div>
+                      <div class="booking-desc-items">
+                        <dt>상영시간</dt>
+                        <dd id="seat-desc-time"></dd>
+                      </div>
+                      <div class="booking-desc-items">
+                        <dt>인원</dt>
+                        <dd id="seat-desc-count"></dd>
+                      </div>
+                      <div class="booking-desc-items">
+                        <dt>선택좌석</dt>
+                        <dd id="seat-desc-seat"></dd>
+                      </div>
+                      <div class="booking-desc-items">
+                        <dt>최종결정금액</dt>
+                        <dd id="seat-desc-price"></dd>
+                      </div>
+                    </dl>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </form>
       </section>
 
       <section class="reservation-confirm" id="reservation-confirm">
@@ -583,23 +557,23 @@
               <div class="reservation-confirm-soon">
                 <strong class="section-subtitle">관람 전 영화</strong>
                 <dl class="reservation-confirm-lists">
-                  <div>
+                  <div class="reservation-confirm-items">
                     <dt>날짜</dt>
                     <dd>21XX-10-25</dd>
                   </div>
-                  <div>
+                  <div class="reservation-confirm-items">
                     <dt>영화이름</dt>
                     <dd>록키호러픽쳐쇼</dd>
                   </div>
-                  <div>
+                  <div class="reservation-confirm-items">
                     <dt>상영시간</dt>
                     <dd>22:50~24:30</dd>
                   </div>
-                  <div>
+                  <div class="reservation-confirm-items">
                     <dt>인원</dt>
                     <dd>2</dd>
                   </div>
-                  <div>
+                  <div class="reservation-confirm-items">
                     <dt>좌석</dt>
                     <dd>I8, I9</dd>
                   </div>
