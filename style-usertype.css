@@ -185,10 +185,17 @@ textarea:active{
 
 /* >= 768px (Desktop) */
 @media screen and (min-width:768px) {
+  html{
+    height: 100vh;
+  }
+
   body{
     padding:0;
   }
 
+  .total{
+    height: 100%;
+  }
 
   /* Page-header */
   .page-header{
@@ -207,10 +214,6 @@ textarea:active{
   .user-type{
     position: relative;
     width:100%;
-  }
-
-  .user-type .row{
-    margin-bottom: 120px;
   }
 
   .user-type .page-title{
@@ -245,6 +248,10 @@ textarea:active{
 
   /* Footer */
   .footer{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     display: block;
     padding: 32px 0;
     font-size: 12px;
