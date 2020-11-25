@@ -113,6 +113,8 @@ window.onload = function() {
 
 
 
+
+
   // Change Profile Image - 인터넷에서 긁어옴.
   // 프로필 사진 변경.
     var readURL = function(input) {
@@ -137,6 +139,8 @@ window.onload = function() {
 
 
 
+
+
   // Scroll Animation - 인터넷에서 긁어옴.
   //스크롤 부드럽게 이동.
     $(document).on('click', 'a[href^="#"]', function (event) {
@@ -151,7 +155,9 @@ window.onload = function() {
 
 
 
-  // Click Event - <option-items-movie>
+
+
+  // Booking System - Click Event (Movie name/Start time)
   // 1. 영화이름/영화시간 누르면 '진하기 700', '글자색 #181818'로 변경.
   // (Click movie name/time, it changees to fontWeight 700 & color #181818)
   // 2. 선택한 영화이름/영화시간이 HTML Booking Section에 출력.
@@ -195,43 +201,13 @@ window.onload = function() {
   });
 
 
-  // 적용이 안되는 코드.
-  // 1. 자바스크립트의 변수와 제이쿼리 메소드를 함께 사용할 때
-  // movieName.click(function(){    //여기가 문제
-  //   if(movieName.checked){
-  //     nameLabel.style.fontWeight = "700";
-  //   }
-  // });
-
-  // 2. if문 안의 '동작문'에서, 객체 자체를 호출(배열 안의 '구성원'를 가져와야 함).
-  // $("input[name=movie-name]").click(function(){
-  //   if(movieName[0].checked){
-  //     nameLabel.style.fontWeight = "700";   //여기가 문제
-  //   }
-  // });
-
-  // 3. if문 안의 '조건문'에서, 객체 자체를 호출(배열 안의 '구성원'를 가져와야 함).
-  // $("input[name=movie-name]").click(function(){
-  //   if(movieName.checked){      //여기가 문제
-  //     nameLabel[0].style.fontWeight = "700";
-  //   }
-  // });
-
-  // 4. 배열의 구성원에 클릭 메소드 이용할 때
-  // $("input[name=movie-name]")[0].click(function(){      //여기가 문제
-  //   if(movieName[0].checked){
-  //     nameLabel[0].style.fontWeight = "700";
-  //     nameLabel[0].style.color = "#181818";
-  //   }
-  // });
-
-
 
 
 
   // Booking System - Select option ('movie name')
-  // let movieName = document.querySelectorAll("input[name=movie-name]");
+  // 영화이름 누르면, 해당 영화의 상영시간표가 display='block';됨.
   // 변수 재사용.
+  // let movieName = document.querySelectorAll("input[name=movie-name]");
   let timetable = document.querySelectorAll("[id^=Timetable]");
 
   function showTimetable(){
@@ -254,7 +230,9 @@ window.onload = function() {
 
 
 
+
   // Booking System - Select option ('start time')
+  // 상영시간 누르면, 좌석 선택 섹션이 display='block';됨.
   $('[id^=Timetable]').click(function (){
     document.querySelector('.select-seat-button').disabled = false;
   });
@@ -262,6 +240,7 @@ window.onload = function() {
   $('.select-seat-button').click(function(){
     document.querySelector(".booking").style.display = 'block';
   });
+
 
 
 
@@ -313,8 +292,9 @@ window.onload = function() {
   function outputValue(){
     document.getElementById("seat-desc-count").innerHTML = "총 "+numOfTotal+"명";
     document.getElementById("seat-desc-price").innerHTML = numberWithCommas(priceOfTotal)+"원";
+    document.getElementById("seat-desc-count").style.opacity = '1';
+    document.getElementById("seat-desc-price").style.opacity = '1';
   }
-
   // 회계형 숫자표현 - stackoverflow에서 긁어옴.
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -324,7 +304,6 @@ window.onload = function() {
     document.querySelector(".seat-table").style.pointerEvents = "auto";
     document.querySelector(".seat-table").style.opacity = "1";
   }
-
 
 
   // Event - Type of age
@@ -428,15 +407,65 @@ window.onload = function() {
     console.log(numOfTotal);
 
     // 인원 선택 수만큼 체크되면, 모든 체크박스 선택불가로 변경.
+    let ageTypeConut = document.querySelectorAll('.age');
+
     if(checkedCount>=numOfTotal){
       for(let i=0; i<checkbox.length; i++){
         document.querySelector(".seat-table table").style.pointerEvents = "none";
         document.querySelector(".seat-table table").style.opacity = "0.5";
       }
+
+      for(let i=0; i<ageTypeConut.length; i++){
+        ageTypeConut[i].style.pointerEvents = "none";
+        ageTypeConut[i].style.opacity = "0.5";
+      }
     }
 
     // Input:checked.value는 Booking-desc에 출력.
     seatInHtml.innerHTML = checkedSeat.slice(checkedSeat.length - numOfTotal,checkedSeat.length);
+    seatInHtml.style.opacity = '1';
+  });
+
+
+
+
+  // Event - Reset button
+  // 좌석 선택 초기화
+  // 1. 인원 선택하는 div pointerEvents 활성화.
+  // 2. 누적값 (인원 & 금액) 0으로 초기화.
+  // 3. 인원 [option:selected].value 저장한 배열 [0]으로 초기화.
+  // 4. 좌석 [input:checked].length 저장한 배열 [0]으로 초기화.
+  // 5. HTML Booking-desc part 출력값 초기화.
+  // 6. 좌석 선택하는 div pointerEvents 활성화.
+  // 변수 중복 사용
+  // const checkbox = document.querySelectorAll('input[name=seat]');
+
+  $('.reset-button').click(function(){
+    let ageTypeConut = document.querySelectorAll('.age');
+
+    for(let i=0; i<ageTypeConut.length; i++){
+      ageTypeConut[i].style.pointerEvents = "auto";
+      ageTypeConut[i].style.opacity = "1";
+    }
+
+    numOfTotal = 0;
+    priceOfTotal = 0;
+
+    dataSaveAdult = [0];
+    dataSaveTeen = [0];
+    dataSaveChild = [0];
+    dataSavePrefer = [0];
+
+    checkedSeat = [0];
+
+    document.getElementById('seat-desc-count').innerHTML = "";
+    document.getElementById('seat-desc-seat').innerHTML = "";
+    document.getElementById('seat-desc-price').innerHTML = "";
+
+    for(let i=0; i<checkbox.length; i++){
+      document.querySelector(".seat-table table").style.pointerEvents = "auto";
+      document.querySelector(".seat-table table").style.opacity = "1";
+    }
   });
 
 
