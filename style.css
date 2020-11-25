@@ -318,6 +318,41 @@ cite::after{
 }
 
 
+/* Non-Members Page */
+/* Non-Members */
+.non-members{
+  padding: 40px 0;
+}
+
+.non-members-code-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+  border-radius: 16px;
+  background-color: #FFFFFF;
+}
+
+.non-members-code-form label{
+  display: block;
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+.non-members-code-form input{
+  display: block;
+  padding-left: 11px;
+  margin-bottom: 32px;
+  border-bottom: 2px solid #FCC4C4;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.non-members-code-form input::placeholder{
+  font-weight: 400;
+}
+
+
 /* >= 768px (Desktop) */
 @media screen and (min-width:768px) {
   /* Reset CSS */
@@ -342,8 +377,8 @@ cite::after{
 
   .movie-header .movie-title{
     margin-bottom:42px;
-    font-size: 72px;
-    letter-spacing: -0.01em;
+    font-size: 64px;
+    letter-spacing: 0.05em;
   }
 
   .movie-header .button-group{
@@ -526,4 +561,23 @@ cite::after{
     margin-bottom: 0px;
   }
 
+
+  /* Non-Members Page */
+  /* Non-Members */
+  .non-members{
+    padding: 80px 0;
+  }
+
+  .non-members-code-form{
+    padding: 80px 0;
+  }
+
+  .non-members-code-form input{
+    display: block;
+    width: 450px;
+  }
+
+  .bg-lightgray{
+    background-color: #F4F4F4;
+  }
 }
