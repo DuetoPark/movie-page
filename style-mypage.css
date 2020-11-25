@@ -928,8 +928,8 @@ section:last-child{
   }
 
   .page-title h1{
-    font-size: 72px;
-    letter-spacing: -0.01em;
+    font-size: 64px;
+    letter-spacing: 0.05em;
   }
 
   .menu-button,
