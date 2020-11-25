@@ -540,6 +540,7 @@ section:last-child{
 .age{
   display: flex;
   margin-bottom: 16px;
+  transition: opacity 250ms ease-in-out;
 }
 
 .age label{
@@ -681,8 +682,16 @@ section:last-child{
   background-color: #AB47F9;
 }
 
+.booking-desc{
+  margin-bottom: 49px;
+}
+
 .booking-desc .booking-desc-items{
   margin-bottom: 16px;
+}
+
+.booking-desc .booking-desc-items:last-child{
+  margin-bottom: 0;
 }
 
 .booking-desc dt{
@@ -695,11 +704,22 @@ section:last-child{
   font-weight: 700;
 }
 
+#seat-desc-count,
+#seat-desc-seat,
+#seat-desc-price{
+  opacity: 0;
+  transition: all 250ms ease-in-out;
+}
+
 #seat-desc-seat{
   text-transform:uppercase;
 }
 
-
+.reset-button{
+  width: 260px;
+  margin: 0;
+  margin-bottom: 16px;
+}
 
 
 /* Reservation - Confirm */
@@ -1167,6 +1187,10 @@ section:last-child{
   .booking-desc dd{
     font-size: 22px;
     font-weight: 700;
+  }
+
+  .reset-button{
+    width: 290px;
   }
 
 
