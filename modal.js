@@ -21,6 +21,7 @@ window.onload = function() {
   // 모달 '닫힘' & 배경 '선명' ('Close' Modal & 'Clear' Background)
   $(".modal-close").click(function() {
     closeModal();
+    document.querySelector('section.modal-wrap.signin').style.display='none';
     document.querySelector('.total').style.filter='none';
   });
 
@@ -33,8 +34,8 @@ window.onload = function() {
 
   // Event - Modal's Sign in Button
   // 모달 '열림' & 배경 '블러' ('Open' Modal & 'Blur' Background)
-  $(".signin-modal-button").off('click').click(function() {
-    onClick();
+  $(".signin-modal-button").click(function() {
+    document.querySelector('section.modal-wrap.signin').style.display='block';
     document.querySelector('.total').style.filter='blur(5px)';
   });
 
