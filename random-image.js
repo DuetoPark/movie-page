@@ -12,7 +12,7 @@ $(document).ready(function(){
   console.log(imgArray.length);
 
   let imgNum = Math.floor(Math.random() * imgArray.length);
-  let objImg = document.getElementById("advertising-image-rocky");
+  let objImg = document.getElementById("advertising-banner-image");
 
   objImg.src = imgArray[imgNum];
 });
