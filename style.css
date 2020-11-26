@@ -149,7 +149,7 @@ cite::after{
   margin-right: 6px;
 }
 
-.button-group a:first-child{
+.button-group a:first-of-type{
   margin-right: 6px;
 }
 
@@ -208,18 +208,18 @@ cite::after{
   text-align: left;
 }
 
-.advertising-image strong{
+.advertising-banner strong{
   font-size: 18px;
   font-weight: 700;
   line-height: 1.111111111111111;
   letter-spacing: 0.01em;
 }
 
-.advertising-image strong:first-child{
+.advertising-banner strong:first-child{
   margin-bottom: 8px;
 }
 
-.advertising-image img{
+.advertising-banner img{
   width: 100%;
   height: auto;
   margin-bottom: 8px;
@@ -425,16 +425,16 @@ cite::after{
     text-align: center;
   }
 
-  .advertising-image strong{
+  .advertising-banner strong{
     font-size: 36px;
     line-height: 1.333333333333333;
   }
 
-  .advertising-image strong:first-child{
+  .advertising-banner strong:first-child{
     margin-bottom: 16px;
   }
 
-  .advertising-image img{
+  .advertising-banner img{
     margin-bottom: 16px;
   }
 

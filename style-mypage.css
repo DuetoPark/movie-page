@@ -182,14 +182,14 @@ section:last-child{
 
 
 
-/* Page - Header */
-.page-header{
+/* Movie - Header */
+.movie-header{
   position: relative;
   top:0;
   background-color: #FFFFFF;
 }
 
-.page-title{
+.movie-title{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -197,7 +197,7 @@ section:last-child{
   height: 15vh;
 }
 
-.page-title h1{
+.movie-title h1{
   letter-spacing: 0.05em;
   text-align: center;
 }
@@ -220,18 +220,18 @@ section:last-child{
   cursor: pointer;
 }
 
-.page-header .logout{
+.movie-header .logout{
   position: absolute;
   top:50%;
   transform: translateY(-50%);
   right:0;
 }
 
-.page-header .logout img{
+.movie-header .logout img{
   display: none;
 }
 
-.page-header .logout-button{
+.movie-header .logout-button{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -258,7 +258,7 @@ section:last-child{
   width:100vw;
   height:100vh;
   background-color: #FFFFFF;
-  transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;  /* 자바스크립트 Open Menu - left, opacity*/
 }
 
 .page-menu-container{
@@ -362,8 +362,8 @@ section:last-child{
 #Timetable4,
 #Timetable5,
 #Timetable6{
-  position: relative;
-  display: none;
+  position: relative; /* CSS 애니메이션 - 위치 */
+  display: none;  /* 자바스크립트 Booking System () - display */
   animation-name: fadein;
   animation-duration: 250ms;
   animation-timing-function: ease-in-out;
@@ -391,6 +391,7 @@ section:last-child{
   letter-spacing: -0.01em;
   color:#7B7B7B;
   cursor: pointer;
+  /* 자바스크립트 Booking System(Click Event) - color */
   transition: color 250ms ease-in-out;
 }
 
@@ -430,7 +431,8 @@ section:last-child{
   letter-spacing: -0.01em;
   color: #7B7B7B;
   cursor: pointer;
-  transition: all 250ms ease-in-out;
+  /* 자바스크립트 Booking System(Click Event) - color */
+  transition: color 250ms ease-in-out;
 }
 
 .reservation .option-items-time > label:active,
@@ -540,6 +542,7 @@ section:last-child{
 .age{
   display: flex;
   margin-bottom: 16px;
+  /* 자바스크립트 Booking System (Checked 수 한정 함수) - opacity*/
   transition: opacity 250ms ease-in-out;
 }
 
@@ -564,6 +567,7 @@ section:last-child{
 }
 
 .seat-table table{
+  /* 자바스크립트 Booking System (Checked 수 한정 함수) - opacity*/
   opacity: 1;
   transition: opacity 250ms ease-in-out;
 }
@@ -708,11 +712,18 @@ section:last-child{
 #seat-desc-seat,
 #seat-desc-price{
   opacity: 0;
+  /* 자바스크립트 Booking Event(Select option) - opacity */
   transition: all 250ms ease-in-out;
 }
 
 #seat-desc-seat{
   text-transform:uppercase;
+}
+
+.select-button-group{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .reset-button{
@@ -765,8 +776,8 @@ section:last-child{
 }
 
 .reservation-confirm-seen{
-  position: relative;
-  display: none;
+  position: relative; /* CSS 애니메이션 - 위치 */
+  display: none;  /* 자바스크립트 Open Seen Movies - display */
   animation-name: fadein;
   animation-duration: 250ms;
   animation-timing-function: ease-in-out;
@@ -791,8 +802,8 @@ section:last-child{
 }
 
 .user-review .col-md-4{
-  position: relative;
-  display: none;
+  position: relative;  /* CSS 애니메이션 - 위치 */
+  display: none;  /* 자바스크립트 - display */
   margin-bottom: 32px;
   animation-name: fadein;
   animation-duration: 250ms;
@@ -875,6 +886,9 @@ section:last-child{
   content: ' :';
 }
 
+
+
+
 /* >= 768px (Desktop) */
 @media screen and (min-width:768px) {
   /* Reset CSS */
@@ -923,11 +937,11 @@ section:last-child{
 
 
   /* Page - Header */
-  .page-title{
+  .movie-title{
     height: 120px;
   }
 
-  .page-title h1{
+  .movie-title h1{
     font-size: 64px;
     letter-spacing: 0.05em;
   }

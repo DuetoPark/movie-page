@@ -34,7 +34,7 @@ body{
   }
 }
 
-/* Modal Pop-up Animation */
+/* Element Open Animation */
 @keyframes popup {
   0%{
     transform: translate(-50%,-55%);
@@ -107,6 +107,7 @@ textarea:active{
 
 /* Common Setting */
 .modal-wrap{
+  /* 자바스크립트 Open Modal (Login & Sign in) - display*/
   display: none;
   width:100%;
   height: 100vh;
@@ -143,6 +144,7 @@ textarea:active{
   height: 100vh;
   background-color: #FFFFFF;
   text-align: center;
+  /* 로그인 모달 열릴 때 애니메이션 */
   animation-name: popup;
   animation-duration: 250ms;
   animation-timing-function: ease-in-out;
