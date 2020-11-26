@@ -11,21 +11,17 @@ window.onload = function() {
   function onClick(){
     document.querySelector('.modal-wrap').style.display='block';
   }
-  // Close Modal Function
-  function closeModal(){
-    document.querySelector('.modal-wrap').style.display='none';
-  }
+
 
 
   // Event - Modal's Close Button
   // 모달 '닫힘' & 배경 '선명' ('Close' Modal & 'Clear' Background)
   $(".modal-close").off("click").click(function() {
-    closeModal();
+    document.querySelector('.modal-wrap').style.display='none';
     document.querySelector('.total').style.filter='none';
   });
 
   $(".modal-close").click(function() {
-    // closeModal();
     document.querySelector('section.modal-wrap.signin').style.display='none';
     document.querySelector('.total').style.filter='none';
   });
@@ -77,10 +73,10 @@ window.onload = function() {
     document.querySelector('.page-menu').style.opacity='0';
   }
 
-  $(".menu-button").off('click').click(function() {
+  $(".menu-button").click(function() {
     openMenu();
   });
-  $(".close-button").off('click').click(function() {
+  $(".close-button").click(function() {
     closeMenu();
   });
 
@@ -480,22 +476,21 @@ window.onload = function() {
 
 
 
-// Main page - Random Image  -> stackoverflow에서 긁어옴.
-// 페이지 로드시, Advertising Section에 랜덤이미지 보이기.
-
-$(document).ready(function(){
-  let imgArray = new Array();
-  imgArray.push("pictures/록키호러픽쳐쇼2.gif");
-  imgArray.push("pictures/록키호러픽쳐쇼3.gif");
-  imgArray.push("pictures/록키호러픽쳐쇼4.gif");
-  imgArray.push("pictures/록키호러픽쳐쇼5.gif");
-  imgArray.push("./pictures/록키호러픽쳐쇼6.gif");
-  imgArray.push("./pictures/록키호러픽쳐쇼7.gif");
-  console.log(imgArray);
-  console.log(imgArray.length);
-
-  let imgNum = Math.floor(Math.random() * imgArray.length);
-  let objImg = document.getElementById("advertising-image-rocky");
-
-  objImg.src = imgArray[imgNum];
-});
+// // Main page - Random Image  -> stackoverflow에서 긁어옴.
+// // 페이지 로드시, Advertising Section에 이미지가 무작위로 출력.
+// $(document).ready(function(){
+//   let imgArray = new Array();
+//   imgArray.push("pictures/록키호러픽쳐쇼2.gif");
+//   imgArray.push("pictures/록키호러픽쳐쇼3.gif");
+//   imgArray.push("pictures/록키호러픽쳐쇼4.gif");
+//   imgArray.push("pictures/록키호러픽쳐쇼5.gif");
+//   imgArray.push("./pictures/록키호러픽쳐쇼6.gif");
+//   imgArray.push("./pictures/록키호러픽쳐쇼7.gif");
+//   console.log(imgArray);
+//   console.log(imgArray.length);
+//
+//   let imgNum = Math.floor(Math.random() * imgArray.length);
+//   let objImg = document.getElementById("advertising-image-rocky");
+//
+//   objImg.src = imgArray[imgNum];
+// });
