@@ -3,8 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="DuetoPark">
+    <meta name="keywords" content="movie">
+    <meta name="description" content="movie advertising, booking page">
     <title>Movie - 마이페이지</title>
-
 
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./style-mypage.css">
@@ -16,17 +18,25 @@
 
 
   <body>
-    <header class="page-header">
+    <strong class="sr-only">
+      현재 페이지는 무비 회원의 마이페이지 입니다.
+      프로필 수정, 좌석예매, 예매내역 확인, 작성후기 확인을 할 수 있습니다.
+    </strong>
+
+    <header class="movie-header">
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <div class="page-title">
+            <div class="movie-title">
               <h1>
-                <a href="./01-main-after-login.html">Movie</a>
+                <a href="./01-main-after-login.html" aria-label="홈으로 이동">Movie</a>
               </h1>
             </div>
 
-            <button type="button" class="menu-button" aria-label="메뉴보기"></button>
+            <button type="button"
+              class="menu-button"
+              aria-label="메뉴 열기">
+            </button>
 
             <div class="logout">
               <img src="./pictures/user.png" alt="User Dueto Park">
@@ -39,7 +49,7 @@
 
 
     <nav class="page-menu">
-      <h2 class="sr-only">마이페이지 메뉴</h2>
+      <h2 class="sr-only">나의 페이지 메뉴</h2>
       <div class="container">
         <div class="row">
           <div class="col-12">
@@ -61,7 +71,10 @@
                 </ul>
               </div>
 
-              <button type="button" class="close-button"></button>
+              <button type="button"
+                class="close-button"
+                aria-label="메뉴 닫기">
+              </button>
             </div>
           </div>
         </div>
@@ -72,11 +85,16 @@
     <main>
       <section class="modify-profile" id="modify-profile">
         <h2 class="sr-only">프로필 수정</h2>
+        <span class="sr-only">
+          프로필 사진과 개인정보를 수정할 수 있습니다.
+          개인정보에는 이름, 아이디, 비밀번호, 이메일, 생년월일이 있습니다.
+        </span>
+
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-12 col-md-4">
               <h2 class="section-title" aria-hidden="true">프로필 수정</h2>
-              <strong class="sr-only">프로필 사진 수정</strong>
+              <strong class="sr-only">프로필 사진 변경</strong>
               <div class="modify-profile-image-card">
                 <div>
                   <img src="./pictures/user.png" alt="" class="profile-image">
@@ -91,7 +109,7 @@
           </div>
           <div class="row justify-content-center">
             <div class="col-12 col-md-8">
-              <strong class="sr-only">프로필 수정</strong>
+              <strong class="sr-only">개인정보 수정</strong>
               <div class="modify-profile-info">
                 <form class="modify-profile-info-form" action="#" method="GET">
                   <label for="userName">이름</label>
@@ -123,6 +141,10 @@
 
       <section class="reservation" id="reservation">
         <h1 class="sr-only">좌석예매</h1>
+        <span class="sr-only">
+          좌석예매는 영화, 상영시간, 인원, 좌석 선택 순으로 진행됩니다.
+        </span>
+
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-12 col-md-10">
@@ -241,7 +263,11 @@
                 </div>
 
 
-                <button type="button" class="mypage-button select-seat-button" disabled>좌석 선택하기</button>
+                <button type="button"
+                  class="mypage-button select-seat-button"
+                  disabled>
+                  좌석 선택하기
+                </button>
               </form>
             </div>
           </div>
@@ -258,7 +284,7 @@
                   <div class="number-of-people">
                     <strong class="section-subtitle">관람인원선택</strong>
                     <div class="age">
-                      <label for="adult">어른</label>
+                      <label for="adult">성인</label>
                       <select id="adult" name="adult">
                         <option value="0" selected>0</option>
                         <option value="1">1</option>
@@ -305,8 +331,19 @@
 
                   <div class="seat-table">
                     <strong class="section-subtitle">좌석선택</strong>
+                    <span>
+                      A열부터 N열까지 총 열네개의 열이 준비되어있습니다.
+                      각각의 열에는 열개의 좌석이 존재합니다.
+
+                      A열은 스크린과 가장 가깝습니다.
+                      A열,G열,H열은 출입구와 가깝습니다.
+
+                      복도는 G열과 H열 사이, 계단식 복도는 5번과 6번 좌석 사이에 존재합니다.
+                      관람 중에 이동을 원하실 경우, 참고해주시기 바랍니다.
+                    </span>
+
                     <table>
-                      <thead>
+                      <thead aria-hidden="true">
                         <tr>
                           <th scope="col">1</th>
                           <th scope="col">2</th>
@@ -323,7 +360,7 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td><input type="checkbox" name="seat" value="a1" id="a1"/><label for="a1"></label></td>
+                          <td><span class="sr-only">A열</span><input type="checkbox" name="seat" value="a1" id="a1"/><label for="a1"></label></td>
                           <td><input type="checkbox" name="seat" value="a2" id="a2"/><label for="a2"></label></td>
                           <td><input type="checkbox" name="seat" value="a3" id="a3"/><label for="a3"></label></td>
                           <td><input type="checkbox" name="seat" value="a4" id="a4"/><label for="a4"></label></td>
@@ -336,7 +373,7 @@
                           <td><input type="checkbox" name="seat" value="a10" id="a10"/><label for="a10"></label></td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" name="seat" value="b1" id="b1"/><label for="b1"></label></td>
+                          <td><span class="sr-only">B열</span><input type="checkbox" name="seat" value="b1" id="b1"/><label for="b1"></label></td>
                           <td><input type="checkbox" name="seat" value="b2" id="b2"/><label for="b2"></label></td>
                           <td><input type="checkbox" name="seat" value="b3" id="b3"/><label for="b3"></label></td>
                           <td><input type="checkbox" name="seat" value="b4" id="b4"/><label for="b4"></label></td>
@@ -349,7 +386,7 @@
                           <td><input type="checkbox" name="seat" value="b10" id="b10"/><label for="b10"></label></td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" name="seat" value="c1" id="c1"/><label for="c1"></label></td>
+                          <td><span class="sr-only">C열</span><input type="checkbox" name="seat" value="c1" id="c1"/><label for="c1"></label></td>
                           <td><input type="checkbox" name="seat" value="c2" id="c2"/><label for="c2"></label></td>
                           <td><input type="checkbox" name="seat" value="c3" id="c3"/><label for="c3"></label></td>
                           <td><input type="checkbox" name="seat" value="c4" id="c4"/><label for="c4"></label></td>
@@ -362,7 +399,7 @@
                           <td><input type="checkbox" name="seat" value="c10" id="c10"/><label for="c10"></label></td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" name="seat" value="d1" id="d1"/><label for="d1"></label></td>
+                          <td><span class="sr-only">D열</span><input type="checkbox" name="seat" value="d1" id="d1"/><label for="d1"></label></td>
                           <td><input type="checkbox" name="seat" value="d2" id="d2"/><label for="d2"></label></td>
                           <td><input type="checkbox" name="seat" value="d3" id="d3"/><label for="d3"></label></td>
                           <td><input type="checkbox" name="seat" value="d4" id="d4"/><label for="d4"></label></td>
@@ -375,7 +412,7 @@
                           <td><input type="checkbox" name="seat" value="d10" id="d10"/><label for="d10"></label></td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" name="seat" value="e1" id="e1"/><label for="e1"></label></td>
+                          <td><span class="sr-only">E열</span><input type="checkbox" name="seat" value="e1" id="e1"/><label for="e1"></label></td>
                           <td><input type="checkbox" name="seat" value="e2" id="e2"/><label for="e2"></label></td>
                           <td><input type="checkbox" name="seat" value="e3" id="e3"/><label for="e3"></label></td>
                           <td><input type="checkbox" name="seat" value="e4" id="e4"/><label for="e4"></label></td>
@@ -388,7 +425,7 @@
                           <td><input type="checkbox" name="seat" value="e10" id="e10"/><label for="e10"></label></td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" name="seat" value="f1" id="f1"/><label for="f1"></label></td>
+                          <td><span class="sr-only">F열</span><input type="checkbox" name="seat" value="f1" id="f1"/><label for="f1"></label></td>
                           <td><input type="checkbox" name="seat" value="f2" id="f2"/><label for="f2"></label></td>
                           <td><input type="checkbox" name="seat" value="f3" id="f3"/><label for="f3"></label></td>
                           <td><input type="checkbox" name="seat" value="f4" id="f4"/><label for="f4"></label></td>
@@ -401,7 +438,7 @@
                           <td><input type="checkbox" name="seat" value="f10" id="f10"/><label for="f10"></label></td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" name="seat" value="g1" id="g1"/><label for="g1"></label></td>
+                          <td><span class="sr-only">G열</span><input type="checkbox" name="seat" value="g1" id="g1"/><label for="g1"></label></td>
                           <td><input type="checkbox" name="seat" value="g2" id="g2"/><label for="g2"></label></td>
                           <td><input type="checkbox" name="seat" value="g3" id="g3"/><label for="g3"></label></td>
                           <td><input type="checkbox" name="seat" value="g4" id="g4"/><label for="g4"></label></td>
@@ -414,10 +451,10 @@
                           <td><input type="checkbox" name="seat" value="g10" id="g10"/><label for="g10"></label></td>
                         </tr>
                         <tr>
-                          <td colspan="11" class="H-empty"></td>
+                          <td colspan="11" class="H-empty" aria-label="복도"></td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" name="seat" value="h1" id="h1"/><label for="h1"></label></td>
+                          <td><span class="sr-only">H열</span><input type="checkbox" name="seat" value="h1" id="h1"/><label for="h1"></label></td>
                           <td><input type="checkbox" name="seat" value="h2" id="h2"/><label for="h2"></label></td>
                           <td><input type="checkbox" name="seat" value="h3" id="h3"/><label for="h3"></label></td>
                           <td><input type="checkbox" name="seat" value="h4" id="h4"/><label for="h4"></label></td>
@@ -430,7 +467,7 @@
                           <td><input type="checkbox" name="seat" value="h10" id="h10"/><label for="h10"></label></td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" name="seat" value="i1" id="i1"/><label for="i1"></label></td>
+                          <td><span class="sr-only">I열</span><input type="checkbox" name="seat" value="i1" id="i1"/><label for="i1"></label></td>
                           <td><input type="checkbox" name="seat" value="i2" id="i2"/><label for="i2"></label></td>
                           <td><input type="checkbox" name="seat" value="i3" id="i3"/><label for="i3"></label></td>
                           <td><input type="checkbox" name="seat" value="i4" id="i4"/><label for="i4"></label></td>
@@ -443,7 +480,7 @@
                           <td><input type="checkbox" name="seat" value="i10" id="i10"/><label for="i10"></label></td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" name="seat" value="j1" id="j1"/><label for="j1"></label></td>
+                          <td><span class="sr-only">J열</span><input type="checkbox" name="seat" value="j1" id="j1"/><label for="j1"></label></td>
                           <td><input type="checkbox" name="seat" value="j2" id="j2"/><label for="j2"></label></td>
                           <td><input type="checkbox" name="seat" value="j3" id="j3"/><label for="j3"></label></td>
                           <td><input type="checkbox" name="seat" value="j4" id="j4"/><label for="j4"></label></td>
@@ -456,7 +493,7 @@
                           <td><input type="checkbox" name="seat" value="j10" id="j10"/><label for="j10"></label></td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" name="seat" value="k1" id="k1"/><label for="k1"></label></td>
+                          <td><span class="sr-only">K열</span><input type="checkbox" name="seat" value="k1" id="k1"/><label for="k1"></label></td>
                           <td><input type="checkbox" name="seat" value="k2" id="k2"/><label for="k2"></label></td>
                           <td><input type="checkbox" name="seat" value="k3" id="k3"/><label for="k3"></label></td>
                           <td><input type="checkbox" name="seat" value="k4" id="k4"/><label for="k4"></label></td>
@@ -469,7 +506,7 @@
                           <td><input type="checkbox" name="seat" value="k10" id="k10"/><label for="k10"></label></td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" name="seat" value="l1" id="l1"/><label for="l1"></label></td>
+                          <td><span class="sr-only">L열</span><input type="checkbox" name="seat" value="l1" id="l1"/><label for="l1"></label></td>
                           <td><input type="checkbox" name="seat" value="l2" id="l2"/><label for="l2"></label></td>
                           <td><input type="checkbox" name="seat" value="l3" id="l3"/><label for="l3"></label></td>
                           <td><input type="checkbox" name="seat" value="l4" id="l4"/><label for="l4"></label></td>
@@ -482,7 +519,7 @@
                           <td><input type="checkbox" name="seat" value="l10" id="l10"/><label for="l10"></label></td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" name="seat" value="m1" id="m1"/><label for="m1"></label></td>
+                          <td><span class="sr-only">M열</span><input type="checkbox" name="seat" value="m1" id="m1"/><label for="m1"></label></td>
                           <td><input type="checkbox" name="seat" value="m2" id="m2"/><label for="m2"></label></td>
                           <td><input type="checkbox" name="seat" value="m3" id="m3"/><label for="m3"></label></td>
                           <td><input type="checkbox" name="seat" value="m4" id="m4"/><label for="m4"></label></td>
@@ -495,7 +532,7 @@
                           <td><input type="checkbox" name="seat" value="m10" id="m10"/><label for="m10"></label></td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" name="seat" value="n1" id="n1"/><label for="n1"></label></td>
+                          <td><span class="sr-only">N열</span><input type="checkbox" name="seat" value="n1" id="n1"/><label for="n1"></label></td>
                           <td><input type="checkbox" name="seat" value="n2" id="n2"/><label for="n2"></label></td>
                           <td><input type="checkbox" name="seat" value="n3" id="n3"/><label for="n3"></label></td>
                           <td><input type="checkbox" name="seat" value="n4" id="n4"/><label for="n4"></label></td>
@@ -540,8 +577,13 @@
                     </dl>
                   </div>
                   <div class="select-button-group">
-                    <button type="reset" class="fill-button reset-button">좌석 다시 선택</button>
-                    <button type="submit" class="mypage-button complete-button">좌석 선택 완료</button>
+                    <button type="reset"
+                      class="fill-button reset-button"
+                      aria-label="선택 인원과 좌석 초기화">
+                      좌석 다시 선택
+                    </button>
+
+                    <button type="submit"class="mypage-button complete-button">좌석 선택 완료</button>
                   </div>
                 </div>
               </div>
@@ -552,6 +594,10 @@
 
       <section class="reservation-confirm" id="reservation-confirm">
         <h2 class="sr-only">예매내역</h2>
+        <span class="sr-only">
+          관람 전 영화와 관람을 끝낸 영화의 내역을 제공합니다.
+        </span>
+
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-12">
@@ -563,7 +609,7 @@
                 <dl class="reservation-confirm-lists">
                   <div class="reservation-confirm-items">
                     <dt>날짜</dt>
-                    <dd>21XX-10-25</dd>
+                    <dd aria-label="21XX년 시월 25일">21XX-10-25</dd>
                   </div>
                   <div class="reservation-confirm-items">
                     <dt>영화이름</dt>
@@ -571,11 +617,11 @@
                   </div>
                   <div class="reservation-confirm-items">
                     <dt>상영시간</dt>
-                    <dd>22:50~24:30</dd>
+                    <dd aria-label="오후 열시 50분부터 오후 열두시 30분">22:50~24:30</dd>
                   </div>
                   <div class="reservation-confirm-items">
                     <dt>인원</dt>
-                    <dd>2</dd>
+                    <dd aria-label="2명">2</dd>
                   </div>
                   <div class="reservation-confirm-items">
                     <dt>좌석</dt>
@@ -594,7 +640,7 @@
                 <dl class="reservation-confirm-lists">
                   <div>
                     <dt>날짜</dt>
-                    <dd>21XX-08-31</dd>
+                    <dd aria-label="21XX년 8월 31일">21XX-08-31</dd>
                   </div>
                   <div>
                     <dt>영화이름</dt>
@@ -606,7 +652,7 @@
                   </div>
                   <div>
                     <dt>인원</dt>
-                    <dd>1</dd>
+                    <dd aria-label="1명">1</dd>
                   </div>
                   <div>
                     <dt>좌석</dt>
@@ -617,7 +663,7 @@
                 <dl class="reservation-confirm-lists">
                   <div>
                     <dt>날짜</dt>
-                    <dd>21XX-08-22</dd>
+                    <dd aria-label="21XX년 8월 22일">21XX-08-22</dd>
                   </div>
                   <div>
                     <dt>영화이름</dt>
@@ -629,7 +675,7 @@
                   </div>
                   <div>
                     <dt>인원</dt>
-                    <dd>1</dd>
+                    <dd aria-label="1명">1</dd>
                   </div>
                   <div>
                     <dt>좌석</dt>
@@ -640,7 +686,7 @@
                 <dl class="reservation-confirm-lists">
                   <div>
                     <dt>날짜</dt>
-                    <dd>21XX-07-08</dd>
+                    <dd aria-label="21XX년 7월 8일">21XX-07-08</dd>
                   </div>
                   <div>
                     <dt>영화이름</dt>
@@ -652,7 +698,7 @@
                   </div>
                   <div>
                     <dt>인원</dt>
-                    <dd>1</dd>
+                    <dd aria-label="2명">1</dd>
                   </div>
                   <div>
                     <dt>좌석</dt>
@@ -774,7 +820,7 @@
 
     <footer class="footer">
       <span class="sr-only">
-        페이지 제작 출처 및 회사 정보를 제공합니다.
+        이 곳은 페이지 제작 출처 및 회사 정보를 제공합니다.
         해당 정보가 필요하지 않다고 판단되면 넘기셔도 됩니다.
       </span>
       <div class="container">

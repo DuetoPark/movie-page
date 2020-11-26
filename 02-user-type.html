@@ -3,6 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="DuetoPark">
+    <meta name="keywords" content="movie">
+    <meta name="description" content="movie advertising, booking page">
     <title>Movie - 예매확인</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
@@ -16,14 +19,19 @@
 
 
   <body>
+    <strong class="sr-only">
+      현재 페이지는 회원 종류를 선택하는 페이지입니다.
+      회원 종류를 선택하신 후에 예약 확인이 가능합니다.
+    </strong>
+
     <div class="total">
-      <header class="page-header">
+      <header class="movie-header">
         <div class="container">
           <div class="row">
             <div class="col-12">
               <div class="movie-title">
                 <h1>
-                  <a href="01-main.html" aria-label="홈으로 가기">Movie</a>
+                  <a href="01-main.html" aria-label="홈으로 이동">Movie</a>
                 </h1>
               </div>
             </div>
@@ -32,26 +40,26 @@
       </header>
 
       <nav class="user-type">
-        <h1 class="page-title" aria-label="예약확인 전, 회원 종류 선택">user-type</h1>
+        <h1 class="page-title" aria-label="회원 종류 선택">user-type</h1>
         <div class="container">
           <div class="row">
             <div class="col-12 col-md-4">
               <a href="05-non-members.html" class="user-type-lists">
                 <img src="./pictures/user2.png" alt="">
-                <strong aria-label="비회원 예약확인하기">비회원</strong>
+                <strong aria-label="비회원 페이지로 이동">비회원</strong>
               </a>
             </div>
             <div class="col-12 col-md-4">
               <div class="user-type-lists">
                 <img src="./pictures/user3.png" alt="">
-                <strong aria-label="회원 예약확인하기">회원</strong>
+                <strong aria-label="회원 페이지로 이동">회원</strong>
                 <button type="button" class="login-modal-button"></button>
               </div>
             </div>
             <div class="col-12 col-md-4">
               <button class="signin-modal-button user-type-lists">
                 <img src="./pictures/sign-in.png" alt="">
-                <strong aria-label="회원가입 하기">회원가입</strong>
+                <strong aria-label="회원가입 화면 띄우기">회원가입</strong>
               </button>
             </div>
           </div>
@@ -60,7 +68,7 @@
 
       <footer class="footer">
         <span class="sr-only">
-          페이지 제작 출처 및 회사 정보를 제공합니다.
+          이 곳은 페이지 제작 출처 및 회사 정보를 제공합니다.
           해당 정보가 필요하지 않다고 판단되면 넘기셔도 됩니다.
         </span>
         <div class="container">
@@ -139,7 +147,6 @@
     </section>
 
 
-
     <!-- Modal - Signin -->
     <!-- <div class="black-bg"></div> -->
     <section class="modal-wrap signin">
@@ -193,7 +200,6 @@
         </div>
       </div>
     </section>
-
 
   </body>
 </html>
