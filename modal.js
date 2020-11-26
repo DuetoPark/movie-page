@@ -1,46 +1,37 @@
 window.onload = function() {
 
   // Main page
-
-  // Login Modal
-  // 1. 로그인 모달 열면, 배경 블러. (Open Modal, Background Blur)
-  // 2. 로그인 모달 닫으면, 배경 선명. (Close Modal, Background Clear)
-  // 3. 로그인 버튼 - 로그인 모달(배경 블러) - 모달 내 버튼(배경 선명)
-
-  // Open Modal Function
-  function onClick(){
-    document.querySelector('.modal-wrap').style.display='block';
-  }
-
-
-
-  // Event - Modal's Close Button
-  // 모달 '닫힘' & 배경 '선명' ('Close' Modal & 'Clear' Background)
-  $(".modal-close").off("click").click(function() {
-    document.querySelector('.modal-wrap').style.display='none';
-    document.querySelector('.total').style.filter='none';
-  });
-
-  $(".modal-close").click(function() {
-    document.querySelector('section.modal-wrap.signin').style.display='none';
-    document.querySelector('.total').style.filter='none';
-  });
-
-
-
-  // Event - Modal's Login Button
+  // Open Modal - Login
   // 모달 '열림' & 배경 '블러' ('Open' Modal & 'Blur' Background)
   $(".login-modal-button").click(function() {
-    onClick();
-    document.querySelector('.total').style.filter='blur(5px)';
+    document.querySelector('.modal-wrap').style.display='block';
+    document.querySelector('.modal-X').style.filter='blur(5px)';
   });
 
-  // Event - Modal's Sign in Button
+  // Open Modal - Sign in
   // 모달 '열림' & 배경 '블러' ('Open' Modal & 'Blur' Background)
   $(".signin-modal-button").click(function() {
     document.querySelector('section.modal-wrap.signin').style.display='block';
-    document.querySelector('.total').style.filter='blur(5px)';
+    document.querySelector('.modal-X').style.filter='blur(5px)';
   });
+
+
+
+  // Close Modal - Login
+  // 모달 '닫힘' & 배경 '선명' ('Close' Modal & 'Clear' Background)
+  $(".modal-close").off("click").click(function() {
+    document.querySelector('.modal-wrap').style.display='none';
+    document.querySelector('.modal-X').style.filter='none';
+  });
+
+  // Close Modal - Sign in
+  // 모달 '닫힘' & 배경 '선명' ('Close' Modal & 'Clear' Background)
+  $(".modal-close").click(function() {
+    document.querySelector('section.modal-wrap.signin').style.display='none';
+    document.querySelector('.modal-X').style.filter='none';
+  });
+
+
 
   // Event - Login button
   // 로그인 버튼 누르면, 다음 페이지로 사용자 아이디 데이터 전송.
@@ -61,23 +52,19 @@ window.onload = function() {
   // (Click menu button, Menu poping out form the left side of the screen)
   // 2. 닫힘 버튼 누르면, 스크린 왼쪽으로 튀어나감.
   // (Click close button, Menu run to the left of the screen)
+  function moveMenu(left, opacity){
+    document.querySelector('.page-menu').style.left=left;
+    document.querySelector('.page-menu').style.opacity=opacity;
+  }
 
   // Open Menu
-  function openMenu(){
-    document.querySelector('.page-menu').style.left='0';
-    document.querySelector('.page-menu').style.opacity='1';
-  }
-  // Close Menu
-  function closeMenu(){
-    document.querySelector('.page-menu').style.left='-100vw';
-    document.querySelector('.page-menu').style.opacity='0';
-  }
-
   $(".menu-button").click(function() {
-    openMenu();
+    moveMenu('0','1');
   });
+
+  // Close Menu
   $(".close-button").click(function() {
-    closeMenu();
+    moveMenu('-100vw','0');
   });
 
 
@@ -87,12 +74,9 @@ window.onload = function() {
   // (Click seen-confirm-button, hidden button)
   // 2. '이전관람내역' 버튼 누르면, display:none;영역 출력.
   // (Click seen-confirm-button, We can see display:none; part)
-  let elem = document.querySelector('.reservation-confirm-seen');
-  let pagenation = document.querySelector('.reservation-confirm .col-md-4');
-
   $('.seen-confirm-button').click(function(){
-    $('.reservation-confirm-seen').css("display","block");
-    $('.seen-confirm-button').css("display","none");
+    document.querySelector('.reservation-confirm-seen').style.display='block';
+    document.querySelector('.seen-confirm-button').style.display='none';
   });
 
 
@@ -110,7 +94,7 @@ window.onload = function() {
     }
   }
 
-  $('.more-button').off('click').click(function(){
+  $('.more-button').click(function(){
     moreReviews();
     document.querySelector('.more-button').style.display='none';
   });
@@ -163,84 +147,70 @@ window.onload = function() {
 
   // Booking System - Click Event (Movie name/Start time)
   // 1. 영화이름/영화시간 누르면 '진하기 700', '글자색 #181818'로 변경.
-  // (Click movie name/time, it changees to fontWeight 700 & color #181818)
+  // (Click movie name/time, it changes to fontWeight 700 & color #181818)
   // 2. 선택한 영화이름/영화시간이 HTML Booking Section에 출력.
   // (Output movie name/time to HTML Booking Section)
-  let movieName = document.querySelectorAll("input[name=movie-name]");
-  let nameLabel = document.querySelectorAll("[id^=name]");
+  // 3. 영화이름 누르면, 시간 선택 파트와 영화의 상영시간표가 출력.
+  let timetables = document.querySelectorAll("[id^=Timetable]");
+  let movieNames = document.querySelectorAll("input[name=movie-name]");
+  let nameLabels = document.querySelectorAll("[id^=name]");
 
-  $("input[name=movie-name]").click(function(){
-    for(let i=0; i<movieName.length; i++){
-      if(movieName[i].checked){
+  // 폰트 변경 & HTML Booking Section에 출력하는 함수.
+  function changeFont(checkedElem, fontElem, showElem){
+    for(let i=0; i<checkedElem.length; i++){
+      if(checkedElem[i].checked){
         // 폰트 변경.
-        nameLabel[i].style.fontWeight = '700';
-        nameLabel[i].style.color = '#181818';
+        fontElem[i].style.fontWeight = '700';
+        fontElem[i].style.color = '#181818';
         // Booking Section에 출력.
-        document.getElementById("seat-desc-name").innerHTML= nameLabel[i].innerHTML;
+        document.getElementById(showElem).innerHTML= fontElem[i].innerHTML;
       } else{
-        nameLabel[i].style.fontWeight = '400';
-        nameLabel[i].style.color = '#C4C4C4';
-      }
-    }
-  });
-
-  // 영화시간 누르면 '진하기 700', '글자색 #181818'로 변경.
-  // 선택한 시간 Booking Section에 출력됨.
-  let startTime = document.querySelectorAll("input[name=start-time]");
-  let timeLabel = document.querySelectorAll("[id^=time]");
-
-  $("input[name=start-time]").click(function(){
-    for(let i=0; i<startTime.length; i++){
-      if(startTime[i].checked){
-        // 폰트 변경.
-        timeLabel[i].style.fontWeight = '700';
-        timeLabel[i].style.color = '#181818';
-        // Booking Section에 출력.
-        document.getElementById("seat-desc-time").innerHTML= timeLabel[i].innerHTML;
-      } else{
-        timeLabel[i].style.fontWeight = '400';
-        timeLabel[i].style.color = '#C4C4C4';
-      }
-    }
-  });
-
-
-
-
-
-  // Booking System - Select option ('movie name')
-  // 영화이름 누르면, 해당 영화의 상영시간표가 display='block';됨.
-  // 변수 재사용.
-  // let movieName = document.querySelectorAll("input[name=movie-name]");
-  let timetable = document.querySelectorAll("[id^=Timetable]");
-
-  function showTimetable(){
-    for(let j=1; j<=movieName.length; j++){
-      if(document.getElementById('movie-name'+j).checked){
-        for(let i=0; i<timetable.length; i++){
-          timetable[i].style.display = 'none';
-        }
-
-        document.getElementById('Timetable'+j).style.display = 'block';
+        fontElem[i].style.fontWeight = '400';
+        fontElem[i].style.color = '#C4C4C4';
       }
     }
   }
 
-  $('[name=movie-name]').click(function (){
+
+  // 영화이름 클릭 이벤트
+  $("input[name=movie-name]").click(function(){
+    changeFont(movieNames, nameLabels, "seat-desc-name");
+
+    // 같은 섹션 안의 '시간 선택' 파트가 출력.
     document.querySelector('.option-items:nth-of-type(2)').style.display = 'block';
-    showTimetable();
+
+    // 해당 영화의 시간표 출력
+    for(let j=1; j<=movieNames.length; j++){
+      if(document.getElementById('movie-name'+j).checked){
+        for(let i=0; i<timetables.length; i++){
+          timetables[i].style.display = 'none';
+        }
+        document.getElementById('Timetable'+j).style.display = 'block';
+      }
+    }
+  });
+
+  // 영화시간 클릭 이벤트
+  let startTimes = document.querySelectorAll("input[name=start-time]");
+  let timeLabels = document.querySelectorAll("[id^=time]");
+
+  $("input[name=start-time]").click(function(){
+    changeFont(startTimes, timeLabels, "seat-desc-time");
   });
 
 
 
 
-
-  // Booking System - Select option ('start time')
-  // 상영시간 누르면, 좌석 선택 섹션이 display='block';됨.
+  // Booking System - Click Event ('start time')
+  // 상영시간 누르면, 좌석 선택 버튼이 활성화 됨.
   $('[id^=Timetable]').click(function (){
     document.querySelector('.select-seat-button').disabled = false;
   });
 
+
+
+  // Booking System - Click Event ('select-seat-button')
+  // 좌석선택 버튼 누르면, Booking 파트 출력.
   $('.select-seat-button').click(function(){
     document.querySelector(".booking").style.display = 'block';
   });
@@ -265,9 +235,18 @@ window.onload = function() {
 
   let priceOfTotal = 0;
 
+  // value 자료형 변경 함수 (문자형 -> 정수형)
+  function changeDataType(age, num, dataSave){
+    for(let i=0; i<age.length; i++){
+      if(age[i].selected){
+        num = Number(age[i].value);
+      }
+    }
+    dataSave.push(num);  // Option 선택값 저장
+  }
 
   // '인원' & '금액' 누적값 계산 함수.
-  function accumulateValue (dataSave, price, obj){
+  function $Sum (dataSave, price, obj){
     // 선택된 Option Value.
     let current = dataSave[dataSave.length-1]; //현재 값.
     let past = dataSave[dataSave.length-2]; // 이전 값.
@@ -278,8 +257,7 @@ window.onload = function() {
     priceOfTotal += price * (current - past);
     console.log("총금액 "+priceOfTotal);
 
-    // 누적 인원수 5명 초과시,
-    // 선택한 인원과 금액이 초기화 됨.
+    // 누적 인원수 5명 초과시, 선택한 인원과 금액이 초기화 됨.
     if(numOfTotal>5){
       alert("인원 선택은 최대 5명입니다.");
       numOfTotal -= current;
@@ -289,100 +267,75 @@ window.onload = function() {
       console.log("수정된 총금액 "+priceOfTotal);
       obj[0].selected = 'true';
     }
+
+
   }
 
   // '인원' & '금액' 누적값 출력 함수.
-  // 좌석예약 Booking-desc의 dd에 출력.
-  function outputValue(){
-    document.getElementById("seat-desc-count").innerHTML = "총 "+numOfTotal+"명";
+  // 1. 좌석예약 Booking-desc의 dd에 출력.
+  // 2. 좌석 선택 활성화.
+  function output$Sum(){
+    document.getElementById("seat-desc-count").innerHTML = "총 "+ numOfTotal +"명";
     document.getElementById("seat-desc-price").innerHTML = numberWithCommas(priceOfTotal)+"원";
     document.getElementById("seat-desc-count").style.opacity = '1';
     document.getElementById("seat-desc-price").style.opacity = '1';
+    // 좌석 선택 활성화.
+    document.querySelector(".seat-table").style.pointerEvents = "auto";
+    document.querySelector(".seat-table").style.opacity = "1";
   }
+
   // 회계형 숫자표현 - stackoverflow에서 긁어옴.
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
-  function activeSeatTable(){
-    document.querySelector(".seat-table").style.pointerEvents = "auto";
-    document.querySelector(".seat-table").style.opacity = "1";
-  }
 
-
-  // Event - Type of age
+  // Click Event (Type of age)
   // '누적' 인원 & 금액 계산 후 출력.
-  // 원인: Change 이벤트 안에 변수선언해서 매번 변수를 덮어쓰게 함.
-  // 해결: 변수 선언을 이벤트 선언 전에 해야 함(배열에 value push 됨).
-  // 잘하자 과거의 나야.
-  let dataSaveAdult = [0];    // 이것땜에 한시간 삽질 함.
+  let dataSaveAdult = [0];
   $("select[name=adult]").change(function(){
-    for(let i=0; i<adult.length; i++){
-      if(adult[i].selected){
-        numOfAdult = Number(adult[i].value);  // value 자료형 변경 (문자형 -> 정수형)
-      }
-    }
+    changeDataType(adult, numOfAdult, dataSaveAdult);
 
-    dataSaveAdult.push(numOfAdult);  // Option 선택값 저장
     console.log("성인 ["+dataSaveAdult+"]");
     console.log("선택인원 "+numOfAdult);
 
-    accumulateValue(dataSaveAdult, 12000, adult);
-    outputValue();
-    activeSeatTable();
+    $Sum(dataSaveAdult, 12000, adult);
+    output$Sum();
   });
 
   let dataSaveTeen = [0];
   $("select[name=Teenager]").change(function(){
-    for(let i=0; i<teen.length; i++){
-      if(teen[i].selected){
-        numOfTeen = Number(teen[i].value);
-      }
-    }
+    changeDataType(teen, numOfTeen, dataSaveTeen);
 
-    dataSaveTeen.push(numOfTeen); // Option 선택값 저장
     console.log("청소년 ["+dataSaveTeen+"]");
     console.log("선택인원 "+numOfTeen);
 
-    accumulateValue(dataSaveTeen, 9000, teen);
-    outputValue();
-    activeSeatTable();
+    $Sum(dataSaveTeen, 9000, teen);
+    output$Sum();
   });
 
 
   let dataSaveChild = [0];
   $("select[name=child]").change(function(){
-    for(let i=0; i<child.length; i++){
-      if(child[i].selected){
-        numOfChild = Number(child[i].value);
-      }
-    }
+    changeDataType(child, numOfChild, dataSaveChild);
 
-    dataSaveChild.push(numOfChild); // Option 선택값 저장
     console.log("어린이 ["+dataSaveChild+"]");
     console.log("선택인원 "+numOfChild);
 
-    accumulateValue(dataSaveChild, 6000, child);
-    outputValue();
-    activeSeatTable();
+    $Sum(dataSaveChild, 6000, child);
+    output$Sum();
   });
 
 
   let dataSavePrefer = [0];
   $("select[name=preferential-treatment]").change(function(){
-    for(let i=0; i<prefer.length; i++){
-      if(prefer[i].selected){
-        numOfPrefer = Number(prefer[i].value);
-      }
-    }
+    changeDataType(prefer, numOfPrefer, dataSavePrefer);
 
-    dataSavePrefer.push(numOfPrefer); // Option 선택값 저장
     console.log("우대 ["+dataSavePrefer+"]");
     console.log("선택인원 "+numOfPrefer);
 
-    accumulateValue(dataSavePrefer, 3000, prefer);
-    outputValue();
-    activeSeatTable();
+    $Sum(dataSavePrefer, 3000, prefer);
+    output$Sum();
   });
 
 
@@ -392,37 +345,39 @@ window.onload = function() {
 
   // Booking System - Checked 수 한정 함수.
   // 1. 인원 수 지정한 만큼만 체크 가능.
-  // 2. Input:checked.value는 Booking-desc에 출력
-  // 3. 인원 수 만큼 체크되면, 모든 체크박스 선택 불가로 변경됨.
-  const checkbox = document.querySelectorAll('input[name=seat]');
+  // 2. Input:checked.value는 Booking-desc에 출력.
+  // 3. 인원 수 만큼 체크되면, 모든 체크박스 & 인원 선택 불가.
+  const checkboxs = document.querySelectorAll('input[name=seat]');
   let checkedSeat = []; // Input:checked 값 저장. (Output - HTML Booking-desc part)
   const seatInHtml = document.getElementById("seat-desc-seat");
+  const ageTypes = document.querySelectorAll('.age');
+
+  function toUseElem(elem, pointer, opacity){
+    for(let i=0; i<elem.length; i++){
+      elem[i].style.pointerEvents = pointer;
+      elem[i].style.opacity = opacity;
+    }
+  }
 
   $("input[name=seat]").change(function(){
-    let checkedCount = document.querySelectorAll('.seat-table input[type=checkbox]:checked').length;
+    let checkedBoxs = document.querySelectorAll('.seat-table input[type=checkbox]:checked').length;
 
-    for(let i=0; i<checkbox.length; i++){
-      if(checkbox[i].checked){
-        checkedSeat.push(checkbox[i].value+" ");
+    for(let i=0; i<checkboxs.length; i++){
+      if(checkboxs[i].checked){
+        checkedSeat.push(checkboxs[i].value+" ");
       }
     }
 
-    console.log(checkedCount);
+    console.log(checkedBoxs);
     console.log(numOfTotal);
 
-    // 인원 선택 수만큼 체크되면, 모든 체크박스 선택불가로 변경.
-    let ageTypeConut = document.querySelectorAll('.age');
-
-    if(checkedCount>=numOfTotal){
-      for(let i=0; i<checkbox.length; i++){
+    // 인원 선택 수만큼 체크되면, 모든 체크박스 & 인원 선택불가로 변경.
+    if(checkedBoxs>=numOfTotal){
+      for(let i=0; i<checkboxs.length; i++){
         document.querySelector(".seat-table table").style.pointerEvents = "none";
         document.querySelector(".seat-table table").style.opacity = "0.5";
       }
-
-      for(let i=0; i<ageTypeConut.length; i++){
-        ageTypeConut[i].style.pointerEvents = "none";
-        ageTypeConut[i].style.opacity = "0.5";
-      }
+      toUseElem(ageTypes, 'none', '0.5');
     }
 
     // Input:checked.value는 Booking-desc에 출력.
@@ -433,24 +388,23 @@ window.onload = function() {
 
 
 
-  // Event - Reset button
+
+
+  // Click Event - Reset button
   // 좌석 선택 초기화
-  // 1. 인원 선택하는 div pointerEvents 활성화.
+  // 1. 인원 선택 활성화.
   // 2. 누적값 (인원 & 금액) 0으로 초기화.
   // 3. 인원 [option:selected].value 저장한 배열 [0]으로 초기화.
   // 4. 좌석 [input:checked].length 저장한 배열 [0]으로 초기화.
   // 5. HTML Booking-desc part 출력값 초기화.
   // 6. 좌석 선택하는 div pointerEvents 활성화.
   // 변수 중복 사용
-  // const checkbox = document.querySelectorAll('input[name=seat]');
-
+  // const checkboxs = document.querySelectorAll('input[name=seat]');
+  // 함수 중복 사용 toUseElem();
   $('.reset-button').click(function(){
-    let ageTypeConut = document.querySelectorAll('.age');
+    let ageTypes = document.querySelectorAll('.age');
 
-    for(let i=0; i<ageTypeConut.length; i++){
-      ageTypeConut[i].style.pointerEvents = "auto";
-      ageTypeConut[i].style.opacity = "1";
-    }
+    toUseElem(ageTypes, 'auto', '1');
 
     numOfTotal = 0;
     priceOfTotal = 0;
@@ -466,31 +420,10 @@ window.onload = function() {
     document.getElementById('seat-desc-seat').innerHTML = "";
     document.getElementById('seat-desc-price').innerHTML = "";
 
-    for(let i=0; i<checkbox.length; i++){
+    for(let i=0; i<checkboxs.length; i++){
       document.querySelector(".seat-table table").style.pointerEvents = "auto";
       document.querySelector(".seat-table table").style.opacity = "1";
     }
   });
 
 };
-
-
-
-// // Main page - Random Image  -> stackoverflow에서 긁어옴.
-// // 페이지 로드시, Advertising Section에 이미지가 무작위로 출력.
-// $(document).ready(function(){
-//   let imgArray = new Array();
-//   imgArray.push("pictures/록키호러픽쳐쇼2.gif");
-//   imgArray.push("pictures/록키호러픽쳐쇼3.gif");
-//   imgArray.push("pictures/록키호러픽쳐쇼4.gif");
-//   imgArray.push("pictures/록키호러픽쳐쇼5.gif");
-//   imgArray.push("./pictures/록키호러픽쳐쇼6.gif");
-//   imgArray.push("./pictures/록키호러픽쳐쇼7.gif");
-//   console.log(imgArray);
-//   console.log(imgArray.length);
-//
-//   let imgNum = Math.floor(Math.random() * imgArray.length);
-//   let objImg = document.getElementById("advertising-image-rocky");
-//
-//   objImg.src = imgArray[imgNum];
-// });
