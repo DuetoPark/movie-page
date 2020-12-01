@@ -1,34 +1,36 @@
 window.onload = function() {
 
   // Main page
-  // Open Modal - Login
-  // 모달 '열림' & 배경 '블러' ('Open' Modal & 'Blur' Background)
+  // 1. 모달 '열림' & 배경 '블러' ('Open' Modal & 'Blur' Background)
+  // 2. 모달 '닫힘' & 배경 '선명' ('Close' Modal & 'Clear' Background)
+  function Modal (element){
+    this.element = element;
+    this.open = function(){
+      document.querySelector(this.element).style.display='block';
+      document.querySelector('.modal-X').style.filter='blur(5px)';
+    }
+    this.close = function(){
+      document.querySelector(this.element).style.display='none';
+      document.querySelector('.modal-X').style.filter='none';
+    }
+  };
+
+  let login = new Modal('.modal-wrap');
+  let signIn = new Modal('section.modal-wrap.signin');
+
   $(".login-modal-button").click(function() {
-    document.querySelector('.modal-wrap').style.display='block';
-    document.querySelector('.modal-X').style.filter='blur(5px)';
+    login.open();
   });
-
-  // Open Modal - Sign in
-  // 모달 '열림' & 배경 '블러' ('Open' Modal & 'Blur' Background)
   $(".signin-modal-button").click(function() {
-    document.querySelector('section.modal-wrap.signin').style.display='block';
-    document.querySelector('.modal-X').style.filter='blur(5px)';
+    signIn.open();
   });
 
 
-
-  // Close Modal - Login
-  // 모달 '닫힘' & 배경 '선명' ('Close' Modal & 'Clear' Background)
   $(".modal-close").off("click").click(function() {
-    document.querySelector('.modal-wrap').style.display='none';
-    document.querySelector('.modal-X').style.filter='none';
+    login.close();
   });
-
-  // Close Modal - Sign in
-  // 모달 '닫힘' & 배경 '선명' ('Close' Modal & 'Clear' Background)
   $(".modal-close").click(function() {
-    document.querySelector('section.modal-wrap.signin').style.display='none';
-    document.querySelector('.modal-X').style.filter='none';
+    signIn.close();
   });
 
 
@@ -151,53 +153,62 @@ window.onload = function() {
   // 2. 선택한 영화이름/영화시간이 HTML Booking Section에 출력.
   // (Output movie name/time to HTML Booking Section)
   // 3. 영화이름 누르면, 시간 선택 파트와 영화의 상영시간표가 출력.
-  let timetables = document.querySelectorAll("[id^=Timetable]");
-  let movieNames = document.querySelectorAll("input[name=movie-name]");
-  let nameLabels = document.querySelectorAll("[id^=name]");
+  let call = {
+    timetables:document.querySelectorAll("[id^=Timetable]"),
+    movieNames:document.querySelectorAll("input[name=movie-name]"),
+    nameLabels:document.querySelectorAll("[id^=name]"),
+  };
 
-  // 폰트 변경 & HTML Booking Section에 출력하는 함수.
-  function changeFont(checkedElem, fontElem, showElem){
-    for(let i=0; i<checkedElem.length; i++){
-      if(checkedElem[i].checked){
-        // 폰트 변경.
-        fontElem[i].style.fontWeight = '700';
-        fontElem[i].style.color = '#181818';
-        // Booking Section에 출력.
-        document.getElementById(showElem).innerHTML= fontElem[i].innerHTML;
-      } else{
-        fontElem[i].style.fontWeight = '400';
-        fontElem[i].style.color = '#C4C4C4';
+  let booking = {
+    // 폰트 변경 & HTML Booking Section에 출력하는 함수.
+    changeFont: function(checkedElem, fontElem, showElem){
+      for(let i=0; i<checkedElem.length; i++){
+        if(checkedElem[i].checked){
+          // 폰트 변경.
+          fontElem[i].style.fontWeight = '700';
+          fontElem[i].style.color = '#181818';
+          // Booking Section에 출력.
+          document.getElementById(showElem).innerHTML= fontElem[i].innerHTML;
+        } else{
+          fontElem[i].style.fontWeight = '400';
+          fontElem[i].style.color = '#C4C4C4';
+        }
+      }
+    },
+    // 해당 영화의 시간표 출력
+    showTimetable: function(movie, timetable){
+      for(let j=1; j<=movie.length; j++){
+        if(document.getElementById('movie-name'+j).checked){
+          for(let i=0; i<timetable.length; i++){
+            timetable[i].style.display = 'none';
+          }
+          document.getElementById('Timetable'+j).style.display = 'block';
+        }
       }
     }
-  }
+  };
 
 
   // 영화이름 클릭 이벤트
+  // 1. 클릭한 영화이름의 폰트스타일 변화.
+  // 2. '시간 선택' 파트 출력.
+  // 3. 해당 영화의 시간표 출력.
   $("input[name=movie-name]").click(function(){
-    changeFont(movieNames, nameLabels, "seat-desc-name");
-
-    // 같은 섹션 안의 '시간 선택' 파트가 출력.
+    booking.changeFont(call.movieNames, call.nameLabels, "seat-desc-name");
+    // HTML에서 같은 섹션 안의 '시간 선택' 파트가 출력.
     document.querySelector('.option-items:nth-of-type(2)').style.display = 'block';
 
-    // 해당 영화의 시간표 출력
-    for(let j=1; j<=movieNames.length; j++){
-      if(document.getElementById('movie-name'+j).checked){
-        for(let i=0; i<timetables.length; i++){
-          timetables[i].style.display = 'none';
-        }
-        document.getElementById('Timetable'+j).style.display = 'block';
-      }
-    }
+    booking.showTimetable(call.movieNames, call.timetables);
   });
 
   // 영화시간 클릭 이벤트
-  let startTimes = document.querySelectorAll("input[name=start-time]");
-  let timeLabels = document.querySelectorAll("[id^=time]");
+  // 클릭한 영화시간 폰트스타일 변화.
+  call.startTimes = document.querySelectorAll("input[name=start-time]");
+  call.timeLabels = document.querySelectorAll("[id^=time]");
 
   $("input[name=start-time]").click(function(){
-    changeFont(startTimes, timeLabels, "seat-desc-time");
+    booking.changeFont(call.startTimes, call.timeLabels, "seat-desc-time");
   });
-
 
 
 
@@ -225,14 +236,14 @@ window.onload = function() {
   // (Over 5, alert message & reset 'number of person' and 'price')
   // 3. '누적' 인원 5명 이하 - '최종결정금액' 계산
   // (Under 5, accumulate total price)
-  const adult = document.querySelectorAll("#adult option");
-  const teen = document.querySelectorAll("#Teenager option");
-  const child = document.querySelectorAll("#child option");
-  const prefer = document.querySelectorAll("#preferential-treatment option");
+  let adult = document.querySelectorAll("#adult option");
+  let teen = document.querySelectorAll("#Teenager option");
+  let child = document.querySelectorAll("#child option");
+  let prefer = document.querySelectorAll("#preferential-treatment option");
 
   let numOfAdult, numOfTeen, numOfChild, numOfPrefer;
-  let numOfTotal = 0;
 
+  let numOfTotal = 0;
   let priceOfTotal = 0;
 
   // value 자료형 변경 함수 (문자형 -> 정수형)
@@ -267,8 +278,6 @@ window.onload = function() {
       console.log("수정된 총금액 "+priceOfTotal);
       obj[0].selected = 'true';
     }
-
-
   }
 
   // '인원' & '금액' 누적값 출력 함수.
