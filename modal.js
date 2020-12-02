@@ -159,7 +159,7 @@ window.onload = function() {
     nameLabels:document.querySelectorAll("[id^=name]"),
   };
 
-  let booking = {
+  let bookingEvent = {
     // 폰트 변경 & HTML Booking Section에 출력하는 함수.
     changeFont: function(checkedElem, fontElem, showElem){
       for(let i=0; i<checkedElem.length; i++){
@@ -188,17 +188,16 @@ window.onload = function() {
     }
   };
 
-
   // 영화이름 클릭 이벤트
   // 1. 클릭한 영화이름의 폰트스타일 변화.
   // 2. '시간 선택' 파트 출력.
   // 3. 해당 영화의 시간표 출력.
   $("input[name=movie-name]").click(function(){
-    booking.changeFont(call.movieNames, call.nameLabels, "seat-desc-name");
+    bookingEvent.changeFont(call.movieNames, call.nameLabels, "seat-desc-name");
     // HTML에서 같은 섹션 안의 '시간 선택' 파트가 출력.
     document.querySelector('.option-items:nth-of-type(2)').style.display = 'block';
 
-    booking.showTimetable(call.movieNames, call.timetables);
+    bookingEvent.showTimetable(call.movieNames, call.timetables);
   });
 
   // 영화시간 클릭 이벤트
@@ -207,8 +206,9 @@ window.onload = function() {
   call.timeLabels = document.querySelectorAll("[id^=time]");
 
   $("input[name=start-time]").click(function(){
-    booking.changeFont(call.startTimes, call.timeLabels, "seat-desc-time");
+    bookingEvent.changeFont(call.startTimes, call.timeLabels, "seat-desc-time");
   });
+
 
 
 
@@ -236,118 +236,93 @@ window.onload = function() {
   // (Over 5, alert message & reset 'number of person' and 'price')
   // 3. '누적' 인원 5명 이하 - '최종결정금액' 계산
   // (Under 5, accumulate total price)
-  let adult = document.querySelectorAll("#adult option");
-  let teen = document.querySelectorAll("#Teenager option");
-  let child = document.querySelectorAll("#child option");
-  let prefer = document.querySelectorAll("#preferential-treatment option");
-
-  let numOfAdult, numOfTeen, numOfChild, numOfPrefer;
-
   let numOfTotal = 0;
   let priceOfTotal = 0;
 
-  // value 자료형 변경 함수 (문자형 -> 정수형)
-  function changeDataType(age, num, dataSave){
-    for(let i=0; i<age.length; i++){
-      if(age[i].selected){
-        num = Number(age[i].value);
+  function Accumulate(option, price){
+    this.ageOption = document.querySelectorAll(option);
+    this.optionValue = 0;
+    this.price = price;
+    this.saveOptionValue = [0];
+
+    // value 자료형 변경 함수 (문자형 -> 정수형)
+    this.changeDataType = function (){
+      for(let i=0; i<this.ageOption.length; i++){
+        if(this.ageOption[i].selected){
+          this.optionValue = Number(this.ageOption[i].value);
+        }
+      }
+      this.saveOptionValue.push(this.optionValue);  // Option 선택값 저장
+    }
+
+    // '인원' & '금액' 누적값 계산 함수.
+    this.$Sum = function (){
+      let current=this.saveOptionValue[this.saveOptionValue.length-1];  //선택된 옵션 현재 값.
+      let past=this.saveOptionValue[this.saveOptionValue.length-2]; //선택된 옵션 이전 값.
+
+      // '누적' 인원 & 총금액.
+      numOfTotal += (current - past);
+      console.log("총원 "+numOfTotal);
+      priceOfTotal += this.price * (current - past);
+      console.log("총금액 "+priceOfTotal);
+
+      // 누적 인원수 5명 초과시, 선택한 인원과 금액을 초기화.
+      if(numOfTotal>5){
+        alert("인원 선택은 최대 5명입니다.");
+        numOfTotal -= current;
+        this.saveOptionValue[this.saveOptionValue.length-1]="0";
+        console.log("수정된 총원 "+numOfTotal);
+        priceOfTotal -= this.price * current;
+        console.log("수정된 총금액 "+priceOfTotal);
+        this.ageOption[0].selected = 'true';
       }
     }
-    dataSave.push(num);  // Option 선택값 저장
-  }
 
-  // '인원' & '금액' 누적값 계산 함수.
-  function $Sum (dataSave, price, obj){
-    // 선택된 Option Value.
-    let current = dataSave[dataSave.length-1]; //현재 값.
-    let past = dataSave[dataSave.length-2]; // 이전 값.
-
-    // '누적' 인원 & 총금액.
-    numOfTotal += (current - past);
-    console.log("총원 "+numOfTotal);
-    priceOfTotal += price * (current - past);
-    console.log("총금액 "+priceOfTotal);
-
-    // 누적 인원수 5명 초과시, 선택한 인원과 금액이 초기화 됨.
-    if(numOfTotal>5){
-      alert("인원 선택은 최대 5명입니다.");
-      numOfTotal -= current;
-      dataSave[dataSave.length-1]="0";
-      console.log("수정된 총원 "+numOfTotal);
-      priceOfTotal -= price * current;
-      console.log("수정된 총금액 "+priceOfTotal);
-      obj[0].selected = 'true';
+    // '인원' & '금액' 누적값 출력 함수.
+    // 1. 좌석예약 Booking-desc의 dd에 출력.
+    // 2. 좌석 선택 활성화.
+    this.output$Sum = function(){
+      document.getElementById("seat-desc-count").innerHTML = "총 "+ numOfTotal +"명";
+      document.getElementById("seat-desc-price").innerHTML = this.numberWithCommas(priceOfTotal)+"원";
+      document.getElementById("seat-desc-count").style.opacity = '1';
+      document.getElementById("seat-desc-price").style.opacity = '1';
+      // 좌석 선택 활성화.
+      document.querySelector(".seat-table").style.pointerEvents = "auto";
+      document.querySelector(".seat-table").style.opacity = "1";
     }
-  }
 
-  // '인원' & '금액' 누적값 출력 함수.
-  // 1. 좌석예약 Booking-desc의 dd에 출력.
-  // 2. 좌석 선택 활성화.
-  function output$Sum(){
-    document.getElementById("seat-desc-count").innerHTML = "총 "+ numOfTotal +"명";
-    document.getElementById("seat-desc-price").innerHTML = numberWithCommas(priceOfTotal)+"원";
-    document.getElementById("seat-desc-count").style.opacity = '1';
-    document.getElementById("seat-desc-price").style.opacity = '1';
-    // 좌석 선택 활성화.
-    document.querySelector(".seat-table").style.pointerEvents = "auto";
-    document.querySelector(".seat-table").style.opacity = "1";
-  }
+    // 회계형 숫자표현 - stackoverflow에서 긁어옴.
+    this.numberWithCommas = function(x) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+  };
 
-  // 회계형 숫자표현 - stackoverflow에서 긁어옴.
-  function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
-
+  let ageType1 = new Accumulate('#adult option', 12000);
+  let ageType2 = new Accumulate('#Teenager option', 9000);
+  let ageType3 = new Accumulate('#child option', 6000);
+  let ageType4 = new Accumulate('#preferential-treatment option', 3000);
 
   // Click Event (Type of age)
-  // '누적' 인원 & 금액 계산 후 출력.
-  let dataSaveAdult = [0];
   $("select[name=adult]").change(function(){
-    changeDataType(adult, numOfAdult, dataSaveAdult);
-
-    console.log("성인 ["+dataSaveAdult+"]");
-    console.log("선택인원 "+numOfAdult);
-
-    $Sum(dataSaveAdult, 12000, adult);
-    output$Sum();
+    ageType1.changeDataType();
+    ageType1.$Sum();
+    ageType1.output$Sum();
   });
-
-  let dataSaveTeen = [0];
   $("select[name=Teenager]").change(function(){
-    changeDataType(teen, numOfTeen, dataSaveTeen);
-
-    console.log("청소년 ["+dataSaveTeen+"]");
-    console.log("선택인원 "+numOfTeen);
-
-    $Sum(dataSaveTeen, 9000, teen);
-    output$Sum();
+    ageType2.changeDataType();
+    ageType2.$Sum();
+    ageType2.output$Sum();
   });
-
-
-  let dataSaveChild = [0];
   $("select[name=child]").change(function(){
-    changeDataType(child, numOfChild, dataSaveChild);
-
-    console.log("어린이 ["+dataSaveChild+"]");
-    console.log("선택인원 "+numOfChild);
-
-    $Sum(dataSaveChild, 6000, child);
-    output$Sum();
+    ageType3.changeDataType();
+    ageType3.$Sum();
+    ageType3.output$Sum();
   });
-
-
-  let dataSavePrefer = [0];
   $("select[name=preferential-treatment]").change(function(){
-    changeDataType(prefer, numOfPrefer, dataSavePrefer);
-
-    console.log("우대 ["+dataSavePrefer+"]");
-    console.log("선택인원 "+numOfPrefer);
-
-    $Sum(dataSavePrefer, 3000, prefer);
-    output$Sum();
+    ageType4.changeDataType();
+    ageType4.$Sum();
+    ageType4.output$Sum();
   });
-
-
 
 
 
@@ -356,10 +331,10 @@ window.onload = function() {
   // 1. 인원 수 지정한 만큼만 체크 가능.
   // 2. Input:checked.value는 Booking-desc에 출력.
   // 3. 인원 수 만큼 체크되면, 모든 체크박스 & 인원 선택 불가.
-  const checkboxs = document.querySelectorAll('input[name=seat]');
-  let checkedSeat = []; // Input:checked 값 저장. (Output - HTML Booking-desc part)
-  const seatInHtml = document.getElementById("seat-desc-seat");
-  const ageTypes = document.querySelectorAll('.age');
+  call.checkboxs = document.querySelectorAll('input[name=seat]');
+  call.seatInHtml = document.getElementById("seat-desc-seat");
+  call.ageTypes = document.querySelectorAll('.age');
+  let checkedSeat = []; // Input:checked 값 저장.
 
   function toUseElem(elem, pointer, opacity){
     for(let i=0; i<elem.length; i++){
@@ -371,9 +346,9 @@ window.onload = function() {
   $("input[name=seat]").change(function(){
     let checkedBoxs = document.querySelectorAll('.seat-table input[type=checkbox]:checked').length;
 
-    for(let i=0; i<checkboxs.length; i++){
-      if(checkboxs[i].checked){
-        checkedSeat.push(checkboxs[i].value+" ");
+    for(let i=0; i<call.checkboxs.length; i++){
+      if(call.checkboxs[i].checked){
+        checkedSeat.push(call.checkboxs[i].value);
       }
     }
 
@@ -382,16 +357,16 @@ window.onload = function() {
 
     // 인원 선택 수만큼 체크되면, 모든 체크박스 & 인원 선택불가로 변경.
     if(checkedBoxs>=numOfTotal){
-      for(let i=0; i<checkboxs.length; i++){
+      for(let i=0; i<call.checkboxs.length; i++){
         document.querySelector(".seat-table table").style.pointerEvents = "none";
         document.querySelector(".seat-table table").style.opacity = "0.5";
       }
-      toUseElem(ageTypes, 'none', '0.5');
+      toUseElem(call.ageTypes, 'none', '0.5');
     }
 
     // Input:checked.value는 Booking-desc에 출력.
-    seatInHtml.innerHTML = checkedSeat.slice(checkedSeat.length - numOfTotal,checkedSeat.length);
-    seatInHtml.style.opacity = '1';
+    call.seatInHtml.innerHTML = checkedSeat.slice(checkedSeat.length - numOfTotal,checkedSeat.length);
+    call.seatInHtml.style.opacity = '1';
   });
 
 
@@ -404,24 +379,23 @@ window.onload = function() {
   // 1. 인원 선택 활성화.
   // 2. 누적값 (인원 & 금액) 0으로 초기화.
   // 3. 인원 [option:selected].value 저장한 배열 [0]으로 초기화.
-  // 4. 좌석 [input:checked].length 저장한 배열 [0]으로 초기화.
+  // 4. 좌석 [input[name=seat]:checked].value 저장한 배열 [0]으로 초기화.
   // 5. HTML Booking-desc part 출력값 초기화.
-  // 6. 좌석 선택하는 div pointerEvents 활성화.
+  // 6. HTML - <div class="seat-table">의 자식태그 <table> pointerEvents 활성화.
   // 변수 중복 사용
-  // const checkboxs = document.querySelectorAll('input[name=seat]');
+  // let checkedSeat = []; // Input:checked 값 저장. (Output - HTML Booking-desc part)
+  // call.ageTypes = document.querySelectorAll('.age');
   // 함수 중복 사용 toUseElem();
   $('.reset-button').click(function(){
-    let ageTypes = document.querySelectorAll('.age');
-
-    toUseElem(ageTypes, 'auto', '1');
+    toUseElem(call.ageTypes, 'auto', '1');
 
     numOfTotal = 0;
     priceOfTotal = 0;
 
-    dataSaveAdult = [0];
-    dataSaveTeen = [0];
-    dataSaveChild = [0];
-    dataSavePrefer = [0];
+    ageType1.saveOptionValue = [0];
+    ageType2.saveOptionValue = [0];
+    ageType3.saveOptionValue = [0];
+    ageType4.saveOptionValue = [0];
 
     checkedSeat = [0];
 
@@ -429,7 +403,7 @@ window.onload = function() {
     document.getElementById('seat-desc-seat').innerHTML = "";
     document.getElementById('seat-desc-price').innerHTML = "";
 
-    for(let i=0; i<checkboxs.length; i++){
+    for(let i=0; i<call.checkboxs.length; i++){
       document.querySelector(".seat-table table").style.pointerEvents = "auto";
       document.querySelector(".seat-table table").style.opacity = "1";
     }
