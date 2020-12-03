@@ -1,4 +1,4 @@
-window.onload = function() {
+window.addEventListener('DOMContentLoaded', function() {
 
   // Main page
   // 1. 모달 '열림' & 배경 '블러' ('Open' Modal & 'Blur' Background)
@@ -15,8 +15,8 @@ window.onload = function() {
     }
   };
 
-  let login = new Modal('.modal-wrap');
-  let signIn = new Modal('section.modal-wrap.signin');
+  const login = new Modal('.modal-wrap');
+  const signIn = new Modal('section.modal-wrap.signin');
 
   $(".login-modal-button").click(function() {
     login.open();
@@ -24,7 +24,6 @@ window.onload = function() {
   $(".signin-modal-button").click(function() {
     signIn.open();
   });
-
 
   $(".modal-close").off("click").click(function() {
     login.close();
@@ -88,7 +87,7 @@ window.onload = function() {
   // (Click 'more-button', hidden button)
   // 2. '더보기' 버튼 누르면, display:none;영역 출력.
   // (Click 'more-button', We can see display:none; part)
-  let reviews=document.querySelectorAll('.user-review .col-md-4');
+  let reviews = document.querySelectorAll('.user-review .col-md-4');
 
   function moreReviews(){
     for(i=3; i<reviews.length;i++ ){
@@ -153,11 +152,10 @@ window.onload = function() {
   // 2. 선택한 영화이름/영화시간이 HTML Booking Section에 출력.
   // (Output movie name/time to HTML Booking Section)
   // 3. 영화이름 누르면, 시간 선택 파트와 영화의 상영시간표가 출력.
-  let call = {
-    timetables:document.querySelectorAll("[id^=Timetable]"),
-    movieNames:document.querySelectorAll("input[name=movie-name]"),
-    nameLabels:document.querySelectorAll("[id^=name]"),
-  };
+  let timetables = document.querySelectorAll("[id^=Timetable]");
+  let movieNames = document.querySelectorAll("input[name=movie-name]");
+  let nameLabels = document.querySelectorAll("[id^=name]");
+
 
   let bookingEvent = {
     // 폰트 변경 & HTML Booking Section에 출력하는 함수.
@@ -193,20 +191,20 @@ window.onload = function() {
   // 2. '시간 선택' 파트 출력.
   // 3. 해당 영화의 시간표 출력.
   $("input[name=movie-name]").click(function(){
-    bookingEvent.changeFont(call.movieNames, call.nameLabels, "seat-desc-name");
+    bookingEvent.changeFont(movieNames, nameLabels, "seat-desc-name");
     // HTML에서 같은 섹션 안의 '시간 선택' 파트가 출력.
     document.querySelector('.option-items:nth-of-type(2)').style.display = 'block';
 
-    bookingEvent.showTimetable(call.movieNames, call.timetables);
+    bookingEvent.showTimetable(movieNames, timetables);
   });
 
   // 영화시간 클릭 이벤트
   // 클릭한 영화시간 폰트스타일 변화.
-  call.startTimes = document.querySelectorAll("input[name=start-time]");
-  call.timeLabels = document.querySelectorAll("[id^=time]");
+  let startTimes = document.querySelectorAll("input[name=start-time]");
+  let timeLabels = document.querySelectorAll("[id^=time]");
 
   $("input[name=start-time]").click(function(){
-    bookingEvent.changeFont(call.startTimes, call.timeLabels, "seat-desc-time");
+    bookingEvent.changeFont(startTimes, timeLabels, "seat-desc-time");
   });
 
 
@@ -331,9 +329,9 @@ window.onload = function() {
   // 1. 인원 수 지정한 만큼만 체크 가능.
   // 2. Input:checked.value는 Booking-desc에 출력.
   // 3. 인원 수 만큼 체크되면, 모든 체크박스 & 인원 선택 불가.
-  call.checkboxs = document.querySelectorAll('input[name=seat]');
-  call.seatInHtml = document.getElementById("seat-desc-seat");
-  call.ageTypes = document.querySelectorAll('.age');
+  let checkboxs = document.querySelectorAll('input[name=seat]');
+  let seatInHtml = document.getElementById("seat-desc-seat");
+  let ageTypes = document.querySelectorAll('.age');
   let checkedSeat = []; // Input:checked 값 저장.
 
   function toUseElem(elem, pointer, opacity){
@@ -346,9 +344,9 @@ window.onload = function() {
   $("input[name=seat]").change(function(){
     let checkedBoxs = document.querySelectorAll('.seat-table input[type=checkbox]:checked').length;
 
-    for(let i=0; i<call.checkboxs.length; i++){
-      if(call.checkboxs[i].checked){
-        checkedSeat.push(call.checkboxs[i].value);
+    for(let i=0; i<checkboxs.length; i++){
+      if(checkboxs[i].checked){
+        checkedSeat.push(checkboxs[i].value);
       }
     }
 
@@ -357,16 +355,16 @@ window.onload = function() {
 
     // 인원 선택 수만큼 체크되면, 모든 체크박스 & 인원 선택불가로 변경.
     if(checkedBoxs>=numOfTotal){
-      for(let i=0; i<call.checkboxs.length; i++){
+      for(let i=0; i<checkboxs.length; i++){
         document.querySelector(".seat-table table").style.pointerEvents = "none";
         document.querySelector(".seat-table table").style.opacity = "0.5";
       }
-      toUseElem(call.ageTypes, 'none', '0.5');
+      toUseElem(ageTypes, 'none', '0.5');
     }
 
     // Input:checked.value는 Booking-desc에 출력.
-    call.seatInHtml.innerHTML = checkedSeat.slice(checkedSeat.length - numOfTotal,checkedSeat.length);
-    call.seatInHtml.style.opacity = '1';
+    seatInHtml.innerHTML = checkedSeat.slice(checkedSeat.length - numOfTotal,checkedSeat.length);
+    seatInHtml.style.opacity = '1';
   });
 
 
@@ -384,10 +382,10 @@ window.onload = function() {
   // 6. HTML - <div class="seat-table">의 자식태그 <table> pointerEvents 활성화.
   // 변수 중복 사용
   // let checkedSeat = []; // Input:checked 값 저장. (Output - HTML Booking-desc part)
-  // call.ageTypes = document.querySelectorAll('.age');
+  // ageTypes = document.querySelectorAll('.age');
   // 함수 중복 사용 toUseElem();
   $('.reset-button').click(function(){
-    toUseElem(call.ageTypes, 'auto', '1');
+    toUseElem(ageTypes, 'auto', '1');
 
     numOfTotal = 0;
     priceOfTotal = 0;
@@ -403,10 +401,10 @@ window.onload = function() {
     document.getElementById('seat-desc-seat').innerHTML = "";
     document.getElementById('seat-desc-price').innerHTML = "";
 
-    for(let i=0; i<call.checkboxs.length; i++){
+    for(let i=0; i<checkboxs.length; i++){
       document.querySelector(".seat-table table").style.pointerEvents = "auto";
       document.querySelector(".seat-table table").style.opacity = "1";
     }
   });
 
-};
+});
