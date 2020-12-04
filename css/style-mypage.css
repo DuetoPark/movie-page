@@ -951,19 +951,19 @@ section:last-child{
     display: none;
   }
 
-  .page-header .logout{
+  .movie-header .logout{
     display: flex;
   }
 
-  .page-header .logout img{
+  .movie-header .logout img{
     display: block;
-    width:50px;
+    width: 50px;
     height: 50px;
     border-radius: 50%;
     border: 2px solid #F3F3F3;
   }
 
-  .page-header .logout-button{
+  .movie-header .logout-button{
     width:100px;
     height:50px;
     padding:0;
