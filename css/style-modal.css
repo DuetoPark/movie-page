@@ -1,4 +1,4 @@
-*{
+./assets/images*{
   box-sizing: border-box;
   margin: 0;
 }
@@ -121,7 +121,7 @@ textarea:active{
   height: 25px;
   border:none;
   background-color: transparent;
-  background-image: url('./pictures/close-button.png');
+  background-image: url('../assets/images/close-button.png');
   background-repeat: no-repeat;
   background-size: 21.5px 21.5px;
   background-position: center center;

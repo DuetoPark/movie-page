@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', function() {
   $(".login-button").click(function() {
     let userId = document.getElementById("userId").value;
 
-    location.href="01-main-after-login.html?userId="+userId;  //데이터 전송
+    location.href="./01-main-after-login.html?userId="+userId;  //데이터 전송
   });
 
 

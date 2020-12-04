@@ -6,21 +6,21 @@
     <meta name="author" content="DuetoPark">
     <meta name="keywords" content="movie">
     <meta name="description" content="movie advertising, booking page">
-    <title>Movie - 마이페이지</title>
+    <title>Movie - 비회원 좌석예약</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./style-mypage.css">
-    <link rel="stylesheet" href="./grid.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style-mypage.css">
+    <link rel="stylesheet" href="../css/grid.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="./modal.js"></script>
+    <script src="../assets/modal.js"></script>
   </head>
 
 
   <body>
     <strong class="sr-only">
-      현재 페이지는 무비 회원의 마이페이지 입니다.
-      프로필 수정, 좌석예매, 예매내역 확인, 작성후기 확인을 할 수 있습니다.
+      현재 페이지는 비회원의 좌석예약 페이지입니다.
+      영화, 상영시간, 인원, 좌석 선택 순으로 진행됩니다.
     </strong>
 
     <header class="movie-header">
@@ -29,118 +29,19 @@
           <div class="col-12">
             <div class="movie-title">
               <h1>
-                <a href="./01-main-after-login.html" aria-label="홈으로 이동">Movie</a>
+                <a href="./01-main.html">Movie</a>
               </h1>
             </div>
 
-            <button type="button"
-              class="menu-button"
-              aria-label="메뉴 열기">
-            </button>
-
-            <div class="logout">
-              <img src="./pictures/user.png" alt="User Dueto Park">
-              <a href="./01-main.html" class="logout-button">로그아웃</a>
-            </div>
           </div>
         </div>
       </div>
     </header>
 
 
-    <nav class="page-menu">
-      <h2 class="sr-only">나의 페이지 메뉴</h2>
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div>
-              <div class="page-menu-container">
-                <ul>
-                  <li class="page-menu-list">
-                    <a href="#modify-profile">프로필 수정</a>
-                  </li>
-                  <li class="page-menu-list">
-                    <a href="#reservation">좌석예매</a>
-                  </li>
-                  <li class="page-menu-list">
-                    <a href="#reservation-confirm">예매내역</a>
-                  </li>
-                  <li class="page-menu-list">
-                    <a href="#user-review">작성후기</a>
-                  </li>
-                </ul>
-              </div>
-
-              <button type="button"
-                class="close-button"
-                aria-label="메뉴 닫기">
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-
-
     <main>
-      <section class="modify-profile" id="modify-profile">
-        <h2 class="sr-only">프로필 수정</h2>
-        <span class="sr-only">
-          프로필 사진과 개인정보를 수정할 수 있습니다.
-          개인정보에는 이름, 아이디, 비밀번호, 이메일, 생년월일이 있습니다.
-        </span>
-
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-12 col-md-4">
-              <h2 class="section-title" aria-hidden="true">프로필 수정</h2>
-              <strong class="sr-only">프로필 사진 변경</strong>
-              <div class="modify-profile-image-card">
-                <div>
-                  <img src="./pictures/user.png" alt="" class="profile-image">
-                </div>
-                <form class="modify-profile-image-form" action="#" method="GET">
-                  <input type="file" accept="image/*" id="files" files/>
-                  <label for="files" aria-label="파일선택" class="select-file">파일첨부</label>
-                  <span>모든 이미지 파일 가능</span>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div class="row justify-content-center">
-            <div class="col-12 col-md-8">
-              <strong class="sr-only">개인정보 수정</strong>
-              <div class="modify-profile-info">
-                <form class="modify-profile-info-form" action="#" method="GET">
-                  <label for="userName">이름</label>
-                  <input type="text" id="userName" name="userName"
-                    placeholder="수정할 이름을 입력해주세요.">
-                  <label for="userId">아이디</label>
-                  <input type="text" id="userId" name="userId"
-                    placeholder="수정할 아이디를 입력해주세요.">
-                  <label for="userPassword">비밀번호</label>
-                  <input type="password" id="userPassword" name="userPassword"
-                    placeholder="수정할 비밀번호를 입력해주세요.">
-                  <label for="userPasswordConfirm">비밀번호 확인</label>
-                  <input type="password" id="userPasswordConfirm" name="userPasswordConfirm"
-                    placeholder="수정할 비밀번호를 재입력해주세요.">
-                  <label for="userEmail">이메일</label>
-                  <input type="email" id="userEmail" name="userEmail"
-                    placeholder="수정할 이메일을 입력해주세요.">
-                  <label for="userBirth">생년월일</label>
-                  <input type="text" id="userBirth" name="userBirth"
-                    placeholder="수정할 생년월일을 입력해주세요.">
-
-                  <button type="submit" class="mypage-button profile-save-button">저장하기</button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section class="reservation" id="reservation">
-        <h1 class="sr-only">좌석예매</h1>
+        <h1 class="sr-only">비회원 좌석예매</h1>
         <span class="sr-only">
           좌석예매는 영화, 상영시간, 인원, 좌석 선택 순으로 진행됩니다.
         </span>
@@ -583,7 +484,7 @@
                       좌석 다시 선택
                     </button>
 
-                    <button type="submit"class="mypage-button complete-button">좌석 선택 완료</button>
+                    <button type="submit" class="mypage-button complete-button">좌석 선택 완료</button>
                   </div>
                 </div>
               </div>
@@ -592,230 +493,8 @@
         </form>
       </section>
 
-      <section class="reservation-confirm" id="reservation-confirm">
-        <h2 class="sr-only">예매내역</h2>
-        <span class="sr-only">
-          관람 전 영화와 관람을 끝낸 영화의 내역을 제공합니다.
-        </span>
-
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-12">
-              <h2 class="section-title" aria-hidden="true">예매내역</h2>
-            </div>
-            <div class="col-10">
-              <div class="reservation-confirm-soon">
-                <strong class="section-subtitle">관람 전 영화</strong>
-                <dl class="reservation-confirm-lists">
-                  <div class="reservation-confirm-items">
-                    <dt>날짜</dt>
-                    <dd aria-label="21XX년 시월 25일">21XX-10-25</dd>
-                  </div>
-                  <div class="reservation-confirm-items">
-                    <dt>영화이름</dt>
-                    <dd>록키호러픽쳐쇼</dd>
-                  </div>
-                  <div class="reservation-confirm-items">
-                    <dt>상영시간</dt>
-                    <dd aria-label="오후 열시 50분부터 오후 열두시 30분">22:50~24:30</dd>
-                  </div>
-                  <div class="reservation-confirm-items">
-                    <dt>인원</dt>
-                    <dd aria-label="2명">2</dd>
-                  </div>
-                  <div class="reservation-confirm-items">
-                    <dt>좌석</dt>
-                    <dd>I8, I9</dd>
-                  </div>
-                </dl>
-              </div>
-
-              <button type="button" class="fill-button seen-confirm-button">
-                이전 관람내역 확인<br/>
-              </button>
-            </div>
-            <div class="col-10">
-              <div class="reservation-confirm-seen">
-                <strong class="section-subtitle">이전 관람내역</strong>
-                <dl class="reservation-confirm-lists">
-                  <div>
-                    <dt>날짜</dt>
-                    <dd aria-label="21XX년 8월 31일">21XX-08-31</dd>
-                  </div>
-                  <div>
-                    <dt>영화이름</dt>
-                    <dd>스타워즈</dd>
-                  </div>
-                  <div>
-                    <dt>상영시간</dt>
-                    <dd>17:20~19:30</dd>
-                  </div>
-                  <div>
-                    <dt>인원</dt>
-                    <dd aria-label="1명">1</dd>
-                  </div>
-                  <div>
-                    <dt>좌석</dt>
-                    <dd>H10</dd>
-                  </div>
-                </dl>
-
-                <dl class="reservation-confirm-lists">
-                  <div>
-                    <dt>날짜</dt>
-                    <dd aria-label="21XX년 8월 22일">21XX-08-22</dd>
-                  </div>
-                  <div>
-                    <dt>영화이름</dt>
-                    <dd>슈퍼배드3</dd>
-                  </div>
-                  <div>
-                    <dt>상영시간</dt>
-                    <dd>10:35~12:15</dd>
-                  </div>
-                  <div>
-                    <dt>인원</dt>
-                    <dd aria-label="1명">1</dd>
-                  </div>
-                  <div>
-                    <dt>좌석</dt>
-                    <dd>L8</dd>
-                  </div>
-                </dl>
-
-                <dl class="reservation-confirm-lists">
-                  <div>
-                    <dt>날짜</dt>
-                    <dd aria-label="21XX년 7월 8일">21XX-07-08</dd>
-                  </div>
-                  <div>
-                    <dt>영화이름</dt>
-                    <dd>스페이스 오디세이</dd>
-                  </div>
-                  <div>
-                    <dt>상영시간</dt>
-                    <dd>22:40~25:10</dd>
-                  </div>
-                  <div>
-                    <dt>인원</dt>
-                    <dd aria-label="2명">1</dd>
-                  </div>
-                  <div>
-                    <dt>좌석</dt>
-                    <dd>H9</dd>
-                  </div>
-                </dl>
-
-                <div class="pagenation">
-                  <button type="button" class="page-button prev">&lt</button>
-                  <button type="button" class="page-button 1-page">1</button>
-                  <button type="button" class="page-button 2-page">2</button>
-                  <button type="button" class="page-button 3-page">3</button>
-                  <button type="button" class="page-button 4-page">4</button>
-                  <button type="button" class="page-button 5-page">5</button>
-                  <button type="button" class="page-button next">&gt</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
 
-      <section class="user-review" id="user-review">
-        <h2 class="section-title">작성후기</h2>
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-12 col-md-4">
-              <div class="user-review-items">
-                <dl>
-                  <dt>영화</dt>
-                  <dd>스타워즈</dd>
-                  <dt>후기</dt>
-                  <dd><strong>시간이 지나도 언제나 세련된 영화</strong></dd>
-                  <dt>별점</dt>
-                  <dd><span aria-label="5점">★★★★★</span></dd>
-                  <dt>날짜</dt>
-                  <dd><span aria-label="21XX년 9월 2일">21XX-09-02</span></dd>
-                </dl>
-              </div>
-            </div>
-            <div class="col-12 col-md-4">
-              <div class="user-review-items">
-                <dl>
-                  <dt>영화</dt>
-                  <dd>슈퍼배드3</dd>
-                  <dt>후기</dt>
-                  <dd><strong>친오빠가 이 영화를 보고나서 빠냐냐를 시도때도 없이 울부짖어서 짜증나요.</strong></dd>
-                  <dt>별점</dt>
-                  <dd><span aria-label="4점">★★★★☆</span></dd>
-                  <dt>날짜</dt>
-                  <dd><span aria-label="21XX년 8월 22일">21XX-08-22</span></dd>
-                </dl>
-              </div>
-            </div>
-            <div class="col-12 col-md-4">
-              <div class="user-review-items">
-                <dl>
-                  <dt>영화</dt>
-                  <dd>스페이스 오디세이</dd>
-                  <dt>후기</dt>
-                  <dd><strong>왜 SF영화의 바이블인지 알 것 같다.</strong></dd>
-                  <dt>별점</dt>
-                  <dd><span aria-label="5점">★★★★★</span></dd>
-                  <dt>날짜</dt>
-                  <dd><span aria-label="21XX년 7월 8일">21XX-07-08</span></dd>
-                </dl>
-              </div>
-            </div>
-
-            <button type="button" class="fill-button more-button">더보기</button>
-
-            <div class="col-12 col-md-4">
-              <div class="user-review-items">
-                <dl>
-                  <dt>영화</dt>
-                  <dd>그랜드 부다페스트 호텔</dd>
-                  <dt>후기</dt>
-                  <dd><strong>아름다운 색감으로 그려낸 무거운 주제가 인상적이다.</strong></dd>
-                  <dt>별점</dt>
-                  <dd><span aria-label="4점">★★★★☆</span></dd>
-                  <dt>날짜</dt>
-                  <dd><span aria-label="21XX년 6월 25일">21XX-06-25</span></dd>
-                </dl>
-              </div>
-            </div>
-            <div class="col-12 col-md-4">
-              <div class="user-review-items">
-                <dl>
-                  <dt>영화</dt>
-                  <dd>터넷</dd>
-                  <dt>후기</dt>
-                  <dd><strong>속도가 빨라서 영화를 이해하기 어렵다고 하던데, 그냥 내용이 어려운 거였네요.</strong></dd>
-                  <dt>별점</dt>
-                  <dd><span aria-label="4점">★★★★☆</span></dd>
-                  <dt>날짜</dt>
-                  <dd><span aria-label="21XX년 6월 23일">21XX-06-23</span></dd>
-                </dl>
-              </div>
-            </div>
-            <div class="col-12 col-md-4">
-              <div class="user-review-items">
-                <dl>
-                  <dt>영화</dt>
-                  <dd>미스슬로운</dd>
-                  <dt>후기</dt>
-                  <dd><strong>야망있는 여자가 되겠다고 마음먹지만, 늘 그래왔듯이 오늘도 많이 먹기만 하겠지.</strong></dd>
-                  <dt>별점</dt>
-                  <dd><span aria-label="5점">★★★★★</span></dd>
-                  <dt>날짜</dt>
-                  <dd><span aria-label="21XX년 5월 5일">21XX-05-05</span></dd>
-                </dl>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
 
     <footer class="footer">
