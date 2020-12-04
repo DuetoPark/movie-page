@@ -21,8 +21,8 @@ table 태그를 이용한 기능이 뭐가 있을까? 생각하다가 떠올린 
     - 인원선택
     - 좌석선택
 
-## 디자인 툴
-* [Figma](https://www.figma.com/file/YRCjGUt8kyQv3VvMpmvSNM/Movie?node-id=0%3A1)
-
 ## 제작기간
 2020년 10월 19일 ~ 2020년 12월 04일
+
+## 디자인 툴
+* [Figma](https://www.figma.com/file/YRCjGUt8kyQv3VvMpmvSNM/Movie?node-id=0%3A1)
