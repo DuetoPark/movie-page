@@ -407,12 +407,11 @@ section:last-child{
 }
 
 .option-items-time{
-  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.option-items-time > input{
+.option-items-time input{
   position: absolute;
   z-index: -99;
   width:1px;
@@ -421,7 +420,7 @@ section:last-child{
   opacity: 0;
 }
 
-.option-items-time > label{
+.option-items-time label{
   display: inline-block;
   margin-right: 15px;
   margin-bottom: 16px;
@@ -435,9 +434,9 @@ section:last-child{
   transition: color 250ms ease-in-out;
 }
 
-.reservation .option-items-time > label:active,
-.reservation .option-items-time > label:hover,
-.reservation .option-items-time > label:focus{
+.option-items-time label:active,
+.option-items-time label:hover,
+.option-items-time label:focus{
   font-weight: 700;
   color: #181818;
 }
@@ -920,7 +919,7 @@ section:last-child{
   /* Page - menu */
   .page-menu{
     position: sticky;
-    left:0;
+    transform: none;
     width:100%;
     height:auto;
   }
@@ -1103,7 +1102,7 @@ section:last-child{
     justify-content: space-between;
   }
 
-  .option-items-time > label{
+  .option-items-time label{
     margin-right: 0px;
     margin-bottom: 0px;
     width:100px;
@@ -1243,7 +1242,7 @@ section:last-child{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height:400px;
+    height: 400px;
     padding: 0 11px;
   }
 
