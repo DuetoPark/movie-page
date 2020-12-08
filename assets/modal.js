@@ -180,7 +180,7 @@ window.addEventListener('DOMContentLoaded', function() {
           for(let i=0; i<timetable.length; i++){
             timetable[i].style.display = 'none';
           }
-          document.getElementById('Timetable'+j).style.display = 'block';
+          document.getElementById('Timetable'+j).style.display = 'flex';
         }
       }
     }
@@ -193,7 +193,7 @@ window.addEventListener('DOMContentLoaded', function() {
   $("input[name=movie-name]").click(function(){
     bookingEvent.changeFont(movieNames, nameLabels, "seat-desc-name");
     // HTML에서 같은 섹션 안의 '시간 선택' 파트가 출력.
-    document.querySelector('.option-items:nth-of-type(2)').style.display = 'block';
+    document.querySelector('div.option-items:nth-child(2)').style.display = 'block';
 
     bookingEvent.showTimetable(movieNames, timetables);
   });
