@@ -253,7 +253,7 @@ section:last-child{
 .page-menu{
   position: fixed;
   top:0;
-  left: -100vw;
+  transform: translateX(-100vw);
   z-index: 1;
   width:100vw;
   height:100vh;
@@ -350,12 +350,12 @@ section:last-child{
 
 
 /* Reservation */
-.reservation .option-items{
+.option-items{
   padding-left: 11px;
   margin-bottom: 49px;
 }
 
-.reservation .option-items:nth-of-type(2),
+.option-items:nth-of-type(2),
 #Timetable1,
 #Timetable2,
 #Timetable3,
@@ -369,11 +369,11 @@ section:last-child{
   animation-timing-function: ease-in-out;
 }
 
-.reservation .option-items:last-child{
+.option-items:last-of-type{
   margin-bottom: 0;
 }
 
-.reservation .option-items-movie > input{
+.option-items-movie input[type=radio]{
   position: absolute;
   z-index: -99;
   width:1px;
@@ -382,7 +382,7 @@ section:last-child{
   opacity: 0;
 }
 
-.reservation .option-items-movie > label{
+.option-items-movie label{
   display: block;
   margin-bottom: 16px;
   font-size: 28px;
@@ -442,64 +442,6 @@ section:last-child{
   color: #181818;
 }
 
-
-.option-items-count .radio-group{
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.option-items-count .radio-group:last-child{
-  margin-bottom: 0;
-}
-
-.option-items-count .radio-group > input{
-  position: absolute;
-  z-index: -99;
-  width:1px;
-  height:1px;
-  overflow: hidden;
-  opacity: 0;
-}
-
-.option-items-count .radio-group > label{
-  display: inline-block;
-  width:20px;
-  height:20px;
-  margin-right: 16px;
-  border-radius: 50%;
-  background-color: #C4C4C4;
-  cursor: pointer;
-  transition: background-color 250ms ease-in-out;
-}
-
-
-.option-items-count .radio-group > label:hover,
-.option-items-count .radio-group > label:active,
-.option-items-count .radio-group > label:focus{
-  background-color: #AB47F9;
-}
-
-.option-items-count .radio-group > label::after{
-  content : '';
-  display: block;
-  position: absolute;
-  top:50%;
-  left: 5px;
-  transform: translateY(-50%);
-  width:10px;
-  height:10px;
-  border-radius: 50%;
-  background-color: #FFFFFF;
-}
-
-.option-items-count .radio-group > span{
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 1.25;
-  letter-spacing: -0.01em;
-}
 
 .select-seat-button{
   display: block;
@@ -1153,7 +1095,7 @@ section:last-child{
     background-color: #FFFFFF;
   }
 
-  .reservation .option-items{
+  .option-items{
     padding-left: 0;
   }
 
@@ -1165,15 +1107,6 @@ section:last-child{
     margin-right: 0px;
     margin-bottom: 0px;
     width:100px;
-  }
-
-  .reservation .option-items-count{
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .option-items-count .radio-group{
-    margin-bottom: 0;
   }
 
 

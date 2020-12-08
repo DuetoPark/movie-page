@@ -54,7 +54,7 @@ window.addEventListener('DOMContentLoaded', function() {
   // 2. 닫힘 버튼 누르면, 스크린 왼쪽으로 튀어나감.
   // (Click close button, Menu run to the left of the screen)
   function moveMenu(left, opacity){
-    document.querySelector('.page-menu').style.left=left;
+    document.querySelector('.page-menu').style.transform='translateX('+left+')';
     document.querySelector('.page-menu').style.opacity=opacity;
   }
 
@@ -139,7 +139,7 @@ window.addEventListener('DOMContentLoaded', function() {
         scrollTop: $($.attr(this, 'href')).offset().top
       }, 500);
 
-      document.querySelector('.page-menu').style.left='-100vw';
+      document.querySelector('.page-menu').style.transform='translateX(-100vw)';
     });
 
 
@@ -355,10 +355,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
     // 인원 선택 수만큼 체크되면, 모든 체크박스 & 인원 선택불가로 변경.
     if(checkedBoxs>=numOfTotal){
-      for(let i=0; i<checkboxs.length; i++){
-        document.querySelector(".seat-table table").style.pointerEvents = "none";
-        document.querySelector(".seat-table table").style.opacity = "0.5";
-      }
+      document.querySelector(".seat-table table").style.pointerEvents = "none";
+      document.querySelector(".seat-table table").style.opacity = "0.5";
       toUseElem(ageTypes, 'none', '0.5');
     }
 
