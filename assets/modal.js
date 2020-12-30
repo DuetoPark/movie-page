@@ -1,5 +1,4 @@
 window.addEventListener('DOMContentLoaded', function() {
-
   // Main page
   // 1. 모달 '열림' & 배경 '블러' ('Open' Modal & 'Blur' Background)
   // 2. 모달 '닫힘' & 배경 '선명' ('Close' Modal & 'Clear' Background)
@@ -48,24 +47,29 @@ window.addEventListener('DOMContentLoaded', function() {
 
 
   // My page
-  // Open Menu (CSS display:none; 사용 안 함)
-  // 1. 메뉴 버튼 누르면, 스크린 왼쪽에서 튀어나옴.
-  // (Click menu button, Menu poping out form the left side of the screen)
-  // 2. 닫힘 버튼 누르면, 스크린 왼쪽으로 튀어나감.
-  // (Click close button, Menu run to the left of the screen)
-  function moveMenu(left, opacity){
-    document.querySelector('.page-menu').style.transform='translateX('+left+')';
-    document.querySelector('.page-menu').style.opacity=opacity;
-  }
+  // Open Menu
+  function Menu (element){
+    this.element = element;
+    this.open = function(){
+      document.querySelector(this.element).style.display='block';
+    }
+    this.close = function(){
+      document.querySelector('.page-menu').style.display = 'none';
+    }
+  };
+
+
+
+  const menu = new Menu('.page-menu');
 
   // Open Menu
   $(".menu-button").click(function() {
-    moveMenu('0','1');
+    menu.open();
   });
 
   // Close Menu
   $(".close-button").click(function() {
-    moveMenu('-100vw','0');
+    menu.close();
   });
 
 
@@ -139,8 +143,30 @@ window.addEventListener('DOMContentLoaded', function() {
         scrollTop: $($.attr(this, 'href')).offset().top
       }, 500);
 
-      document.querySelector('.page-menu').style.transform='translateX(-100vw)';
+      if (document.body.clientWidth<768) {
+        document.querySelector('.page-menu').style.display = 'none';
+      }
     });
+
+
+    const pageMenu = document.querySelector('.page-menu');
+
+    let onResize = function () {
+      if (document.body.clientWidth>=768) {
+        pageMenu.style.display = 'block';
+      } else if (document.body.clientWidth<768) {
+        pageMenu.style.display = 'none';
+      }
+    }
+
+    window.addEventListener('resize', onResize);
+    // on('click', '.profile-save-button', function (event) {
+    //   event.preventDefault();
+    //   if (document.body.clientWidth>=768) {
+    //     $('.page-menu').addClass('menu-display');
+    //   }
+    // });
+    //
 
 
 
@@ -404,5 +430,4 @@ window.addEventListener('DOMContentLoaded', function() {
       document.querySelector(".seat-table table").style.opacity = "1";
     }
   });
-
 });

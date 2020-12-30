@@ -251,14 +251,16 @@ section:last-child{
 
 /* Page - Menu */
 .page-menu{
+  display: none;
   position: fixed;
   top:0;
-  transform: translateX(-100vw);
   z-index: 1;
   width:100vw;
   height:100vh;
   background-color: #FFFFFF;
-  transition: all 250ms ease-in-out;  /* 자바스크립트 Open Menu - left, opacity*/
+  animation-name: pop;
+  animation-duration: 250ms;
+  animation-timing-function: ease-in-out;
 }
 
 .page-menu-container{
@@ -367,10 +369,6 @@ section:last-child{
   animation-name: fadein;
   animation-duration: 250ms;
   animation-timing-function: ease-in-out;
-}
-
-.option-items:last-of-type{
-  margin-bottom: 0;
 }
 
 .option-items-movie input[type=radio]{
@@ -840,12 +838,6 @@ section:last-child{
     letter-spacing: -0.01em;
   }
 
-
-  /* Common Setting */
-  /* body{
-    background-color: transparent;
-  } */
-
   main{
     background-color: #F3F3F3;
   }
@@ -919,9 +911,13 @@ section:last-child{
   /* Page - menu */
   .page-menu{
     position: sticky;
-    transform: none;
+    display: block;
     width:100%;
     height:auto;
+  }
+
+  .menu-display{
+    display: block;
   }
 
   .page-menu-container{
