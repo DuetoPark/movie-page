@@ -1,39 +1,3 @@
-*{
-  box-sizing: border-box;
-  margin: 0;
-}
-
-body{
-  background-color: #F3F3F3;
-  font-family: 'Noto Sans KR', sans-serif;
-  color: #181818;
-}
-
-.sr-only {
-  position: absolute;
-  top: -9999px;
-  left: -9999px;
-  z-index: -1;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  visibility: hidden;
-}
-
-
-/* Custom Grid System - Fix countainer width */
-@media screen and (min-width:1200px) {
-  .container{
-    max-width: 960px !important;
-  }
-}
-
-@media screen and (min-width:768px) {
-  .container{
-    min-width: 960px !important;
-  }
-}
-
 /* Element Open Animation */
 @keyframes popup {
   0%{
@@ -60,72 +24,20 @@ body{
 
 
 /* Reset CSS */
-a{
-  display: inline-block;
+.modal-wrap a{
   color:#181818;
-  text-decoration: none;
 }
 
-ul,
-ol,
-li{
-  padding-left: 0;
-  margin-left: 0;
-  list-style: none;
-}
-
-h1{
-  font-weight: 700;
-  font-size: 36px;
+.modal-wrap h1{
   line-height: 1.111111111111111;
   letter-spacing: 0.05em;
   color:#181818;
 }
 
-input,
-textarea,
-button{
-  font-family: 'Noto Sans KR', sans-serif;
-  color: #181818;
+.modal-wrap input,
+.modal-wrap textarea,
+.modal-wrap button{
   border: none;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.333333333333333;
-  letter-spacing: -0.03%;
-}
-
-button:focus,
-button:active,
-input:focus,
-input:active,
-textarea:focus,
-textarea:active{
-  outline: none;
-  box-shadow: none;
-}
-
-
-/* Common Setting */
-.modal-wrap{
-  /* 자바스크립트 Open Modal (Login & Sign in) - display*/
-  display: none;
-  width:100%;
-  height: 100vh;
-}
-
-.modal-close{
-  position: absolute;
-  top:16px;
-  right:16px;
-  width:25px;
-  height: 25px;
-  border:none;
-  background-color: transparent;
-  background-image: url('../assets/images/close-button.png');
-  background-repeat: no-repeat;
-  background-size: 21.5px 21.5px;
-  background-position: center center;
-  cursor: pointer;
 }
 
 
@@ -417,120 +329,4 @@ textarea:active{
 .signin-button:focus,
 .signin-button:active{
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-
-
-/* >= 768px (Desktop) */
-@media screen and (min-width:768px) {
-  /* Common Setting */
-  .modal-close{
-    top:36px;
-    right:36px;
-  }
-
-  .modal-wrap::before{
-    content: '';
-    position: fixed;
-    top:0;
-    left: 0;
-    z-index: 1;
-    width:100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-
-
-  /* Login */
-  .login-modal{
-    width:450px;
-    height:600px;
-    margin: 0 auto;
-    border-radius: 32px;
-  }
-
-  .login-modal .image-card{
-    margin-bottom: 28px;
-  }
-
-  .login-modal .image-card img{
-    width:200px;
-    height: 200px;
-    border: 1px solid #C4C4C4;
-    margin-top: 0;
-    margin-bottom: 8px;
-  }
-
-  .login-modal .page-title{
-    font-size: 36px;
-    line-height: 1.055555555555556;
-  }
-
-  .login-form label{
-    padding-left: 8px;
-    font-size: 18px;
-  }
-
-  .login-form input{
-    width:290px;
-    height: 47px;
-    padding: 11px 11px;
-  }
-
-  .login-button{
-    width:290px;
-  }
-
-
-  /* Sign in */
-  .signin-modal{
-    top:10%;
-    transform: translate(-50%,0);
-    width:770px;
-    height: 80vh;
-    padding:80px 0;
-    border-radius: 32px;
-    animation-name: popupLong;
-  }
-
-  .signin-modal .image-card{
-    padding:0;
-    margin-bottom: 28px;
-  }
-
-  .signin-modal .image-card img{
-    display: inline-block;
-    height:200px;
-    margin-bottom: 8px;
-  }
-
-  .signin-modal .page-title{
-    font-size: 36px;
-    line-height: 1.055555555555556;
-  }
-
-  .scrollbar-content{
-    height: 400px;
-  }
-
-  .signin-form label{
-    padding-left: 8px;
-  }
-
-  .signin-form > input{
-    width:593px;
-    padding-left: 11px;
-  }
-
-  .checkbox-group label,
-  .checkbox-group input{
-    font-size: 15px;
-  }
-
-  .signin-button{
-    width:290px;
-    margin: 0 auto;
-  }
-
 }

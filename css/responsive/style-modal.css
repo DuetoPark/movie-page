@@ -1,0 +1,94 @@
+/* >= 768px (Desktop) */
+@media screen and (min-width:768px) {
+  /* Login */
+  .login-modal{
+    width:450px;
+    height:600px;
+    margin: 0 auto;
+    border-radius: 32px;
+  }
+
+  .login-modal .image-card{
+    margin-bottom: 28px;
+  }
+
+  .login-modal .image-card img{
+    width:200px;
+    height: 200px;
+    border: 1px solid #C4C4C4;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+
+  .login-modal .page-title{
+    font-size: 36px;
+    line-height: 1.055555555555556;
+  }
+
+  .login-form label{
+    padding-left: 8px;
+    font-size: 18px;
+  }
+
+  .login-form input{
+    width:290px;
+    height: 47px;
+    padding: 11px 11px;
+  }
+
+  .login-button{
+    width:290px;
+  }
+
+
+  /* Sign in */
+  .signin-modal{
+    top:10%;
+    transform: translate(-50%,0);
+    width:770px;
+    height: 80vh;
+    padding:80px 0;
+    border-radius: 32px;
+    animation-name: popupLong;
+  }
+
+  .signin-modal .image-card{
+    padding:0;
+    margin-bottom: 28px;
+  }
+
+  .signin-modal .image-card img{
+    display: inline-block;
+    height:200px;
+    margin-bottom: 8px;
+  }
+
+  .signin-modal .page-title{
+    font-size: 36px;
+    line-height: 1.055555555555556;
+  }
+
+  .scrollbar-content{
+    height: 400px;
+  }
+
+  .signin-form label{
+    padding-left: 8px;
+  }
+
+  .signin-form > input{
+    width:593px;
+    padding-left: 11px;
+  }
+
+  .checkbox-group label,
+  .checkbox-group input{
+    font-size: 15px;
+  }
+
+  .signin-button{
+    width:290px;
+    margin: 0 auto;
+  }
+
+}
