@@ -1,0 +1,463 @@
+/* >= 768px (Desktop) */
+@media screen and (min-width:768px) {
+  /* Reset CSS */
+  h1{
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+
+  main{
+    background-color: #F3F3F3;
+  }
+
+  section{
+    padding: 80px 0;
+    margin-bottom: 0;
+    background-color: transparent;
+  }
+
+  .section-title{
+    margin-bottom: 48px;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.388888888888889;
+    letter-spacing: -0.01em;
+  }
+
+  .section-subtitle{
+    left: -30px;
+  }
+
+  .mypage-button{
+    width:290px;
+  }
+
+  .fill-button{
+    display: block;
+  }
+
+
+  /* Page - Header */
+  .movie-title{
+    height: 120px;
+  }
+
+  .movie-title h1{
+    font-size: 64px;
+    letter-spacing: 0.05em;
+  }
+
+  .menu-button,
+  .close-button{
+    display: none;
+  }
+
+  .movie-header .logout{
+    display: flex;
+  }
+
+  .movie-header .logout img{
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #F3F3F3;
+  }
+
+  .movie-header .logout-button{
+    width:100px;
+    height:50px;
+    padding:0;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+
+
+  /* Page - menu */
+  .page-menu{
+    position: sticky;
+    display: block;
+    width:100%;
+    height:auto;
+  }
+
+  .menu-display{
+    display: block;
+  }
+
+  .page-menu-container{
+    margin: 0;
+  }
+
+  .page-menu-container ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+  }
+
+  .page-menu-list{
+    position: relative;
+    margin-bottom: 0;
+    margin-right: 30px;
+  }
+
+  .page-menu-list:last-child{
+    margin-right: 0;
+  }
+
+  .page-menu-list a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:210px;
+    height:70px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.666666666666667;
+    letter-spacing: -0.01em;
+  }
+
+  .page-menu-list::after{
+    content:'';
+    position: absolute;
+    bottom:0;
+    left: 50%;
+    transform: translateX(-50%);
+    width:0;
+    height:5px;
+    background-color: #AB47F9;
+    transition: width 250ms ease-in-out;
+  }
+
+  .page-menu-list:hover::after,
+  .page-menu-list:active::after,
+  .page-menu-list:focus::after{
+    width:100%;
+  }
+
+
+  /* Modifiy - Profile */
+  .modify-profile .container{
+    border-radius: 16px;
+    padding: 48px 0;
+    background-color: #FFFFFF;
+  }
+
+  .modify-profile .col-md-4{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .modify-profile .section-title{
+    display: inline-block;
+    margin-bottom: 80px;
+  }
+
+  .modify-profile-image-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 37px;
+  }
+
+  .modify-profile-image-card > div{
+    width: 240px;
+    height: 240px;
+    margin-bottom: 24px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #F3F3F3;
+  }
+
+  .profile-image{
+    display: block;
+    width: 240px;
+    height: auto;
+    position: relative;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+  }
+
+  .modify-profile-image-form input{
+    position: absolute;
+    z-index: -99;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+  }
+
+  .select-file{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:130px;
+    height: 40px;
+    margin:0 auto 8px auto;
+    border-radius: 8px;
+    background-color: #E0E0E0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.111111111111111;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: all 250ms ease-in-out;
+  }
+
+  .select-file:hover,
+  .select-file:active,
+  .select-file:focus{
+    background-color: #AB47F9;
+    color: #FFFFFF;
+  }
+
+  .modify-profile-image-form span{
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 1.428571428571429;
+    letter-spacing: -0.01em;
+  }
+
+
+
+  .modify-profile-info-form label{
+    margin-left: 18px;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .modify-profile-info-form input{
+    margin-bottom: 18px;
+    padding-left: 22px;
+    line-height: 1;
+  }
+
+  .modify-profile-info-form input:last-of-type{
+    margin-bottom: 72px;
+  }
+
+  .modify-profile-info-form input::placeholder{
+    line-height: 1;
+    color: #7B7B7B;
+  }
+
+
+
+  /* Reservation */
+  .reservation .container{
+    border-radius: 16px;
+    padding: 48px 0;
+    background-color: #FFFFFF;
+  }
+
+  .option-items{
+    padding-left: 0;
+  }
+
+  .option-items-time{
+    justify-content: space-between;
+  }
+
+  .option-items-time label{
+    margin-right: 0px;
+    margin-bottom: 0px;
+    width:100px;
+  }
+
+
+
+  /* Booking */
+  .booking .container{
+    border-radius: 16px;
+    padding: 48px 0;
+    background-color: #FFFFFF;
+  }
+
+  .booking-content{
+    padding-left: 0px;
+  }
+
+  .seat-table{
+    margin-bottom: 0px;
+  }
+
+  .booking-desc dt{
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+
+  .booking-desc dd{
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .reset-button{
+    width: 290px;
+  }
+
+
+
+  /* Reservation - Confirm */
+  .reservation-confirm .container{
+    border-radius: 16px;
+    padding: 48px 0;
+    background-color: #FFFFFF;
+  }
+
+  .reservation-confirm-soon,
+  .reservation-confirm-seen{
+    padding-left: 0;
+  }
+
+  .reservation-confirm-lists{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0;
+    margin-bottom: 40px;
+  }
+
+  .reservation-confirm-lists div:first-child{
+    width:130px;
+  }
+
+  .reservation-confirm-lists div:nth-child(2){
+    width:210px;
+  }
+
+  .reservation-confirm-lists div:nth-child(3){
+    width:130px;
+  }
+
+  .reservation-confirm-lists div:nth-child(4){
+    width:50px;
+  }
+
+  .reservation-confirm-lists div:last-child{
+    width:130px;
+  }
+
+  .reservation-confirm-lists dt{
+    font-size: 18px;
+    line-height: 1.111111111111111;
+  }
+
+  .reservation-confirm-lists dd{
+    margin-bottom: 36px;
+    font-size: 22px;
+    line-height: 1.136363636363636;
+  }
+
+  .reservation-confirm-seen .reservation-confirm-lists{
+    border:none;
+  }
+
+  .pagenation{
+    display: flex;
+    width:245px;
+    height: 35px;
+    margin: 0 auto;
+    border: 1px solid #E0E0E0;
+    font-size: 14px;
+  }
+
+  .pagenation .page-button{
+    display: block;
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    border:none;
+    border-right: 1px solid #E0E0E0;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .pagenation .page-button:hover,
+  .pagenation .page-button:active,
+  .pagenation .page-button:focus{
+    background-color: #AB47F9;
+    color: #FFFFFF;
+  }
+
+  .pagenation .page-button:last-child{
+    border-right: none;
+  }
+
+
+  /* User - review */
+  .user-review{
+    background-color: transparent;
+  }
+
+  .user-review .col-md-4:nth-of-type(4),
+  .user-review .col-md-4:nth-of-type(5),
+  .user-review .col-md-4:nth-of-type(6){
+    margin-bottom: 0;
+  }
+
+  .user-review-items{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 400px;
+    padding: 0 11px;
+  }
+
+  .user-review-items dt{
+    font-size: 12px;
+    line-height: 1.111111111111111;
+  }
+
+  .user-review-items dd{
+    font-size: 18px;
+  }
+
+  .user-review-items strong{
+    font-size: 24px;
+  }
+
+
+  /* Footer */
+  .footer{
+    padding: 32px 0;
+  }
+
+  .footer .row:first-child{
+    margin-bottom: 24px;
+  }
+
+  .footer .row:nth-child(2){
+    margin-bottom: 8px;
+  }
+
+  .footer .col-md-4{
+    margin-bottom: 0px;
+  }
+
+  .footer .col-md-4:nth-child(2),
+  .footer .col-md-4:nth-child(3){
+    text-align: right;
+  }
+
+  .footer-company-info{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .footer-company-info .data-group{
+    width:210px;
+  }
+
+  .footer-company-info .data-group{
+    margin-bottom: 0px;
+  }
+}
