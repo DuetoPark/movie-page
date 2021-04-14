@@ -1,0 +1,65 @@
+/* Custom Grid System - Fix countainer width */
+@media screen and (min-width:1200px) {
+  .container{
+    max-width: 960px !important;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .container{
+    min-width: 960px !important;
+  }
+}
+
+/* sr-only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+}
+
+
+/* Button */
+.fill-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 140px;
+  height: 42px;
+  border:none;
+  outline: none;
+  border-radius: 4px;
+  background-color: #C4C4C4;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.111111111111111;
+  letter-spacing: -0.05%;
+  cursor: pointer;
+  transition: opacity 250ms ease-in-out;
+}
+
+.fill-button:hover{
+  opacity: 50%;
+}
+
+/* cite */
+cite{
+  font-style: normal;
+}
+
+cite::before,
+cite::after{
+  content: '-';
+}
+
+/* align */
+.flex-column-center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
