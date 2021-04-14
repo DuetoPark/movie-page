@@ -8,15 +8,20 @@
     <meta name="description" content="movie advertising, booking page">
     <title>Movie</title>
 
+    <!-- 폰트 -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Reset CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/reset-css.css">
+    <!-- Framework -->
+    <link rel="stylesheet" href="../css/grid.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/style-modal.css">
-    <link rel="stylesheet" href="../css/grid.min.css">
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../assets/modal.js"></script>
-    <script src="../assets/random-image.js"></script>
+    <!-- 반응형 CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/responsive/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/responsive/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/responsive/style-modal.css">
   </head>
 
   <body>
@@ -81,7 +86,9 @@
               <div class="advertising-banner">
                 <span class="sr-only">광고 배너</span>
                 <strong lang="en">The Rocky Horror Picture Show</strong>
-                <img id="advertising-banner-image" alt="록키호러픽쳐쇼">
+                <img id="advertising-banner-image"
+                  src="../assets/images/록키호러픽쳐쇼2.gif"
+                  alt="록키호러픽쳐쇼">
                 <strong aria-hidden="true">The Rocky Horror Picture Show</strong>
               </div>
             </div>
@@ -370,5 +377,12 @@
       </footer>
     </div>
 
+    <!-- 라이브러리 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- 데이터 -->
+    <script src="../assets/data.js"></script>
+    <!-- 동작 -->
+    <script src="../assets/modal.js"></script>
+    <script src="../assets/random-image.js"></script>
   </body>
 </html>
