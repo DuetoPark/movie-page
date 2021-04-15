@@ -25,34 +25,17 @@
   </head>
 
   <body>
-    <strong class="sr-only">
-      사용자는 로그인을 하지 않은 상태입니다.
-      현재 페이지는 무비의 홈페이지입니다.
-      새로 개봉한 영화를 소개하고, 현재상영작 예약을 돕습니다.
-    </strong>
-
     <div class="modal-X">
-      <header class="movie-header">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <h1 class="movie-title">
-                <a href="./01-main.html" aria-label="홈으로 이동">Movie</a>
-              </h1>
-              <div class="button-group">
-                <span class="sr-only" aria-label="간편 메뉴"></span>
-                <button type="submit"
-                  class="login-modal-button fill-button"
-                  aria-label="로그인 버튼">
-                  로그인
-                </button>
-                <a href="./02-user-type.html"
-                  class="fill-button"
-                  aria-label="좌석확인 페이지로 이동">
-                  좌석확인
-                </a>
-              </div>
-            </div>
+      <header id="header" class="container">
+        <div class="row">
+          <h1 id='page-title' class="col-8">
+            <a href="./01-main.html">Movie</a>
+          </h1>
+          <div class="col-2">
+            <a href="./02-user-type.html" class="fill-button">예매/좌석확인</a>
+          </div>
+          <div class="col-2">
+            <button class="fill-button login-button" type="button">로그인</button>
           </div>
         </div>
       </header>
