@@ -14,20 +14,111 @@
   color: #181818;
 }
 
-.movie-header .button-group{
+
+/* Banner */
+#banner-container{
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 350px;
+  overflow: hidden;
+  background-color: #181818;
+}
+
+#banner-container .items{
+  max-width: 15%;
   display: flex;
   justify-content: center;
   align-items: center;
-  width:100%;
 }
 
-.movie-header .button-group button{
-  margin-right: 6px;
+#banner-container .name{
+  min-width: 500px;
+  height: 700px;
+  background: url(../assets/images/록키호러픽쳐쇼.jpg) no-repeat center;
+  background-size: contain;
+  color: rgba(0, 0, 0, 0);
+  transform: rotateZ(20deg);
+  transition: min-width 250ms ease-out, height 250ms ease-out, transform 250ms ease-out;
 }
 
-.button-group a:first-of-type{
-  margin-right: 6px;
+#banner-container .items:hover .name{
+  height: 900px;
+  transform: rotateZ(20deg) translateX(-130px);
 }
+
+
+/* Banner - info */
+.info{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-between;
+  width: 699px;
+  height: 390px;
+  padding: 40px;
+
+  border-radius: 4px;
+  opacity: 0.01;
+  background-color: #fff;
+  transition: opacity 250ms ease-out;
+}
+
+#banner-container .items.active .info{
+  position: absolute;
+  z-index: 1;
+  opacity: 1;
+}
+
+.image-group{
+  flex: 1 0 calc((100% - 116px) * 0.7);
+  margin-right: 36px;
+}
+
+.image-group .image{
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.image-group .review{
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.333333333333333;
+}
+
+.desc-group{
+  flex: 1 0 calc((100% - 116px) * 0.3);
+}
+
+.desc-title{
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.desc-dl{
+  font-size: 14px;
+  line-height: 1.428571428571429;
+}
+
+.desc-dl div{
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.desc-dl dt{
+  flex: 0 0 35px;
+  margin-right: 8px;
+  font-weight: 500;
+}
+
+.info button{
+  width: 178px;
+}
+
+
+
 
 .my-page{
   position: absolute;
