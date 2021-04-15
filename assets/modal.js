@@ -2,35 +2,37 @@
 // 모달 열림/닫힘 이벤트
 const prototypeModal = {
   nonModal: document.querySelector('.modal-X'),
+
+  handleModal: function() {
+    // bind로 인해 this 변경 (window --> modalFactory의 변수 'modal')
+    this.wrapper.classList.toggle('hidden');
+    this.wrapper.classList.toggle('modal-active');
+    this.nonModal.classList.toggle('modal-active');
+  },
+  clickEvent: function(openButton, closeButton) {
+    // this: modalFactory의 변수 'modal'
+    openButton.addEventListener('click', this.handleModal.bind(this));
+    closeButton.addEventListener('click', this.handleModal.bind(this));
+  },
 };
 
 function modalFactory(wrapper, openButton) {
-  const modal = Object.create(prototypeModal);
+  let modal = Object.create({});
   modal.wrapper = document.querySelector(wrapper);
   modal.closeButton = document.querySelector(wrapper+' .modal-close');
   modal.openButton = document.querySelector(openButton);
-  
-  modal.handleModal = function() {
-    modal.wrapper.classList.toggle('hidden');
-    modal.wrapper.classList.toggle('modal-active');
-    setTimeout(function () {
-      modal.nonModal.classList.toggle('modal-active');
-    }, 100);
-  };
-  modal.clickEvent = function() {
-    modal.openButton.addEventListener('click', modal.handleModal);
-    modal.closeButton.addEventListener('click', modal.handleModal);
-  };
+
+  modal.__proto__ = prototypeModal;
+
+  // 클릭 이벤트 실행
+  if (modal.wrapper) modal.clickEvent(modal.openButton, modal.closeButton);
 
   return modal;
 }
 
 const login = modalFactory('.modal-wrap', '.login-modal-button');
-const signIn = modalFactory('section.modal-wrap.signin', '.signin-modal-button');
+const signIn = modalFactory('.modal-wrap.signin', '.signin-modal-button');
 
-// modal 유무에 따라 클릭이벤트 실행
-if (login.wrapper) { login.clickEvent(); }
-if (signIn.wrapper) { signIn.clickEvent(); }
 
 
 
