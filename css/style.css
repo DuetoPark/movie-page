@@ -49,7 +49,7 @@
 
 
 /* Banner - info */
-.info{
+#banner-container .info{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -80,37 +80,8 @@
   margin-bottom: 8px;
 }
 
-.image-group .review{
-  text-align: center;
-  font-size: 12px;
-  line-height: 1.333333333333333;
-}
-
-.desc-group{
+#banner-container .desc-group{
   flex: 1 0 calc((100% - 116px) * 0.3);
-}
-
-.desc-title{
-  font-size: 18px;
-  font-weight: 500;
-  text-align: center;
-  margin-bottom: 16px;
-}
-
-.desc-dl{
-  font-size: 14px;
-  line-height: 1.428571428571429;
-}
-
-.desc-dl div{
-  display: flex;
-  margin-bottom: 8px;
-}
-
-.desc-dl dt{
-  flex: 0 0 35px;
-  margin-right: 8px;
-  font-weight: 500;
 }
 
 .info button{
@@ -162,7 +133,7 @@
   text-align: center;
   background: url(../assets/images/록키호러픽쳐쇼4.gif) no-repeat 0 -150px;
   background-size: cover;
-  color: #ffffff;
+  color: #F3F3F3;
 }
 
 #new::before{
@@ -171,12 +142,14 @@
   left: 0; top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .new-title,
 #new .review{
   position: relative;
+  z-index: 2;
+  color: #F3F3F3;
 }
 
 .new-title{
@@ -193,61 +166,59 @@
 }
 
 
+
+
 /* Playing */
-.playing{
-  padding: 40px 0;
-  background-color: #F3F3F3;
+#playing{
+  padding-top: 64px;
+}
+
+#playing-title{
+  margin-bottom: 32px;
+  font-size: 24px;
   text-align: center;
-}
-
-.playing .row:first-child{
-  margin-bottom: 70px;
-}
-
-.playing .row:nth-child(2){
-  margin-bottom: 72px;
-}
-
-.playing .col-md-4{
-  margin-bottom: 72px;
-}
-
-.playing .col-md-4:last-child{
-  margin-bottom: 0;
-}
-
-.playing-desc-blockquote{
-  margin-bottom: 8px;
-  font-size: 16px;
   line-height: 1.5;
-  letter-spacing: -0.05em;
 }
 
-.playing-desc img{
-  width:100%;
-  height: auto;
-  margin-bottom: 8px;
+#playing li[data-list=true]{
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 
+#playing .info{
+  padding: 16px;
+  border-radius: 4px;
+  background-color: #fff;
+  transition: box-shadow 250ms ease-in-out,
+    transform 250ms ease-in-out;
+}
 
-.playing-desc-title{
+#playing .info:hover{
+  box-shadow: 0 0 0 3px #99CBDB, 0 0 4px 4px rgba(0, 0, 0, 0.25);
+  transform: scale(1.02);
+}
+
+#playing .image{
+  width: 100%;
+
+  margin: 16px 0;
+}
+
+#playing .desc-group{
   margin-bottom: 16px;
-  font-size: 36px;
-  line-height: 1.111111111111111;
-  letter-spacing: -0.01em;
 }
 
-.playing-desc-details{
-  display:none;
+#playing button:hover{
+  background-color: #99CBDB;
+  box-shadow: none;
+  border: none;
+  color: #fff;
 }
 
-.playing-desc .ticketing{
-  background-color: #C4C4C4;
-  box-shadow: -8px -8px 7px #FFFFFF, 3px 3px 7px #7B7B7B;
-  margin: 0 auto;
-  line-height: 1.333333333333333;
-  letter-spacing: -0.03em;
-}
+
+
+
+
 
 
 /* Footer */
