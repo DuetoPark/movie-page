@@ -1,7 +1,7 @@
 /* >= 768px (Desktop) */
 @media screen and (min-width:768px) {
   /* Movie-header */
-  
+
 
   .my-page{
     display: flex;
@@ -20,39 +20,6 @@
     font-size: 20px;
   }
 
-
-
-
-  /* Advertising */
-  .advertising{
-    height:auto;
-    padding: 80px 0;
-  }
-
-  .advertising-title{
-    margin-bottom: 79px;
-    font-size: 64px;
-  }
-
-  .advertising-blockquote{
-    margin-bottom: 88px;
-    font-size: 24px;
-    line-height: 1.333333333333333;
-    text-align: center;
-  }
-
-  .advertising-banner strong{
-    font-size: 36px;
-    line-height: 1.333333333333333;
-  }
-
-  .advertising-banner strong:first-child{
-    margin-bottom: 16px;
-  }
-
-  .advertising-banner img{
-    margin-bottom: 16px;
-  }
 
 
   /* Playing */

@@ -9,7 +9,7 @@
   font-size: 36px;
   font-weight: 500;
   line-height: 1.111111111111111;
-  letter-spacing: 0.05;
+  letter-spacing: 0.05em;
   text-shadow: 4px 0 rgba(0, 0, 0, 0.25);
   color: #181818;
 }
@@ -151,45 +151,45 @@
 
 
 
-/* Advertising */
-.advertising{
+/* New */
+#new{
   position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #FCC4C4;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 230px;
+  padding: 36px;
   text-align: center;
+  background: url(../assets/images/록키호러픽쳐쇼4.gif) no-repeat 0 -150px;
+  background-size: cover;
+  color: #ffffff;
 }
 
-.advertising-title{
-  margin-bottom: 55px;
-  color: #FFFFFF;
-}
-
-.advertising-blockquote{
-  margin-bottom: 18px;
-  font-size: 16px;
-  line-height: 1.25;
-  letter-spacing: 0.01em;
-  text-align: left;
-}
-
-.advertising-banner strong{
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.111111111111111;
-  letter-spacing: 0.01em;
-}
-
-.advertising-banner strong:first-child{
-  margin-bottom: 8px;
-}
-
-.advertising-banner img{
+#new::before{
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
   width: 100%;
-  height: auto;
-  margin-bottom: 8px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.new-title,
+#new .review{
+  position: relative;
+}
+
+.new-title{
+  font: 24px;
+  font-weight: 500;
+  line-height: 1.333333333333333;
+  letter-spacing: 0.05em;
+}
+
+#new .review{
+  font-size: 14px;
+  line-height: 1.714285714285714;
+  letter-spacing: 0.01em;
 }
 
 
@@ -246,7 +246,7 @@
   box-shadow: -8px -8px 7px #FFFFFF, 3px 3px 7px #7B7B7B;
   margin: 0 auto;
   line-height: 1.333333333333333;
-  letter-spacing: -0.03%;
+  letter-spacing: -0.03em;
 }
 
 
@@ -256,7 +256,7 @@
   background-color: #E0E0E0;
   font-size: 12px;
   line-height: 1.166666666666667;
-  letter-spacing: -0.01%;
+  letter-spacing: -0.01em;
 }
 
 .footer .row{
