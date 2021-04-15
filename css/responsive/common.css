@@ -1,13 +1,5 @@
 /* >= 768px (Desktop) */
 @media screen and (min-width:768px) {
-  /* Button */
-  .fill-button{
-    width:210px;
-    height:50px;
-    font-size: 22px;
-    line-height: 1.090909090909091;
-  }
-
   /* Modal */
   .modal-close{
     top:36px;

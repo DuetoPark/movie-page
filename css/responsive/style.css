@@ -1,27 +1,7 @@
 /* >= 768px (Desktop) */
 @media screen and (min-width:768px) {
-  /* Reset CSS */
-  h1,
-  h2{
-    font-size: 64px;
-  }
-
   /* Movie-header */
-  .movie-header{
-    height: 300px;
-  }
-
-  .movie-header .movie-title{
-    margin-bottom:42px;
-    font-size: 64px;
-    letter-spacing: 0.05em;
-  }
-
-  .movie-header .button-group{
-    font-size: 22px;
-    line-height: 1.090909090909091;
-    letter-spacing: -0.03em;
-  }
+  
 
   .my-page{
     display: flex;
