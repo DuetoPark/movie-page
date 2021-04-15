@@ -1,7 +1,7 @@
 // Main page, user-type
 // 모달 열림/닫힘 이벤트
 const prototypeModal = {
-  nonModal: document.querySelector('.modal-X'),
+  nonModal: document.querySelector('.non-modal'),
 
   handleModal: function() {
     // bind로 인해 this 변경 (window --> modalFactory의 변수 'modal')
@@ -30,7 +30,7 @@ function modalFactory(wrapper, openButton) {
   return modal;
 }
 
-const login = modalFactory('.modal-wrap', '.login-modal-button');
+const login = modalFactory('.modal-wrap', '.login-button');
 const signIn = modalFactory('.modal-wrap.signin', '.signin-modal-button');
 
 
@@ -52,6 +52,49 @@ if (loginModal) {
   loginButton.addEventListener('click', sendUserId);
 }
 
+
+// ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기부터 다시 리팩토링 하셈 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+// 배너 마우스 이벤트
+const banner = document.querySelector('#banner');
+const bannerItems = [];
+
+for (let i=0; i<banner.querySelectorAll('li').length; i+=1) {
+  bannerItems.push(banner.querySelectorAll('li')[i]);
+  // 하루 빨리 모두가 인터넷 익스플로러에서 다른 브라우저로 갈아탔으면 좋겠다.
+}
+
+function handleEnter() {
+  const info = this.querySelector('.info');
+  const bannerCoords = banner.getBoundingClientRect();
+
+  const coords = {};
+  if (navigator.userAgent.indexOf('Chrome') != -1) { // chrome
+    coords.left = bannerCoords.left;
+    coords.top = this.offsetTop + banner.offsetTop + banner.offsetHeight * 0.5;
+  } else { // Internet Explore
+    coords.left = banner.offsetLeft - this.offsetWidth * 1.5;
+    coords.top = this.offsetTop + banner.offsetTop;
+  }
+
+  this.classList.add('active');
+  info.classList.remove('hidden');
+  info.style.transform = 'translate('+coords.left+'px, '+coords.top+'px)';
+}
+
+function handleLeave() {
+  const info = this.querySelector('.info');
+
+  this.classList.remove('active');
+  info.classList.add('hidden');
+}
+
+// bannerItems.forEach(item => item.addEventListener('mouseenter', handleEnter));
+// bannerItems.forEach(item => item.addEventListener('mouseleave', handleLeave));
+
+const showInfo = bannerItems
+  .map(function(item) {item.addEventListener('mouseenter', handleEnter);});
+const hideInfo = bannerItems
+  .map(function(item) {item.addEventListener('mouseleave', handleLeave);});
 
 
 
