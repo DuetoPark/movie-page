@@ -12,7 +12,8 @@
 }
 
 /* sr-only */
-.sr-only {
+.sr-only,
+.hidden {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -65,11 +66,23 @@ cite::after{
 }
 
 /* Modal */
+.modal-X.modal-active{
+  filter: blur(5px);
+}
+
 .modal-wrap{
-  display: none;
+  /* display: none; */
   width:100%;
   height: 100vh;
+  opacity: 0.01;
+  transition: opacity 250ms ease-in-out;
 }
+
+.modal-wrap.modal-active{
+  opacity: 1;
+}
+
+
 
 .modal-close{
   position: absolute;
