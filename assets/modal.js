@@ -98,31 +98,6 @@ const hideInfo = bannerItems
 
 
 
-// My page
-// Open Menu
-function Menu (element){
-  this.element = element;
-  this.open = function(){
-    document.querySelector(this.element).style.display='block';
-  }
-  this.close = function(){
-    document.querySelector('.page-menu').style.display = 'none';
-  }
-};
-
-
-
-const menu = new Menu('.page-menu');
-
-// Open Menu
-$(".menu-button").click(function() {
-  menu.open();
-});
-
-// Close Menu
-$(".close-button").click(function() {
-  menu.close();
-});
 
 
 
@@ -201,7 +176,7 @@ $('.more-button').click(function(){
   });
 
 
-  const pageMenu = document.querySelector('.page-menu');
+  // const pageMenu = document.querySelector('.page-menu');
 
   let onResize = function () {
     if (document.body.clientWidth>=768) {
