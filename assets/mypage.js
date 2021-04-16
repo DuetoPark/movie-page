@@ -19,35 +19,42 @@ closeMenu.addEventListener('click', handleMenu.bind(null, false));
 
 
 
-// 관람내역 확인 이벤트
-const history = document.querySelector('.reservation-confirm-seen');
-const showHistory = document.querySelector('.seen-confirm-button');
 
-function handleHistory() {
-  history.classList.remove('hidden');
-  history.classList.add('active');
-  this.classList.add('hidden');
+// 숨김 요소 출력 이벤트
+const prototypeHistory = {
+  showHistory: function() {
+    // bind로 인해 this 변경 (window --> displayFactory의 변수 'history')
+    this.button.classList.add('hidden');
+
+    if (this.isMultiple) {
+      for (let i=0; i < this.hidden.length; i++) {
+        this.hidden[i].classList.remove('hidden');
+        this.hidden[i].classList.add('active');
+      }
+    } else {
+      this.hidden.classList.remove('hidden');
+      this.hidden.classList.add('active');
+    }
+  },
+
+  applyEvent: function(button) {
+    // this: displayFactory의 변수 'history'
+    button.addEventListener('click', this.showHistory.bind(this));
+  },
+};
+
+function historyFactory(isMultiple, hidden, button) {
+  let history = Object.create({});
+  history.isMultiple = isMultiple;
+  history.hidden = isMultiple ? document.querySelectorAll(hidden) : document.querySelector(hidden);
+  history.button = document.querySelector(button);
+
+  history.__proto__ = prototypeHistory;
+
+  history.applyEvent(history.button); // 클릭 이벤트 실행
+
+  return history;
 }
 
-showHistory.addEventListener('click', handleHistory);
-
-
-
-
-// 리뷰 더보기 이벤트
-const reviews = [];
-const showReviews = document.querySelector('.more-button');
-
-for (let i=0; i<document.querySelectorAll('[data-hide="true"]').length; i+=1) {
-  reviews.push(document.querySelectorAll('[data-hide="true"]')[i]);
-}
-
-function handldReviews() {
-  reviews.map(function(review) {
-    review.classList.remove('hidden');
-    review.classList.add('active');
-  });
-  this.classList.add('hidden');
-}
-
-showReviews.addEventListener('click', handldReviews);
+const seen = historyFactory(false, '.reservation-confirm-seen', '.seen-confirm-button');
+const review = historyFactory(true, '[data-review="hidden"]', '.more-button');
