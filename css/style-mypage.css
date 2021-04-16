@@ -182,7 +182,6 @@ section:last-child{
 
 /* Page - Menu */
 .page-menu{
-  display: none;
   position: fixed;
   top:0;
   z-index: 1;
@@ -192,6 +191,12 @@ section:last-child{
   animation-name: pop;
   animation-duration: 250ms;
   animation-timing-function: ease-in-out;
+  opacity: 0.01;
+  transition: opacity 250ms ease-in-out;
+}
+
+nav.page-menu.active{
+  opacity: 1;
 }
 
 .page-menu-container{
@@ -609,6 +614,15 @@ section:last-child{
   padding-left: 11px;
 }
 
+.reservation-confirm-seen{
+  opacity: 0.01;
+  transition: opacity 250ms ease-in-out;
+}
+
+div.reservation-confirm-seen.active{
+  opacity: 1;
+}
+
 .reservation-confirm-lists{
   padding-bottom: 40px;
 }
@@ -646,8 +660,6 @@ section:last-child{
 }
 
 .reservation-confirm-seen{
-  position: relative; /* CSS 애니메이션 - 위치 */
-  display: none;  /* 자바스크립트 Open Seen Movies - display */
   animation-name: fadein;
   animation-duration: 250ms;
   animation-timing-function: ease-in-out;
@@ -672,8 +684,6 @@ section:last-child{
 }
 
 .user-review .col-md-4{
-  position: relative;  /* CSS 애니메이션 - 위치 */
-  display: none;  /* 자바스크립트 - display */
   margin-bottom: 32px;
   animation-name: fadein;
   animation-duration: 250ms;
@@ -684,10 +694,13 @@ section:last-child{
   margin-bottom: 0;
 }
 
-.user-review .col-md-4:first-child,
-.user-review .col-md-4:nth-child(2),
-.user-review .col-md-4:nth-child(3){
-  display: block;
+div[data-review='hidden']{
+  opacity: 0.01;
+  transition: opacity 250ms ease-in-out;
+}
+
+div[data-review='hidden'].active{
+  opacity: 1;
 }
 
 .user-review-items{
