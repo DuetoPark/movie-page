@@ -47,34 +47,35 @@ $(document).on('click', 'a[href^="#"]', function (event) {
 
 
 
-// 숨김 요소 출력 이벤트
+// 관람 내역, 리뷰
 const prototypeHistory = {
-  showHistory: function() {
-    // bind로 인해 this 변경 (window --> displayFactory의 변수 'history')
-    this.button.classList.add('hidden');
+  showHistory: function(isMultiple, hidden, button) {
+    button.classList.add('hidden');
 
-    if (this.isMultiple) {
-      for (let i=0; i < this.hidden.length; i++) {
-        this.hidden[i].classList.remove('hidden');
-        this.hidden[i].classList.add('active');
+    if (isMultiple) {
+      for (let i=0; i < hidden.length; i++) {
+        hidden[i].classList.remove('hidden');
+        hidden[i].classList.add('active');
       }
     } else {
-      this.hidden.classList.remove('hidden');
-      this.hidden.classList.add('active');
+      hidden.classList.remove('hidden');
+      hidden.classList.add('active');
     }
   },
 
   applyEvent: function(button) {
-    // this: displayFactory의 변수 'history'
-    button.addEventListener('click', this.showHistory.bind(this));
+    button.addEventListener('click',
+      this.showHistory.bind(null, this.isMultiple, this.hidden, this.button));
   },
 };
 
 function historyFactory(isMultiple, hidden, button) {
   let history = Object.create({});
-  history.isMultiple = isMultiple;
-  history.hidden = isMultiple ? document.querySelectorAll(hidden) : document.querySelector(hidden);
   history.button = document.querySelector(button);
+  history.isMultiple = isMultiple;
+  history.multiple = document.querySelectorAll(hidden);
+  history.one = document.querySelector(hidden);
+  history.hidden = isMultiple ? history.multiple : history.one;
 
   history.__proto__ = prototypeHistory;
 
@@ -85,7 +86,6 @@ function historyFactory(isMultiple, hidden, button) {
 
 const seen = historyFactory(false, '.reservation-confirm-seen', '.seen-confirm-button');
 const review = historyFactory(true, '[data-review="hidden"]', '.more-button');
-
 
 
 
