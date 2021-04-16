@@ -24,6 +24,15 @@
 }
 
 
+/* Title */
+.main-title{
+  margin-bottom: 32px;
+  font-size: 24px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+
 /* Button */
 .fill-button{
   width: 100%;
