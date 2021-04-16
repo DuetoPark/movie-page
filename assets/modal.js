@@ -104,34 +104,6 @@ const hideInfo = bannerItems
 
 
 
-
-
-// Change Profile Image - 인터넷에서 긁어옴.
-// 프로필 사진 변경.
-  var readURL = function(input) {
-      if (input.files && input.files[0]) {
-        // 업로드 된 파일을 읽음.
-          var reader = new FileReader();
-
-          // 업로드 된 파일의 읽기 동작이 성공적으로 완료될 때마다 동작.
-          reader.onload = function (e) {
-            //클래스가 .profile-image 요소에 읽은 파일의 경로를 세팅.
-              $('.profile-image').attr('src', e.target.result);
-          }
-          // FileList에서 경로를 가져옴.
-          reader.readAsDataURL(input.files[0]);
-      }
-  }
-
-  // id가 files인 요소가 변화할 때 함수 실행.
-  $("#files").on('change', function(){
-    readURL(this);
-  });
-
-
-
-
-
 // Scroll Animation - 인터넷에서 긁어옴.
 //스크롤 부드럽게 이동.
   $(document).on('click', 'a[href^="#"]', function (event) {

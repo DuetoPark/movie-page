@@ -58,3 +58,24 @@ function historyFactory(isMultiple, hidden, button) {
 
 const seen = historyFactory(false, '.reservation-confirm-seen', '.seen-confirm-button');
 const review = historyFactory(true, '[data-review="hidden"]', '.more-button');
+
+
+
+
+
+
+// 프로필 사진 변경 (인터넷에서 긁어옴)
+const profileImage = document.querySelector('.profile-image');
+const inputFiles = document.querySelector("#files");
+
+function readURL() {
+  var reader = new FileReader();
+
+  reader.onload = function (e) {
+    profileImage.setAttribute('src', e.target.result);
+  }
+
+  reader.readAsDataURL(this.files[0]);
+}
+
+inputFiles.addEventListener('change', readURL);
