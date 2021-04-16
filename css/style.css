@@ -242,40 +242,46 @@ li[data-event=normal]{
 
 
 
-
 /* Footer */
-.footer{
-  padding: 40px 0;
+#footer{
+  margin-top: 64px;
+  padding: 32px 0;
   background-color: #E0E0E0;
   font-size: 12px;
   line-height: 1.166666666666667;
   letter-spacing: -0.01em;
 }
 
-.footer .row{
-  margin-bottom: 16px;
-}
-
-.footer .row:last-child{
-  margin-bottom: 0;
-}
-
-.footer .col-md-4{
-  margin-bottom: 4px;
-}
-
-.footer .col-md-4:last-child{
-  margin-bottom: 0;
-}
-
-.footer-company-info .data-group{
+#footer .info{
+  padding-top: 24px;
+  padding-bottom: 8px;
   display: flex;
+  flex-wrap: wrap;
+}
+
+#footer .info > div{
+  display: flex;
+  margin-right: 8px;
+}
+
+#footer .info > div:last-of-type{
+  margin-right: 0;
+}
+
+#footer .info dt{
+  flex: 1 0 auto;
+  font-weight: 500;
+  margin-right: 4px;
+}
+
+.copyright{
   margin-bottom: 4px;
 }
 
-.footer-company-info .data-group dt::after{
-  content: ' :';
+#footer p:last-of-type span{
+  margin-right: 16px;
 }
+
 
 
 /* Non-Members Page */

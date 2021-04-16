@@ -23,42 +23,6 @@
 
 
 
-  /* Footer */
-  .footer{
-    padding: 32px 0;
-  }
-
-  .footer .row:first-child{
-    margin-bottom: 24px;
-  }
-
-  .footer .row:nth-child(2){
-    margin-bottom: 8px;
-  }
-
-  .footer .col-md-4{
-    margin-bottom: 0px;
-  }
-
-  .footer .col-md-4:nth-child(2),
-  .footer .col-md-4:nth-child(3){
-    text-align: right;
-  }
-
-  .footer-company-info{
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .footer-company-info .data-group{
-    width:210px;
-  }
-
-  .footer-company-info .data-group{
-    margin-bottom: 0px;
-  }
-
-
   /* Non-Members Page */
   /* Non-Members */
   .non-members{
