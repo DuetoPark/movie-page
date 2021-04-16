@@ -102,46 +102,6 @@ const hideInfo = bannerItems
 
 
 
-
-
-// Scroll Animation - 인터넷에서 긁어옴.
-//스크롤 부드럽게 이동.
-  $(document).on('click', 'a[href^="#"]', function (event) {
-    event.preventDefault();
-
-    $('html, body').animate({
-      scrollTop: $($.attr(this, 'href')).offset().top
-    }, 500);
-
-    if (document.body.clientWidth<768) {
-      document.querySelector('.page-menu').style.display = 'none';
-    }
-  });
-
-
-  // const pageMenu = document.querySelector('.page-menu');
-
-  let onResize = function () {
-    if (document.body.clientWidth>=768) {
-      pageMenu.style.display = 'block';
-    } else if (document.body.clientWidth<768) {
-      pageMenu.style.display = 'none';
-    }
-  }
-
-  window.addEventListener('resize', onResize);
-  // on('click', '.profile-save-button', function (event) {
-  //   event.preventDefault();
-  //   if (document.body.clientWidth>=768) {
-  //     $('.page-menu').addClass('menu-display');
-  //   }
-  // });
-  //
-
-
-
-
-
 // Booking System - Click Event (Movie name/Start time)
 // 1. 영화이름/영화시간 누르면 '진하기 700', '글자색 #181818'로 변경.
 // (Click movie name/time, it changes to fontWeight 700 & color #181818)
