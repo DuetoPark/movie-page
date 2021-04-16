@@ -101,23 +101,6 @@ const hideInfo = bannerItems
 
 
 
-// More other Reviews
-// 1. '더보기' 버튼 누르면, 버튼 숨김.
-// (Click 'more-button', hidden button)
-// 2. '더보기' 버튼 누르면, display:none;영역 출력.
-// (Click 'more-button', We can see display:none; part)
-let reviews = document.querySelectorAll('.user-review .col-md-4');
-
-function moreReviews(){
-  for(i=3; i<reviews.length;i++ ){
-    reviews[i].style.display = 'block';
-  }
-}
-
-$('.more-button').click(function(){
-  moreReviews();
-  document.querySelector('.more-button').style.display='none';
-});
 
 
 
