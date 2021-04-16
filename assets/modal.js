@@ -101,18 +101,6 @@ const hideInfo = bannerItems
 
 
 
-// Open Seen Movies
-// 1. '이전관람내역' 버튼 누르면, 버튼 숨김.
-// (Click seen-confirm-button, hidden button)
-// 2. '이전관람내역' 버튼 누르면, display:none;영역 출력.
-// (Click seen-confirm-button, We can see display:none; part)
-$('.seen-confirm-button').click(function(){
-  document.querySelector('.reservation-confirm-seen').style.display='block';
-  document.querySelector('.seen-confirm-button').style.display='none';
-});
-
-
-
 // More other Reviews
 // 1. '더보기' 버튼 누르면, 버튼 숨김.
 // (Click 'more-button', hidden button)
