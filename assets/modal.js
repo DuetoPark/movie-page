@@ -53,7 +53,8 @@ if (loginModal) {
 }
 
 
-// ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기부터 다시 리팩토링 하셈 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+
+
 // 배너 마우스 이벤트
 const banner = document.querySelector('#banner');
 const bannerItems = [];
@@ -63,45 +64,53 @@ for (let i=0; i<banner.querySelectorAll('li').length; i+=1) {
   // 하루 빨리 모두가 인터넷 익스플로러에서 다른 브라우저로 갈아탔으면 좋겠다.
 }
 
+function showAndHideInfo(state, bannerItem, info) {
+  if (state === 'show') {
+    bannerItem.classList.add('active');
+    info.classList.remove('hidden');
+  }
+  if (state === 'hide') {
+    bannerItem.classList.remove('active');
+    info.classList.add('hidden');
+  }
+}
+
+function translateInfo(bannerItem, info){
+  const coords = {};
+
+  if (navigator.userAgent.indexOf('Chrome') != -1) { // chrome
+    coords.left = banner.offsetLeft;
+    coords.top = bannerItem.offsetTop + banner.offsetTop + banner.offsetHeight * 0.5;
+  } else { // Internet Explore
+    coords.left = banner.offsetLeft - bannerItem.offsetWidth * 1.5;
+    coords.top = bannerItem.offsetTop + banner.offsetTop;
+  }
+  info.style.transform = 'translate('+coords.left+'px, '+coords.top+'px)';
+}
+
 function handleEnter() {
   const info = this.querySelector('.info');
-  const bannerCoords = banner.getBoundingClientRect();
 
-  const coords = {};
-  if (navigator.userAgent.indexOf('Chrome') != -1) { // chrome
-    coords.left = bannerCoords.left;
-    coords.top = this.offsetTop + banner.offsetTop + banner.offsetHeight * 0.5;
-  } else { // Internet Explore
-    coords.left = banner.offsetLeft - this.offsetWidth * 1.5;
-    coords.top = this.offsetTop + banner.offsetTop;
-  }
-
-  this.classList.add('active');
-  info.classList.remove('hidden');
-  info.style.transform = 'translate('+coords.left+'px, '+coords.top+'px)';
+  translateInfo(this, info);
+  showAndHideInfo('show', this, info);
 }
 
 function handleLeave() {
   const info = this.querySelector('.info');
 
-  this.classList.remove('active');
-  info.classList.add('hidden');
+  showAndHideInfo('hide', this, info);
 }
 
-// bannerItems.forEach(item => item.addEventListener('mouseenter', handleEnter));
-// bannerItems.forEach(item => item.addEventListener('mouseleave', handleLeave));
-
-const showInfo = bannerItems
-  .map(function(item) {item.addEventListener('mouseenter', handleEnter);});
-const hideInfo = bannerItems
-  .map(function(item) {item.addEventListener('mouseleave', handleLeave);});
+bannerItems.forEach(function(item) {
+  item.addEventListener('mouseenter', handleEnter);
+  item.addEventListener('mouseleave', handleLeave);
+});
 
 
 
 
 
-
-
+// ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기부터 다시 리팩토링 하셈 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 // Booking System - Click Event (Movie name/Start time)
 // 1. 영화이름/영화시간 누르면 '진하기 700', '글자색 #181818'로 변경.
 // (Click movie name/time, it changes to fontWeight 700 & color #181818)
