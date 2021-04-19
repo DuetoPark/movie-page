@@ -1,35 +1,34 @@
 // 메뉴 이벤트
-const pageMenu = document.querySelector('.page-menu');
-const openMenu = document.querySelector('.menu-button');
-const closeMenu = pageMenu.querySelector('.close-button')
+const menuBar = document.querySelector('.page-menu');
+const openMenuBar = document.querySelector('.menu-button');
+const closeMenuBar = menuBar.querySelector('.close-button')
 const desktop = 768;
 
+function showMenu(){
+  menuBar.classList.remove('hidden');
+  menuBar.classList.add('active');
+}
+
+function hideMenu() {
+  menuBar.classList.add('hidden');
+  menuBar.classList.remove('active');
+}
+
 function handleMenu(show) {
-  if (show) {
-    pageMenu.classList.remove('hidden');
-    pageMenu.classList.add('active');
+  if (this.innerWidth >= desktop || show) {
+    showMenu();
   } else {
-    pageMenu.classList.add('hidden');
-    pageMenu.classList.remove('active');
-
+    hideMenu();
   }
 }
 
-function handleResize() {
-  if (this.innerWidth >= desktop) {
-    pageMenu.classList.remove('hidden');
-    pageMenu.classList.add('active');
-  } else {
-    pageMenu.classList.add('hidden');
-    pageMenu.classList.remove('active');
-  }
-}
+handleMenu();
 
-handleResize();
+openMenuBar.addEventListener('click', handleMenu.bind(null, true));
+closeMenuBar.addEventListener('click', handleMenu.bind(null, false));
+window.addEventListener('resize', handleMenu.bind(null, false));
 
-openMenu.addEventListener('click', handleMenu.bind(null, true));
-closeMenu.addEventListener('click', handleMenu.bind(null, false));
-window.addEventListener('resize', handleResize);
+
 
 // 스크롤 이동 (인터넷에서 긁어옴)
 $(document).on('click', 'a[href^="#"]', function (event) {
