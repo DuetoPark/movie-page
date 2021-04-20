@@ -17,12 +17,10 @@ const prototypeModal = {
 };
 
 function modalFactory(wrapper, openButton) {
-  let modal = Object.create({});
+  let modal = Object.create(prototypeModal);
   modal.wrapper = document.querySelector(wrapper);
   modal.closeButton = document.querySelector(wrapper+' .modal-close');
   modal.openButton = document.querySelector(openButton);
-
-  modal.__proto__ = prototypeModal;
 
   // 클릭 이벤트 실행
   if (modal.wrapper) modal.clickEvent(modal.openButton, modal.closeButton);
