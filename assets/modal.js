@@ -53,59 +53,6 @@ if (loginModal) {
 
 
 
-// 배너 마우스 이벤트
-const banner = document.querySelector('#banner');
-const bannerItems = [];
-
-for (let i=0; i<banner.querySelectorAll('li').length; i+=1) {
-  bannerItems.push(banner.querySelectorAll('li')[i]);
-  // 하루 빨리 모두가 인터넷 익스플로러에서 다른 브라우저로 갈아탔으면 좋겠다.
-}
-
-function showAndHideInfo(state, bannerItem, info) {
-  if (state === 'show') {
-    bannerItem.classList.add('active');
-    info.classList.remove('hidden');
-  }
-  if (state === 'hide') {
-    bannerItem.classList.remove('active');
-    info.classList.add('hidden');
-  }
-}
-
-function translateInfo(bannerItem, info){
-  const coords = {};
-
-  if (navigator.userAgent.indexOf('Chrome') != -1) { // chrome
-    coords.left = banner.offsetLeft;
-    coords.top = bannerItem.offsetTop + banner.offsetTop + banner.offsetHeight * 0.5;
-  } else { // Internet Explore
-    coords.left = banner.offsetLeft - bannerItem.offsetWidth * 1.5;
-    coords.top = bannerItem.offsetTop + banner.offsetTop;
-  }
-  info.style.transform = 'translate('+coords.left+'px, '+coords.top+'px)';
-}
-
-function handleEnter() {
-  const info = this.querySelector('.info');
-
-  translateInfo(this, info);
-  showAndHideInfo('show', this, info);
-}
-
-function handleLeave() {
-  const info = this.querySelector('.info');
-
-  showAndHideInfo('hide', this, info);
-}
-
-bannerItems.forEach(function(item) {
-  item.addEventListener('mouseenter', handleEnter);
-  item.addEventListener('mouseleave', handleLeave);
-});
-
-
-
 
 
 // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기부터 다시 리팩토링 하셈 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓

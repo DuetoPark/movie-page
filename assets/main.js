@@ -1,3 +1,41 @@
+// 헤더 버튼 보임/숨김 이벤트
+const header = document.querySelector('#header');
+const threeLinesButton = header.querySelector('.three-lines-button');
+const eventButton = header.querySelector('.event-button');
+const screen = {
+  desktop: 768,
+  tablet: 576,
+};
+
+function activeOrInactiveHeader(onTablet) {
+  const isContaining = onTablet === true ?
+   onTablet : header.classList.contains('active');
+
+  if (isContaining) { // inactive header
+    header.classList.remove('active');
+  } else { // active header
+    header.classList.add('active');
+  }
+}
+
+function displayHeaderButtons() {
+  if (this.innerWidth > screen.tablet) {
+    activeOrInactiveHeader(true);
+    eventButton.classList.add('hidden');
+    threeLinesButton.classList.add('hidden');
+  } else {
+    eventButton.classList.remove('hidden');
+    threeLinesButton.classList.remove('hidden');
+  }
+}
+
+threeLinesButton.addEventListener('click', activeOrInactiveHeader);
+window.addEventListener("load", displayHeaderButtons);
+window.addEventListener('resize', displayHeaderButtons);
+
+
+
+
 // 배너 중복 처리
 let star;
 let genre;
@@ -83,3 +121,109 @@ const playingInfo = infoFactory('#playing');
 
 populateInfo(bannerInfo);
 populateInfo(playingInfo);
+
+
+
+
+// 배너 마우스 이벤트
+const banner = document.querySelector('#banner');
+const bannerItems = [];
+
+for (let i=0; i<banner.querySelectorAll('li').length; i+=1) {
+  bannerItems.push(banner.querySelectorAll('li')[i]);
+  // 하루 빨리 모두가 인터넷 익스플로러에서 다른 브라우저로 갈아탔으면 좋겠다.
+}
+
+function showOrHideInfo(state, bannerItem, info) {
+  if (state === 'show') {
+    bannerItem.classList.add('active');
+    info.classList.remove('hidden');
+  }
+  if (state === 'hide') {
+    bannerItem.classList.remove('active');
+    info.classList.add('hidden');
+  }
+}
+
+function translateInfo(bannerItem, info){
+  const coords = {};
+
+  if (navigator.userAgent.indexOf('Chrome') != -1) { // chrome
+    coords.left = banner.offsetLeft;
+    coords.top = bannerItem.offsetTop + banner.offsetTop + banner.offsetHeight * 0.5;
+  } else { // Internet Explore
+    coords.left = banner.offsetLeft - bannerItem.offsetWidth * 1.5;
+    coords.top = bannerItem.offsetTop + banner.offsetTop;
+  }
+  info.style.transform = 'translate('+coords.left+'px, '+coords.top+'px)';
+}
+
+function handleMouseEnter() {
+  if (window.innerWidth < screen.desktop) return;
+
+  const info = this.querySelector('.info');
+  translateInfo(this, info);
+  showOrHideInfo('show', this, info);
+}
+
+function handleMouseLeave() {
+  if (window.innerWidth < screen.desktop) return;
+
+  const info = this.querySelector('.info');
+  showOrHideInfo('hide', this, info);
+}
+
+bannerItems.forEach(function(item) {
+  item.addEventListener('mouseenter', handleMouseEnter);
+  item.addEventListener('mouseleave', handleMouseLeave);
+});
+
+
+
+
+// New 리사이즈 이벤트
+const firstReview = document.querySelector('#new .review > p:first-of-type');
+
+function handleReview() {
+  if (window.innerWidth > screen.tablet) {
+    firstReview.classList.remove('hidden');
+  } else {
+    firstReview.classList.add('hidden');
+  }
+}
+
+window.addEventListener('load', handleReview);
+window.addEventListener('resize', handleReview);
+
+
+
+
+// Playing 이미지카드 클릭 이벤트
+const imageCards = document.querySelectorAll('.image-card');
+
+function flipCard() {
+  if (window.innerWidth < screen.tablet) {
+    this.classList.toggle('flipped');
+  }
+}
+
+imageCards.forEach(card => card.addEventListener('click', flipCard));
+
+
+
+
+// Playing 높이 조절 이벤트
+function isChangableHeight() {
+  const playing = document.querySelector('#playing');
+  const imagesCards = playing.querySelectorAll('.image-card');
+
+  imagesCards.forEach(card => {
+    const image = card.querySelector('.image');
+    const height = image.clientHeight;
+
+    card.style.setProperty('--imageHeight', height + 'px');
+  });
+}
+
+window.addEventListener("load", isChangableHeight);
+window.addEventListener('resize', isChangableHeight);
