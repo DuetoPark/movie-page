@@ -5,6 +5,7 @@
 
 body{
   position: relative;
+  min-width: 300px;
   font-family: 'Noto Sans KR', sans-serif;
   color: #181818;
   background-color: #F3F3F3;
