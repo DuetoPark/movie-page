@@ -1,6 +1,14 @@
+:root{
+  --imageHeight: auto;
+}
+
+/* < 576px (Mobile) */
 /* Header */
+#header{
+  height: 72px;
+}
+
 #header .row{
-  height: 70px;
   display: flex;
   align-items: center;
 }
@@ -8,21 +16,74 @@
 #page-title{
   font-size: 36px;
   font-weight: 500;
-  line-height: 1.111111111111111;
+  line-height: 2;
   letter-spacing: 0.05em;
   text-shadow: 4px 0 rgba(0, 0, 0, 0.25);
   color: #181818;
 }
 
+.three-lines-button{
+  position: absolute;
+  right: 16px; top: 16px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: #F3F3F3;
+  background-image: url('../assets/images/three-lines.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+#header .button-group{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#header .button-group > *{
+  width: 100%;
+}
+
+/* Header - active */
+#header.active{
+  height: 100vh;
+  transition: height 250ms ease-in-out;
+}
+
+#header.active .three-lines-button{
+  background-image: url('../assets/images/cross.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#header.active .button-group{
+  padding-top: 16px;
+}
+
+#header.active .button-group > *{
+  height: calc((100vh - (72px + 76px)) / 3);
+  margin-bottom: 16px;
+}
+
+#header.active .button-group > *:last-child{
+  margin-bottom: 0;
+}
+
+
 
 /* Banner */
+#banner{
+  position: relative;
+  left: 0; top: 0;
+  z-index: 1;
+}
+
 #banner-container{
   display: flex;
   justify-content: center;
-  width: 100vw;
-  height: 350px;
-  overflow: hidden;
-  background-color: #181818;
+  height: calc(100vh - 354px);
+  overflow:hidden;
+  background-color: #F3F3F3;
 }
 
 #banner-container .items{
@@ -32,20 +93,22 @@
   align-items: center;
 }
 
+#banner-container li.items:nth-child(n + 2):nth-child(-n + 5){
+  display: none;
+}
+
 #banner-container .name{
   min-width: 500px;
   height: 700px;
-  background: url(../assets/images/록키호러픽쳐쇼.jpg) no-repeat center;
+  background-image: url(../assets/images/록키호러픽쳐쇼.jpg);
+  background-repeat: no-repeat;
+  background-position: left center;
   background-size: contain;
   color: rgba(0, 0, 0, 0);
   transform: rotateZ(20deg);
-  transition: min-width 250ms ease-out, height 250ms ease-out, transform 250ms ease-out;
 }
 
-#banner-container .items:hover .name{
-  height: 900px;
-  transform: rotateZ(20deg) translateX(-130px);
-}
+
 
 
 /* Banner - info */
@@ -70,14 +133,15 @@
   opacity: 1;
 }
 
-.image-group{
+#banner-container .image-group{
   flex: 1 0 calc((100% - 116px) * 0.7);
   margin-right: 36px;
 }
 
-.image-group .image{
+#banner-container .image{
   width: 100%;
   margin-bottom: 8px;
+  filter: blur(5px);
 }
 
 #banner-container .desc-group{
@@ -128,10 +192,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 230px;
-  padding: 36px;
+  height: 282px;
+  padding: 64px 16px;
   text-align: center;
-  background: url(../assets/images/록키호러픽쳐쇼4.gif) no-repeat 0 -150px;
+  background: url(../assets/images/록키호러픽쳐쇼4.gif) no-repeat center;
   background-size: cover;
   color: #F3F3F3;
 }
@@ -148,7 +212,6 @@
 .new-title,
 #new .review{
   position: relative;
-  z-index: 1;
   color: #F3F3F3;
 }
 
@@ -178,7 +241,10 @@
   padding-bottom: 16px;
 }
 
+/* Playing - info */
 #playing .info{
+  display: flex;
+  flex-direction: column;
   padding: 16px;
   border-radius: 4px;
   background-color: #fff;
@@ -191,14 +257,51 @@
   transform: scale(1.02);
 }
 
+#playing .review{
+  flex: 1 0 60px;
+}
+
+#playing .image-card{
+  width: 100%;
+  height: var(--imageHeight);
+  margin-bottom: 16px;
+  perspective: 900px;
+  cursor: pointer;
+}
+
+#playing .image-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+#playing .card-inner{
+  position: relative;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+#playing .image-group,
+#playing .desc-group{
+  position: absolute;
+  width: 100%;
+  height: var(--imageHeight);
+  backface-visibility: hidden;
+}
+
 #playing .image{
   width: 100%;
-
-  margin: 16px 0;
+  height: auto;
 }
 
 #playing .desc-group{
-  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 36px;
+  transform: rotateY(180deg);
+  margin-bottom: auto;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
 }
 
 #playing button:hover{
@@ -245,7 +348,7 @@ li[data-event=normal]{
 /* Footer */
 #footer{
   margin-top: 64px;
-  padding: 32px 0;
+  padding: 40px 0;
   background-color: #E0E0E0;
   font-size: 12px;
   line-height: 1.166666666666667;
@@ -253,8 +356,8 @@ li[data-event=normal]{
 }
 
 #footer .info{
-  padding-top: 24px;
-  padding-bottom: 8px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   display: flex;
   flex-wrap: wrap;
 }
