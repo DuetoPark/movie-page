@@ -1,4 +1,4 @@
-/* Custom Grid System - Fix countainer width */
+ /* Custom Grid System - Fix countainer width */
 @media screen and (min-width:1200px) {
   .container{
     max-width: 960px !important;
@@ -14,7 +14,7 @@
 /* sr-only */
 .sr-only,
 .hidden {
-  position: absolute;
+  display: block;
   width: 1px !important;
   height: 1px !important;
   margin: -1px;
@@ -34,14 +34,18 @@
 
 /* Button */
 .fill-button{
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 178px;
   height: 40px;
+  margin: 0 auto;
   border: 1px solid rgba(24, 24, 24, 0.2);
   border-radius: 4px;
   font-size: 14px;
   font-weight: 500;
   text-align: center;
-  line-height: 2.857142857142857;
+  /* line-height: 2.857142857142857; */
   letter-spacing: -0.03%;
   cursor: pointer;
   background-color: #fff;
@@ -95,6 +99,9 @@ cite::after{
   font-size: 12px;
   line-height: 1.333333333333333;
 }
+
+.review > p::before{ content: '"'; }
+.review > p::after{ content: '"'; }
 
 
 /* align */
