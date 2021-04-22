@@ -33,15 +33,19 @@ function handleTabIndexOfBanner() {
 }
 
 function activeOrInactiveHeader() {
+  const buttonGroup = header.querySelector('.button-group');
+
   isActived = header.classList.contains('active');
 
   if (onTablet || isActived) {
     isActived = false;
     header.classList.remove('active');
+    threeLinesButton.setAttribute('aria-expanded', false);
     handleTabIndexOfBanner();
   } else {
     isActived = true;
     header.classList.add('active');
+    threeLinesButton.setAttribute('aria-expanded', true);
     handleTabIndexOfBanner();
   }
 }
