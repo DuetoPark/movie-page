@@ -28,11 +28,13 @@
   width: 40px;
   height: 40px;
   border: none;
+  font-size: 12px;
   background-color: #F3F3F3;
   background-image: url('../assets/images/three-lines.png');
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
+  color: rgba(0, 0, 0, 0);
 }
 
 #header .button-group{
