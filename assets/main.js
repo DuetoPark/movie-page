@@ -232,7 +232,7 @@ function handleReview() {
   }
 }
 
-window.addEventListener('load', handleReview);
+window.addEventListener('DOMContentLoaded', handleReview);
 window.addEventListener('resize', handleReview);
 
 
@@ -265,5 +265,8 @@ function isChangableHeight() {
   });
 }
 
+// load 이벤트를 사용하는 이유
+// - isChangableHeight()는 이미지의 clientHeight를 이용하는 함수
+// - img태그를 인식하고 바로 넘겨버리는 DOMContentLoaded는 적합하지 않음
 window.addEventListener("load", isChangableHeight);
 window.addEventListener('resize', isChangableHeight);
