@@ -247,7 +247,7 @@ function flipCard() {
   }
 }
 
-imageCards.forEach(card => card.addEventListener('click', flipCard));
+imageCards.forEach(function(card) {card.addEventListener('click', flipCard);});
 
 
 
@@ -257,7 +257,7 @@ function isChangableHeight() {
   const playing = document.querySelector('#playing');
   const imagesCards = playing.querySelectorAll('.image-card');
 
-  imagesCards.forEach(card => {
+  imagesCards.forEach(function(card) {
     const image = card.querySelector('.image');
     const height = image.clientHeight;
 
