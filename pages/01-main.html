@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="DuetoPark">
-    <meta name="keywords" content="movie">
-    <meta name="description" content="movie advertising, booking page">
+    <meta name="keywords" content="movie, 영화관, 영화소개">
+    <meta name="description" content="💪아이라잌투무빗무비💪 무비는 바로 무비에서!">
+
     <title>Movie</title>
 
     <!-- 폰트 -->
@@ -26,16 +27,23 @@
 
   <body>
     <div class="modal-X">
-      <header id="header" class="container">
+      <header id="header" class="container" aria-label="페이지 상단 영역">
         <div class="row">
           <h1 id='page-title' class="col-12 col-sm-6 col-md-8">
-            <a href="./01-main.html">Movie</a>
+            <a id='home' href="./01-main.html" aria-current='page'>
+              Movie
+            </a>
           </h1>
-          <button type="button" class="three-lines-button"></button>
-          <div class="col-12 col-sm-6 col-md-4 button-group">
-            <a class="fill-button" href="./02-user-type.html">예매/좌석확인</a>
-            <button class="fill-button login-button" type="button">로그인</button>
-            <a class="fill-button event-button" href="#event">이벤트</a>
+
+          <button class="three-lines-button" type='button'
+            aria-controls='menu' aria-expanded='false'>
+            메뉴
+          </button>
+
+          <div id='menu' class="col-12 col-sm-6 col-md-4 button-group">
+            <a class="fill-button check-button" href="./02-user-type.html">예매/좌석확인</a>
+            <button class="fill-button login-button">로그인</button>
+            <a class="fill-button event-button" href="#event" aria-label='이벤트 영역으로 건너뛰기'>이벤트</a>
           </div>
         </div>
       </header>
@@ -80,7 +88,7 @@
                   </div>
                 </dl>
               </div>
-              <button class="fill-button" type="button">Ticketing</button>
+              <button class="fill-button" type="button" tabindex='-1'>Ticketing</button>
             </div>
           </li>
         </ol>
@@ -257,6 +265,7 @@
     <!-- 데이터 -->
     <script src="../assets/data.js"></script>
     <!-- 동작 -->
+    <script src="../assets/polyfill.js"></script>
     <script src="../assets/main.js"></script>
     <script src="../assets/modal.js"></script>
     <!-- <script src="../assets/random-image.js"></script> -->
