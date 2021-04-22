@@ -48,26 +48,26 @@
         </div>
       </header>
 
-      <section id='banner'>
-        <h2 class="hidden">배너</h2>
-        <ol id='banner-container'>
-          <li class="items" data-origin='true'>
+      <section id='banner' aria-labelledby="banner-title">
+        <h2 id='banner-title' class="hidden">배너</h2>
+        <ol id='banner-container' aria-label='이번주 영화'>
+          <li class="items" data-origin='true' aria-label='영화'>
             <div class="name">록키호러픽쳐쇼</div>
             <div class="info hidden">
               <div class="image-group">
                 <img class="image"
                   src="../assets/images/록키호러픽쳐쇼4.gif"
                   alt="록키호러픽쳐쇼">
-                <blockquote class="review">
+                <blockquote class="review" aria-label='한줄평'>
                   <p>눈과 귀가 즐거운 B급 호러영화</p>
                   <cite>37세, 뭅뭅</cite>
                 </blockquote>
               </div>
               <div class="desc-group">
                 <h2 class="desc-title">록키호러픽쳐쇼</h2>
-                <dl class='desc-dl'>
+                <dl class='desc-dl' aria-label='영화 정보'>
                   <div class="star">
-                    <dt>별점</dt>
+                    <dt aria-label='별점'>별점</dt>
                     <dd>
                       <span class='icon' aria-hidden='true'>★★★★☆ (</span>
                       <span class="rating" aria-label="4.2점">4.2</span>
@@ -75,15 +75,15 @@
                     </dd>
                   </div>
                   <div class="genre">
-                    <dt>장르</dt>
+                    <dt aria-label='장르'>장르</dt>
                     <dd>판타지, 공포, 코미디, 뮤지컬</dd>
                   </div>
                   <div class="actor">
-                    <dt>출연</dt>
+                    <dt aria-label='출연'>출연</dt>
                     <dd>팀커리, 수잔 서랜든, 베리보스트윅, 리처드오브라이언, 패트리샤 퀸, 넬 캠밸, 미트 로트 외</dd>
                   </div>
                   <div class="director">
-                    <dt>감독</dt>
+                    <dt aria-label='감독'>감독</dt>
                     <dd>짐 셔먼</dd>
                   </div>
                 </dl>
