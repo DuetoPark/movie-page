@@ -1,37 +1,77 @@
 // 헤더 버튼 보임/숨김 이벤트
 const header = document.querySelector('#header');
+const buttons = header.querySelectorAll(".button-group > *");
 const threeLinesButton = header.querySelector('.three-lines-button');
 const eventButton = header.querySelector('.event-button');
 const screen = {
   desktop: 768,
   tablet: 576,
 };
+let onTablet = false;
+let isActived = false;
 
-function activeOrInactiveHeader(onTablet) {
-  const isContaining = onTablet === true ?
-   onTablet : header.classList.contains('active');
+function setTabIndex(elem, tabIndex) {
+  elem.setAttribute('tabindex', tabIndex);
+}
 
-  if (isContaining) { // inactive header
+function handleTabIndexOfBanner() {
+  onTablet = window.innerWidth >= screen.tablet ? true : false;
+  isActived = header.classList.contains('active');
+
+  setTabIndex(threeLinesButton, 0);
+  setTabIndex(eventButton, 0);
+
+  if (onTablet) {
+    buttons.forEach(function(button) {setTabIndex(button, 0);});
+    setTabIndex(threeLinesButton, -1);
+    setTabIndex(eventButton, -1);
+  } else if (!onTablet && isActived) { // Mobile & 활성화 상태
+    buttons.forEach(function(button) {setTabIndex(button, 0);});
+  } else if (!onTablet && !isActived) { // Mobile & 비활성화 상태
+    buttons.forEach(function(button) {setTabIndex(button, -1);});
+  }
+}
+
+function activeOrInactiveHeader() {
+  isActived = header.classList.contains('active');
+
+  if (onTablet || isActived) {
+    isActived = false;
     header.classList.remove('active');
-  } else { // active header
+    handleTabIndexOfBanner();
+  } else {
+    isActived = true;
     header.classList.add('active');
+    handleTabIndexOfBanner();
+  }
+}
+
+function toggleBannerButtons(state) {
+  if (state === 'show') {
+    eventButton.classList.remove('hidden');
+    threeLinesButton.classList.remove('hidden');
+  } else if (state === 'hide') {
+    eventButton.classList.add('hidden');
+    threeLinesButton.classList.add('hidden');
   }
 }
 
 function displayHeaderButtons() {
-  if (this.innerWidth > screen.tablet) {
-    activeOrInactiveHeader(true);
-    eventButton.classList.add('hidden');
-    threeLinesButton.classList.add('hidden');
-  } else {
-    eventButton.classList.remove('hidden');
-    threeLinesButton.classList.remove('hidden');
+  onTablet = window.innerWidth >= screen.tablet ? true : false;
+
+  if (onTablet) {
+    toggleBannerButtons('hide');
+    activeOrInactiveHeader();
+  } else { // Mobile
+    toggleBannerButtons('show');
+    handleTabIndexOfBanner();
   }
 }
 
 threeLinesButton.addEventListener('click', activeOrInactiveHeader);
-window.addEventListener("load", displayHeaderButtons);
 window.addEventListener('resize', displayHeaderButtons);
+window.addEventListener("DOMContentLoaded", displayHeaderButtons);
+window.addEventListener("DOMContentLoaded", handleTabIndexOfBanner);
 
 
 
