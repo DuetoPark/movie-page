@@ -96,7 +96,7 @@
 
       <section id='new' aria-labelledby='new-title'>
         <h2 id="new-title" class="new-title">New</h2>
-        <blockquote class="review" aria-label='관람객 리뷰'>
+        <blockquote class="review" aria-label='관람평'>
           <p class="hidden">
             <span aria-label="평가 3.5점">★★★☆ (3.5)</span> "끝으로 갈수록 정신이 혼미해진다."<br/>
             <cite>25세, 알라잌투무빗무빗</cite>
@@ -108,16 +108,16 @@
         </blockquote>
       </section>
 
-      <section id='playing' class="container">
+      <section id='playing' class="container" aria-labelledby='playing-title'>
         <h2 id="playing-title" class="main-title">
           <span aria-hidden='true'>✨</span>
           Now Playing
           <span aria-hidden='true'>✨</span>
         </h2>
-        <ol class="row">
-          <li class="col-12 col-sm-6 col-md-3" data-list='true' data-origin='true'>
+        <ol class="row" aria-label='상영작'>
+          <li class="col-12 col-sm-6 col-md-3" data-list='true' data-origin='true' aria-label='영화'>
             <div class="info">
-              <blockquote class="review">
+              <blockquote class="review" aria-label="관람평">
                 <p>눈과 귀가 즐거운 B급 호러영화</p>
                 <cite>58세, 넌나의록기록키록기</cite>
               </blockquote>
@@ -130,9 +130,9 @@
                   </div>
                   <div class="desc-group">
                     <h2 class="desc-title">록키호러픽쳐쇼</h2>
-                    <dl class='desc-dl'>
-                      <div class="">
-                        <dt>별점</dt>
+                    <dl class='desc-dl' aria-label='영화 정보'>
+                      <div class="star">
+                        <dt aria-label='별점'>별점</dt>
                         <dd>
                           <span class='icon' aria-hidden='true'>★★★★☆ (</span>
                           <span class="rating" aria-label="4.2점">4.2</span>
@@ -140,15 +140,15 @@
                         </dd>
                       </div>
                       <div class="genre">
-                        <dt>장르</dt>
+                        <dt aria-label='장르'>장르</dt>
                         <dd>판타지, 공포, 코미디, 뮤지컬</dd>
                       </div>
                       <div class="actor">
-                        <dt>출연</dt>
+                        <dt aria-label='출연'>출연</dt>
                         <dd>팀커리, 수잔 서랜든, 베리보스트윅, 리처드오브라이언, 패트리샤 퀸, 넬 캠밸, 미트 로트 외</dd>
                       </div>
                       <div class="director">
-                        <dt>감독</dt>
+                        <dt aria-label='감독'>감독</dt>
                         <dd>짐 셔먼</dd>
                       </div>
                     </dl>
