@@ -1,0 +1,5 @@
+/* < 576px (Mobile) */
+/* Header - active */
+#header.active .button-group > *{
+  height: calc((100vh - (72px + 72px)) / 4);
+}
