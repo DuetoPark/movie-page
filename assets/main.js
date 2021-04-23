@@ -1,4 +1,4 @@
-// 헤더 버튼 보임/숨김 이벤트
+// 헤더 버튼 보임/숨김 & 탭 포커스 이벤트
 const header = document.querySelector('#header');
 const buttons = header.querySelectorAll(".button-group > *");
 const threeLinesButton = header.querySelector('.three-lines-button');
@@ -72,10 +72,24 @@ function displayHeaderButtons() {
   }
 }
 
-threeLinesButton.addEventListener('click', activeOrInactiveHeader);
 window.addEventListener('resize', displayHeaderButtons);
 window.addEventListener("DOMContentLoaded", displayHeaderButtons);
 window.addEventListener("DOMContentLoaded", handleTabIndexOfBanner);
+threeLinesButton.addEventListener('click', activeOrInactiveHeader);
+
+
+
+// 헤더 스크롤 이동 (인터넷에서 긁어옴) - 이벤트 버튼
+$(document).on('click', '.event-button', function (event) {
+  event.preventDefault();
+
+  $('html, body').animate({
+    scrollTop: $($.attr(this, 'href')).offset().top
+  }, 1000);
+
+  isActived = false;
+  activeOrInactiveHeader();
+});
 
 
 
@@ -169,7 +183,7 @@ populateInfo(playingInfo);
 
 
 
-// 배너 마우스 이벤트
+// 배너 영화정보 활성/비활성
 const banner = document.querySelector('#banner');
 const bannerItems = [];
 
