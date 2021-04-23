@@ -4,6 +4,7 @@
   #header .button-group{
     flex-wrap: nowrap;
     justify-content: space-between;
+    opacity: 1;
   }
 
   #header .button-group > *{
