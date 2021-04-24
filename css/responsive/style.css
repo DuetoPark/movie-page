@@ -52,9 +52,6 @@
   }
 
   #playing .image-group{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 290px;
     margin-bottom: 16px;
     overflow: hidden;
@@ -65,26 +62,6 @@
     transform: rotateY(0);
     background-color: rgba(0, 0, 0, 0);
     color: #000;
-  }
-
-
-
-
-  .my-page{
-    display: flex;
-  }
-
-  .my-page img{
-    display: block;
-    width:50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 2px solid #F3F3F3;
-  }
-
-  .my-page .my-page-button{
-    height:50px;
-    font-size: 20px;
   }
 
 

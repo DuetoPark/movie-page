@@ -8,12 +8,6 @@
   height: 72px;
 }
 
-#header .row{
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
-
 #page-title{
   font-size: 36px;
   font-weight: 500;
@@ -39,8 +33,6 @@
 }
 
 #header .button-group{
-  display: flex;
-  flex-wrap: wrap;
   opacity: 0.01;
 }
 
@@ -87,8 +79,6 @@
 
 /* Banner */
 #banner-container{
-  display: flex;
-  justify-content: center;
   height: calc(100vh - 354px);
   overflow:hidden;
   background-color: #F3F3F3;
@@ -96,12 +86,15 @@
 
 #banner-container .items{
   max-width: 15%;
+  /* bootstrap flex 클래스 사용 안 한 이유
+   bootstrap 클래스는 display 속성에 important 적용함
+   li:nth-child(n + 2):nth-child(-n + 5)의 display 숨김 효과 적용 안 됨 */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#banner-container li.items:nth-child(n + 2):nth-child(-n + 5){
+#banner-container > li:nth-child(n + 2):nth-child(-n + 5){
   display: none;
 }
 
@@ -121,11 +114,7 @@
 
 /* Banner - info */
 #banner-container .info{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: space-between;
-  width: 699px;
+  width: 700px;
   height: 390px;
   padding: 40px;
 
@@ -135,14 +124,10 @@
   transition: opacity 250ms ease-out;
 }
 
-#banner-container .items.active .info{
-  position: absolute;
-  z-index: 3;
-  opacity: 1;
-}
-
 #banner-container .image-group{
-  flex: 1 0 calc((100% - 116px) * 0.7);
+  /* flex-basis 대신 width 사용 이유
+  bootstrap에서 flex-basis 지원 안 함 + 크로스 브라우징이 안 됨 */
+  width: calc((100% - (40px * 2)) * 0.7);
   margin-right: 36px;
 }
 
@@ -153,11 +138,20 @@
 }
 
 #banner-container .desc-group{
-  flex: 1 0 calc((100% - 116px) * 0.3);
+  /* flex-basis 대신 width 사용 이유
+  bootstrap에서 flex-basis 지원 안 함 + 크로스 브라우징이 안 됨 */
+  width: calc((100% - (40px * 2)) * 0.3);
 }
 
-.info button{
+.info > button{
   width: 178px;
+}
+
+/* Banner - info - active */
+#banner-container .items.active .info{
+  position: absolute;
+  z-index: 3;
+  opacity: 1;
 }
 
 
@@ -166,9 +160,6 @@
 /* New */
 #new{
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   height: 282px;
   padding: 64px 16px;
   text-align: center;
@@ -220,13 +211,10 @@
 
 /* Playing - info */
 #playing .info{
-  display: flex;
-  flex-direction: column;
   padding: 16px;
   border-radius: 4px;
   background-color: #fff;
-  transition: box-shadow 250ms ease-in-out,
-    transform 250ms ease-in-out;
+  transition: box-shadow 250ms ease-in-out, transform 250ms ease-in-out;
 }
 
 #playing .info:hover{
@@ -270,10 +258,6 @@
 }
 
 #playing .desc-group{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   padding: 36px;
   transform: rotateY(180deg);
   margin-bottom: auto;
@@ -302,8 +286,6 @@
 
 li[data-event=normal]{
   position: relative;
-  display: flex;
-  align-items: center;
 }
 
 .move-to-event{
@@ -335,12 +317,9 @@ li[data-event=normal]{
 #footer .info{
   padding-top: 16px;
   padding-bottom: 16px;
-  display: flex;
-  flex-wrap: wrap;
 }
 
 #footer .info > div{
-  display: flex;
   margin-right: 8px;
 }
 
