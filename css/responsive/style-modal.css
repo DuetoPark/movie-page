@@ -1,42 +1,33 @@
-/* >= 768px (Desktop) */
-@media screen and (min-width:768px) {
+/* >= 576px (Tablet) */
+@media screen and (min-width: 576px) {
+  /* common CSS */
+  .modal-form > input,
+  .modal-form > button{
+    width: 100%;
+  }
+
+
+
   /* Login */
-  .login-modal{
-    width:450px;
-    height:600px;
-    margin: 0 auto;
-    border-radius: 32px;
+  /* Login - active */
+  #login-modal.modal-active {
+    position: absolute;
+    right: calc((100% - (540px - 16px * 2)) / 2); top: 60px;
+    width: 300px;
+    height: 500px;
+    transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
   }
+}
 
-  .login-modal .image-card{
-    margin-bottom: 28px;
+/* >= 768px (Desktop) */
+@media screen and (min-width: 768px) {
+  /* Login */
+  /* Login - active */
+  #login-modal.modal-wrapper.modal-active {
+    right: calc((100% - (960px - 16px * 2)) / 2);
+    min-width: 300px !important; /* 'container' min-width !important 변경 */
+    width: 300px;
   }
-
-  .login-modal .image-card img{
-    width:200px;
-    height: 200px;
-    border: 1px solid #C4C4C4;
-    margin-top: 0;
-    margin-bottom: 8px;
-  }
-
-  .login-modal .page-title{
-    font-size: 36px;
-    line-height: 1.055555555555556;
-  }
-
-  .login-form label{
-    padding-left: 8px;
-    font-size: 18px;
-  }
-
-  .login-form input{
-    width:290px;
-    height: 47px;
-    padding: 11px 11px;
-  }
-
-
 
   /* Sign in */
   .signin-modal{
@@ -87,5 +78,4 @@
     width:290px;
     margin: 0 auto;
   }
-
 }
