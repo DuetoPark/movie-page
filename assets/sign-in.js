@@ -11,3 +11,21 @@ signInInputs.forEach(function(input) {
   input.addEventListener('focusin', toggleLabel);
   input.addEventListener('focusout', toggleLabel);
 });
+
+
+
+
+
+// 회원가입 버튼 활성화
+const agreePP = document.querySelector("#agree-pp");
+
+function toggleSignInButton() {
+  const signInButton = document.querySelector('#submit button');
+  if (this.checked) {
+    signInButton.classList.add('active');
+  } else {
+    signInButton.classList.remove('active');
+  }
+}
+
+agreePP.addEventListener('change', toggleSignInButton);
