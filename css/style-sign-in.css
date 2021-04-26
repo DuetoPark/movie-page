@@ -58,6 +58,7 @@
 }
 
 #input input{
+  color: #181818;
   transition: border-color 250ms ease-in-out;
 }
 
@@ -69,6 +70,24 @@
 #input input:active,
 #input input:focus{
   border-color: #319BBC;
+}
+
+#input input:active,
+#input input:focus{
+  outline-color: #319BBC;
+}
+
+.message{
+  width: var(--inputWidth);
+  font-size: 12px;
+}
+
+.error{
+  color: #E31919; // red
+}
+
+.ok{
+  color: #319BBC; // green
 }
 
 /* #checkbox */
