@@ -37,7 +37,7 @@
         </div>
       </header>
 
-      <section id='sign-in' aria-labelledby="sign-in-title">
+      <section id='sign-in' role="dialog" aria-labelledby="sign-in-title">
         <form class="sign-in-form container" action="index.html" method="post">
           <div id="title" class="row">
             <h2 id='sign-in-title' class="sign-in-title col-12">회원가입</h2>
@@ -63,8 +63,12 @@
             <div class="col-12 col-sm-6 col-md-4 d-flex flex-column align-items-center">
               <label for="check-pw">비밀번호 확인</label>
               <input id="check-pw" type="password" placeholder="비밀번호 확인" required/>
-              <p class="message error hidden">비밀번호 불일치</p>
-              <p class="message ok hidden">비밀번호 확인 완료</p>
+              <p id="check-pw-error" class="message error hidden">
+                <strong>비밀번호 불일치</strong>
+              </p>
+              <p id="check-pw-ok" class="message ok hidden">
+                <strong>비밀번호 확인 완료</strong>
+              </p>
             </div>
 
             <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center">
@@ -81,7 +85,8 @@
           <div id="checkbox" class="row d-flex flex-column align-items-center">
             <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center">
               <input id="agree-pp" class="hidden"
-                type="checkbox" name="check" value="agree-pp"/>
+                type="checkbox" name="check" value="agree-pp"
+                aria-controls="sign-in-button"/>
               <label for="agree-pp">(필수) 정보제공에 동의합니다.</label>
             </div>
             <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center">
@@ -93,7 +98,7 @@
 
           <div id="submit" class="row d-flex justify-content-center">
             <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center">
-              <button type="submit">회원가입</button>
+              <button id="sign-in-button" type="submit" tabindex="-1">회원가입</button>
             </div>
           </div>
         </form>

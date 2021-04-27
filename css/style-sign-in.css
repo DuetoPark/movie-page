@@ -90,6 +90,10 @@
   color: #319BBC; // green
 }
 
+.message strong{
+  font-weight: 400 !important;
+}
+
 /* #checkbox */
 #checkbox{
   margin-bottom: 16px;
