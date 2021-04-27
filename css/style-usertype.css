@@ -1,121 +1,47 @@
-/* Reset CSS */
-body{
-  padding: 40px 0;
-  background-color: #F3F3F3;
+#type{
+  height: calc(100vh - 72px);
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 
-a{
-  color:#181818;
+#user-type-nav li{
+  height: calc(((100vh - 72px) - 16px * 3) / 2);
 }
 
-h1{
-  line-height: 1.111111111111111;
-  letter-spacing: 0.05em;
-  color:#181818;
+#user-type-nav li:first-of-type{
+  margin-bottom: 16px;
 }
 
-input,
-textarea,
-button{
-  border: none;
-}
-
-
-/* Common - button */
-.fill-button{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-/* Movie-header */
-.movie-header{
-  margin-bottom: 8px;
-}
-
-.movie-title{
-  text-align: center;
-}
-
-
-/* User-type */
-.user-type{
-  position: relative;
-  width:100%;
-}
-
-.user-type .page-title{
-  margin-bottom: 19px;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.111111111111111;
-  letter-spacing: -0.01em;
-  color: #7B7B7B;
-  text-align: center;
-}
-
-.user-type .col-md-4:first-child{
-  margin-bottom: 20px;
-}
-
-.user-type .col-md-4:nth-child(2){
-  margin-bottom: 48px;
-}
-
-.user-type .col-md-4:nth-child(2) button{
-  position: absolute;
-  top:0;
-  display: block;
-  width:290px;
-  height: 190px;
-  margin: 0 auto;
-  background-color: transparent;
-  cursor: pointer;
-}
-
-.user-type .col-md-4:last-child .user-type-lists{
-  background-color: #FCC4C4;
-}
-
-.user-type-lists{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width:290px;
-  height:190px;
-  margin: 0 auto;
-  border-radius: 16px;
+#user-type-nav a{
+  width: 100%;
+  height: 100%;
+  padding: 0 48px;
+  border-radius: 4px;
   background-color: #E0E0E0;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  transition: all 350ms ease-in-out;
+  transition: all 250ms ease-in-out;
 }
 
-.user-type-lists:hover{
-  opacity: 0.7;
-  transform: translateY(-2px);
+#user-type-nav a:hover{
+  box-shadow: 0 0 0 3px #99CBDB, 0 4px 4px rgba(0, 0, 0, 0.25);
+  transform: scale(1.02);
 }
 
-.user-type-lists img{
-  width:auto;
-  height:100px;
-  border-radius: 50%;
-  margin-bottom: 10px;
+.type-image{
+  width: 80px;
+  height: auto;
+  border-radius: 100px;
+  margin-right: 14px;
 }
 
-.user-type-lists strong{
-  font-size: 36px;
-  line-height: 1.111111111111111;
-  letter-spacing: 0.05em;
+.type-typo{
+  width: 100px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.333333333333333;
 }
-
-.user-type-lists:last-child{
-  cursor: pointer;
-}
-
 
 /* Footer */
-.footer{
-  display: none;
+#footer{
+  margin: 0;
 }
