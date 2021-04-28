@@ -1,32 +1,76 @@
-// 메뉴 이벤트
-const menuBar = document.querySelector('.page-menu');
-const openMenuBar = document.querySelector('.menu-button');
-const closeMenuBar = menuBar.querySelector('.close-button')
-const desktop = 768;
+// 헤더 버튼 보임/숨김 & 탭 포커스 이벤트
+const header = document.querySelector('#header');
+const buttons = header.querySelectorAll(".button-group > *");
+const threeLinesButton = header.querySelector('.three-lines-button');
+const screen = {
+  desktop: 768,
+  tablet: 576,
+};
+let onTablet = false;
+let isActived = false;
 
-function showMenu(){
-  menuBar.classList.remove('hidden');
-  menuBar.classList.add('active');
+function setTabIndex(elem, tabIndex) {
+  elem.setAttribute('tabindex', tabIndex);
 }
 
-function hideMenu() {
-  menuBar.classList.add('hidden');
-  menuBar.classList.remove('active');
-}
+function handleTabIndexOfBanner() {
+  onTablet = window.innerWidth >= screen.tablet ? true : false;
+  isActived = header.classList.contains('active');
 
-function handleMenu(show) {
-  if (this.innerWidth >= desktop || show) {
-    showMenu();
-  } else {
-    hideMenu();
+  setTabIndex(threeLinesButton, 0);
+
+  if (onTablet) {
+    buttons.forEach(function(button) {setTabIndex(button, 0);});
+    setTabIndex(threeLinesButton, -1);
+  } else if (!onTablet && isActived) { // Mobile & 활성화 상태
+    buttons.forEach(function(button) {setTabIndex(button, 0);});
+  } else if (!onTablet && !isActived) { // Mobile & 비활성화 상태
+    buttons.forEach(function(button) {setTabIndex(button, -1);});
   }
 }
 
-handleMenu();
+function activeOrInactiveHeader() {
+  const buttonGroup = header.querySelector('.button-group');
 
-openMenuBar.addEventListener('click', handleMenu.bind(null, true));
-closeMenuBar.addEventListener('click', handleMenu.bind(null, false));
-window.addEventListener('resize', handleMenu.bind(null, false));
+  isActived = header.classList.contains('active');
+
+  if (onTablet || isActived) {
+    isActived = false;
+    header.classList.remove('active');
+    threeLinesButton.setAttribute('aria-expanded', false);
+    handleTabIndexOfBanner();
+  } else {
+    isActived = true;
+    header.classList.add('active');
+    threeLinesButton.setAttribute('aria-expanded', true);
+    handleTabIndexOfBanner();
+  }
+}
+
+function toggleBannerButtons(state) {
+  if (state === 'show') {
+    threeLinesButton.classList.remove('hidden');
+  } else if (state === 'hide') {
+    threeLinesButton.classList.add('hidden');
+  }
+}
+
+function displayHeaderButtons() {
+  onTablet = window.innerWidth >= screen.tablet ? true : false;
+
+  if (onTablet) {
+    toggleBannerButtons('hide');
+    activeOrInactiveHeader();
+  } else { // Mobile
+    toggleBannerButtons('show');
+    handleTabIndexOfBanner();
+  }
+}
+
+window.addEventListener('resize', displayHeaderButtons);
+window.addEventListener("DOMContentLoaded", displayHeaderButtons);
+window.addEventListener("DOMContentLoaded", handleTabIndexOfBanner);
+threeLinesButton.addEventListener('click', activeOrInactiveHeader);
 
 
 
