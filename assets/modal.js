@@ -4,7 +4,6 @@ const prototypeModal = {
     // bind로 인해 this 변경 (window --> modalFactory의 변수 'modal')
     this.wrapper.classList.toggle('hidden');
     this.wrapper.classList.toggle('modal-active');
-    this.nonModal.classList.toggle('modal-active');
   },
   clickEvent: function(openButton, closeButton) {
     // this: modalFactory의 변수 'modal'
@@ -27,6 +26,38 @@ function modalFactory(wrapper, openButton) {
 
 const login = modalFactory('#login-modal', '.login-button');
 
+
+
+// 로그인 모달 - 로그인 버튼 활성화
+const loginInputs = document.querySelectorAll("#login-modal input");
+let isIdTrue = false;
+let isPwTrue = false;
+
+function toggleLoginButton() {
+  const loginButton = document.querySelector("#login-modal .login-button");
+
+  if (this.dataset.type === 'id' && this.value) {
+    isIdTrue = true;
+  } else if (this.dataset.type === 'id' && !this.value) {
+    isIdTrue = false;
+  }
+
+  if (this.dataset.type === 'pw' && this.value) {
+    isPwTrue = true;
+  } else if (this.dataset.type === 'pw' && !this.value) {
+    isPwTrue = false;
+  }
+
+  if (isIdTrue && isPwTrue) {
+    loginButton.classList.add('active');
+  } else {
+    loginButton.classList.remove('active');
+  }
+}
+
+loginInputs.forEach(function(input) {
+  input.addEventListener('keyup', toggleLoginButton);
+});
 
 
 
