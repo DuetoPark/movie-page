@@ -36,8 +36,9 @@
           메뉴
         </button>
 
-        <nav id='menu' class="col-12 d-flex flex-wrap button-group justify-centent-sm-center">
-          <a class="fill-button col-sm-3 col-lg-2" data-type="menu" href="#modify-profile">프로필 수정</a>
+        <nav id='menu' class="col-12 d-flex flex-wrap button-group justify-centent-sm-center" aria-labelledby="menu-title">
+          <h2 id="menu-title" class="hidden">페이지 내부에서 이동</h2>
+          <a class="fill-button col-sm-3 col-lg-2" data-type="menu" href="#profile">프로필 수정</a>
           <a class="fill-button col-sm-3 col-lg-2" data-type="menu" href="#reservation">좌석예매</a>
           <a class="fill-button col-sm-3 col-lg-2" data-type="menu" href="#reservation-confirm">예매내역</a>
           <a class="fill-button col-sm-3 col-lg-2" data-type="menu" href="#user-review">작성후기</a>
@@ -48,60 +49,43 @@
     </header>
 
     <main>
-      <section class="modify-profile" id="modify-profile">
-        <h2 class="sr-only">프로필 수정</h2>
-        <span class="sr-only">
-          프로필 사진과 개인정보를 수정할 수 있습니다.
-          개인정보에는 이름, 아이디, 비밀번호, 이메일, 생년월일이 있습니다.
-        </span>
+      <section id="profile" class="profile container d-flex justify-content-center" aria-labelledby="profile-title">
+        <form class="modify-form row d-flex flex-column flex-md-row flex-wrap justify-content-md-center" action="#" method="post" aria-labelledby="profile-title">
+          <h2 id="profile-title" class="profile-title col-12 col-md-10">프로필 수정</h2>
+          <div id="change-image" class="col-12 col-md-6 col-lg-5 d-flex flex-column align-items-center justify-content-md-center">
+            <img class="profile-image" src="../assets/images/user.png" alt="프로필 사진">
+            <input id="files" class="hidden" type="file" accept="image/*" files/>
+            <label for="files" class="select-file">파일첨부</label>
+            <p class="files-desc">파일 확장자: jpg, jpeg, png</p>
+          </div>
 
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-12 col-md-4">
-              <h2 class="section-title" aria-hidden="true">프로필 수정</h2>
-              <strong class="sr-only">프로필 사진 변경</strong>
-              <div class="modify-profile-image-card">
-                <div>
-                  <img src="../assets/images/user.png" alt="" class="profile-image">
-                </div>
-                <form class="modify-profile-image-form" action="#" method="GET">
-                  <input type="file" accept="image/*" id="files" files/>
-                  <label for="files" aria-label="파일선택" class="select-file">파일첨부</label>
-                  <span>모든 이미지 파일 가능</span>
-                </form>
-              </div>
+          <div id="change-pp" class="col-12 col-md-6 col-lg-7 d-flex flex-column align-items-center align-items-md-start">
+            <div class="d-flex flex-column flex-md-row align-items-md-center">
+              <label for="user-name">이름</label>
+              <input id="user-name" type="text"/>
+            </div>
+            <div class="d-flex flex-column flex-md-row align-items-md-center">
+              <label for="user-id">아이디</label>
+              <input id="user-id" type="text"/>
+            </div>
+            <div class="d-flex flex-column flex-md-row align-items-md-center">
+              <label for="user-password">비밀번호</label>
+              <input id="user-password" type="password"/>
+            </div>
+            <div class="d-flex flex-column flex-md-row align-items-md-center">
+              <label for="user-email">이메일</label>
+              <input id="user-email" type="email"/>
+            </div>
+            <div class="d-flex flex-column flex-md-row align-items-md-center">
+              <label for="user-birth">생년월일</label>
+              <input id="user-birth" type="text"/>
             </div>
           </div>
-          <div class="row justify-content-center">
-            <div class="col-12 col-md-8">
-              <strong class="sr-only">개인정보 수정</strong>
-              <div class="modify-profile-info">
-                <form class="modify-profile-info-form" action="#" method="GET">
-                  <label for="userName">이름</label>
-                  <input type="text" id="userName" name="userName"
-                    placeholder="수정할 이름을 입력해주세요.">
-                  <label for="userId">아이디</label>
-                  <input type="text" id="userId" name="userId"
-                    placeholder="수정할 아이디를 입력해주세요.">
-                  <label for="userPassword">비밀번호</label>
-                  <input type="password" id="userPassword" name="userPassword"
-                    placeholder="수정할 비밀번호를 입력해주세요.">
-                  <label for="userPasswordConfirm">비밀번호 확인</label>
-                  <input type="password" id="userPasswordConfirm" name="userPasswordConfirm"
-                    placeholder="수정할 비밀번호를 재입력해주세요.">
-                  <label for="userEmail">이메일</label>
-                  <input type="email" id="userEmail" name="userEmail"
-                    placeholder="수정할 이메일을 입력해주세요.">
-                  <label for="userBirth">생년월일</label>
-                  <input type="text" id="userBirth" name="userBirth"
-                    placeholder="수정할 생년월일을 입력해주세요.">
 
-                  <button type="submit" class="mypage-button profile-save-button">저장하기</button>
-                </form>
-              </div>
-            </div>
+          <div class="col-12 d-flex justify-content-center">
+            <button type="submit" class="save-button">저장하기</button>
           </div>
-        </div>
+        </form>
       </section>
 
       <section class="reservation" id="reservation">
