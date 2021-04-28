@@ -36,16 +36,12 @@ let isPwTrue = false;
 function toggleLoginButton() {
   const loginButton = document.querySelector("#login-modal .login-button");
 
-  if (this.dataset.type === 'id' && this.value) {
-    isIdTrue = true;
-  } else if (this.dataset.type === 'id' && !this.value) {
-    isIdTrue = false;
+  if (this.dataset.type === 'id') {
+    isIdTrue = this.value ? true : false;
   }
 
-  if (this.dataset.type === 'pw' && this.value) {
-    isPwTrue = true;
-  } else if (this.dataset.type === 'pw' && !this.value) {
-    isPwTrue = false;
+  if (this.dataset.type === 'pw') {
+    isPwTrue = this.value ? true : false;
   }
 
   if (isIdTrue && isPwTrue) {
