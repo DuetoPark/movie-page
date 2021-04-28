@@ -81,10 +81,6 @@ $(document).on('click', 'a[href^="#"]', function (event) {
   $('html, body').animate({
     scrollTop: $($.attr(this, 'href')).offset().top
   }, 500);
-
-  if (document.body.clientWidth<768) {
-    document.querySelector('.page-menu').style.display = 'none';
-  }
 });
 
 
