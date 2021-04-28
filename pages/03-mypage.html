@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="DuetoPark">
-    <meta name="keywords" content="movie">
-    <meta name="description" content="movie advertising, booking page">
+    <meta name="keywords" content="movie, 회원 페이지, 마이 페이지">
+    <meta name="description" content="💪아이라잌투무빗무비💪 프로필 수정, 좌석예매, 예매내역 확인, 작성후기 확인을 이 페이지에서 한 번에!">
     <title>Movie - 마이페이지</title>
 
     <!-- 폰트 -->
@@ -17,78 +17,35 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="../css/common.css">
     <link rel="stylesheet" type="text/css" href="../css/style-mypage.css">
-    <link rel="stylesheet" type="text/css" href="../css/style-modal.css">
     <!-- 반응형 CSS -->
     <link rel="stylesheet" type="text/css" href="../css/responsive/common.css">
     <link rel="stylesheet" type="text/css" href="../css/responsive/style-mypage.css">
-    <link rel="stylesheet" type="text/css" href="../css/responsive/style-modal.css">
   </head>
 
-
   <body>
-    <strong class="sr-only">
-      현재 페이지는 무비 회원의 마이페이지 입니다.
-      프로필 수정, 좌석예매, 예매내역 확인, 작성후기 확인을 할 수 있습니다.
-    </strong>
+    <header id="header" class="container" aria-label="페이지 상단 영역">
+      <div class="row d-flex justify-content-between align-items-center overflow-hidden">
+        <h1 id='page-title' class="col-12">
+          <a id='home' href="./01-main.html" aria-current='page'>
+            Movie
+          </a>
+        </h1>
 
-    <header class="movie-header">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="movie-title">
-              <h1>
-                <a href="./01-main-after-login.html" aria-label="홈으로 이동">Movie</a>
-              </h1>
-            </div>
+        <button class="three-lines-button" type='button'
+          aria-controls='menu' aria-expanded='false'>
+          메뉴
+        </button>
 
-            <button type="button"
-              class="menu-button"
-              aria-label="메뉴 열기">
-            </button>
+        <nav id='menu' class="col-12 d-flex flex-wrap button-group justify-centent-sm-center">
+          <a class="fill-button col-sm-3 col-lg-2" data-type="menu" href="#modify-profile">프로필 수정</a>
+          <a class="fill-button col-sm-3 col-lg-2" data-type="menu" href="#reservation">좌석예매</a>
+          <a class="fill-button col-sm-3 col-lg-2" data-type="menu" href="#reservation-confirm">예매내역</a>
+          <a class="fill-button col-sm-3 col-lg-2" data-type="menu" href="#user-review">작성후기</a>
 
-            <div class="logout">
-              <img src="../assets/images/user.png" alt="User Dueto Park">
-              <a href="./01-main.html" class="logout-button">로그아웃</a>
-            </div>
-          </div>
-        </div>
+          <a class="fill-button logout-button col-sm-3 col-lg-2" href="./01-main.html">로그아웃</a>
+        </nav>
       </div>
     </header>
-
-
-    <nav class="page-menu hidden">
-      <h2 class="sr-only">나의 페이지 메뉴</h2>
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div>
-              <div class="page-menu-container">
-                <ul>
-                  <li class="page-menu-list">
-                    <a href="#modify-profile">프로필 수정</a>
-                  </li>
-                  <li class="page-menu-list">
-                    <a href="#reservation">좌석예매</a>
-                  </li>
-                  <li class="page-menu-list">
-                    <a href="#reservation-confirm">예매내역</a>
-                  </li>
-                  <li class="page-menu-list">
-                    <a href="#user-review">작성후기</a>
-                  </li>
-                </ul>
-              </div>
-
-              <button type="button"
-                class="close-button"
-                aria-label="메뉴 닫기">
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-
 
     <main>
       <section class="modify-profile" id="modify-profile">
@@ -910,51 +867,36 @@
       </section>
     </main>
 
-    <footer class="footer">
-      <span class="sr-only">
-        이 곳은 페이지 제작 출처 및 회사 정보를 제공합니다.
-        해당 정보가 필요하지 않다고 판단되면 넘기셔도 됩니다.
-      </span>
+    <footer id="footer" aria-label='회사 정보'>
       <div class="container">
         <div class="row">
-          <div class="col-12">
-            <div class="footer-reference">
-              웹페이지 제작 참조 구글에 검색하거나, 이고잉님의 생활코딩과  김버그님의 HTML은 재밌다를 참고했습니다.
+          <p class="col-12">
+            웹페이지 제작 참조 - Stackoverflow, 이고잉님의 생활코딩, 김버그님의 HTML은 재밌다, Zero Cho님의 Javascript 강의를 참고했습니다.
+          </p>
+          <dl class="info col-12 d-flex flex-wrap" aria-label='법인 정보'>
+            <div class="d-flex">
+              <dt aria-label='사업자등록번호'>사업자등록번호</dt>
+              <dd>123-45-67890</dd>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 col-md-4">
+            <div class="d-flex">
+              <dt aria-label='대표이사'>대표이사</dt>
+              <dd>Park Dueto</dd>
+            </div>
+            <div class="d-flex">
+              <dt aria-label='주소'>주소</dt>
+              <dd>포도의 고장, 고구마의 고장</dd>
+            </div>
+            <div class="d-flex">
+              <dt aria-label='대표전화'>대표전화</dt>
+              <dd>03-1234-5678</dd>
+            </div>
+          </dl>
+          <p class="col-12 copyright">
             Copyright © 21XX everything Inc. 모든 권리 보유
-          </div>
-          <div class="col-12 col-md-4">
-            개인정보 처리방침  웹 사이트 이용 약관 법적 고지
-          </div>
-          <div class="col-12 col-md-4">
-            대한민국
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <dl class="footer-company-info">
-              <div class="data-group">
-                <dt>사업자등록번호</dt>
-                <dd>123-45-67890</dd>
-              </div>
-              <div class="data-group">
-                <dt>대표이사</dt>
-                <dd>Park Dueto</dd>
-              </div>
-              <div class="data-group">
-                <dt>주소</dt>
-                <dd>포도의 고장, 고구마의 고장</dd>
-              </div>
-              <div class="data-group">
-                <dt>대표전화</dt>
-                <dd>03-1234-5678</dd>
-              </div>
-            </dl>
-          </div>
+          </p>
+          <p class="col-12">
+            <span>개인정보 처리방침  웹 사이트 이용 약관 법적 고지</span>대한민국
+          </p>
         </div>
       </div>
     </footer>
