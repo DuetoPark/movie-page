@@ -1,4 +1,24 @@
-/* >= 768px (Desktop) */
-@media screen and (min-width:768px) {
+/* >= 576px (Tablet) */
+@media screen and (min-width:576px) {
+  /* Header */
+  #header .button-group{
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    opacity: 1;
+  }
 
+  #header .button-group > *{
+    width: calc((100% - 16px) / 2);
+  }
+
+
+  /* Footer */
+  #footer{
+    padding: 32px 0;
+  }
+
+  #footer .info{
+    padding-top: 24px;
+    padding-bottom: 8px;
+  }
 }

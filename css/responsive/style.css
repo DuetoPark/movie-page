@@ -1,18 +1,5 @@
 /* >= 576px (Tablet) */
 @media screen and (min-width: 576px) {
-  /* Header */
-  #header .button-group{
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    opacity: 1;
-  }
-
-  #header .button-group > *{
-    width: calc((100% - 16px) / 2);
-  }
-
-
-
   /* Banner */
   #banner-container{
     height: 350px;
@@ -84,18 +71,6 @@
 
   .bg-lightgray{
     background-color: #F4F4F4;
-  }
-
-
-
-  /* Footer */
-  #footer{
-    padding: 32px 0;
-  }
-
-  #footer .info{
-    padding-top: 24px;
-    padding-bottom: 8px;
   }
 }
 

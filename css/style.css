@@ -3,80 +3,6 @@
 }
 
 /* < 576px (Mobile) */
-/* Header */
-#header{
-  height: 72px;
-}
-
-#page-title{
-  font-size: 36px;
-  font-weight: 500;
-  line-height: 2;
-  letter-spacing: 0.05em;
-  text-shadow: 4px 0 rgba(0, 0, 0, 0.25);
-  color: #181818;
-}
-
-.three-lines-button{
-  position: absolute;
-  right: 16px; top: 16px;
-  width: 40px;
-  height: 40px;
-  border: none;
-  font-size: 12px;
-  background-color: #F3F3F3;
-  background-image: url('../assets/images/three-lines.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  cursor: pointer;
-  color: rgba(0, 0, 0, 0);
-}
-
-#header .button-group{
-  opacity: 0.01;
-}
-
-#header .button-group > *{
-  width: 100%;
-}
-
-/* Header - active */
-#header.active{
-  position: fixed;
-  left: 0; top: 0;
-  z-index: 1;
-  height: 100vh;
-  background-color: #F3F3F3;
-  transition: background-color 250ms ease-in;
-}
-
-#header.active .three-lines-button{
-  background-image: url('../assets/images/cross.png');
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-#header.active .button-group{
-  padding-top: 16px;
-  opacity: 1;
-  transition: opacity 600ms ease-in-out;
-}
-
-#header.active .button-group > *{
-  height: calc((100vh - (72px + 76px)) / 3);
-  margin-bottom: 16px;
-}
-
-#header.active .button-group > *:last-child{
-  margin-bottom: 0;
-}
-
-#header.active + #banner{
-  margin-top: 72px;
-}
-
-
-
 /* Banner */
 #banner-container{
   height: calc(100vh - 354px);
@@ -302,44 +228,6 @@ li[data-event=normal]{
   transition: transform 250ms ease-in-out;
 }
 
-
-
-/* Footer */
-#footer{
-  margin-top: 64px;
-  padding: 40px 0;
-  background-color: #E0E0E0;
-  font-size: 12px;
-  line-height: 1.166666666666667;
-  letter-spacing: -0.01em;
-}
-
-#footer .info{
-  padding-top: 16px;
-  padding-bottom: 16px;
-}
-
-#footer .info > div{
-  margin-right: 8px;
-}
-
-#footer .info > div:last-of-type{
-  margin-right: 0;
-}
-
-#footer .info dt{
-  flex: 1 0 auto;
-  font-weight: 500;
-  margin-right: 4px;
-}
-
-.copyright{
-  margin-bottom: 4px;
-}
-
-#footer p:last-of-type span{
-  margin-right: 16px;
-}
 
 
 
