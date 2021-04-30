@@ -198,16 +198,16 @@ movie.selected .movie-name{
   margin-bottom: 0;
 }
 
+#step-count .button-group{
+  border: 1px solid #E0E0E0;
+}
+
 .count-type{
   width: 64px;
   margin-right: 16px;
   font-size: 14px;
   font-weight: 500;
   line-height: 2.142857142857143;
-}
-
-.button-group{
-  border: 1px solid #E0E0E0;
 }
 
 .square{
