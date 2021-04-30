@@ -138,6 +138,10 @@ button{
   padding-bottom: 48px;
 }
 
+.step{
+  margin-bottom: 36px;
+}
+
 .movie{
   height: 100px;
   margin-bottom: 16px;
@@ -175,12 +179,61 @@ movie.selected .movie-name{
   transition: all 250ms ease-in-out;
 }
 
-.movie li:hover label{
-  font-weight: 500;
-  color: #99CBDB;
-}
-
+.movie li:hover label,
 .movie input[type=radio]:checked + label {
   font-weight: 500;
   color: #319BBC;
+}
+
+/* #step-count */
+#step-count ol{
+  width: 100%;
+}
+
+#step-count li{
+  margin-bottom: 16px;
+}
+
+#step-count li:last-child{
+  margin-bottom: 0;
+}
+
+.count-type{
+  width: 64px;
+  margin-right: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 2.142857142857143;
+}
+
+.button-group{
+  border: 1px solid #E0E0E0;
+}
+
+.square{
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.142857142857143;
+}
+
+button.square{
+  border-radius: 0;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+}
+
+button.square:hover{
+  background-color: #99CBDB;
+  color: #fff;
+}
+
+p.square{
+  border-left: 1px solid #E0E0E0;
+  border-right: 1px solid #E0E0E0;
+  line-height: 2.142857142857143;
 }
