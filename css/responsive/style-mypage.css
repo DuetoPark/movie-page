@@ -1,4 +1,4 @@
-/* >= 576px (Tablet) */
+/* >= 576px (Tablet col-sm) */
 @media screen and (min-width:576px) {
   #header{
     height: 118px;
@@ -51,31 +51,31 @@
   }
 }
 
-/* >= 768px (Desktop) */
+/* >= 768px (Desktop col-md) */
 @media screen and (min-width:768px) {
-  /* #profile */
-  #profile{
-    padding-top: 32px;
-    padding-bottom: 64px;
-  }
-
-  .modify-form{
-    padding-top: 48px;
-    padding-bottom: 48px;
-  }
-
-  /* #profile - title */
-  .profile-title,
+  /* common */
+  .title,
   #change-image,
   #change-pp{
     margin-bottom: 48px;
   }
 
-  .profile-title{
+  .title{
     height: 36px;
     border-left: 3px solid #319BBC;
     text-align: left;
     line-height: 2;
+  }
+
+  .background{
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  /* #profile */
+  #profile{
+    padding-top: 32px;
+    padding-bottom: 64px;
   }
 
   /* #profile - change-pp */
@@ -86,5 +86,19 @@
   #change-pp label{
     width: 64px;
     margin-right: 16px;
+  }
+
+
+  /* #reservation */
+  .movie{
+    width: calc((100% - 30px) / 2);
+  }
+}
+
+/* >= 992px (Desktop col-lg) */
+@media screen and (min-width:992px) {
+  /* #reservation */
+  .movie{
+    width: calc((100% - 30px * 2) / 3);
   }
 }
