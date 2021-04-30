@@ -94,15 +94,24 @@
             좌석예매
           </h2>
 
-          <section id="step-time" class="steps col-12 col-md-9 d-flex flex-column flex-md-row flex-md-wrap justify-content-md-between" aria-labelledby="time-title">
+          <section id="step-time" class="step col-12 col-md-9 d-flex flex-column flex-md-row flex-md-wrap justify-content-md-between" aria-labelledby="time-title">
             <h3 id="time-title" class="subtitle flex-shrink-0">상영시간표</h3>
             <!-- mypage.js 상영시간표 출력 -->
           </section>
 
-          <section id="step-count" class="step" aria-labelledby="count-title">
+          <section id="step-count" class="step col-12 col-md-9 d-flex flex-column align-items-center" aria-labelledby="count-title">
             <h3 id="count-title" class="subtitle">인원 선택</h3>
 
-            
+            <ol class="d-flex flex-column align-items-center flex-sm-wrap flex-sm-row justify-content-sm-around">
+              <li class="d-flex align-center" data-count="adult">
+                <p class="count-type"><strong>성인</strong></p>
+                <div class="button-group d-flex">
+                  <button class="square count-button down" type="button">-</button>
+                  <p class="square"><strong>0</strong></p>
+                  <button class="square count-button up" type="button">+</button>
+                </div>
+              </li>
+            </ol>
           </section>
 
           <section id="step-seat" class="step" aria-labelledby="seat-title">
