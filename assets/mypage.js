@@ -1,3 +1,49 @@
+// 상영시간표 출력
+const reservationData = state.reservation;
+const sectionTime = document.querySelector('#step-time');
+
+function createTimeListItems(ol, data, index, key) {
+  const li = document.createElement('li');
+  const input = document.createElement('input');
+  const label = document.createElement('label');
+
+  input.id = key + index;
+  input.classList = "hidden";
+  input.type = "radio";
+  input.name = key;
+  input.value = index;
+
+  label.setAttribute('for', key + index);
+  label.textContent = data;
+
+  ol.appendChild(li);
+  li.appendChild(input);
+  li.appendChild(label);
+}
+
+for (key in reservationData) {
+  const data = reservationData[key].timetable;
+  const div = document.createElement('div');
+  const name = document.createElement('h4');
+  const timeList = document.createElement('ol');
+
+  div.className = "movie";
+  name.className = "movie-name";
+  name.textContent = reservationData[key]['name'];
+  timeList.className = "time-list d-flex flex-wrap justify-content-between";
+
+  sectionTime.appendChild(div);
+  div.appendChild(name);
+  div.appendChild(timeList);
+
+  data.forEach(function(data, index) {
+    createTimeListItems(timeList, data, index, key);
+  });
+};
+
+
+
+
 // 헤더 버튼 보임/숨김 & 탭 포커스 이벤트
 const header = document.querySelector('#header');
 const buttons = header.querySelectorAll(".button-group > *");
@@ -74,6 +120,7 @@ threeLinesButton.addEventListener('click', activeOrInactiveHeader);
 
 
 
+
 // 스크롤 이동 (인터넷에서 긁어옴)
 $(document).on('click', 'a[href^="#"]', function (event) {
   event.preventDefault();
@@ -129,7 +176,6 @@ const review = historyFactory(true, '[data-review="hidden"]', '.more-button');
 
 
 
-
 // 프로필 사진 변경 (인터넷에서 긁어옴)
 const profileImage = document.querySelector('.profile-image');
 const inputFiles = document.querySelector("#files");
@@ -145,6 +191,8 @@ function readURL() {
 }
 
 inputFiles.addEventListener('change', readURL);
+
+
 
 
 // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기부터 다시 리팩토링 하셈 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
