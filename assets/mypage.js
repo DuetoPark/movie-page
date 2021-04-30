@@ -1,5 +1,5 @@
 // 상영시간표 출력
-const reservationData = state.reservation;
+const reservationTimeData = state.reservation.time;
 const sectionTime = document.querySelector('#step-time');
 
 function createTimeListItems(ol, data, index, key) {
@@ -21,27 +21,55 @@ function createTimeListItems(ol, data, index, key) {
   li.appendChild(label);
 }
 
-for (key in reservationData) {
-  const data = reservationData[key].timetable;
-  const div = document.createElement('div');
-  const name = document.createElement('h4');
-  const timeList = document.createElement('ol');
+function populateStepTime() {
+  for (key in reservationTimeData) {
+    const data = reservationTimeData[key].timetable;
+    const div = document.createElement('div');
+    const name = document.createElement('h4');
+    const ol = document.createElement('ol');
 
-  div.className = "movie";
-  name.className = "movie-name";
-  name.textContent = reservationData[key]['name'];
-  timeList.className = "time-list d-flex flex-wrap justify-content-between";
+    div.className = "movie";
+    name.className = "movie-name";
+    name.textContent = reservationTimeData[key]['name'];
+    ol.className = "time-list d-flex flex-wrap justify-content-between";
 
-  sectionTime.appendChild(div);
-  div.appendChild(name);
-  div.appendChild(timeList);
+    sectionTime.appendChild(div);
+    div.appendChild(name);
+    div.appendChild(ol);
 
-  data.forEach(function(data, index) {
-    createTimeListItems(timeList, data, index, key);
-  });
-};
+    data.forEach(function(data, index) {
+      createTimeListItems(ol, data, index, key);
+    });
+  };
+}
+
+populateStepTime();
 
 
+
+
+// 인원 선택 - 클론 노드
+const reservationCountData = state.reservation.count;
+const sectionCountList = document.querySelector('#step-count ol');
+const originListItem = sectionCountList.querySelector('li');
+
+function cloneListItems() {
+  for (key in reservationCountData) {
+    const data = reservationCountData[key];
+    const clone = originListItem.cloneNode(true);
+
+    // const li = clone.querySelector('li');
+    const p = clone.querySelector('.count-type');
+
+    clone.dataset.count = key;
+    p.textContent = data.text;
+
+    sectionCountList.appendChild(clone);
+  }
+}
+
+cloneListItems();
+originListItem.remove();
 
 
 // 헤더 버튼 보임/숨김 & 탭 포커스 이벤트
