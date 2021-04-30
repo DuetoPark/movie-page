@@ -49,9 +49,9 @@
     </header>
 
     <main>
-      <section id="profile" class="profile container d-flex justify-content-center" aria-labelledby="profile-title">
-        <form class="modify-form row d-flex flex-column flex-md-row flex-wrap justify-content-md-center" action="#" method="post" aria-labelledby="profile-title">
-          <h2 id="profile-title" class="profile-title col-12 col-md-10">프로필 수정</h2>
+      <article id="profile" class="profile container d-flex justify-content-center" aria-labelledby="profile-title">
+        <form class="profile-form row d-flex flex-column flex-md-row flex-wrap justify-content-md-center background" action="#" method="post" aria-labelledby="profile-title">
+          <h2 id="profile-title" class="title col-12 col-md-10">프로필 수정</h2>
           <div id="change-image" class="col-12 col-md-6 col-lg-5 d-flex flex-column align-items-center justify-content-md-center">
             <img class="profile-image" src="../assets/images/user.png" alt="프로필 사진">
             <input id="files" class="hidden" type="file" accept="image/*" files/>
@@ -86,7 +86,40 @@
             <button type="submit" class="save-button">저장하기</button>
           </div>
         </form>
-      </section>
+      </article>
+
+      <article id="reservation" class="reservation container d-flex justify-content-center" aria-labelledby="reservation-title">
+        <form class="reservation-form row background d-flex flex-column align-items-center" action="index.html" method="post" aria-labelledby="reservation-title">
+          <h2 id="reservation-title" class="title col-12 col-md-10">
+            좌석예매
+          </h2>
+
+          <section id="step-time" class="steps col-12 col-md-9 d-flex flex-column flex-md-row flex-md-wrap justify-content-md-between" aria-labelledby="time-title">
+            <h3 id="time-title" class="subtitle flex-shrink-0">상영시간표</h3>
+            <!-- mypage.js 상영시간표 출력 -->
+          </section>
+
+          <section id="step-count" class="step" aria-labelledby="count-title">
+            <h3 id="count-title" class="subtitle">인원 선택</h3>
+
+            
+          </section>
+
+          <section id="step-seat" class="step" aria-labelledby="seat-title">
+            <h3 id="seat-title" class="subtitle">좌석 선택</h3>
+
+
+          </section>
+
+          <section id="step-check" class="step" aria-labelledby="check-title">
+            <h3 id="check-title" class="subtitle">선택 확인</h3>
+
+
+          </section>
+
+          <button type="submit">선택완료</button>
+        </form>
+      </article>
 
       <section class="reservation" id="reservation">
         <h1 class="sr-only">좌석예매</h1>
@@ -887,6 +920,8 @@
 
     <!-- 라이브러리 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- 데이터 -->
+    <script src="../assets/data.js"></script>
     <!-- 동작 -->
     <script src="../assets/mypage.js"></script>
   </body>
