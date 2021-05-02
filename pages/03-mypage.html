@@ -130,13 +130,32 @@
             </div>
           </section>
 
-          <section id="step-check" class="step" aria-labelledby="check-title">
+          <section id="step-check" class="col-12 col-md-9 d-flex flex-column" aria-labelledby="check-title">
             <h3 id="check-title" class="subtitle">선택 확인</h3>
 
-
+            <dl class="check-dl d-flex flex-column flex-md-row justify-content-md-between">
+              <div id="check-name" class="check-list">
+                <dt class="check-term">영화명</dt>
+                <dd class="check-desc">
+                  <strong></strong>(<strong></strong>)
+                </dd>
+              </div>
+              <div id="check-seat" class="check-list">
+                <dt class="check-term">좌석</dt>
+                <dd class="check-desc">123</dd>
+              </div>
+              <div id="check-count" class="check-list">
+                <dt class="check-term">인원</dt>
+                <dd class="check-desc">123</dd>
+                <dd class="check-desc">123</dd>
+              </div>
+              <div id="check-price" class="d-flex justify-content-end align-items-center">
+                <dt class="check-term">금액</dt>
+                <dd class="check-desc"><strong></strong>원</dd>
+              </div>
+            </dl>
+            <button type="submit" class="finish">선택완료</button>
           </section>
-
-          <button type="submit">선택완료</button>
         </form>
       </article>
 
