@@ -107,6 +107,39 @@
   .step{
     margin-bottom: 48px;
   }
+
+  /* #step-check */
+  .check-dl{
+    margin-bottom: 48px;
+  }
+
+  .check-dl div{
+    margin-bottom: 0 !important;
+  }
+
+  #check-name{
+    width: calc(((100% - 30px * 2) / 9) * 4);
+  }
+
+  #check-seat{
+    width: calc(((100% - 30px * 2) / 9) * 3);
+  }
+
+  #check-count{
+    width: calc(((100% - 30px * 2) / 9) * 2);
+  }
+
+  #check-price{
+    position: absolute;
+    right: 260px;
+    bottom: calc(40px / 2);
+    transform: translateY(50%);
+  }
+
+  .finish{
+    margin: 0;
+    margin-left: auto !important;
+  }
 }
 
 /* >= 992px (Desktop col-lg) */
