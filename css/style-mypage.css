@@ -237,3 +237,59 @@ p.square{
   border-right: 1px solid #E0E0E0;
   line-height: 2.142857142857143;
 }
+
+
+/* #step-seat */
+.table-wrapper{
+  overflow-x: auto;
+}
+
+.seat-table{
+  position: relative;
+  left: 0; top: 0;
+  width: 100%;
+  padding: 48px 16px 16px;
+  background-color: #E0E0E0;
+}
+
+.seat-table::before{
+  content: 'screen';
+  position: absolute;
+  left: 50%; top: 16px;
+  transform: translateX(-50%);
+  width: calc(100% - (16px * 2));
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 16px;
+  background-color: #fff;
+}
+
+.seat-table th,
+.seat-table td{
+  padding: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.seat-table thead th:nth-child(5n+6):nth-child(-5n+11),
+.seat-table tbody td:nth-child(5n+1):nth-child(-5n+11){
+  border-right: 24px solid rgba(0, 0, 0, 0);
+}
+
+.seat-label{
+  display: block;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background-color: #C4C4C4;
+  transition: background-color 250ms ease-in-out;
+}
+
+.seat-label:hover{
+  background-color: #319BBC;
+}
+
+.seat-input:checked + .seat-label{
+  background-color: #319BBC;
+}
