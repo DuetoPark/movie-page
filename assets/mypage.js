@@ -72,6 +72,62 @@ cloneListItems();
 originListItem.remove();
 
 
+
+// 좌석선택 출력
+let seatData = seat; // input[type=radio]의 id 값을 받아와서 seat[영화명][영화시간]으로 이용할 것임.
+const timetableHead = document.querySelector("#step-seat table thead");
+const timetableBody = document.querySelector("#step-seat table tbody");
+
+function populateTableHead() {
+  const tr = document.createElement('tr');
+  const th = document.createElement('th');
+
+  timetableHead.appendChild(tr);
+  tr.appendChild(th);
+
+  for (key in seat['rocky']['rocky1']['a']) {
+    const th = document.createElement('th');
+    th.textContent = key;
+    tr.appendChild(th);
+  }
+}
+
+function populateTableBody() {
+  for (key in seat['rocky']['rocky1']) {
+    const tr = document.createElement('tr');
+    const th = document.createElement('th');
+    const column = key;
+
+    th.textContent = column;
+    timetableBody.appendChild(tr);
+    tr.appendChild(th);
+
+    for (key in seat['rocky']['rocky1'][key]) {
+      const td = document.createElement('td');
+      const checkbox = document.createElement('input');
+      const label = document.createElement('label');
+      const row = key;
+      const checkboxId = column + "-" + row;
+
+      checkbox.id = checkboxId;
+      checkbox.className = "seat-input hidden";
+      checkbox.type = 'checkbox';
+      label.setAttribute('for', checkboxId);
+      label.className = "seat-label";
+
+      tr.appendChild(td);
+      td.appendChild(checkbox);
+      td.appendChild(label);
+    }
+  }
+}
+
+populateTableHead();
+populateTableBody();
+
+
+
+
 // 헤더 버튼 보임/숨김 & 탭 포커스 이벤트
 const header = document.querySelector('#header');
 const buttons = header.querySelectorAll(".button-group > *");
