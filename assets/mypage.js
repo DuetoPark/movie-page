@@ -230,7 +230,44 @@ const prototypeCount = {
   changeData: function() {
     data.count.total = total;
     localStorage.setItem('bookedData', JSON.stringify(data));
-  }
+  },
+  displayTotal: function() {
+    const data = JSON.parse(localStorage.getItem("bookedData"));
+    const section = document.querySelector('#check-count .total');
+    const total = data.count.total;
+    const totalHTML = "<strong>총 " + total + "명</strong>";
+
+    section.innerHTML = totalHTML;
+  },
+  displayDetails: function() {
+    const data = JSON.parse(localStorage.getItem("bookedData"));
+    const section = document.querySelector('#check-count .details');
+    let details = "";
+    for (key in data.count) {
+      if (data.count[key] && key != "total") {
+        const value = data.count[key];
+        const text = state.reservation.count[key].text;
+        const textHTML = "<span>" + text + " " + value + "명</span>";
+        details += textHTML;
+      }
+    }
+    section.innerHTML = details;
+  },
+  displayPrice: function() {
+    const data = JSON.parse(localStorage.getItem("bookedData"));
+    const section = document.querySelector('#check-price .check-desc');
+    let price = 0;
+    for (key in data.count) {
+      if (data.count[key] && key != "total") {
+        const test = state.reservation.count[key].price * Number(data.count[key]);
+        price += test;
+      }
+    }
+
+    const accountExp = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    const totalHTML = "<strong>" + accountExp + "원</strong>";
+    section.innerHTML = totalHTML;
+  },
 };
 
 function Count(wrapper) {
@@ -245,10 +282,16 @@ function Count(wrapper) {
   count.upButton.addEventListener('click', function() {
     count.plus.main(count.displayCount, count.downButton, count.upButton, count.type);
     count.changeData(count.type);
+    count.displayTotal();
+    count.displayDetails();
+    count.displayPrice();
   });
   count.downButton.addEventListener('click', function() {
     count.minus(count.displayCount, count.downButton, count.upButton, count.type);
     count.changeData(count.type);
+    count.displayTotal();
+    count.displayDetails();
+    count.displayPrice();
   });
 
   return count;
