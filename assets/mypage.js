@@ -28,9 +28,9 @@ function createTimeListItems(ol, data, index, key) {
 
   input.id = key + index;
   input.classList = "hidden";
-  input.type = "radio";
+  input.type = "checkbox";
   input.name = key;
-  input.value = index;
+  input.value = data;
 
   label.setAttribute('for', key + index);
   label.textContent = data;
@@ -66,6 +66,80 @@ function populateStepTime() {
 populateStepTime();
 
 
+// 상영시간표 영화 선택
+// ↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기 리팩토링 하셈 ↓↓↓↓↓↓↓↓↓↓↓↓↓
+const movies = document.querySelectorAll('.movie');
+
+const prototypeTimetable = {
+  inActiveSections: function() {
+    movies.forEach(function(movie) {
+      movie.classList.add('inactive');
+    });
+  },
+  activeSelectedSections: function() {
+    this.section.classList.remove('inactive');
+    this.section.classList.add('active');
+  },
+  inActiveLists: function() {
+    this.lists.forEach(function(list) {
+      list.classList.add('inactive');
+    });
+  },
+  activeList: function(selectedListItem) {
+    selectedListItem.classList.remove('inactive');
+  },
+  init: function() {
+    this.lists.forEach(function(list) {
+      list.classList.remove('inactive');
+    });
+
+    movies.forEach(function(movie) {
+      movie.classList.remove('inactive');
+    });
+
+    this.section.classList.remove('active');
+  },
+  changeData: function(input) {
+    data.movie.name = input.name;
+    data.movie.time = input.value;
+    localStorage.setItem('bookedData', JSON.stringify(data));
+  },
+};
+
+function movieAndTime(timetable) {
+  const movie = Object.create(prototypeTimetable);
+  movie.section = document.querySelector(timetable);
+  movie.lists = movie.section.querySelectorAll('li');
+  movie.labels = movie.section.querySelectorAll('label');
+
+  movie.labels.forEach(function(label) {
+    label.addEventListener('click', function() {
+      const input = this.previousElementSibling;
+      const list = this.parentElement;
+
+      if (input.checked) {
+        movie.init();
+        return;
+      }
+
+      movie.inActiveSections();
+      movie.activeSelectedSections();
+      movie.inActiveLists();
+      movie.activeList(list);
+      movie.changeData(input);
+    });
+  });
+
+  return movie;
+}
+
+const rocky = movieAndTime("[data-timetable=rocky]");
+const matilda = movieAndTime("[data-timetable=matilda]");
+const mean = movieAndTime("[data-timetable=mean]");
+const harry = movieAndTime("[data-timetable=harry]");
+const marie = movieAndTime("[data-timetable=marie]");
+const truman = movieAndTime("[data-timetable=truman]");
+
 
 
 // 인원 선택 - 클론 노드
@@ -93,6 +167,7 @@ originListItem.remove();
 
 
 // 인원선택 버튼 이벤트
+// ↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기 리팩토링 하셈 ↓↓↓↓↓↓↓↓↓↓↓↓↓
 let total = 0;
 const prototypeCount = {
   plus: {
@@ -384,88 +459,6 @@ inputFiles.addEventListener('change', readURL);
 
 
 // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기부터 다시 리팩토링 하셈 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-// Booking System - Click Event (Movie name/Start time)
-// 1. 영화이름/영화시간 누르면 '진하기 700', '글자색 #181818'로 변경.
-// (Click movie name/time, it changes to fontWeight 700 & color #181818)
-// 2. 선택한 영화이름/영화시간이 HTML Booking Section에 출력.
-// (Output movie name/time to HTML Booking Section)
-// 3. 영화이름 누르면, 시간 선택 파트와 영화의 상영시간표가 출력.
-// let timetables = document.querySelectorAll("[id^=Timetable]");
-let movieNames = document.querySelectorAll("input[name=movie-name]");
-let nameLabels = document.querySelectorAll("[id^=name]");
-
-
-let bookingEvent = {
-  // 폰트 변경 & HTML Booking Section에 출력하는 함수.
-  changeFont: function(checkedElem, fontElem, showElem){
-    for(let i=0; i<checkedElem.length; i++){
-      if(checkedElem[i].checked){
-        // 폰트 변경.
-        fontElem[i].style.fontWeight = '700';
-        fontElem[i].style.color = '#181818';
-        // Booking Section에 출력.
-        document.getElementById(showElem).innerHTML= fontElem[i].innerHTML;
-      } else{
-        fontElem[i].style.fontWeight = '400';
-        fontElem[i].style.color = '#C4C4C4';
-      }
-    }
-  },
-  // 해당 영화의 시간표 출력
-  showTimetable: function(movie, timetable){
-    for(let j=1; j<=movie.length; j++){
-      if(document.getElementById('movie-name'+j).checked){
-        for(let i=0; i<timetable.length; i++){
-          timetable[i].style.display = 'none';
-        }
-        document.getElementById('Timetable'+j).style.display = 'flex';
-      }
-    }
-  }
-};
-
-// 영화이름 클릭 이벤트
-// 1. 클릭한 영화이름의 폰트스타일 변화.
-// 2. '시간 선택' 파트 출력.
-// 3. 해당 영화의 시간표 출력.
-$("input[name=movie-name]").click(function(){
-  bookingEvent.changeFont(movieNames, nameLabels, "seat-desc-name");
-  // HTML에서 같은 섹션 안의 '시간 선택' 파트가 출력.
-  document.querySelector('div.option-items:nth-child(2)').style.display = 'block';
-
-  bookingEvent.showTimetable(movieNames, timetables);
-});
-
-// 영화시간 클릭 이벤트
-// 클릭한 영화시간 폰트스타일 변화.
-let startTimes = document.querySelectorAll("input[name=start-time]");
-let timeLabels = document.querySelectorAll("[id^=time]");
-
-$("input[name=start-time]").click(function(){
-  bookingEvent.changeFont(startTimes, timeLabels, "seat-desc-time");
-});
-
-
-
-
-// Booking System - Click Event ('start time')
-// 상영시간 누르면, 좌석 선택 버튼이 활성화 됨.
-$('[id^=Timetable]').click(function (){
-  document.querySelector('.select-seat-button').disabled = false;
-});
-
-
-
-// Booking System - Click Event ('select-seat-button')
-// 좌석선택 버튼 누르면, Booking 파트 출력.
-$('.select-seat-button').click(function(){
-  document.querySelector(".booking").style.display = 'block';
-});
-
-
-
-
-
 // Booking System - Select option ('num of person' and 'price')
 // 1. 인원수 제한-5명 (Limit the number of person to five)
 // 2. '누적' 인원 5명 이상 - alert 발생 & '인원'과 '금액' 초기화
