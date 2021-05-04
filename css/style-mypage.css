@@ -168,7 +168,7 @@ div.movie:last-of-type{
   transition: border-color 250ms ease-in-out;
 }
 
-movie.selected .movie-name{
+.movie.selected .movie-name{
   border-width: 2px;
   border-color: #319BBC;
 }
@@ -187,13 +187,14 @@ movie.selected .movie-name{
 }
 
 .movie li:hover label,
-.movie input[type=radio]:checked + label {
+.movie input[type=checkbox]:checked + label {
   font-weight: 500;
   color: #319BBC;
 }
 
 /* #step-time - active/inactive */
-.movie.inactive{
+.movie.inactive,
+.movie li.inactive{
   opacity: 0.25;
   pointer-events: none;
 }
