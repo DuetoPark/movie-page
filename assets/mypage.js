@@ -1,3 +1,22 @@
+// Dataset
+let data = new Object();
+const localId = JSON.parse(localStorage.getItem('bookedData')).id;
+data = {
+  id: localId,
+  movie: {
+    name: "",
+    time: "",
+  },
+  count: {
+    total: 0,
+    adult: 0,
+    teen: 0,
+    kid: 0,
+    discount: 0,
+  },
+};
+
+
 // 상영시간표 출력
 const reservationTimeData = state.reservation.time;
 const sectionTime = document.querySelector('#step-time');
@@ -29,6 +48,7 @@ function populateStepTime() {
     const ol = document.createElement('ol');
 
     div.className = "movie";
+    div.setAttribute('data-timetable', key);
     name.className = "movie-name";
     name.textContent = reservationTimeData[key]['name'];
     ol.className = "time-list d-flex flex-wrap justify-content-between";
@@ -70,6 +90,90 @@ function cloneListItems() {
 
 cloneListItems();
 originListItem.remove();
+
+
+// 인원선택 버튼 이벤트
+let total = 0;
+const prototypeCount = {
+  plus: {
+    main: function(displayCount, downButton, upButton, type) {
+      if (data.count.total === 5) {
+        alert('선택 가능 인원 5명을 초과했습니다.');
+        return;
+      }
+
+      let countValue = Number(displayCount.textContent);
+
+      if (!countValue) {
+        downButton.classList.remove('inactive');
+      }
+
+      if (countValue < 5) {
+        // data
+        total += 1;
+        data.count[type] += 1;
+        // display
+        displayCount.textContent = countValue + 1;
+      }
+
+      countValue = Number(displayCount.textContent);
+      if (countValue === 5) {
+        upButton.classList.add('inactive');
+      }
+
+    },
+  },
+  minus: function(displayCount, downButton, upButton, type) {
+    let countValue = Number(displayCount.textContent);
+
+    if (countValue > 0) {
+      // data
+      total -= 1;
+      data.count[type] -= 1;
+      // display
+      displayCount.textContent = countValue - 1;
+    }
+
+    countValue = Number(displayCount.textContent);
+    if (countValue === 0) {
+      downButton.classList.add('inactive');
+
+    } else if (countValue === 4) {
+      upButton.classList.remove('inactive');
+    }
+  },
+  changeData: function() {
+    data.count.total = total;
+    localStorage.setItem('bookedData', JSON.stringify(data));
+  }
+};
+
+function Count(wrapper) {
+  let count = Object.create(prototypeCount);
+  count.wrapper = document.querySelector(wrapper);
+  count.upButton = count.wrapper.querySelector(".count-button.up");
+  count.downButton = count.wrapper.querySelector(".count-button.down");
+  count.displayCount = count.wrapper.querySelector(".button-group > p");
+  count.type = count.wrapper.dataset.count;
+
+  // button event
+  count.upButton.addEventListener('click', function() {
+    count.plus.main(count.displayCount, count.downButton, count.upButton, count.type);
+    count.changeData(count.type);
+  });
+  count.downButton.addEventListener('click', function() {
+    count.minus(count.displayCount, count.downButton, count.upButton, count.type);
+    count.changeData(count.type);
+  });
+
+  return count;
+}
+
+const adultGroup = Count('li[data-count=adult]');
+const teenGroup = Count('li[data-count=teen]');
+const kidGroup = Count('li[data-count=kid]');
+const discountGroup = Count('li[data-count=discount]');
+
 
 
 
@@ -286,7 +390,7 @@ inputFiles.addEventListener('change', readURL);
 // 2. 선택한 영화이름/영화시간이 HTML Booking Section에 출력.
 // (Output movie name/time to HTML Booking Section)
 // 3. 영화이름 누르면, 시간 선택 파트와 영화의 상영시간표가 출력.
-let timetables = document.querySelectorAll("[id^=Timetable]");
+// let timetables = document.querySelectorAll("[id^=Timetable]");
 let movieNames = document.querySelectorAll("input[name=movie-name]");
 let nameLabels = document.querySelectorAll("[id^=name]");
 
