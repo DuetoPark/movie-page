@@ -288,3 +288,17 @@ function isChangableHeight() {
 // - img태그를 인식하고 바로 넘겨버리는 DOMContentLoaded는 적합하지 않음
 window.addEventListener("load", isChangableHeight);
 window.addEventListener('resize', isChangableHeight);
+
+
+// 로컬스토리지 데이터 저장
+function saveData(e) {
+  let data = new Object();
+  const userId = window.location.search.split("=")[1];
+
+  if (userId) {
+    data.id = userId;
+    localStorage.setItem('bookedData', JSON.stringify(data));
+  }
+}
+
+saveData();
