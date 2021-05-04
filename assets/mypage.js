@@ -104,6 +104,15 @@ const prototypeTimetable = {
     data.movie.time = input.value;
     localStorage.setItem('bookedData', JSON.stringify(data));
   },
+  displayValue: function() {
+    const data = JSON.parse(localStorage.getItem("bookedData"));
+    const section = document.querySelector('#check-name .check-desc');
+    const koreanName = state.reservation.time[data.movie.name].name;
+    const time = data.movie.time;
+    const nameHTML = "<strong>" + koreanName + "</strong>";
+    const timeHTML = "<strong>(" + time + ")</strong>";
+    section.innerHTML = nameHTML + timeHTML;
+  },
 };
 
 function movieAndTime(timetable) {
@@ -127,6 +136,7 @@ function movieAndTime(timetable) {
       movie.inActiveLists();
       movie.activeList(list);
       movie.changeData(input);
+      movie.displayValue();
     });
   });
 
