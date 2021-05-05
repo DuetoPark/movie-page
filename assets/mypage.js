@@ -359,6 +359,154 @@ populateTableBody();
 
 
 
+// 예매내역 출력 & pagenation 클릭 이벤트
+// ↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기 리팩토링 하셈 ↓↓↓↓↓↓↓↓↓↓↓↓↓
+const bookedHistory = document.querySelector('#history');
+const historyData = state.booked;
+let currentData = [];
+let currentTableRow = [];
+let currentIndex = 0;
+
+function createHistory() {
+  const table = document.createElement('table');
+  const thead = document.createElement('thead');
+  const tbody = document.createElement('tbody');
+  const tr = document.createElement('tr');
+  const headDate = document.createElement('th');
+  const headName = document.createElement('th');
+  const headCount = document.createElement('th');
+  const headSeat = document.createElement('th');
+
+  thead.className = 'table-head';
+  headDate.textContent = "날짜";
+  headName.textContent = "영화이름";
+  headCount.textContent = "인원";
+  headSeat.textContent = "좌석";
+  tbody.classList = "table-body";
+
+  bookedHistory.appendChild(table);
+  table.appendChild(thead);
+  table.appendChild(tbody);
+  thead.appendChild(tr);
+  tr.appendChild(headDate);
+  tr.appendChild(headName);
+  tr.appendChild(headCount);
+  tr.appendChild(headSeat);
+
+  populateCurrentData(tbody);
+}
+
+function populateCurrentData(tbody) {
+  currentData = historyData.slice(currentIndex, currentIndex + 5);
+
+  for (i=0; i<5; i+=1) {
+    createContent(tbody);
+  }
+  matchData(currentData);
+}
+
+function createContent(tbody) {
+  const tr = document.createElement('tr');
+  const historyDate = document.createElement('td');
+  const historyName = document.createElement('td');
+  const historyCount = document.createElement('td');
+  const historySeat = document.createElement('td');
+
+  historyDate.className = "history-date";
+  historyName.className = "history-name";
+  historyCount.className = "history-count";
+  historySeat.className = "history-seat";
+
+  tbody.appendChild(tr);
+  tr.appendChild(historyDate);
+  tr.appendChild(historyName);
+  tr.appendChild(historyCount);
+  tr.appendChild(historySeat);
+
+  currentTableRow.push(tr);
+}
+
+function matchData(currentData) {
+  currentTableRow.forEach(function(tr, index) {
+    const dateElement = tr.querySelector(".history-date");
+    const nameElement = tr.querySelector(".history-name");
+    const countElement = tr.querySelector(".history-count");
+    const seatElement = tr.querySelector(".history-seat");
+
+    const dateValue = currentData[index] ? currentData[index].date : "";
+    const nameValue = currentData[index] ? currentData[index].movie.name : "";
+    const countValue = currentData[index] ? currentData[index].count.total : "";
+    const seatValue = currentData[index] ? currentData[index].seat : "";
+
+    dateElement.textContent = dateValue;
+    nameElement.textContent = nameValue;
+    countElement.textContent = countValue;
+    seatElement.textContent = seatValue;
+  });
+}
+
+
+function createPagenation() {
+  const pagenation = document.createElement('div');
+  const preButton = document.createElement('button');
+  const nextButton = document.createElement('button');
+
+  pagenation.className = "pagenation";
+  pagenation.classList.add('d-flex', 'justify-content-center');
+  preButton.className = "pagenation-button pre inactive";
+  nextButton.className = "pagenation-button next";
+
+  bookedHistory.appendChild(pagenation);
+  pagenation.appendChild(preButton);
+  pagenation.appendChild(nextButton);
+
+  pagenation.addEventListener('click', sliceFiveUnits);
+}
+
+function sliceFiveUnits(e) {
+  const tbody = document.querySelector('.table-body');
+  const preButton = document.querySelector(".pagenation-button.pre");
+  const nextButton = document.querySelector(".pagenation-button.next");
+  const limit = Math.floor(historyData.length / 5) * 5;
+
+  if (currentIndex > 0 && e.target === preButton) {
+    currentIndex -= 5;
+  } else if (currentIndex < limit && e.target === nextButton) {
+    currentIndex += 5;
+  }
+
+  tbody.innerHTML = "";
+  currentTableRow = [];
+  populateCurrentData(tbody);
+}
+
+createHistory();
+createPagenation();
+
+
+
+
+// 예매내역 버튼 클릭
+const bookedButton = document.querySelector('#booked .show-more');
+
+function showMoreHistory() {
+  const bookedHistory = document.querySelector('#history');
+  bookedHistory.classList.remove('hidden');
+}
+
+function hideBookedButton() {
+  bookedButton.classList.add('hidden');
+}
+
+function toggleHistory() {
+  showMoreHistory();
+  hideBookedButton();
+}
+
+bookedButton.addEventListener('click', toggleHistory);
+
+
+
 
 // 헤더 버튼 보임/숨김 & 탭 포커스 이벤트
 const header = document.querySelector('#header');
@@ -445,49 +593,6 @@ $(document).on('click', 'a[href^="#"]', function (event) {
     scrollTop: $($.attr(this, 'href')).offset().top
   }, 500);
 });
-
-
-
-
-// 관람 내역, 리뷰
-const prototypeHistory = {
-  showHistory: function(isMultiple, hidden, button) {
-    button.classList.add('hidden');
-
-    if (isMultiple) {
-      for (let i=0; i < hidden.length; i++) {
-        hidden[i].classList.remove('hidden');
-        hidden[i].classList.add('active');
-      }
-    } else {
-      hidden.classList.remove('hidden');
-      hidden.classList.add('active');
-    }
-  },
-
-  applyEvent: function(button) {
-    button.addEventListener('click',
-      this.showHistory.bind(null, this.isMultiple, this.hidden, this.button));
-  },
-};
-
-function historyFactory(isMultiple, hidden, button) {
-  let history = Object.create({});
-  history.button = document.querySelector(button);
-  history.isMultiple = isMultiple;
-  history.multiple = document.querySelectorAll(hidden);
-  history.one = document.querySelector(hidden);
-  history.hidden = isMultiple ? history.multiple : history.one;
-
-  history.__proto__ = prototypeHistory;
-
-  history.applyEvent(history.button); // 클릭 이벤트 실행
-
-  return history;
-}
-
-const seen = historyFactory(false, '.reservation-confirm-seen', '.seen-confirm-button');
-const review = historyFactory(true, '[data-review="hidden"]', '.more-button');
 
 
 
