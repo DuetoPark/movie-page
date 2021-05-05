@@ -362,3 +362,76 @@ p.square{
   background-color: #319BBC;
   color: #fff;
 }
+
+
+
+/* #booked */
+#booked{
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+
+/* #booked - #before-watch */
+#before-watch{
+  margin-bottom: 36px;
+}
+
+#before-watch .mypage-dl{
+  width: 100%;
+}
+
+
+/* #booked - #history */
+#history{
+  overflow-x: hidden;
+}
+
+#history table{
+  width: 500px;
+  border-spacing: 8px 8px;
+  margin-bottom: 24px;
+}
+
+#history table tr{
+  height: 16px;
+}
+
+#history .table-head{
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.142857142857143;
+  letter-spacing: 0.05em;
+}
+
+#history .table-head th:first-child{
+  width: 100px;
+}
+
+#history .table-head th:nth-child(2),
+#history .history-name{
+  width: 130px;
+}
+
+#history .table-head th:nth-child(3),
+#history .table-head th:last-child,
+#history .history-count,
+#history .history-seat{
+  color: rgba(0, 0, 0, 0);
+}
+
+#history .table-body{
+  font-size: 14px;
+  line-height: 1.142857142857143;
+  letter-spacing: 0.05em;
+  vertical-align: top;
+}
+
+#history .history-name{
+  overflow: hidden;
+}
+
+#history .pagenation{
+  margin: 0 auto;
+}

@@ -100,6 +100,11 @@
 
 
   /* #reservation */
+  #reservation{
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
   .movie{
     width: calc((100% - 30px) / 2);
   }
@@ -140,6 +145,54 @@
     margin: 0;
     margin-left: auto !important;
   }
+
+
+
+  /* #booked */
+  #booked{
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  /* #booked - #before-watch */
+  #before-watch{
+    margin-bottom: 48px;
+  }
+
+  /* #booked - #history */
+  #history{
+    overflow-x: visible;
+  }
+
+  #history table{
+    width: 100%;
+  }
+
+  #history .table-head th:first-child{
+    width: 125px;
+  }
+
+  #history .table-head th:nth-child(2),
+  #history .history-name{
+    width: 210px;
+  }
+
+  #history .table-head th:nth-child(3),
+  #history .history-count{
+    width: 40px;
+  }
+
+  #history .table-head th:last-child,
+  #history .history-seat{
+    width: 65px;
+  }
+
+  #history .table-head th:nth-child(3),
+  #history .table-head th:last-child,
+  #history .history-count,
+  #history .history-seat{
+    color: #181818;
+  }
 }
 
 /* >= 992px (Desktop col-lg) */
@@ -158,5 +211,22 @@
   .count-type{
     width: auto;
     margin-right: 8px;
+  }
+
+
+  /* #booked */
+  /* #booked - #history */
+  #history table{
+    border-spacing: 30px 8px;
+  }
+
+  #history .table-head th:nth-child(3),
+  #history .history-count{
+    width: 50px;
+  }
+
+  #history .table-head th:last-child,
+  #history .history-seat{
+    width: 210px;
   }
 }
