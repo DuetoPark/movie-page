@@ -134,6 +134,14 @@
     width: calc(((100% - 30px * 2) / 9) * 2);
   }
 
+  #check-count .details span{
+    margin-right: 0;
+  }
+
+  #check-count .details span::before{
+    content: '-';
+  }
+
   #check-price{
     position: absolute;
     right: 260px;
