@@ -229,4 +229,111 @@ let state = {
       },
     },
   },
+  booked: [
+    {
+      date: "20XX-08-31",
+      movie: {
+        name: "스타워즈",
+        time: "17:20",
+      },
+      count: {
+        total: 2,
+        adult: 2,
+        teen: 0,
+        kid: 0,
+        discount: 0,
+      },
+      seat: ["C6, C7"],
+    },
+    {
+      date: "20XX-08-19",
+      movie: {
+        name: "화이트칙스",
+        time: "20:45",
+      },
+      count: {
+        total: 2,
+        adult: 2,
+        teen: 0,
+        kid: 0,
+        discount: 0,
+      },
+      seat: ["C6, C7"],
+    },
+    {
+      date: "20XX-08-03",
+      movie: {
+        name: "2001: 스페이스 오디세이",
+        time: "23:10",
+      },
+      count: {
+        total: 1,
+        adult: 1,
+        teen: 0,
+        kid: 0,
+        discount: 0,
+      },
+      seat: ["D6"],
+    },
+    {
+      date: "20XX-07-08",
+      movie: {
+        name: "미니언즈",
+        time: "17:20",
+      },
+      count: {
+        total: 2,
+        adult: 1,
+        teen: 1,
+        kid: 0,
+        discount: 0,
+      },
+      seat: ["E8, E9"],
+    },
+    {
+      date: "20XX-06-13",
+      movie: {
+        name: "셜록: 유령신부",
+        time: "21:50",
+      },
+      count: {
+        total: 1,
+        adult: 1,
+        teen: 0,
+        kid: 0,
+        discount: 0,
+      },
+      seat: ["E8"],
+    },
+    {
+      date: "20XX-05-29",
+      movie: {
+        name: "가장 보통의 연애",
+        time: "20:20",
+      },
+      count: {
+        total: 2,
+        adult: 2,
+        teen: 0,
+        kid: 0,
+        discount: 0,
+      },
+      seat: ["C6, C7"],
+    },
+    {
+      date: "20XX-05-05",
+      movie: {
+        name: "센과 치히로의 움직이는 성",
+        time: "17:10",
+      },
+      count: {
+        total: 5,
+        adult: 5,
+        teen: 0,
+        kid: 0,
+        discount: 0,
+      },
+      seat: ["E6, E7, E8, E9, E10"],
+    },
+  ],
 };
