@@ -8,6 +8,7 @@
 /* sr-only */
 .sr-only,
 .hidden {
+  position: absolute;
   display: block;
   width: 1px !important;
   height: 1px !important;
