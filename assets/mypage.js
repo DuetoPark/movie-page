@@ -14,6 +14,7 @@ data = {
     kid: 0,
     discount: 0,
   },
+  seat: [],
 };
 
 
@@ -106,7 +107,7 @@ const prototypeTimetable = {
   },
   displayValue: function() {
     const data = JSON.parse(localStorage.getItem("bookedData"));
-    const section = document.querySelector('#check-name .check-desc');
+    const section = document.querySelector('#check-name .mypage-desc');
     const koreanName = state.reservation.time[data.movie.name].name;
     const time = data.movie.time;
     const nameHTML = "<strong>" + koreanName + "</strong>";
@@ -255,7 +256,7 @@ const prototypeCount = {
   },
   displayPrice: function() {
     const data = JSON.parse(localStorage.getItem("bookedData"));
-    const section = document.querySelector('#check-price .check-desc');
+    const section = document.querySelector('#check-price .mypage-desc');
     let price = 0;
     for (key in data.count) {
       if (data.count[key] && key != "total") {
@@ -307,14 +308,14 @@ const discountGroup = Count('li[data-count=discount]');
 
 // 좌석선택 출력
 let seatData = seat; // input[type=radio]의 id 값을 받아와서 seat[영화명][영화시간]으로 이용할 것임.
-const timetableHead = document.querySelector("#step-seat table thead");
-const timetableBody = document.querySelector("#step-seat table tbody");
+const seatTableHead = document.querySelector("#step-seat table thead");
+const seatTableBody = document.querySelector("#step-seat table tbody");
 
 function populateTableHead() {
   const tr = document.createElement('tr');
   const th = document.createElement('th');
 
-  timetableHead.appendChild(tr);
+  seatTableHead.appendChild(tr);
   tr.appendChild(th);
 
   for (key in seat['rocky']['rocky1']['a']) {
@@ -331,7 +332,7 @@ function populateTableBody() {
     const column = key;
 
     th.textContent = column;
-    timetableBody.appendChild(tr);
+    seatTableBody.appendChild(tr);
     tr.appendChild(th);
 
     for (key in seat['rocky']['rocky1'][key]) {
