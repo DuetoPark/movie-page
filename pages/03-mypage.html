@@ -159,134 +159,40 @@
         </form>
       </article>
 
-      <section class="reservation-confirm" id="reservation-confirm">
-        <h2 class="sr-only">예매내역</h2>
-        <span class="sr-only">
-          관람 전 영화와 관람을 끝낸 영화의 내역을 제공합니다.
-        </span>
+      <article id="booked" class="booked container d-flex flex-column align-items-center" aria-labelledby="booked-title">
+        <div class="row background d-flex flex-column align-items-center">
+          <h2 id="booked-title" class="title col-12 col-md-10">예매내역</h2>
 
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-12">
-              <h2 class="section-title" aria-hidden="true">예매내역</h2>
-            </div>
-            <div class="col-10">
-              <div class="reservation-confirm-soon">
-                <strong class="section-subtitle">관람 전 영화</strong>
-                <dl class="reservation-confirm-lists">
-                  <div class="reservation-confirm-items">
-                    <dt>날짜</dt>
-                    <dd aria-label="21XX년 시월 25일">21XX-10-25</dd>
-                  </div>
-                  <div class="reservation-confirm-items">
-                    <dt>영화이름</dt>
-                    <dd>록키호러픽쳐쇼</dd>
-                  </div>
-                  <div class="reservation-confirm-items">
-                    <dt>상영시간</dt>
-                    <dd aria-label="오후 열시 50분부터 오후 열두시 30분">22:50~24:30</dd>
-                  </div>
-                  <div class="reservation-confirm-items">
-                    <dt>인원</dt>
-                    <dd aria-label="2명">2</dd>
-                  </div>
-                  <div class="reservation-confirm-items">
-                    <dt>좌석</dt>
-                    <dd>I8, I9</dd>
-                  </div>
-                </dl>
+          <section id="before-watch" class="col-12 col-md-9 d-flex flex-column align-items-center" aria-labelledby="before-watch-title">
+            <h3 id="before-watch-title" class="subtitle">관람 전 영화</h3>
+
+            <dl class="mypage-dl">
+              <div class='date'>
+                <dt class="mypage-term">날짜</dt>
+                <dd class="mypage-desc">21XX-10-25</dd>
               </div>
-
-              <button type="button" class="fill-button seen-confirm-button">
-                이전 관람내역 확인<br/>
-              </button>
-            </div>
-            <div class="col-10">
-              <div class="reservation-confirm-seen hidden">
-                <strong class="section-subtitle">이전 관람내역</strong>
-                <dl class="reservation-confirm-lists">
-                  <div>
-                    <dt>날짜</dt>
-                    <dd aria-label="21XX년 8월 31일">21XX-08-31</dd>
-                  </div>
-                  <div>
-                    <dt>영화이름</dt>
-                    <dd>스타워즈</dd>
-                  </div>
-                  <div>
-                    <dt>상영시간</dt>
-                    <dd>17:20~19:30</dd>
-                  </div>
-                  <div>
-                    <dt>인원</dt>
-                    <dd aria-label="1명">1</dd>
-                  </div>
-                  <div>
-                    <dt>좌석</dt>
-                    <dd>H10</dd>
-                  </div>
-                </dl>
-
-                <dl class="reservation-confirm-lists">
-                  <div>
-                    <dt>날짜</dt>
-                    <dd aria-label="21XX년 8월 22일">21XX-08-22</dd>
-                  </div>
-                  <div>
-                    <dt>영화이름</dt>
-                    <dd>슈퍼배드3</dd>
-                  </div>
-                  <div>
-                    <dt>상영시간</dt>
-                    <dd>10:35~12:15</dd>
-                  </div>
-                  <div>
-                    <dt>인원</dt>
-                    <dd aria-label="1명">1</dd>
-                  </div>
-                  <div>
-                    <dt>좌석</dt>
-                    <dd>L8</dd>
-                  </div>
-                </dl>
-
-                <dl class="reservation-confirm-lists">
-                  <div>
-                    <dt>날짜</dt>
-                    <dd aria-label="21XX년 7월 8일">21XX-07-08</dd>
-                  </div>
-                  <div>
-                    <dt>영화이름</dt>
-                    <dd>스페이스 오디세이</dd>
-                  </div>
-                  <div>
-                    <dt>상영시간</dt>
-                    <dd>22:40~25:10</dd>
-                  </div>
-                  <div>
-                    <dt>인원</dt>
-                    <dd aria-label="2명">1</dd>
-                  </div>
-                  <div>
-                    <dt>좌석</dt>
-                    <dd>H9</dd>
-                  </div>
-                </dl>
-
-                <div class="pagenation">
-                  <button type="button" class="page-button prev">&lt;</button>
-                  <button type="button" class="page-button 1-page">1</button>
-                  <button type="button" class="page-button 2-page">2</button>
-                  <button type="button" class="page-button 3-page">3</button>
-                  <button type="button" class="page-button 4-page">4</button>
-                  <button type="button" class="page-button 5-page">5</button>
-                  <button type="button" class="page-button next">&gt;</button>
-                </div>
+              <div class='name'>
+                <dt class="mypage-term">영화이름</dt>
+                <dd class="mypage-desc">록키호러픽쳐쇼(22:50)</dd>
               </div>
-            </div>
-          </div>
+              <div class='count'>
+                <dt class="mypage-term">인원</dt>
+                <dd class="mypage-desc">2</dd>
+              </div>
+              <div class='seat'>
+                <dt class="mypage-term">좌석</dt>
+                <dd class="mypage-desc">D8, D9</dd>
+              </div>
+            </dl>
+            <button class="show-more" type="button">이전 내역</button>
+          </section>
+
+          <section id="history" class="col-12 col-md-9 hidden" aria-labelledby="history-title">
+            <h3 id="history-title" class="subtitle">이전 내역</h3>
+            <!-- mypage.js 이전내역 출력 -->
+          </section>
         </div>
-      </section>
+      </article>
 
 
       <section class="user-review" id="user-review">
@@ -425,6 +331,7 @@
     <script src="../assets/data.js"></script>
     <script src="../assets/data-seat.js"></script>
     <!-- 동작 -->
+    <script src="../assets/polyfill.js"></script>
     <script src="../assets/mypage.js"></script>
   </body>
 </html>
