@@ -38,11 +38,13 @@ function activeOrInactiveHeader() {
     isActived = false;
     header.classList.remove('active');
     threeLinesButton.setAttribute('aria-expanded', false);
+    threeLinesButton.textContent = "메뉴";
     handleTabIndexOfBanner();
   } else {
     isActived = true;
     header.classList.add('active');
     threeLinesButton.setAttribute('aria-expanded', true);
+    threeLinesButton.textContent = "닫기";
     handleTabIndexOfBanner();
   }
 }
