@@ -15,6 +15,13 @@
     border-bottom: 1px solid #E0E0E0;
   }
 
+  #menu.fixed-nav{
+    position: fixed;
+    left: 0; top: 0;
+    z-index: 1;
+    background-color: #F3F3F3;
+  }
+
   #header a[data-type=menu]{
     position: relative;
     width: 130px;

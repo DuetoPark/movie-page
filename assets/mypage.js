@@ -75,12 +75,30 @@ threeLinesButton.addEventListener('click', activeOrInactiveHeader);
 
 
 
-// 스크롤 이동 (인터넷에서 긁어옴)
+// 헤더 스크롤 이벤트 - fixedNav
+const nav = document.querySelector('#menu');
+const topOfNav = nav.offsetHeight;
+
+function fixNav() {
+  if (window.scrollY >= 72) {
+    nav.classList.add('fixed-nav');
+  } else {
+    nav.classList.remove('fixed-nav');
+  }
+}
+
+window.addEventListener('scroll', fixNav);
+
+
+
+
+
+// 헤더 클릭 이벤트 - 스크롤 이동 (인터넷에서 긁어옴)
 $(document).on('click', 'a[href^="#"]', function (event) {
   event.preventDefault();
 
   $('html, body').animate({
-    scrollTop: $($.attr(this, 'href')).offset().top,
+    scrollTop: $($.attr(this, 'href')).offset().top - topOfNav,
   }, 500);
 });
 
