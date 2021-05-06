@@ -32,7 +32,7 @@
         </h1>
 
         <button class="three-lines-button" type='button'
-          aria-controls='menu' aria-expanded='false'>
+          aria-controls='menu' aria-expanded='false' aria-haspopup='menu'>
           메뉴
         </button>
 
@@ -51,11 +51,12 @@
       <article id="profile" class="profile container d-flex justify-content-center" aria-labelledby="profile-title">
         <form class="profile-form row d-flex flex-column flex-md-row flex-wrap justify-content-md-center background" action="#" method="post" aria-labelledby="profile-title">
           <h2 id="profile-title" class="title col-12 col-md-10">프로필 수정</h2>
+
           <div id="change-image" class="col-12 col-md-6 col-lg-5 d-flex flex-column align-items-center justify-content-md-center">
             <img class="profile-image" src="../assets/images/user.png" alt="프로필 사진">
             <input id="files" class="hidden" type="file" accept="image/*" files/>
-            <label for="files" class="select-file">파일첨부</label>
-            <p class="files-desc">파일 확장자: jpg, jpeg, png</p>
+            <label for="files" class="select-file" aria-describedby="filename-extension">파일첨부</label>
+            <p id="filename-extension" class="files-desc">파일 확장자: jpg, jpeg, png</p>
           </div>
 
           <div id="change-pp" class="col-12 col-md-6 col-lg-7 d-flex flex-column align-items-center align-items-md-start">
@@ -95,14 +96,16 @@
 
           <section id="step-time" class="step col-12 col-md-9 d-flex flex-column flex-md-row flex-md-wrap justify-content-md-between" aria-labelledby="time-title">
             <h3 id="time-title" class="subtitle flex-shrink-0">상영시간표</h3>
-            <!-- mypage.js 상영시간표 출력 -->
+            <ul class="movie-list" aria-label="영화">
+              <!-- mypage.js 상영시간표 출력 -->
+            </ul>
           </section>
 
           <section id="step-count" class="step col-12 col-md-9 d-flex flex-column align-items-center" aria-labelledby="count-title">
             <h3 id="count-title" class="subtitle">인원 선택</h3>
 
-            <ol class="d-flex flex-column align-items-center flex-sm-wrap flex-sm-row justify-content-sm-around">
-              <li class="d-flex align-center" data-count="adult">
+            <ol class="d-flex flex-column align-items-center flex-sm-wrap flex-sm-row justify-content-sm-around" aria-label='인원'>
+              <li class="d-flex align-center" data-count="adult" aria-label='구분'>
                 <p class="count-type"><strong>성인</strong></p>
                 <div class="d-flex button-group">
                   <button class="square count-button down inactive" type="button">-</button>
@@ -118,7 +121,7 @@
             <h3 id="seat-title" class="subtitle">좌석 선택</h3>
 
             <div class="table-wrapper">
-              <table class="seat-table">
+              <table class="seat-table" aria-label="좌석">
                 <thead>
                   <!-- mypage.js 좌석선택 출력 -->
                 </thead>
@@ -132,23 +135,23 @@
           <section id="step-check" class="col-12 col-md-9 d-flex flex-column" aria-labelledby="check-title">
             <h3 id="check-title" class="subtitle">선택 확인</h3>
 
-            <dl class="mypage-dl d-flex flex-column flex-md-row justify-content-md-between">
+            <dl class="mypage-dl d-flex flex-column flex-md-row justify-content-md-between" aria-label="확인사항">
               <div id="check-name">
-                <dt class="mypage-term">영화명</dt>
-                <dd class="mypage-desc"></dd>
+                <dt class="mypage-term" aria-label="영화명">영화명</dt>
+                <dd class="mypage-desc" aria-live="polite"></dd>
               </div>
               <div id="check-seat">
-                <dt class="mypage-term">좌석</dt>
-                <dd class="mypage-desc">123</dd>
+                <dt class="mypage-term" aria-label="좌석">좌석</dt>
+                <dd class="mypage-desc" aria-live="polite">123</dd>
               </div>
               <div id="check-count">
-                <dt class="mypage-term">인원</dt>
-                <dd class="mypage-desc total"></dd>
-                <dd class="mypage-desc details d-flex flex-md-column"></dd>
+                <dt class="mypage-term" aria-label="인원">인원</dt>
+                <dd class="mypage-desc total" aria-live="polite"></dd>
+                <dd class="mypage-desc details d-flex flex-wrap flex-md-column" aria-live="polite"></dd>
               </div>
               <div id="check-price" class="d-flex justify-content-end align-items-center">
-                <dt class="mypage-term">금액</dt>
-                <dd class="mypage-desc"><strong></strong>원</dd>
+                <dt class="mypage-term" aria-label="금액">금액</dt>
+                <dd class="mypage-desc" aria-live="polite"><strong id="total-price"></strong>원</dd>
               </div>
             </dl>
             <button type="submit" class="finish">선택완료</button>
@@ -163,25 +166,25 @@
           <section id="before-watch" class="col-12 col-md-9 d-flex flex-column align-items-center" aria-labelledby="before-watch-title">
             <h3 id="before-watch-title" class="subtitle">관람 전 영화</h3>
 
-            <dl class="mypage-dl">
+            <dl class="mypage-dl" aria-label="관람 전 예매내역">
               <div class='date'>
-                <dt class="mypage-term">날짜</dt>
+                <dt class="mypage-term" aria-label="날짜">날짜</dt>
                 <dd class="mypage-desc">21XX-10-25</dd>
               </div>
               <div class='name'>
-                <dt class="mypage-term">영화이름</dt>
+                <dt class="mypage-term" aria-label="영화이름">영화이름</dt>
                 <dd class="mypage-desc">록키호러픽쳐쇼(22:50)</dd>
               </div>
               <div class='count'>
-                <dt class="mypage-term">인원</dt>
+                <dt class="mypage-term" aria-label="인원">인원</dt>
                 <dd class="mypage-desc">2</dd>
               </div>
               <div class='seat'>
-                <dt class="mypage-term">좌석</dt>
+                <dt class="mypage-term" aria-label="좌석">좌석</dt>
                 <dd class="mypage-desc">D8, D9</dd>
               </div>
             </dl>
-            <button class="show-more" type="button">이전 내역</button>
+            <button class="show-more" type="button" aria-controls="history" aria-expanded="false">이전 내역</button>
           </section>
 
           <section id="history" class="col-12 col-md-9 hidden" aria-labelledby="history-title">

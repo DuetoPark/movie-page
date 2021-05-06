@@ -146,12 +146,14 @@ data = {
 
 // 상영시간표 출력
 const reservationTimeData = state.reservation.time;
-const sectionTime = document.querySelector('#step-time');
+const sectionTime = document.querySelector('#step-time .movie-list');
 
 function createTimeListItems(ol, data, index, key) {
-  const li = document.createElement('li');
+  const timeListItem = document.createElement('li');
   const input = document.createElement('input');
   const label = document.createElement('label');
+
+  timeListItem.setAttribute('aria-label', '상영시간');
 
   input.id = key + index;
   input.classList = "hidden";
@@ -162,30 +164,32 @@ function createTimeListItems(ol, data, index, key) {
   label.setAttribute('for', key + index);
   label.textContent = data;
 
-  ol.appendChild(li);
-  li.appendChild(input);
-  li.appendChild(label);
+  ol.appendChild(timeListItem);
+  timeListItem.appendChild(input);
+  timeListItem.appendChild(label);
 }
 
 function populateStepTime() {
   for (key in reservationTimeData) {
     const data = reservationTimeData[key].timetable;
-    const div = document.createElement('div');
+    const movieListItem = document.createElement('li');
     const name = document.createElement('h4');
-    const ol = document.createElement('ol');
+    const timeList = document.createElement('ol');
 
-    div.className = "movie";
-    div.setAttribute('data-timetable', key);
+    movieListItem.className = "movie";
+    movieListItem.setAttribute('data-timetable', key);
+    movieListItem.setAttribute('aria-label', '상영 중인 영화');
     name.className = "movie-name";
     name.textContent = reservationTimeData[key]['name'];
-    ol.className = "time-list d-flex flex-wrap justify-content-between";
+    timeList.className = "time-list d-flex flex-wrap justify-content-between";
+    timeList.setAttribute('aria-label', '시간');
 
-    sectionTime.appendChild(div);
-    div.appendChild(name);
-    div.appendChild(ol);
+    sectionTime.appendChild(movieListItem);
+    movieListItem.appendChild(name);
+    movieListItem.appendChild(timeList);
 
     data.forEach(function(data, index) {
-      createTimeListItems(ol, data, index, key);
+      createTimeListItems(timeList, data, index, key);
     });
   };
 }
@@ -289,7 +293,6 @@ function cloneListItems() {
     const data = reservationCountData[key];
     const clone = originListItem.cloneNode(true);
 
-    // const li = clone.querySelector('li');
     const p = clone.querySelector('.count-type');
 
     clone.dataset.count = key;
@@ -504,12 +507,15 @@ function createHistory() {
   const headCount = document.createElement('th');
   const headSeat = document.createElement('th');
 
+  table.setAttribute('aria-label', '이전 예매 내역');
   thead.className = 'table-head';
   headDate.textContent = "날짜";
   headName.textContent = "영화이름";
   headCount.textContent = "인원";
   headSeat.textContent = "좌석";
+  tbody.id = "table-body";
   tbody.classList = "table-body";
+  tbody.setAttribute('role', 'tabpanel');
 
   bookedHistory.appendChild(table);
   table.appendChild(thead);
@@ -581,7 +587,13 @@ function createPagenation() {
   pagenation.className = "pagenation";
   pagenation.classList.add('d-flex', 'justify-content-center');
   preButton.className = "pagenation-button pre inactive";
+  preButton.setAttribute('role', 'tab');
+  preButton.setAttribute('aria-controls', 'table-body');
+  preButton.setAttribute('aria-label', '이전');
   nextButton.className = "pagenation-button next";
+  nextButton.setAttribute('role', 'tab');
+  nextButton.setAttribute('aria-controls', 'table-body');
+  nextButton.setAttribute('aria-label', '다음');
 
   bookedHistory.appendChild(pagenation);
   pagenation.appendChild(preButton);
@@ -619,6 +631,7 @@ const bookedButton = document.querySelector('#booked .show-more');
 function showMoreHistory() {
   const bookedHistory = document.querySelector('#history');
   bookedHistory.classList.remove('hidden');
+  bookedButton.setAttribute('aria-expanded', true);
 }
 
 function hideBookedButton() {
