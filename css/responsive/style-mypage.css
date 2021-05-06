@@ -93,6 +93,12 @@
     padding-bottom: 48px;
   }
 
+  /* common - dl */
+  .mypage-dl{
+    margin-bottom: 48px;
+  }
+
+
   /* #profile */
   #profile{
     padding-top: 32px;
@@ -124,12 +130,9 @@
     margin-bottom: 48px;
   }
 
-  /* #step-check */
-  .check-dl{
-    margin-bottom: 48px;
-  }
-
-  .check-dl div{
+  /* #reservation - #step-check */
+  #step-check .mypage-dl div{
+    height: 120px;
     margin-bottom: 0 !important;
   }
 
