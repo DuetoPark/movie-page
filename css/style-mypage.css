@@ -128,6 +128,15 @@ main button:focus{
 
 #header.active + main{
   margin-top: 72px;
+  z-index: 0;
+}
+
+
+/* Main */
+main{
+  position: relative;
+  left: 0; top: 0;
+  z-index: 1;
 }
 
 
