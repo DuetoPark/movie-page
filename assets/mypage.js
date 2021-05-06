@@ -319,25 +319,24 @@ const prototypeCount = {
         return;
       }
 
-      let countValue = Number(displayCount.textContent);
-
-      if (!countValue) {
+      let dataOfCountType = data.count[type];
+      
+      if (!dataOfCountType) {
         downButton.classList.remove('inactive');
       }
 
-      if (countValue < 5) {
+      if (dataOfCountType < 5) {
         // data
         total += 1;
         data.count[type] += 1;
         // display
-        displayCount.textContent = countValue + 1;
+        displayCount.textContent = data.count[type];
       }
 
-      countValue = Number(displayCount.textContent);
-      if (countValue === 5) {
+      dataOfCountType = data.count[type];
+      if (dataOfCountType === 5) {
         upButton.classList.add('inactive');
       }
-
     },
   },
   minus: function(displayCount, downButton, upButton, type) {
