@@ -15,20 +15,24 @@
     border-bottom: 1px solid #E0E0E0;
   }
 
-  #header .fill-button{
-    line-height: 2.857142857142857;
-  }
-
   #header a[data-type=menu]{
+    position: relative;
+    width: 130px;
+    margin: 0 30px 0 0;
+    line-height: 2.857142857142857;
     border: none;
     background-color: rgba(0, 0, 0, 0);
+  }
+
+  #header a[href='#booked']{
+    margin: 0;
   }
 
   #header a[data-type=menu]:hover{
     box-shadow: none;
   }
 
-  #header a[data-type=menu]:after{
+  #header a[data-type=menu]::after{
     content: '';
     position: absolute;
     left: 50%;
