@@ -24,7 +24,7 @@
 
   <body>
     <header id="header" class="container" aria-label="페이지 상단 영역">
-      <div class="row d-flex justify-content-between align-items-center overflow-hidden">
+      <div class="row overflow-hidden">
         <h1 id='page-title' class="col-12">
           <a id='home' href="./01-main-after-login.html" aria-current='page'>
             Movie
@@ -36,12 +36,11 @@
           메뉴
         </button>
 
-        <nav id='menu' class="col-12 d-flex flex-wrap justify-centent-sm-center button-group" aria-labelledby="menu-title">
+        <nav id='menu' class="col-12 d-flex flex-wrap justify-content-sm-center button-group" aria-labelledby="menu-title">
           <h2 id="menu-title" class="hidden">페이지 내부에서 이동</h2>
-          <a class="fill-button col-sm-3 col-lg-2" data-type="menu" href="#profile">프로필 수정</a>
-          <a class="fill-button col-sm-3 col-lg-2" data-type="menu" href="#reservation">좌석예매</a>
-          <a class="fill-button col-sm-3 col-lg-2" data-type="menu" href="#booked">예매내역</a>
-          <a class="fill-button col-sm-3 col-lg-2" data-type="menu" href="#user-review">작성후기</a>
+          <a class="fill-button" data-type="menu" href="#profile">프로필 수정</a>
+          <a class="fill-button" data-type="menu" href="#reservation">좌석예매</a>
+          <a class="fill-button" data-type="menu" href="#booked">예매내역</a>
 
           <a class="fill-button logout-button col-sm-3 col-lg-2" href="./01-main.html">로그아웃</a>
         </nav>
@@ -191,102 +190,6 @@
           </section>
         </div>
       </article>
-
-
-      <section class="user-review" id="user-review">
-        <h2 class="section-title">작성후기</h2>
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-12 col-md-4">
-              <div class="user-review-items">
-                <dl>
-                  <dt>영화</dt>
-                  <dd>스타워즈</dd>
-                  <dt>후기</dt>
-                  <dd><strong>시간이 지나도 언제나 세련된 영화</strong></dd>
-                  <dt>별점</dt>
-                  <dd><span aria-label="5점">★★★★★</span></dd>
-                  <dt>날짜</dt>
-                  <dd><span aria-label="21XX년 9월 2일">21XX-09-02</span></dd>
-                </dl>
-              </div>
-            </div>
-            <div class="col-12 col-md-4">
-              <div class="user-review-items">
-                <dl>
-                  <dt>영화</dt>
-                  <dd>슈퍼배드3</dd>
-                  <dt>후기</dt>
-                  <dd><strong>친오빠가 이 영화를 보고나서 빠냐냐를 시도때도 없이 울부짖어서 짜증나요.</strong></dd>
-                  <dt>별점</dt>
-                  <dd><span aria-label="4점">★★★★☆</span></dd>
-                  <dt>날짜</dt>
-                  <dd><span aria-label="21XX년 8월 22일">21XX-08-22</span></dd>
-                </dl>
-              </div>
-            </div>
-            <div class="col-12 col-md-4">
-              <div class="user-review-items">
-                <dl>
-                  <dt>영화</dt>
-                  <dd>스페이스 오디세이</dd>
-                  <dt>후기</dt>
-                  <dd><strong>왜 SF영화의 바이블인지 알 것 같다.</strong></dd>
-                  <dt>별점</dt>
-                  <dd><span aria-label="5점">★★★★★</span></dd>
-                  <dt>날짜</dt>
-                  <dd><span aria-label="21XX년 7월 8일">21XX-07-08</span></dd>
-                </dl>
-              </div>
-            </div>
-
-            <button type="button" class="fill-button more-button">더보기</button>
-
-            <div class="col-12 col-md-4 hidden" data-review='hidden'>
-              <div class="user-review-items">
-                <dl>
-                  <dt>영화</dt>
-                  <dd>그랜드 부다페스트 호텔</dd>
-                  <dt>후기</dt>
-                  <dd><strong>아름다운 색감으로 그려낸 무거운 주제가 인상적이다.</strong></dd>
-                  <dt>별점</dt>
-                  <dd><span aria-label="4점">★★★★☆</span></dd>
-                  <dt>날짜</dt>
-                  <dd><span aria-label="21XX년 6월 25일">21XX-06-25</span></dd>
-                </dl>
-              </div>
-            </div>
-            <div class="col-12 col-md-4 hidden" data-review='hidden'>
-              <div class="user-review-items">
-                <dl>
-                  <dt>영화</dt>
-                  <dd>터넷</dd>
-                  <dt>후기</dt>
-                  <dd><strong>속도가 빨라서 영화를 이해하기 어렵다고 하던데, 그냥 내용이 어려운 거였네요.</strong></dd>
-                  <dt>별점</dt>
-                  <dd><span aria-label="4점">★★★★☆</span></dd>
-                  <dt>날짜</dt>
-                  <dd><span aria-label="21XX년 6월 23일">21XX-06-23</span></dd>
-                </dl>
-              </div>
-            </div>
-            <div class="col-12 col-md-4 hidden" data-review='hidden'>
-              <div class="user-review-items">
-                <dl>
-                  <dt>영화</dt>
-                  <dd>미스슬로운</dd>
-                  <dt>후기</dt>
-                  <dd><strong>야망있는 여자가 되겠다고 마음먹지만, 늘 그래왔듯이 오늘도 많이 먹기만 하겠지.</strong></dd>
-                  <dt>별점</dt>
-                  <dd><span aria-label="5점">★★★★★</span></dd>
-                  <dt>날짜</dt>
-                  <dd><span aria-label="21XX년 5월 5일">21XX-05-05</span></dd>
-                </dl>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
 
     <footer id="footer" aria-label='회사 정보'>
