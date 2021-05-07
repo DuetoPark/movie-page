@@ -292,7 +292,10 @@ let selectedCheckboxOfStepTime;
 function matchSeatDataAndDomTable() {
   selectedCheckboxOfStepTime = this;
   const movieName = selectedCheckboxOfStepTime.name;
-  const moviTime = selectedCheckboxOfStepTime.id;
+  const movieTime = selectedCheckboxOfStepTime.id;
+
+  savaDataInSessionStorage("movieName", movieName);
+  savaDataInSessionStorage("movieTime", movieTime);
 
   const seatData = JSON.parse(localStorage.getItem("seatData"));
   const seatCheckboxes = document.querySelectorAll('.seat-table .seat-input');
@@ -300,7 +303,7 @@ function matchSeatDataAndDomTable() {
   seatCheckboxes.forEach(function(checkbox, index) {
     const seatKey = checkbox.id.split("-")[0];
     const seatIndex = Number(checkbox.id.split("-")[1]) - 1;
-    const thisData = seatData[movieName][moviTime][seatKey][seatIndex];
+    const thisData = seatData[movieName][movieTime][seatKey][seatIndex];
 
     let isChecked = thisData === 1 ? true : false;
     if (isChecked) {
@@ -311,6 +314,10 @@ function matchSeatDataAndDomTable() {
       checkbox.classList.remove('already-booked');
     }
   });
+}
+
+function savaDataInSessionStorage(key, value) {
+  sessionStorage.setItem(key, value);
 }
 
 timeCheckboxes.forEach(function(checkbox) {
@@ -471,7 +478,7 @@ const discountGroup = Count('li[data-count=discount]');
 
 
 
-// 좌석선택 출력
+// 좌석선택 - 중복 출력
 const seatTableHead = document.querySelector("#step-seat table thead");
 const seatTableBody = document.querySelector("#step-seat table tbody");
 
@@ -554,6 +561,62 @@ test.harry.harry1.a[1] = 1;
 test.harry.harry1.a[2] = 1;
 test.harry.harry1.a[3] = 1;
 localStorage.setItem('seatData', JSON.stringify(test));
+
+
+
+
+// 좌석선택 - 선택 이벤트(데이터 변경)
+// ↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기 리팩토링 하셈 ↓↓↓↓↓↓↓↓↓↓↓↓↓
+const seatCheckboxes = document.querySelectorAll('#step-seat .seat-input');
+let seatData = JSON.parse(localStorage.getItem('seatData'));
+let lastChoiceMovie;
+let lastChoiceTime;
+
+function changeSeatData() {
+  const movieName = sessionStorage.getItem('movieName');
+  const movieTime = sessionStorage.getItem('movieTime');
+  const seatKey = this.id.split("-")[0];
+  const seatIndex = Number(this.id.split("-")[1]) - 1;
+
+  // 영화 또는 시간을 다시 선택했을 때
+  if (lastChoiceMovie != movieName || lastChoiceTime != movieTime) {
+    seatData = JSON.parse(localStorage.getItem('seatData'));
+    data.seat = [];
+  }
+
+  if (this.checked) {
+    seatData[movieName][movieTime][seatKey][seatIndex] = 1;
+
+    data.seat.push(this.id);
+  } else {
+    seatData[movieName][movieTime][seatKey][seatIndex] = 0;
+
+    const index = data.seat.indexOf(this.id);
+    data.seat.splice(index, 1);
+  }
+
+  displaySeat();
+
+  // 비교할 대상 저장
+  lastChoiceMovie = movieName;
+  lastChoiceTime = movieTime;
+}
+
+function displaySeat() {
+  const section = document.querySelector('#check-seat .mypage-desc');
+  const seatData = [];
+  data.seat.forEach(function(seat) {
+    let data = seat.split("-").join("");
+    seatData.push(data);
+  });
+
+  const seatHTML = "<strong>" + seatData + "</strong>";
+  section.innerHTML = seatHTML;
+}
+
+seatCheckboxes.forEach(function(checkbox) {
+  checkbox.addEventListener('change', changeSeatData.bind(checkbox));
+});
 
 
 
