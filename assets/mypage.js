@@ -437,26 +437,28 @@ const discountGroup = Count('li[data-count=discount]');
 
 
 // 좌석선택 출력
-let seatData = seat; // input[type=radio]의 id 값을 받아와서 seat[영화명][영화시간]으로 이용할 것임.
 const seatTableHead = document.querySelector("#step-seat table thead");
 const seatTableBody = document.querySelector("#step-seat table tbody");
 
 function populateTableHead() {
+  // 맨 첫번째 칸 생성
   const tr = document.createElement('tr');
   const th = document.createElement('th');
 
   seatTableHead.appendChild(tr);
   tr.appendChild(th);
 
-  for (key in seat['rocky']['rocky1']['a']) {
+  // 나머지 15칸 생성
+  for (let i=0; i<15; i+=1) {
     const th = document.createElement('th');
-    th.textContent = key;
+    th.textContent = i + 1;
     tr.appendChild(th);
   }
 }
 
 function populateTableBody() {
-  for (key in seat['rocky']['rocky1']) {
+  for (key in seat) {
+    // 열 생성
     const tr = document.createElement('tr');
     const th = document.createElement('th');
     const column = key;
@@ -465,12 +467,13 @@ function populateTableBody() {
     seatTableBody.appendChild(tr);
     tr.appendChild(th);
 
-    for (key in seat['rocky']['rocky1'][key]) {
+    // 나머지 15칸 생성
+    for (let i=0; i<seat[key].length; i+=1) {
       const td = document.createElement('td');
       const checkbox = document.createElement('input');
       const label = document.createElement('label');
       const row = key;
-      const checkboxId = column + "-" + row;
+      const checkboxId = column + "-" + (i + 1);
 
       checkbox.id = checkboxId;
       checkbox.className = "seat-input hidden";
@@ -485,8 +488,38 @@ function populateTableBody() {
   }
 }
 
-populateTableHead();
-populateTableBody();
+function setSeatDataInLocalStorage() {
+  const resourceData = state.reservation.time;
+  const newObject = {};
+
+  if (localStorage.getItem(key)) return;
+
+  for (key in resourceData) {
+    newObject[key] = {};
+    const length = resourceData[key].timetable.length;
+
+    for (let i=0; i<length; i+=1) {
+      newObject[key][key + i] = Object.assign(seat);
+    }
+  }
+  localStorage.setItem("seatData", JSON.stringify(newObject));
+}
+
+function init() {
+  populateTableHead();
+  populateTableBody();
+  setSeatDataInLocalStorage();
+}
+
+init();
+
+
+let test = JSON.parse(localStorage.getItem('seatData'));
+test.harry.harry1.a[1] = 1;
+test.harry.harry1.a[2] = 1;
+test.harry.harry1.a[3] = 1;
+localStorage.setItem('seatData', JSON.stringify(test));
+
 
 
 
