@@ -285,6 +285,41 @@ const truman = movieAndTime("[data-timetable=truman]");
 
 
 
+
+// 상영시간표 - 데이터와 화면 매칭
+const timeCheckboxes = document.querySelectorAll(".time-list input");
+let selectedCheckboxOfStepTime;
+function matchSeatDataAndDomTable() {
+  selectedCheckboxOfStepTime = this;
+  const movieName = selectedCheckboxOfStepTime.name;
+  const moviTime = selectedCheckboxOfStepTime.id;
+
+  const seatData = JSON.parse(localStorage.getItem("seatData"));
+  const seatCheckboxes = document.querySelectorAll('.seat-table .seat-input');
+
+  seatCheckboxes.forEach(function(checkbox, index) {
+    const seatKey = checkbox.id.split("-")[0];
+    const seatIndex = Number(checkbox.id.split("-")[1]) - 1;
+    const thisData = seatData[movieName][moviTime][seatKey][seatIndex];
+
+    let isChecked = thisData === 1 ? true : false;
+    if (isChecked) {
+      checkbox.checked = true;
+      checkbox.classList.add('already-booked');
+    } else {
+      checkbox.checked = false;
+      checkbox.classList.remove('already-booked');
+    }
+  });
+}
+
+timeCheckboxes.forEach(function(checkbox) {
+  checkbox.addEventListener('change', matchSeatDataAndDomTable.bind(checkbox));
+});
+
+
+
+
 // 인원 선택 - 클론 노드
 const reservationCountData = state.reservation.count;
 const sectionCountList = document.querySelector('#step-count ol');
@@ -320,7 +355,7 @@ const prototypeCount = {
       }
 
       let dataOfCountType = data.count[type];
-      
+
       if (!dataOfCountType) {
         downButton.classList.remove('inactive');
       }

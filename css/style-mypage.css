@@ -161,7 +161,6 @@ main{
 }
 
 .select-file{
-  /* padding: 10px 83px; */
   margin-bottom: 4px;
   border: none;
   text-align: center;
@@ -223,6 +222,7 @@ main{
 
 /* #reservation - #step-time */
 .movie{
+  width: 100%;
   height: 100px;
   margin-bottom: 16px;
   font-size: 14px;
@@ -392,6 +392,15 @@ p.square{
 
 .seat-input:checked + .seat-label{
   background-color: #319BBC;
+}
+
+.seat-input.already-booked + .seat-label{
+  background-color: #7B7B7B;
+  background-image: url('../assets/images/cross.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
 }
 
 /* #reservation - #step-check */
