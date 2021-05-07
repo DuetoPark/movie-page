@@ -128,12 +128,10 @@ inputFiles.addEventListener('change', readURL);
 
 // Dataset
 let data = new Object();
-const localId = JSON.parse(localStorage.getItem('bookedData')).id;
 data = {
-  id: localId,
   movie: {
     name: "",
-    time: "",
+    time: [],
   },
   count: {
     total: 0,
@@ -234,14 +232,15 @@ const prototypeTimetable = {
   },
   changeData: function(input) {
     data.movie.name = input.name;
-    data.movie.time = input.value;
-    localStorage.setItem('bookedData', JSON.stringify(data));
+    data.movie.time[0] = input.value;
+    data.movie.time[1] = input.id;
+    sessionStorage.setItem('optionData', JSON.stringify(data));
   },
   displayValue: function() {
-    const data = JSON.parse(localStorage.getItem("bookedData"));
+    const data = JSON.parse(sessionStorage.getItem("optionData"));
     const section = document.querySelector('#check-name .mypage-desc');
     const koreanName = state.reservation.time[data.movie.name].name;
-    const time = data.movie.time;
+    const time = data.movie.time[0];
     const nameHTML = "<strong>" + koreanName + "</strong>";
     const timeHTML = "<strong>(" + time + ")</strong>";
     section.innerHTML = nameHTML + timeHTML;
@@ -288,15 +287,11 @@ const truman = movieAndTime("[data-timetable=truman]");
 
 // 상영시간표 - 데이터와 화면 매칭
 const timeCheckboxes = document.querySelectorAll(".time-list input");
-let selectedCheckboxOfStepTime;
 
 function matchSeatDataAndDomTable() {
-  selectedCheckboxOfStepTime = this;
-  const movieName = selectedCheckboxOfStepTime.name;
-  const movieTime = selectedCheckboxOfStepTime.id;
-
-  savaDataInSessionStorage("movieName", movieName);
-  savaDataInSessionStorage("movieTime", movieTime);
+  const optionData = JSON.parse(sessionStorage.getItem('optionData'));
+  const movieName = optionData.movie.name;
+  const movieTime = optionData.movie.time[1];
 
   const seatData = JSON.parse(localStorage.getItem("seatData"));
   const seatCheckboxes = document.querySelectorAll('.seat-table .seat-input');
@@ -315,10 +310,6 @@ function matchSeatDataAndDomTable() {
       checkbox.classList.remove('already-booked');
     }
   });
-}
-
-function savaDataInSessionStorage(key, value) {
-  sessionStorage.setItem(key, value);
 }
 
 timeCheckboxes.forEach(function(checkbox) {
@@ -403,10 +394,10 @@ const prototypeCount = {
   },
   changeData: function() {
     data.count.total = total;
-    localStorage.setItem('bookedData', JSON.stringify(data));
+    sessionStorage.setItem('optionData', JSON.stringify(data));
   },
   displayTotal: function() {
-    const data = JSON.parse(localStorage.getItem("bookedData"));
+    const data = JSON.parse(sessionStorage.getItem("optionData"));
     const section = document.querySelector('#check-count .total');
     const total = data.count.total;
     const totalHTML = "<strong>총 " + total + "명</strong>";
@@ -414,7 +405,7 @@ const prototypeCount = {
     section.innerHTML = totalHTML;
   },
   displayDetails: function() {
-    const data = JSON.parse(localStorage.getItem("bookedData"));
+    const data = JSON.parse(sessionStorage.getItem("optionData"));
     const section = document.querySelector('#check-count .details');
     let details = "";
     for (key in data.count) {
@@ -428,7 +419,7 @@ const prototypeCount = {
     section.innerHTML = details;
   },
   displayPrice: function() {
-    const data = JSON.parse(localStorage.getItem("bookedData"));
+    const data = JSON.parse(sessionStorage.getItem("optionData"));
     const section = document.querySelector('#check-price .mypage-desc');
     let price = 0;
     for (key in data.count) {
@@ -574,8 +565,9 @@ let lastChoiceMovie;
 let lastChoiceTime;
 
 function changeSeatData() {
-  const movieName = sessionStorage.getItem('movieName');
-  const movieTime = sessionStorage.getItem('movieTime');
+  const optionData = JSON.parse(sessionStorage.getItem('optionData'));
+  const movieName = optionData.movie.name;
+  const movieTime = optionData.movie.time[1];
   const seatKey = this.id.split("-")[0];
   const seatIndex = Number(this.id.split("-")[1]) - 1;
 
