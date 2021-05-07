@@ -289,6 +289,7 @@ const truman = movieAndTime("[data-timetable=truman]");
 // 상영시간표 - 데이터와 화면 매칭
 const timeCheckboxes = document.querySelectorAll(".time-list input");
 let selectedCheckboxOfStepTime;
+
 function matchSeatDataAndDomTable() {
   selectedCheckboxOfStepTime = this;
   const movieName = selectedCheckboxOfStepTime.name;
@@ -534,7 +535,7 @@ function setSeatDataInLocalStorage() {
   const resourceData = state.reservation.time;
   const newObject = {};
 
-  if (localStorage.getItem(key)) return;
+  if (localStorage.getItem("seatData")) return;
 
   for (key in resourceData) {
     newObject[key] = {};
@@ -610,6 +611,10 @@ function displaySeat() {
     seatData.push(data);
   });
 
+  seatData.sort(function(a,b) {
+    return a > b ? 1 : -1;
+  });
+
   const seatHTML = "<strong>" + seatData + "</strong>";
   section.innerHTML = seatHTML;
 }
@@ -617,6 +622,19 @@ function displaySeat() {
 seatCheckboxes.forEach(function(checkbox) {
   checkbox.addEventListener('change', changeSeatData.bind(checkbox));
 });
+
+
+
+
+// 좌석선택 - 선택 이벤트(선택완료)
+const finishButton = document.querySelector('.finish');
+
+function saveSeatData(e) {
+  localStorage.setItem('seatData', JSON.stringify(seatData));
+}
+
+finishButton.addEventListener('click', saveSeatData);
+
 
 
 
