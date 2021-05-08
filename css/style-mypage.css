@@ -426,6 +426,15 @@ p.square{
   margin-bottom: 36px;
 }
 
+#check-seat .mypage-desc span{
+  padding-left: 4px;
+  text-transform: uppercase;
+}
+
+#check-seat .mypage-desc span:first-of-type{
+  padding-left: 0;
+}
+
 #check-count .details{
   font-size: 14px;
   line-height: 1.142857142857143;

@@ -596,6 +596,7 @@ function changeSeatData() {
     data.seat = [];
   }
 
+  // 데이터 변경
   if (this.checked) {
     seatData[movieName][movieTime][seatKey][seatIndex] = 1;
 
@@ -618,7 +619,7 @@ function displaySeat() {
   const section = document.querySelector('#check-seat .mypage-desc');
   const seatData = [];
   data.seat.forEach(function(seat) {
-    let data = seat.split("-").join("");
+    let data = '<span>' + seat.split("-").join("") + '</span>';
     seatData.push(data);
   });
 
