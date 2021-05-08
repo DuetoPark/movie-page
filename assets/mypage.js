@@ -367,32 +367,30 @@ originListItem.remove();
 // ↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기 리팩토링 하셈 ↓↓↓↓↓↓↓↓↓↓↓↓↓
 let total = 0;
 const prototypeCount = {
-  plus: {
-    main: function(displayCount, downButton, upButton, type) {
-      if (data.count.total === 5) {
-        alert('선택 가능 인원 5명을 초과했습니다.');
-        return;
-      }
+  plus: function(displayCount, downButton, upButton, type) {
+    if (data.count.total === 5) {
+      alert('선택 가능 인원 5명을 초과했습니다.');
+      return;
+    }
 
-      let dataOfCountType = data.count[type];
+    let dataOfCountType = data.count[type];
 
-      if (!dataOfCountType) {
-        downButton.classList.remove('inactive');
-      }
+    if (!dataOfCountType) {
+      downButton.classList.remove('inactive');
+    }
 
-      if (dataOfCountType < 5) {
-        // data
-        total += 1;
-        data.count[type] += 1;
-        // display
-        displayCount.textContent = data.count[type];
-      }
+    if (dataOfCountType < 5) {
+      // data
+      total += 1;
+      data.count[type] += 1;
+      // display
+      displayCount.textContent = data.count[type];
+    }
 
-      dataOfCountType = data.count[type];
-      if (dataOfCountType === 5) {
-        upButton.classList.add('inactive');
-      }
-    },
+    dataOfCountType = data.count[type];
+    if (dataOfCountType === 5) {
+      upButton.classList.add('inactive');
+    }
   },
   minus: function(displayCount, downButton, upButton, type) {
     let countValue = Number(displayCount.textContent);
@@ -466,7 +464,7 @@ function Count(wrapper) {
 
   // button event
   count.upButton.addEventListener('click', function() {
-    count.plus.main(count.displayCount, count.downButton, count.upButton, count.type);
+    count.plus(count.displayCount, count.downButton, count.upButton, count.type);
     count.changeData(count.type);
     count.displayTotal();
     count.displayDetails();
@@ -616,18 +614,17 @@ function changeSeatData() {
 
 function displaySeat() {
   const section = document.querySelector('#check-seat .mypage-desc');
-  const seatData = [];
+  const arrayOfseatsHTML = new Array;
   data.seat.forEach(function(seat) {
-    let data = '<span>' + seat.split("-").join("") + '</span>';
-    seatData.push(data);
+    let seatHTML = '<span>' + seat.split("-").join("") + '</span>';
+    arrayOfseatsHTML.push(seatHTML);
   });
 
-  seatData.sort(function(a,b) {
+  arrayOfseatsHTML.sort(function(a,b) {
     return a > b ? 1 : -1;
   });
 
-  const seatHTML = "<strong>" + seatData + "</strong>";
-  section.innerHTML = seatHTML;
+  section.innerHTML = "<strong>" + arrayOfseatsHTML + "</strong>";
 }
 
 seatCheckboxes.forEach(function(checkbox) {
