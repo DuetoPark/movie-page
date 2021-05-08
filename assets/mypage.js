@@ -229,6 +229,8 @@ const prototypeTimetable = {
     });
 
     this.section.classList.remove('active');
+
+    document.querySelector('#check-name .mypage-desc').innerHTML = "";
   },
   changeData: function(input) {
     data.movie.name = input.name;
@@ -245,6 +247,18 @@ const prototypeTimetable = {
     const timeHTML = "<strong>(" + time + ")</strong>";
     section.innerHTML = nameHTML + timeHTML;
   },
+  toggleSeatTable: function(isChecked) {
+    if (isChecked) {
+      this.seatTableWrapper.classList.remove('inactive');
+    } else {
+      this.seatTableWrapper.classList.add('inactive');
+    }
+  },
+  alertMessage: function() {
+    if (this.classList.contains('inactive')) {
+      alert("관람하실 영화를 선택해주세요.");
+    }
+  }
 };
 
 function movieAndTime(timetable) {
@@ -252,6 +266,7 @@ function movieAndTime(timetable) {
   movie.section = document.querySelector(timetable);
   movie.lists = movie.section.querySelectorAll('li');
   movie.labels = movie.section.querySelectorAll('label');
+  movie.seatTableWrapper = document.querySelector(".table-wrapper");
 
   movie.labels.forEach(function(label) {
     label.addEventListener('click', function() {
@@ -260,6 +275,7 @@ function movieAndTime(timetable) {
 
       if (input.checked) {
         movie.init();
+        movie.toggleSeatTable(false);
         return;
       }
 
@@ -269,8 +285,11 @@ function movieAndTime(timetable) {
       movie.activeList(list);
       movie.changeData(input);
       movie.displayValue();
+      movie.toggleSeatTable(true);
     });
   });
+
+  movie.seatTableWrapper.addEventListener('click', movie.alertMessage);
 
   return movie;
 }

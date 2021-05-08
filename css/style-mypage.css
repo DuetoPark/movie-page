@@ -354,6 +354,7 @@ p.square{
   width: 100%;
   padding: 48px 16px 16px;
   background-color: #E0E0E0;
+  transition: opacity 250ms ease-in-out;
 }
 
 .seat-table::before{
@@ -406,6 +407,19 @@ p.square{
   background-position: center;
   pointer-events: none;
 }
+
+/* table-wrapper - inactive */
+.table-wrapper.inactive{
+  cursor: not-allowed;
+}
+
+.table-wrapper.inactive .seat-table{
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+
+
 
 /* #reservation - #step-check */
 #step-check .mypage-dl div:nth-last-child(2){
