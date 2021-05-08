@@ -231,6 +231,8 @@ const prototypeTimetable = {
     this.section.classList.remove('active');
 
     document.querySelector('#check-name .mypage-desc').innerHTML = "";
+    document.querySelector('#check-seat .mypage-desc').innerHTML = "";
+    data.seat = [];
   },
   changeData: function(input) {
     data.movie.name = input.name;
@@ -567,21 +569,14 @@ function init() {
 init();
 
 
-let test = JSON.parse(localStorage.getItem('seatData'));
-test.harry.harry1.a[1] = 1;
-test.harry.harry1.a[2] = 1;
-test.harry.harry1.a[3] = 1;
-localStorage.setItem('seatData', JSON.stringify(test));
-
-
 
 
 // 좌석선택 - 선택 이벤트(데이터 변경)
 // ↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기 리팩토링 하셈 ↓↓↓↓↓↓↓↓↓↓↓↓↓
 const seatCheckboxes = document.querySelectorAll('#step-seat .seat-input');
 let seatData = JSON.parse(localStorage.getItem('seatData'));
-let lastChoiceMovie;
-let lastChoiceTime;
+let lastSelectedMovie;
+let lastSelectedTime;
 
 function changeSeatData() {
   const optionData = JSON.parse(sessionStorage.getItem('optionData'));
@@ -589,11 +584,15 @@ function changeSeatData() {
   const movieTime = optionData.movie.time[1];
   const seatKey = this.id.split("-")[0];
   const seatIndex = Number(this.id.split("-")[1]) - 1;
+  let keepOptions = lastSelectedMovie === movieName && lastSelectedTime === movieTime;
 
-  // 영화 또는 시간을 다시 선택했을 때
-  if (lastChoiceMovie != movieName || lastChoiceTime != movieTime) {
-    seatData = JSON.parse(localStorage.getItem('seatData'));
-    data.seat = [];
+  // 다른 옵션(영화, 시간)으로 변경할 때
+  if (!keepOptions) {
+    data.seat = []; // 데이터 초기화(옵션)
+  }
+
+  if (data.seat.length === 0) {
+    seatData = JSON.parse(localStorage.getItem('seatData')); // 데이터 초기화(좌석)
   }
 
   // 데이터 변경
@@ -611,8 +610,8 @@ function changeSeatData() {
   displaySeat();
 
   // 비교할 대상 저장
-  lastChoiceMovie = movieName;
-  lastChoiceTime = movieTime;
+  lastSelectedMovie = movieName;
+  lastSelectedTime = movieTime;
 }
 
 function displaySeat() {
