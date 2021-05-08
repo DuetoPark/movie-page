@@ -160,6 +160,10 @@ main{
   border: 2px solid #F3F3F3;
 }
 
+#files:focus + label.select-file{
+  box-shadow: 0 0 0 2px #000;
+}
+
 .select-file{
   margin-bottom: 4px;
   border: none;
