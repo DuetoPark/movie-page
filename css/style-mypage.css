@@ -465,6 +465,11 @@ p.square{
   color: #fff;
 }
 
+.finish.inactive{
+  pointer-events: none;
+  opacity: 0.25;
+}
+
 
 
 /* #booked */

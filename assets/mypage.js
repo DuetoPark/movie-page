@@ -634,7 +634,35 @@ seatCheckboxes.forEach(function(checkbox) {
 
 
 
-// 좌석선택 - 선택 이벤트(선택완료)
+
+
+
+// 선택확인 - 선택완료버튼 활성화
+function activeButton() {
+  const play = data.count.total > 0 ? true : false;
+
+  if (play) {
+    let checkName = data.movie.name.length > 0;
+    let checkCount = data.count.total > 0;
+    let checkSeat = data.seat.length === data.count.total;
+
+    if (checkName && checkCount && checkSeat) {
+      const finishButton = document.querySelector('.finish');
+      finishButton.classList.remove('inactive');
+    }
+
+    console.log(data.movie.name.length, data.count.total, data.seat.length);
+  }
+}
+
+window.addEventListener('click', function(){
+  setTimeout(activeButton, 500);
+});
+
+
+
+
+// 선택확인 - 선택 이벤트(선택완료)
 const finishButton = document.querySelector('.finish');
 
 function saveSeatData(e) {
