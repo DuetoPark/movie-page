@@ -4,6 +4,11 @@ const prototypeModal = {
     // bind로 인해 this 변경 (window --> modalFactory의 변수 'modal')
     this.wrapper.classList.toggle('hidden');
     this.wrapper.classList.toggle('modal-active');
+
+    // 아이디 입력창에 포커스
+    if (this.wrapper.classList.contains('modal-active')) {
+      this.wrapper.querySelector('#user-id').focus();
+    }
   },
   clickEvent: function(openButton, closeButton) {
     // this: modalFactory의 변수 'modal'
