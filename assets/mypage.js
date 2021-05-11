@@ -1,55 +1,55 @@
 // 헤더 버튼 보임/숨김 & 탭 포커스 이벤트
 const header = document.querySelector('#header');
-const buttons = header.querySelectorAll(".button-group > *");
+const menuButtons = header.querySelectorAll("#menu > a");
 const threeLinesButton = header.querySelector('.three-lines-button');
 const screen = {
   desktop: 768,
   tablet: 576,
 };
-let onTablet = false;
-let isActived = false;
+let onTablet = window.innerWidth >= screen.tablet ? true : false;
+let isActived = header.classList.contains('active') ? true : false;
 
-function setTabIndex(elem, tabIndex) {
-  elem.setAttribute('tabindex', tabIndex);
+function setTabIndex(elem, value) {
+  elem.setAttribute('tabindex', value);
 }
 
-function handleTabIndexOfBanner() {
+function setTabIndexOfHeader() {
   onTablet = window.innerWidth >= screen.tablet ? true : false;
-  isActived = header.classList.contains('active');
+  isActived = header.classList.contains('active') ? true : false;
 
   setTabIndex(threeLinesButton, 0);
 
-  if (onTablet) {
-    buttons.forEach(function(button) {setTabIndex(button, 0);});
+  if (onTablet) { // tablet
+    menuButtons.forEach(function(button) {setTabIndex(button, 0);});
     setTabIndex(threeLinesButton, -1);
   } else if (!onTablet && isActived) { // Mobile & 활성화 상태
-    buttons.forEach(function(button) {setTabIndex(button, 0);});
+    menuButtons.forEach(function(button) {setTabIndex(button, 0);});
   } else if (!onTablet && !isActived) { // Mobile & 비활성화 상태
-    buttons.forEach(function(button) {setTabIndex(button, -1);});
+    menuButtons.forEach(function(button) {setTabIndex(button, -1);});
   }
 }
 
-function activeOrInactiveHeader() {
-  const buttonGroup = header.querySelector('.button-group');
+function toggleHeader() {
+  isActived = header.classList.contains('active') ? true : false;
 
-  isActived = header.classList.contains('active');
-
-  if (onTablet || isActived) {
+  if (onTablet || isActived) { // tablet 또는 활성화 상태
+    // 메뉴 접음
     isActived = false;
     header.classList.remove('active');
     threeLinesButton.setAttribute('aria-expanded', false);
     threeLinesButton.textContent = "메뉴";
-    handleTabIndexOfBanner();
-  } else {
+    setTabIndexOfHeader();
+  } else if (!isActived){ // 비활성화 상태
+    // 메뉴 펼침
     isActived = true;
     header.classList.add('active');
     threeLinesButton.setAttribute('aria-expanded', true);
     threeLinesButton.textContent = "닫기";
-    handleTabIndexOfBanner();
+    setTabIndexOfHeader();
   }
 }
 
-function toggleBannerButtons(state) {
+function showOrHideThreeLinesButton(state) {
   if (state === 'show') {
     threeLinesButton.classList.remove('hidden');
   } else if (state === 'hide') {
@@ -57,22 +57,22 @@ function toggleBannerButtons(state) {
   }
 }
 
-function displayHeaderButtons() {
+function handleHeader() {
   onTablet = window.innerWidth >= screen.tablet ? true : false;
 
-  if (onTablet) {
-    toggleBannerButtons('hide');
-    activeOrInactiveHeader();
+  if (onTablet) { // tablet
+    showOrHideThreeLinesButton('hide');
+    toggleHeader();
   } else { // Mobile
-    toggleBannerButtons('show');
-    handleTabIndexOfBanner();
+    showOrHideThreeLinesButton('show');
+    setTabIndexOfHeader();
   }
 }
 
-window.addEventListener('resize', displayHeaderButtons);
-window.addEventListener("DOMContentLoaded", displayHeaderButtons);
-window.addEventListener("DOMContentLoaded", handleTabIndexOfBanner);
-threeLinesButton.addEventListener('click', activeOrInactiveHeader);
+window.addEventListener('resize', handleHeader);
+window.addEventListener("DOMContentLoaded", handleHeader);
+window.addEventListener("DOMContentLoaded", setTabIndexOfHeader);
+threeLinesButton.addEventListener('click', toggleHeader);
 
 
 
