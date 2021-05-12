@@ -141,6 +141,7 @@ data = {
     discount: 0,
   },
   seat: [],
+  price: 0,
 };
 
 
@@ -277,7 +278,7 @@ function movieAndTime(timetable) {
   movie.labels = movie.timetable.querySelectorAll('label');
   movie.seatTableWrapper = document.querySelector(".table-wrapper");
 
-  // 이벤트 위임
+  // 이벤트 선언
   movie.labels.forEach(function(label) {
     label.addEventListener('click', function() {
       const input = this.previousElementSibling;
@@ -382,93 +383,73 @@ originListItem.remove();
 
 
 // 인원선택 버튼 이벤트
-// ↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기 리팩토링 하셈 ↓↓↓↓↓↓↓↓↓↓↓↓↓
-let total = 0;
 const prototypeCount = {
   plus: function(displayCount, downButton, upButton, type) {
+    // 인원이 5면 alert
     if (data.count.total === 5) {
       alert('선택 가능 인원 5명을 초과했습니다.');
       return;
     }
 
-    let dataOfCountType = data.count[type];
+    // 데이터 변경과 화면 매칭
+    data.count.total += 1;
+    data.count[type] += 1;
+    displayCount.textContent = data.count[type];
 
-    if (!dataOfCountType) {
+    let numberOfPeaple = data.count[type];
+    if (numberOfPeaple === 1) { // 인원이 1이면 down버튼 활성화
       downButton.classList.remove('inactive');
     }
-
-    if (dataOfCountType < 5) {
-      // data
-      total += 1;
-      data.count[type] += 1;
-      // display
-      displayCount.textContent = data.count[type];
-    }
-
-    dataOfCountType = data.count[type];
-    if (dataOfCountType === 5) {
+    if (numberOfPeaple === 5) { // 인원이 5면 up버튼 비활성화
       upButton.classList.add('inactive');
     }
   },
   minus: function(displayCount, downButton, upButton, type) {
-    let countValue = Number(displayCount.textContent);
+    // 데이터 변경과 화면 매칭
+    data.count.total -= 1;
+    data.count[type] -= 1;
+    displayCount.textContent = data.count[type];
 
-    if (countValue > 0) {
-      // data
-      total -= 1;
-      data.count[type] -= 1;
-      // display
-      displayCount.textContent = countValue - 1;
-    }
-
-    countValue = Number(displayCount.textContent);
-    if (countValue === 0) {
+    let numberOfPeaple = data.count[type];
+    if (numberOfPeaple === 0) { // 인원이 0명일 때 down버튼 비활성화
       downButton.classList.add('inactive');
-
-    } else if (countValue === 4) {
+    }
+    if (numberOfPeaple === 4) { // 인원이 4명일 때 up버튼 활성화
       upButton.classList.remove('inactive');
     }
   },
-  changeData: function() {
-    data.count.total = total;
+  saveSessionStorage: function() {
     sessionStorage.setItem('optionData', JSON.stringify(data));
   },
-  displayTotal: function() {
-    const data = JSON.parse(sessionStorage.getItem("optionData"));
+  totalHTML: function() {
     const section = document.querySelector('#check-count .total');
-    const total = data.count.total;
-    const totalHTML = "<strong>총 " + total + "명</strong>";
-
-    section.innerHTML = totalHTML;
+    section.innerHTML = "<strong>총 " + data.count.total + "명</strong>";
   },
-  displayDetails: function() {
-    const data = JSON.parse(sessionStorage.getItem("optionData"));
+  detailsHTML: function(type) {
     const section = document.querySelector('#check-count .details');
-    let details = "";
+    let detailsHTML = "";
     for (key in data.count) {
       if (data.count[key] && key != "total") {
         const value = data.count[key];
         const text = state.reservation.count[key].text;
         const textHTML = "<span>" + text + " " + value + "명</span>";
-        details += textHTML;
+        detailsHTML += textHTML;
       }
     }
-    section.innerHTML = details;
+    section.innerHTML = detailsHTML;
   },
-  displayPrice: function() {
-    const data = JSON.parse(sessionStorage.getItem("optionData"));
+  priceHTML: function() {
     const section = document.querySelector('#check-price .mypage-desc');
-    let price = 0;
+    data.price = 0;
     for (key in data.count) {
       if (data.count[key] && key != "total") {
-        const test = state.reservation.count[key].price * Number(data.count[key]);
-        price += test;
+        const calculate = state.reservation.count[key].price * Number(data.count[key]);
+        data.price += calculate;
       }
     }
+    const accountExp = data.price.toLocaleString();
 
-    const accountExp = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    const totalHTML = "<strong>" + accountExp + "원</strong>";
-    section.innerHTML = totalHTML;
+    section.innerHTML = "<strong>" + accountExp + "원</strong>";
   },
 };
 
@@ -480,20 +461,20 @@ function Count(wrapper) {
   count.displayCount = count.wrapper.querySelector(".button-group > p");
   count.type = count.wrapper.dataset.count;
 
-  // button event
+  // 이벤트 선언
   count.upButton.addEventListener('click', function() {
     count.plus(count.displayCount, count.downButton, count.upButton, count.type);
-    count.changeData(count.type);
-    count.displayTotal();
-    count.displayDetails();
-    count.displayPrice();
+    count.totalHTML();
+    count.detailsHTML();
+    count.priceHTML();
+    count.saveSessionStorage(count.type);
   });
   count.downButton.addEventListener('click', function() {
     count.minus(count.displayCount, count.downButton, count.upButton, count.type);
-    count.changeData(count.type);
-    count.displayTotal();
-    count.displayDetails();
-    count.displayPrice();
+    count.totalHTML();
+    count.detailsHTML();
+    count.priceHTML();
+    count.saveSessionStorage(count.type);
   });
 
   return count;
