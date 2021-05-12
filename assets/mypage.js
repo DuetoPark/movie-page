@@ -144,22 +144,24 @@ data = {
 };
 
 
+
+
 // 상영시간표 출력
 const reservationTimeData = state.reservation.time;
 const sectionTime = document.querySelector('#step-time .movie-list');
 
-function createTimeListItems(ol, data, index, key) {
+function populateTimetableForEachMovie(ol, data, index, key) {
   const timeListItem = document.createElement('li');
   const input = document.createElement('input');
   const label = document.createElement('label');
 
-  timeListItem.setAttribute('aria-label', '상영시간');
+  timeListItem.setAttribute('aria-label', '시간');
 
-  input.id = key + index;
-  input.classList = "hidden";
-  input.type = "checkbox";
-  input.name = key;
-  input.value = data;
+  input.setAttribute('id', key + index);
+  input.setAttribute('class', 'hidden');
+  input.setAttribute('type', 'checkbox');
+  input.setAttribute('name', key);
+  input.setAttribute('value', data);
 
   label.setAttribute('for', key + index);
   label.textContent = data;
@@ -169,66 +171,67 @@ function createTimeListItems(ol, data, index, key) {
   timeListItem.appendChild(label);
 }
 
-function populateStepTime() {
+function populateListsForEachMovie() {
   for (key in reservationTimeData) {
     const data = reservationTimeData[key].timetable;
     const movieListItem = document.createElement('li');
     const name = document.createElement('h4');
     const timeList = document.createElement('ol');
 
-    movieListItem.className = "movie";
+    movieListItem.setAttribute('class', 'movie');
     movieListItem.setAttribute('data-timetable', key);
     movieListItem.setAttribute('aria-label', '상영 중인 영화');
-    name.className = "movie-name";
+
+    name.setAttribute('class', 'movie-name');
     name.textContent = reservationTimeData[key]['name'];
-    timeList.className = "time-list d-flex flex-wrap justify-content-between";
-    timeList.setAttribute('aria-label', '시간');
+
+    timeList.setAttribute('class', 'time-list d-flex flex-wrap justify-content-between');
+    timeList.setAttribute('aria-label', '상영시간');
 
     sectionTime.appendChild(movieListItem);
     movieListItem.appendChild(name);
     movieListItem.appendChild(timeList);
 
     data.forEach(function(data, index) {
-      createTimeListItems(timeList, data, index, key);
+      populateTimetableForEachMovie(timeList, data, index, key);
     });
   };
 }
 
-populateStepTime();
+populateListsForEachMovie();
 
 
 // 상영시간표 영화 선택
-// ↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기 리팩토링 하셈 ↓↓↓↓↓↓↓↓↓↓↓↓↓
-const movies = document.querySelectorAll('.movie');
+const timetableForEachMovie = document.querySelectorAll('.movie');
 
 const prototypeTimetable = {
-  inActiveSections: function() {
-    movies.forEach(function(movie) {
-      movie.classList.add('inactive');
+  inActiveAllTimetables: function() {
+    timetableForEachMovie.forEach(function(timetable) {
+      timetable.classList.add('inactive');
     });
   },
-  activeSelectedSections: function() {
-    this.section.classList.remove('inactive');
-    this.section.classList.add('active');
+  activeSelectedTimeTable: function() {
+    this.timetable.classList.remove('inactive');
+    this.timetable.classList.add('active');
   },
-  inActiveLists: function() {
-    this.lists.forEach(function(list) {
-      list.classList.add('inactive');
+  inActiveAllTheTime: function() {
+    this.times.forEach(function(time) {
+      time.classList.add('inactive');
     });
   },
-  activeList: function(selectedListItem) {
-    selectedListItem.classList.remove('inactive');
+  activeSelectedTime: function(selectedTime) {
+    selectedTime.classList.remove('inactive');
   },
   init: function() {
-    this.lists.forEach(function(list) {
+    timetableForEachMovie.forEach(function(timetable) {
+      timetable.classList.remove('inactive');
+    });
+
+    this.timetable.classList.remove('active');
+
+    this.times.forEach(function(list) {
       list.classList.remove('inactive');
     });
-
-    movies.forEach(function(movie) {
-      movie.classList.remove('inactive');
-    });
-
-    this.section.classList.remove('active');
 
     document.querySelector('#check-name .mypage-desc').innerHTML = "";
     document.querySelector('#check-seat .mypage-desc').innerHTML = "";
@@ -238,9 +241,11 @@ const prototypeTimetable = {
     data.movie.name = input.name;
     data.movie.time[0] = input.value;
     data.movie.time[1] = input.id;
+  },
+  saveSessionStorage: function() {
     sessionStorage.setItem('optionData', JSON.stringify(data));
   },
-  displayValue: function() {
+  displayData: function() {
     const data = JSON.parse(sessionStorage.getItem("optionData"));
     const section = document.querySelector('#check-name .mypage-desc');
     const koreanName = state.reservation.time[data.movie.name].name;
@@ -249,7 +254,9 @@ const prototypeTimetable = {
     const timeHTML = "<strong>(" + time + ")</strong>";
     section.innerHTML = nameHTML + timeHTML;
   },
-  toggleSeatTable: function(isChecked) {
+  toggleSeatTable: function() {
+    const isChecked = this.seatTableWrapper.classList.contains('inactive') ? true : false;
+
     if (isChecked) {
       this.seatTableWrapper.classList.remove('inactive');
     } else {
@@ -260,34 +267,36 @@ const prototypeTimetable = {
     if (this.classList.contains('inactive')) {
       alert("관람하실 영화를 선택해주세요.");
     }
-  }
+  },
 };
 
 function movieAndTime(timetable) {
   const movie = Object.create(prototypeTimetable);
-  movie.section = document.querySelector(timetable);
-  movie.lists = movie.section.querySelectorAll('li');
-  movie.labels = movie.section.querySelectorAll('label');
+  movie.timetable = document.querySelector(timetable);
+  movie.times = movie.timetable.querySelectorAll('li');
+  movie.labels = movie.timetable.querySelectorAll('label');
   movie.seatTableWrapper = document.querySelector(".table-wrapper");
 
+  // 이벤트 위임
   movie.labels.forEach(function(label) {
     label.addEventListener('click', function() {
       const input = this.previousElementSibling;
-      const list = this.parentElement;
+      const selectedTime = this.parentElement;
 
-      if (input.checked) {
+      if (input.checked) { // 선택 해제 시
         movie.init();
-        movie.toggleSeatTable(false);
+        movie.toggleSeatTable();
         return;
       }
 
-      movie.inActiveSections();
-      movie.activeSelectedSections();
-      movie.inActiveLists();
-      movie.activeList(list);
+      movie.inActiveAllTimetables();
+      movie.activeSelectedTimeTable();
+      movie.inActiveAllTheTime();
+      movie.activeSelectedTime(selectedTime);
       movie.changeData(input);
-      movie.displayValue();
-      movie.toggleSeatTable(true);
+      movie.saveSessionStorage();
+      movie.displayData();
+      movie.toggleSeatTable();
     });
   });
 
@@ -306,18 +315,27 @@ const truman = movieAndTime("[data-timetable=truman]");
 
 
 
+
 // 상영시간표 - 데이터와 화면 매칭
-const timeCheckboxes = document.querySelectorAll(".time-list input");
+const timeListCheckboxes = document.querySelectorAll(".time-list input");
 
 function matchSeatDataAndDomTable() {
+  // 변경된 세션 스토리지 불러옴
   const optionData = JSON.parse(sessionStorage.getItem('optionData'));
   const movieName = optionData.movie.name;
   const movieTime = optionData.movie.time[1];
+  console.log('방구똥');
 
+  // 로컬 스토리지 데이터 초기화
+  // (저장 전에 다른 옵션으로 변경하면 변형된 데이터 초기화)
   const seatData = JSON.parse(localStorage.getItem("seatData"));
-  const seatCheckboxes = document.querySelectorAll('.seat-table .seat-input');
+  const seatTableCheckboxes = document.querySelectorAll('.seat-table .seat-input');
+  // 전역변수로 선언하지 않은 이유
+  // 좌석(.seat-input) 출력은 현재 함수보다 아래에 존재하므로 전역변수로 설정하면 오류가 발생한다.
+  // 동기-좌석 출력, 비동기-데이터와 화면 매칭(현재 함수)
 
-  seatCheckboxes.forEach(function(checkbox, index) {
+  seatTableCheckboxes.forEach(function(checkbox, index) {
+    console.log('똥');
     const seatKey = checkbox.id.split("-")[0];
     const seatIndex = Number(checkbox.id.split("-")[1]) - 1;
     const thisData = seatData[movieName][movieTime][seatKey][seatIndex];
@@ -333,8 +351,8 @@ function matchSeatDataAndDomTable() {
   });
 }
 
-timeCheckboxes.forEach(function(checkbox) {
-  checkbox.addEventListener('change', matchSeatDataAndDomTable.bind(checkbox));
+timeListCheckboxes.forEach(function(checkbox) {
+  checkbox.addEventListener('change', matchSeatDataAndDomTable);
 });
 
 
