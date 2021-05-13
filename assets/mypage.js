@@ -642,10 +642,13 @@ function activeButton() {
     let checkName = data.movie.name.length > 0;
     let checkCount = data.count.total > 0;
     let checkSeat = data.seat.length === data.count.total ? true : false;
+    const finishButton = document.querySelector('.finish');
 
     if (checkName && checkCount && checkSeat) {
-      const finishButton = document.querySelector('.finish');
       finishButton.classList.remove('inactive');
+    }
+    if (data.seat.length < data.count.total) {
+      finishButton.classList.add('inactive');
     }
   }
 }
