@@ -325,7 +325,6 @@ function matchSeatDataAndDomTable() {
   const optionData = JSON.parse(sessionStorage.getItem('optionData'));
   const movieName = optionData.movie.name;
   const movieTime = optionData.movie.time[1];
-  console.log('방구똥');
 
   // 로컬 스토리지 데이터 초기화
   // (저장 전에 다른 옵션으로 변경하면 변형된 데이터 초기화)
@@ -336,7 +335,6 @@ function matchSeatDataAndDomTable() {
   // 동기-좌석 출력, 비동기-데이터와 화면 매칭(현재 함수)
 
   seatTableCheckboxes.forEach(function(checkbox, index) {
-    console.log('똥');
     const seatKey = checkbox.id.split("-")[0];
     const seatIndex = Number(checkbox.id.split("-")[1]) - 1;
     const thisData = seatData[movieName][movieTime][seatKey][seatIndex];
@@ -643,14 +641,12 @@ function activeButton() {
   if (play) {
     let checkName = data.movie.name.length > 0;
     let checkCount = data.count.total > 0;
-    let checkSeat = data.seat.length === data.count.total;
+    let checkSeat = data.seat.length === data.count.total ? true : false;
 
     if (checkName && checkCount && checkSeat) {
       const finishButton = document.querySelector('.finish');
       finishButton.classList.remove('inactive');
     }
-
-    console.log(data.movie.name.length, data.count.total, data.seat.length);
   }
 }
 
@@ -664,11 +660,88 @@ window.addEventListener('click', function(){
 // 선택확인 - 선택 이벤트(선택완료)
 const finishButton = document.querySelector('.finish');
 
-function saveSeatData(e) {
-  localStorage.setItem('seatData', JSON.stringify(seatData));
+function returnMessage() {
+  const optionData = JSON.parse(sessionStorage.getItem('optionData'));
+  const infoName = state.movieList[optionData.movie.name].name;
+  const infoTime = optionData.movie.time[0];
+  const infoCount = optionData.count.total;
+
+  message = '영화명: ' +infoName+ '(' +infoTime+ ')\n인원: 총' +infoCount+ '명\n\n계속 진행하시겠습니까?';
+  return message;
 }
 
-finishButton.addEventListener('click', saveSeatData);
+function saveSeatData() {
+  localStorage.setItem('seatData', JSON.stringify(seatData));
+  alert('예매가 완료되었습니다.');
+}
+
+function initStepTime() {
+  const timetables = document.querySelectorAll('.movie-list > li');
+  timetables.forEach(function(timetable) {
+    if (timetable.classList.contains('active')) {
+      const timelistItmes = timetable.querySelectorAll('li');
+      for (let i=0; i<timelistItmes.length; i+=1) {
+        timelistItmes[i].classList.remove('inactive');
+        timelistItmes[i].children[0].checked = false;
+      }
+    }
+
+    timetable.classList.remove('inactive');
+    timetable.classList.remove('active');
+  });
+}
+
+function initStepCount() {
+  for (key in data.count) {
+    data.count[key] = 0;
+  }
+
+  const displayCount = document.querySelectorAll('.button-group > p');
+  for (let i=0; i<displayCount.length; i+=1) {
+    displayCount[i].textContent = 0;
+  }
+}
+
+function initStepSeat() {
+  matchSeatDataAndDomTable(); // 323번째 줄에 위치
+
+  // 좌석 테이블 inactive 설정
+  const tableWrapper = document.querySelector('#step-seat .table-wrapper');
+  tableWrapper.classList.add('inactive');
+}
+
+function initStepCheck() {
+  document.querySelector('#check-name .mypage-desc').innerHTML = "";
+  document.querySelector('#check-seat .mypage-desc').innerHTML = "";
+  document.querySelector('#check-count .total').innerHTML = "";
+  document.querySelector('#check-count .details').innerHTML = "";
+  document.querySelector('#check-price .mypage-desc').innerHTML = "";
+  data.movie.name = '';
+  data.movie.time = [];
+  for (key in data.count) {
+    data.count[key] = 0;
+  }
+  data.seat = [];
+  data.price = 0;
+}
+
+function confirmOptionAndInit(e) {
+  const message = returnMessage();
+
+  // 선택 옵션 확인
+  if (confirm(message) === true) { // 확인 선택
+    saveSeatData();
+  } else { // 취소 선택
+    return;
+  }
+
+  initStepTime();
+  initStepCount();
+  initStepSeat();
+  initStepCheck();
+}
+
+finishButton.addEventListener('click', confirmOptionAndInit);
 
 
 
