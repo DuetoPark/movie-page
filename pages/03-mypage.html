@@ -26,7 +26,7 @@
     <header id="header" class="container" aria-label="페이지 상단 영역">
       <div class="row overflow-hidden">
         <h1 id='page-title' class="col-12">
-          <a id='home' href="./01-main-after-login.html" aria-current='page'>
+          <a id='home' href="./01-main-after-login.html">
             Movie
           </a>
         </h1>
@@ -88,15 +88,15 @@
         </form>
       </article>
 
-      <article id="reservation" class="reservation container d-flex justify-content-center" aria-labelledby="reservation-title">
-        <form class="reservation-form row background d-flex flex-column align-items-center" action="index.html" method="post" aria-labelledby="reservation-title">
+      <article id="reservation" class="reservation container" aria-labelledby="reservation-title">
+        <form class="reservation-form row background d-flex flex-wrap justify-content-center align-items-center" action="index.html" method="post" aria-labelledby="reservation-title">
           <h2 id="reservation-title" class="title col-12 col-md-10">
             좌석예매
           </h2>
 
-          <section id="step-time" class="step col-12 col-md-9 d-flex flex-column flex-md-row flex-md-wrap justify-content-md-between" aria-labelledby="time-title">
+          <section id="step-time" class="step col-12 col-md-9" aria-labelledby="time-title">
             <h3 id="time-title" class="subtitle flex-shrink-0">상영시간표</h3>
-            <ul class="movie-list" aria-label="영화">
+            <ul class="movie-list d-flex flex-wrap justify-content-between" aria-label="영화">
               <!-- mypage.js 상영시간표 출력 -->
             </ul>
           </section>
@@ -120,7 +120,7 @@
           <section id="step-seat" class="step col-12 col-md-9 d-flex flex-column align-items-md-center" aria-labelledby="seat-title">
             <h3 id="seat-title" class="subtitle">좌석 선택</h3>
 
-            <div class="table-wrapper">
+            <div class="table-wrapper inactive">
               <table class="seat-table" aria-label="좌석">
                 <thead>
                   <!-- mypage.js 좌석선택 출력 -->
@@ -142,7 +142,7 @@
               </div>
               <div id="check-seat">
                 <dt class="mypage-term" aria-label="좌석">좌석</dt>
-                <dd class="mypage-desc" aria-live="polite">123</dd>
+                <dd class="mypage-desc" aria-live="polite"></dd>
               </div>
               <div id="check-count">
                 <dt class="mypage-term" aria-label="인원">인원</dt>
@@ -154,7 +154,7 @@
                 <dd class="mypage-desc" aria-live="polite"><strong id="total-price"></strong>원</dd>
               </div>
             </dl>
-            <button type="submit" class="finish">선택완료</button>
+            <button type="button" class="finish inactive">선택완료</button>
           </section>
         </form>
       </article>
