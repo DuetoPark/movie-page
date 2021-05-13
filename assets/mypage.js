@@ -567,11 +567,9 @@ init();
 
 
 // 좌석선택 - 선택 이벤트(데이터 변경)
-// ↓↓↓↓↓↓↓↓↓↓↓↓↓ 여기 리팩토링 하셈 ↓↓↓↓↓↓↓↓↓↓↓↓↓
-const seatCheckboxes = document.querySelectorAll('#step-seat .seat-input');
+const stepSeatCheckboxes = document.querySelectorAll('#step-seat .seat-input');
 let seatData = JSON.parse(localStorage.getItem('seatData'));
-let lastSelectedMovie;
-let lastSelectedTime;
+let lastOption = [];
 
 function changeSeatData() {
   const optionData = JSON.parse(sessionStorage.getItem('optionData'));
@@ -579,25 +577,20 @@ function changeSeatData() {
   const movieTime = optionData.movie.time[1];
   const seatKey = this.id.split("-")[0];
   const seatIndex = Number(this.id.split("-")[1]) - 1;
-  let keepOptions = lastSelectedMovie === movieName && lastSelectedTime === movieTime;
+  let keepOptions = lastOption[0] === movieName && lastOption[1] === movieTime;
 
   // 다른 옵션(영화, 시간)으로 변경할 때
   if (!keepOptions) {
     data.seat = []; // 데이터 초기화(옵션)
   }
 
-  if (data.seat.length === 0) {
-    seatData = JSON.parse(localStorage.getItem('seatData')); // 데이터 초기화(좌석)
-  }
-
   // 데이터 변경
+  // 화면 매칭 필요 없음 (CSS로 구현)
   if (this.checked) {
     seatData[movieName][movieTime][seatKey][seatIndex] = 1;
-
     data.seat.push(this.id);
   } else {
     seatData[movieName][movieTime][seatKey][seatIndex] = 0;
-
     const index = data.seat.indexOf(this.id);
     data.seat.splice(index, 1);
   }
@@ -605,31 +598,42 @@ function changeSeatData() {
   displaySeat();
 
   // 비교할 대상 저장
-  lastSelectedMovie = movieName;
-  lastSelectedTime = movieTime;
+  lastOption = [movieName, movieTime];
 }
 
 function displaySeat() {
   const section = document.querySelector('#check-seat .mypage-desc');
-  const arrayOfseatsHTML = new Array;
-  data.seat.forEach(function(seat) {
-    let seatHTML = '<span>' + seat.split("-").join("") + '</span>';
-    arrayOfseatsHTML.push(seatHTML);
+  sortNumber = data.seat.sort(function(a, b) {
+    const lastNumber = a.split("-")[1];
+    const nextNumber = b.split("-")[1];
+    return lastNumber - nextNumber < 0 ? -1 : 1;
   });
 
-  arrayOfseatsHTML.sort(function(a,b) {
-    return a > b ? 1 : -1;
+  sortText = sortNumber.sort(function(a,b) {
+    const lastText = a.split("-")[0];
+    const nextText = b.split("-")[0];
+    return lastText < nextText ? -1 : 1;
+  });
+
+  let arrayOfseatsHTML = sortText.map(function(seat) {
+    return '<span>' + seat.split("-").join("") + '</span>';
   });
 
   section.innerHTML = "<strong>" + arrayOfseatsHTML + "</strong>";
 }
 
-seatCheckboxes.forEach(function(checkbox) {
+function limitCheck() {
+  if (data.seat.length > data.count.total) {
+    alert('선택 인원 ' + data.count.total + '명을 초과했습니다.');
+    this.checked = false;
+    changeSeatData.call(this);
+  }
+}
+
+stepSeatCheckboxes.forEach(function(checkbox) {
   checkbox.addEventListener('change', changeSeatData.bind(checkbox));
+  checkbox.addEventListener('change', limitCheck.bind(checkbox));
 });
-
-
-
 
 
 
