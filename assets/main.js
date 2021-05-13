@@ -14,7 +14,7 @@ function setTabIndex(elem, tabIndex) {
   elem.setAttribute('tabindex', tabIndex);
 }
 
-function handleTabIndexOfBanner() {
+function handleTabIndexOfHeader() {
   onTablet = window.innerWidth >= screen.tablet ? true : false;
   isActived = header.classList.contains('active');
 
@@ -41,12 +41,12 @@ function activeOrInactiveHeader() {
     isActived = false;
     header.classList.remove('active');
     threeLinesButton.setAttribute('aria-expanded', false);
-    handleTabIndexOfBanner();
+    handleTabIndexOfHeader();
   } else {
     isActived = true;
     header.classList.add('active');
     threeLinesButton.setAttribute('aria-expanded', true);
-    handleTabIndexOfBanner();
+    handleTabIndexOfHeader();
   }
 }
 
@@ -68,13 +68,13 @@ function displayHeaderButtons() {
     activeOrInactiveHeader();
   } else { // Mobile
     toggleBannerButtons('show');
-    handleTabIndexOfBanner();
+    handleTabIndexOfHeader();
   }
 }
 
 window.addEventListener('resize', displayHeaderButtons);
 window.addEventListener("DOMContentLoaded", displayHeaderButtons);
-window.addEventListener("DOMContentLoaded", handleTabIndexOfBanner);
+window.addEventListener("DOMContentLoaded", handleTabIndexOfHeader);
 threeLinesButton.addEventListener('click', activeOrInactiveHeader);
 
 
