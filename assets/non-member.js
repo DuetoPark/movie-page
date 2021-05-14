@@ -624,7 +624,7 @@ function initStepCount() {
 }
 
 function initStepSeat() {
-  matchSeatDataAndDomTable(); // 323번째 줄에 위치
+  matchSeatDataAndDomTable(); // 191번째 줄에 위치
 
   // 좌석 테이블 inactive 설정
   const tableWrapper = document.querySelector('#step-seat .table-wrapper');
