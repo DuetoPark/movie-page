@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="DuetoPark">
+    <meta name="keywords" content="movie, 비회원 예약">
+    <meta name="description" content="💪아이라잌투무빗무비💪 비회원도 예매 가능!">
+
+    <title>비회원 예약 - Movie</title>
+
+    <!-- 폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Reset CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/reset-css.css">
+    <!-- Framework -->
+    <link rel="stylesheet" href="../css/grid.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/style-mypage.css">
+
+    <link rel="stylesheet" type="text/css" href="../css/style-non-member.css">
+    <!-- 반응형 CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/responsive/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/responsive/style-mypage.css">
+
+
+  </head>
+
+  <body>
+    <header id="header" class="container" aria-label="페이지 상단 영역">
+      <div class="row d-flex justify-content-between align-items-center overflow-hidden">
+        <h1 id='page-title' class="col-12 col-sm-6">
+          <a id='home' href="./01-main.html">
+            Movie
+          </a>
+        </h1>
+      </div>
+    </header>
+
+    <main>
+      <article id="" class="">
+        
+      </article>
+
+
+      <article id="reservation" class="reservation container" aria-labelledby="reservation-title">
+        <form class="reservation-form row background d-flex flex-wrap justify-content-center align-items-center" action="index.html" method="post" aria-labelledby="reservation-title">
+          <h2 id="reservation-title" class="title col-12 col-md-10">
+            좌석예매
+          </h2>
+
+          <section id="step-time" class="step col-12 col-md-9" aria-labelledby="time-title">
+            <h3 id="time-title" class="subtitle flex-shrink-0">상영시간표</h3>
+            <ul class="movie-list d-flex flex-wrap justify-content-between" aria-label="영화">
+              <!-- mypage.js 상영시간표 출력 -->
+            </ul>
+          </section>
+
+          <section id="step-count" class="step col-12 col-md-9 d-flex flex-column align-items-center" aria-labelledby="count-title">
+            <h3 id="count-title" class="subtitle">인원 선택</h3>
+
+            <ol class="d-flex flex-column align-items-center flex-sm-wrap flex-sm-row justify-content-sm-around" aria-label='인원'>
+              <li class="d-flex align-center" data-count="adult" aria-label='구분'>
+                <p class="count-type"><strong>성인</strong></p>
+                <div class="d-flex button-group">
+                  <button class="square count-button down inactive" type="button">-</button>
+                  <p class="square"><strong>0</strong></p>
+                  <button class="square count-button up" type="button">+</button>
+                </div>
+              </li>
+              <!-- mypage.js 인원 선택 - 클론 노드 -->
+            </ol>
+          </section>
+
+          <section id="step-seat" class="step col-12 col-md-9 d-flex flex-column align-items-md-center" aria-labelledby="seat-title">
+            <h3 id="seat-title" class="subtitle">좌석 선택</h3>
+
+            <div class="table-wrapper inactive">
+              <table class="seat-table" aria-label="좌석">
+                <thead>
+                  <!-- mypage.js 좌석선택 출력 -->
+                </thead>
+                <tbody>
+                  <!-- mypage.js 좌석선택 출력 -->
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="step-check" class="col-12 col-md-9 d-flex flex-column" aria-labelledby="check-title">
+            <h3 id="check-title" class="subtitle">선택 확인</h3>
+
+            <dl class="mypage-dl d-flex flex-column flex-md-row justify-content-md-between" aria-label="확인사항">
+              <div id="check-name">
+                <dt class="mypage-term" aria-label="영화명">영화명</dt>
+                <dd class="mypage-desc" aria-live="polite"></dd>
+              </div>
+              <div id="check-seat">
+                <dt class="mypage-term" aria-label="좌석">좌석</dt>
+                <dd class="mypage-desc" aria-live="polite"></dd>
+              </div>
+              <div id="check-count">
+                <dt class="mypage-term" aria-label="인원">인원</dt>
+                <dd class="mypage-desc total" aria-live="polite"></dd>
+                <dd class="mypage-desc details d-flex flex-wrap flex-md-column" aria-live="polite"></dd>
+              </div>
+              <div id="check-price" class="d-flex justify-content-end align-items-center">
+                <dt class="mypage-term" aria-label="금액">금액</dt>
+                <dd class="mypage-desc" aria-live="polite"><strong id="total-price"></strong>원</dd>
+              </div>
+            </dl>
+            <button type="button" class="finish inactive">선택완료</button>
+          </section>
+        </form>
+      </article>
+    </main>
+
+    <footer id="footer" aria-label='회사 정보'>
+      <div class="container">
+        <div class="row">
+          <p class="col-12">
+            웹페이지 제작 참조 - Stackoverflow, 이고잉님의 생활코딩, 김버그님의 HTML은 재밌다, Zero Cho님의 Javascript 강의를 참고했습니다.
+          </p>
+          <dl class="info col-12 d-flex flex-wrap" aria-label='법인 정보'>
+            <div class="d-flex">
+              <dt aria-label='사업자등록번호'>사업자등록번호</dt>
+              <dd>123-45-67890</dd>
+            </div>
+            <div class="d-flex">
+              <dt aria-label='대표이사'>대표이사</dt>
+              <dd>Park Dueto</dd>
+            </div>
+            <div class="d-flex">
+              <dt aria-label='주소'>주소</dt>
+              <dd>포도의 고장, 고구마의 고장</dd>
+            </div>
+            <div class="d-flex">
+              <dt aria-label='대표전화'>대표전화</dt>
+              <dd>03-1234-5678</dd>
+            </div>
+          </dl>
+          <p class="col-12 copyright">
+            Copyright © 21XX everything Inc. 모든 권리 보유
+          </p>
+          <p class="col-12">
+            <span>개인정보 처리방침  웹 사이트 이용 약관 법적 고지</span>대한민국
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 라이브러리 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- 데이터 -->
+    <script src="../assets/data.js"></script>
+    <script src="../assets/data-seat.js"></script>
+    <!-- 동작 -->
+    <script src="../assets/polyfill.js"></script>
+    <script src="../assets/non-member.js"></script>
+  </body>
+</html>
