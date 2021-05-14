@@ -129,6 +129,7 @@ inputFiles.addEventListener('change', readURL);
 // Dataset
 let data = new Object();
 data = {
+  order: '',
   movie: {
     name: "",
     time: [],
@@ -243,11 +244,7 @@ const prototypeTimetable = {
     data.movie.time[0] = input.value;
     data.movie.time[1] = input.id;
   },
-  saveSessionStorage: function() {
-    sessionStorage.setItem('optionData', JSON.stringify(data));
-  },
   displayData: function() {
-    const data = JSON.parse(sessionStorage.getItem("optionData"));
     const section = document.querySelector('#check-name .mypage-desc');
     const koreanName = state.reservation.time[data.movie.name].name;
     const time = data.movie.time[0];
@@ -295,7 +292,6 @@ function movieAndTime(timetable) {
       movie.inActiveAllTheTime();
       movie.activeSelectedTime(selectedTime);
       movie.changeData(input);
-      movie.saveSessionStorage();
       movie.displayData();
       movie.toggleSeatTable();
     });
@@ -321,10 +317,8 @@ const truman = movieAndTime("[data-timetable=truman]");
 const timeListCheckboxes = document.querySelectorAll(".time-list input");
 
 function matchSeatDataAndDomTable() {
-  // 변경된 세션 스토리지 불러옴
-  const optionData = JSON.parse(sessionStorage.getItem('optionData'));
-  const movieName = optionData.movie.name;
-  const movieTime = optionData.movie.time[1];
+  const movieName = data.movie.name;
+  const movieTime = data.movie.time[1];
 
   // 로컬 스토리지 데이터 초기화
   // (저장 전에 다른 옵션으로 변경하면 변형된 데이터 초기화)
@@ -416,9 +410,6 @@ const prototypeCount = {
       upButton.classList.remove('inactive');
     }
   },
-  saveSessionStorage: function() {
-    sessionStorage.setItem('optionData', JSON.stringify(data));
-  },
   totalHTML: function() {
     const section = document.querySelector('#check-count .total');
     section.innerHTML = "<strong>총 " + data.count.total + "명</strong>";
@@ -465,14 +456,12 @@ function Count(wrapper) {
     count.totalHTML();
     count.detailsHTML();
     count.priceHTML();
-    count.saveSessionStorage(count.type);
   });
   count.downButton.addEventListener('click', function() {
     count.minus(count.displayCount, count.downButton, count.upButton, count.type);
     count.totalHTML();
     count.detailsHTML();
     count.priceHTML();
-    count.saveSessionStorage(count.type);
   });
 
   return count;
@@ -572,9 +561,9 @@ let seatData = JSON.parse(localStorage.getItem('seatData'));
 let lastOption = [];
 
 function changeSeatData() {
-  const optionData = JSON.parse(sessionStorage.getItem('optionData'));
-  const movieName = optionData.movie.name;
-  const movieTime = optionData.movie.time[1];
+  const movieName = data.movie.name;
+  const movieTime = data.movie.time[1];
+
   const seatKey = this.id.split("-")[0];
   const seatIndex = Number(this.id.split("-")[1]) - 1;
   let keepOptions = lastOption[0] === movieName && lastOption[1] === movieTime;
@@ -664,14 +653,67 @@ window.addEventListener('click', function(){
 
 
 
-// 선택확인 - 선택 이벤트(선택완료)
+// 선택확인 - 선택 이벤트(주문번호 생성)
 const finishButton = document.querySelector('.finish');
 
+function changeExpression(zeroLength, inputValue, displayLength) {
+  return (zeroLength + inputValue).slice(displayLength);
+}
+
+function saveDataIntoLocalStorage(key, value) {
+  localStorage.setItem(key, value);
+}
+
+function createLeftSideOfOrderNumber() {
+  const newDate = new Date();
+  const year = newDate.getFullYear();
+  const month = changeExpression('0', (newDate.getMonth() + 1), -2);
+  const date = changeExpression('0', newDate.getDate(), -2);
+  const hours = changeExpression('0', newDate.getHours(), -2);
+  const minutes = changeExpression('0', newDate.getMinutes(), -2);
+  const seconds = changeExpression('0', newDate.getSeconds(), -2);
+  const today = newDate.getDate();
+
+  saveDataIntoLocalStorage('lastDate', today);
+
+  return year + month + date + hours + minutes + seconds;
+}
+
+function createRightSideOfOrderNumber() {
+  const newDate = new Date();
+  const lastDate = localStorage.getItem('lastDate') || newDate.getDate();
+  const today = newDate.getDate();
+  let rightSide;
+  let lastOrder = Number(localStorage.getItem('lastOrder')) || 0;
+
+  if (lastDate != today) {
+    lastOrder = 0;
+  }
+
+  lastOrder += 1;
+
+  saveDataIntoLocalStorage('lastOrder', lastOrder);
+
+  return changeExpression('00', lastOrder, -3);
+}
+
+function createOrderNumber() {
+  let order = new Array();
+  order = [createLeftSideOfOrderNumber(), createRightSideOfOrderNumber()];
+
+  data.order = order.join('-');
+}
+
+finishButton.addEventListener('click', createOrderNumber);
+
+
+
+
+// 선택확인 - 선택 이벤트(선택완료)
 function returnMessage() {
-  const optionData = JSON.parse(sessionStorage.getItem('optionData'));
-  const infoName = state.movieList[optionData.movie.name].name;
-  const infoTime = optionData.movie.time[0];
-  const infoCount = optionData.count.total;
+  const infoName = state.movieList[data.movie.name].name;
+  const infoTime = data.movie.time[0];
+  const infoCount = data.count.total;
 
   message = '영화명: ' +infoName+ '(' +infoTime+ ')\n인원: 총' +infoCount+ '명\n\n계속 진행하시겠습니까?';
   return message;
@@ -732,6 +774,16 @@ function initStepCheck() {
   data.price = 0;
 }
 
+function initOrderNumber() {
+  data.order = '';
+}
+
+function saveUserOrderData() {
+  const localStorageData = JSON.parse(localStorage.getItem('userOrderData')) || [];
+  localStorageData.push(data);
+  localStorage.setItem('userOrderData', JSON.stringify(localStorageData));
+}
+
 function confirmOptionAndInit(e) {
   const message = returnMessage();
 
@@ -742,10 +794,13 @@ function confirmOptionAndInit(e) {
     return;
   }
 
+  saveUserOrderData();
+
   initStepTime();
   initStepCount();
   initStepSeat();
   initStepCheck();
+  initOrderNumber();
 }
 
 finishButton.addEventListener('click', confirmOptionAndInit);
