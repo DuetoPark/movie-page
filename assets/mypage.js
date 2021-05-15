@@ -674,8 +674,6 @@ function createLeftSideOfOrderNumber() {
   const seconds = changeExpression('0', newDate.getSeconds(), -2);
   const today = newDate.getDate();
 
-  saveDataIntoLocalStorage('lastDate', today);
-
   return year + month + date + hours + minutes + seconds;
 }
 
@@ -686,6 +684,7 @@ function createRightSideOfOrderNumber() {
   let rightSide;
   let lastOrder = Number(localStorage.getItem('lastOrder')) || 0;
 
+  // 날짜 바뀌면 주문번호 초기화
   if (lastDate != today) {
     lastOrder = 0;
   }
@@ -693,6 +692,7 @@ function createRightSideOfOrderNumber() {
   lastOrder += 1;
 
   saveDataIntoLocalStorage('lastOrder', lastOrder);
+  saveDataIntoLocalStorage('lastDate', today);
 
   return changeExpression('00', lastOrder, -3);
 }
