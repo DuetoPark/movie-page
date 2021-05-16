@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="../css/responsive/common.css">
     <link rel="stylesheet" type="text/css" href="../css/responsive/style-usertype.css">
   </head>
-  
+
   <body>
     <header id="header" class="container" aria-label="페이지 상단 영역">
       <div class="row d-flex justify-content-between align-items-center overflow-hidden">
@@ -34,26 +34,69 @@
       </div>
     </header>
 
-    <section id='type' class='container d-flex align-items-center' aria-labelledby='type-title'>
-      <h2 id="type-title" class="hidden">회원확인</h2>
-      <nav id="user-type-nav"  aria-labelledby='nav-title'>
-        <h3 id='nav-title' class="hidden">회원/비회원 페이지 이동</h3>
-        <ol class="row d-flex justify-content-center" aria-label="회원">
-          <li class="col-12 col-sm-6 col-md-5 col-lg-4" aria-label="링크">
-            <a class="d-flex justify-content-center align-items-center" href="./05-non-members.html">
-              <img class="type-image" src="../assets/images/user2.png" alt="비회원">
-              <strong class="type-typo">비회원</strong>
-            </a>
-          </li>
-          <li class="col-12 col-sm-6 col-md-5 col-lg-4" aria-label="링크">
-            <a class="d-flex justify-content-center align-items-center" href="./03-mypage.html#reservation-confirm">
-              <img class="type-image" src="../assets/images/user3.png" alt="회원">
-              <strong class="type-typo">회원</strong>
-            </a>
-          </li>
-        </ol>
-      </nav>
-    </section>
+    <main>
+      <article id="confirm-reservation" class="container"
+        aria-labelledby="confirm-reservation-title">
+        <h2 id="confirm-reservation-title" class="title col-12 col-md-10">
+          예매확인
+        </h2>
+
+        <section id="search-reservation" class="col-12 col-md-9 d-flex flex-column background"
+          aria-labelledby="search-reservation-title">
+          <h3 id="search-reservation-title" class="subtitle">예약번호 조회</h3>
+
+          <form id="search-reservation-form" action="index.html" method="post">
+            <label for="order-number">예약번호</label>
+            <input id="order-number" type="text"/>
+            <button class="search" type="button">조회하기</button>
+          </form>
+        </section>
+
+        <section id="history" class="col-12 col-md-9 d-flex flex-column background hidden"
+          aria-labelledby="history-title">
+          <h3 id="history-title" class="subtitle">예매내역</h3>
+
+          <dl class="mypage-dl d-flex flex-column flex-md-row justify-content-md-between" aria-label="확인사항">
+            <div id="history-name">
+              <dt class="mypage-term" aria-label="영화명">영화명</dt>
+              <dd class="mypage-desc" aria-live="polite"></dd>
+            </div>
+            <div id="history-seat">
+              <dt class="mypage-term" aria-label="좌석">좌석</dt>
+              <dd class="mypage-desc" aria-live="polite"></dd>
+            </div>
+            <div id="history-count">
+              <dt class="mypage-term" aria-label="인원">인원</dt>
+              <dd class="mypage-desc total" aria-live="polite"></dd>
+              <dd class="mypage-desc details d-flex flex-wrap flex-md-column" aria-live="polite"></dd>
+            </div>
+          </dl>
+          <button type="button" class="cancel inactive">예매 취소</button>
+        </section>
+      </article>
+
+      <section id='type' class='container d-flex align-items-center' aria-labelledby='type-title'>
+        <h2 id="type-title" class="hidden">회원확인</h2>
+        <nav id="user-type-nav"  aria-labelledby='nav-title'>
+          <h3 id='nav-title' class="hidden">회원/비회원 페이지 이동</h3>
+          <ol class="row d-flex justify-content-center" aria-label="회원">
+            <li class="col-12 col-sm-6 col-md-5 col-lg-4" aria-label="링크">
+              <a class="d-flex justify-content-center align-items-center" href="./05-non-members.html">
+                <img class="type-image" src="../assets/images/user2.png" alt="비회원">
+                <strong class="type-typo">비회원</strong>
+              </a>
+            </li>
+            <li class="col-12 col-sm-6 col-md-5 col-lg-4" aria-label="링크">
+              <a class="d-flex justify-content-center align-items-center" href="./03-mypage.html#reservation-confirm">
+                <img class="type-image" src="../assets/images/user3.png" alt="회원">
+                <strong class="type-typo">회원</strong>
+              </a>
+            </li>
+          </ol>
+        </nav>
+      </section>
+    </main>
+
 
     <footer id="footer" aria-label='회사 정보'>
       <div class="container">
@@ -92,5 +135,7 @@
     <!-- 라이브러리 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- 동작 -->
+    <script src="../assets/polyfill.js"></script>
+    <script src="../assets/user-type.js"></script>
   </body>
 </html>
