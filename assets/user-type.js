@@ -1,10 +1,12 @@
 // 전역변수
+const history = document.querySelector('#history');
 const searchButton = document.querySelector('.search');
+const searchInput = document.querySelector('#order-number');
+
+
 
 
 // 예매확인 - 조회하기 버튼 활성화
-const searchInput = document.querySelector('#order-number');
-
 function toggleSearchButton() {
   const isFilled = searchInput.value ? true : false;
   const isInactived = searchButton.classList.contains('inactive') ? true : false;
@@ -23,9 +25,6 @@ searchInput.addEventListener('keyup', toggleSearchButton);
 
 
 // 예매확인 - 예약번호 조회
-const input = document.querySelector('#order-number');
-const history = document.querySelector('#history');
-
 function displayOrderDetails(data) {
   if (data.name) {
     const section = document.querySelector('#history-name .mypage-desc');
@@ -76,7 +75,7 @@ function displayOrderDetails(data) {
 
 function searchReservation() {
   const userOrderData = JSON.parse(localStorage.getItem('userOrderData'));
-  const orderNumber = input.value;
+  const orderNumber = searchInput.value;
 
   userOrderData.forEach(function(data) {
     if (data.order === orderNumber) {
