@@ -25,74 +25,79 @@ searchInput.addEventListener('keyup', toggleSearchButton);
 
 
 // 예매확인 - 예약번호 조회
-function displayOrderDetails(data) {
-  if (data.name) {
-    const section = document.querySelector('#history-name .mypage-desc');
-    const koreanName = state.reservation.time[data.name].name;
-    const time = data.time[0];
-    const nameHTML = "<strong>" + koreanName + "</strong>";
-    const timeHTML = "<strong>(" + time + ")</strong>";
-    section.innerHTML = nameHTML + timeHTML;
-  }
-  if (Array.isArray(data)) {
-    const section = document.querySelector('#history-seat .mypage-desc');
-    sortNumber = data.sort(function(a, b) {
-      const lastNumber = a.split("-")[1];
-      const nextNumber = b.split("-")[1];
-      return lastNumber - nextNumber < 0 ? -1 : 1;
-    });
-
-    sortText = sortNumber.sort(function(a,b) {
-      const lastText = a.split("-")[0];
-      const nextText = b.split("-")[0];
-      return lastText < nextText ? -1 : 1;
-    });
-
-    let arrayOfseatsHTML = sortText.map(function(seat) {
-      return '<span>' + seat.split("-").join("") + '</span>';
-    });
-
-    section.innerHTML = "<strong>" + arrayOfseatsHTML + "</strong>";
-  }
-  if (data.total) {
-    const sectionOfTotal = document.querySelector('#history-count .mypage-desc');
-    const sectionOfDetails = document.querySelector('#history-count .details');
-
-    let detailsHTML = "";
-    for (key in data) {
-      if (data[key] && key != "total") {
-        const value = data[key];
-        const text = state.reservation.count[key].text;
-        const textHTML = "<span>" + text + " " + value + "명</span>";
-        detailsHTML += textHTML;
-      }
-    }
-
-    sectionOfTotal.innerHTML = "<strong>총 " + data.total + "명</strong>";
-    sectionOfDetails.innerHTML = detailsHTML;
-  }
+function displayName(data) {
+  const section = document.querySelector('#history-name .mypage-desc');
+  const koreanName = state.reservation.time[data.movie.name].name;
+  const time = data.movie.time[0];
+  const nameHTML = "<strong>" + koreanName + "</strong>";
+  const timeHTML = "<strong>(" + time + ")</strong>";
+  section.innerHTML = nameHTML + timeHTML;
 }
 
-function searchReservation() {
-  const userOrderData = JSON.parse(localStorage.getItem('userOrderData'));
-  const orderNumber = searchInput.value;
-
-  userOrderData.forEach(function(data) {
-    if (data.order === orderNumber) {
-      displayOrderDetails(data.movie);
-      displayOrderDetails(data.seat);
-      displayOrderDetails(data.count);
-      sessionStorage.setItem('searchedOrderData', JSON.stringify(data));
-    }
+function displaySeat(data) {
+  const section = document.querySelector('#history-seat .mypage-desc');
+  sortNumber = data.seat.sort(function(a, b) {
+    const lastNumber = a.split("-")[1];
+    const nextNumber = b.split("-")[1];
+    return lastNumber - nextNumber < 0 ? -1 : 1;
   });
+
+  sortText = sortNumber.sort(function(a,b) {
+    const lastText = a.split("-")[0];
+    const nextText = b.split("-")[0];
+    return lastText < nextText ? -1 : 1;
+  });
+
+  let arrayOfseatsHTML = sortText.map(function(seat) {
+    return '<span>' + seat.split("-").join("") + '</span>';
+  });
+
+  section.innerHTML = "<strong>" + arrayOfseatsHTML + "</strong>";
+}
+
+function displayCount(data) {
+  const sectionOfTotal = document.querySelector('#history-count .mypage-desc');
+  const sectionOfDetails = document.querySelector('#history-count .details');
+
+  let detailsHTML = "";
+  for (key in data.count) {
+    if (data.count[key] && key != "total") {
+      const value = data.count[key];
+      const text = state.reservation.count[key].text;
+      const textHTML = "<span>" + text + " " + value + "명</span>";
+      detailsHTML += textHTML;
+    }
+  }
+
+  sectionOfTotal.innerHTML = "<strong>총 " + data.count.total + "명</strong>";
+  sectionOfDetails.innerHTML = detailsHTML;
 }
 
 function showHistory() {
   history.classList.remove('hidden');
 }
 
+function searchReservation() {
+  const userOrderData = JSON.parse(localStorage.getItem('userOrderData'));
+  const orderNumber = searchInput.value;
+  let isincluding = userOrderData.findIndex(function(element) {
+    return element.order === orderNumber;
+  });
+
+  if (isincluding > 0) {
+    showHistory()
+    displayName(data);
+    displaySeat(data);
+    displayCount(data);
+    sessionStorage.setItem('searchedOrderData', JSON.stringify(data));
+  } else if (isincluding === -1) {
+    alert('입력하신 번호를 찾을 수 없습니다. 다시 확인해 주시기 바랍니다.');
+    searchInput.value = ''; // 인풋 초기화
+    return;
+  }
+}
+
 searchButton.addEventListener('click', searchReservation);
-searchButton.addEventListener('click', showHistory);
 
 
 
@@ -136,10 +141,8 @@ function returnChangedSeastData(seatData) {
 
 function returnChangedUserOrderData() {
   // 일치하는 데이터 찾기
-  const index = userOrderData.findIndex(function(element, index) {
-    if (element.order === searchedOrderData.order) {
-      return index;
-    }
+  const index = userOrderData.findIndex(function(element) {
+    return element.order === searchedOrderData.order;
   });
 
   // 찾은 데이터 삭제
