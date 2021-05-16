@@ -94,3 +94,81 @@ function showHistory() {
 
 searchButton.addEventListener('click', searchReservation);
 searchButton.addEventListener('click', showHistory);
+
+
+
+
+// 예매확인 - 예매취소
+const cancelButton = document.querySelector('#history .cancel');
+let searchedOrderData;
+let userOrderData;
+
+function getStorageData(storage, key) {
+  return JSON.parse(storage.getItem(key));
+}
+
+function saveChangedData(storage, key, changedData) {
+  storage.setItem(key, JSON.stringify(changedData));
+}
+
+function returnCancelMessage() {
+  const orderNumber = '예약 번호: ' + searchedOrderData.order + '\n';
+  const orderMovie = '영화명: ' + searchedOrderData.movie.name;
+  const orderTime = '(' +searchedOrderData.movie.time[0]+ ')\n';
+  const orderCount = '인원: 총' + searchedOrderData.count.total + '명\n';
+
+  return orderNumber + orderMovie + orderTime + orderCount+ '\n예매 취소를 진행하시겠습니까?';
+}
+
+function returnChangedSeastData(seatData) {
+  const name = searchedOrderData.movie.name;
+  const time = searchedOrderData.movie.time[1];
+  const seat = searchedOrderData.seat;
+
+  seat.forEach(function(seat) {
+    const key = seat.split('-')[0];
+    const index = seat.split('-')[1] - 1;
+
+    seatData[name][time][key][index] = 0;
+  });
+
+  return seatData;
+}
+
+function returnChangedUserOrderData() {
+  // 일치하는 데이터 찾기
+  const index = userOrderData.findIndex(function(element, index) {
+    if (element.order === searchedOrderData.order) {
+      return index;
+    }
+  });
+
+  // 찾은 데이터 삭제
+  userOrderData.splice(index, 1);
+
+  return userOrderData;
+}
+
+function hiddenHistory() {
+  history.classList.add('hidden');
+  searchInput.value = ''; // input 빈칸
+}
+
+function cancelReservation() {
+  searchedOrderData = getStorageData(sessionStorage, 'searchedOrderData');
+
+  // 취소 의사 다시 확인
+  if (confirm(returnCancelMessage()) === true) {
+    alert('예매 취소가 완료되었습니다.');
+  } else {
+    return;
+  }
+
+  const seatData = getStorageData(localStorage, 'seatData');
+  userOrderData = getStorageData(localStorage, 'userOrderData');
+  saveChangedData(localStorage, 'seatData', returnChangedSeastData(seatData));
+  saveChangedData(localStorage, 'userOrderData', returnChangedUserOrderData());
+  hiddenHistory();
+}
+
+cancelButton.addEventListener('click', cancelReservation);
