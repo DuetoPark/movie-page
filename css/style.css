@@ -175,7 +175,7 @@
   position: absolute;
   width: 100%;
   height: var(--imageHeight);
-  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;  backface-visibility: hidden;
 }
 
 #playing .image{
