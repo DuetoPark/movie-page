@@ -86,10 +86,10 @@ function searchReservation() {
 
   if (isincluding > 0) {
     showHistory()
-    displayName(data);
-    displaySeat(data);
-    displayCount(data);
-    sessionStorage.setItem('searchedOrderData', JSON.stringify(data));
+    displayName(userOrderData[isincluding]);
+    displaySeat(userOrderData[isincluding]);
+    displayCount(userOrderData[isincluding]);
+    sessionStorage.setItem('searchedOrderData', JSON.stringify(userOrderData[isincluding]));
   } else if (isincluding === -1) {
     alert('입력하신 번호를 찾을 수 없습니다. 다시 확인해 주시기 바랍니다.');
     searchInput.value = ''; // 인풋 초기화
