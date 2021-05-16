@@ -1,5 +1,28 @@
+// 전역변수
+const searchButton = document.querySelector('.search');
+
+
+// 예매확인 - 조회하기 버튼 활성화
+const searchInput = document.querySelector('#order-number');
+
+function toggleSearchButton() {
+  const isFilled = searchInput.value ? true : false;
+  const isInactived = searchButton.classList.contains('inactive') ? true : false;
+  if (isFilled && isInactived) {
+    searchButton.classList.remove('inactive');
+  }
+
+  if (!isFilled && !isInactived) {
+    searchButton.classList.add('inactive');
+  }
+}
+
+searchInput.addEventListener('keyup', toggleSearchButton);
+
+
+
+
 // 예매확인 - 예약번호 조회
-const searchButton = document.querySelector('#search-reservation-form .search');
 const input = document.querySelector('#order-number');
 const history = document.querySelector('#history');
 
