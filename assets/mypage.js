@@ -748,6 +748,12 @@ function initStepCount() {
   const displayCount = document.querySelectorAll('.button-group > p');
   for (let i=0; i<displayCount.length; i+=1) {
     displayCount[i].textContent = 0;
+
+    const downButton = displayCount[i].previousElementSibling;
+    const upButton = displayCount[i].nextElementSibling;
+
+    downButton.classList.add('inactive');
+    upButton.classList.remove('inactive');
   }
 }
 
