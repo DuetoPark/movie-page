@@ -19,7 +19,7 @@
 }
 
 
-/* Title */
+/* main - Title */
 .main-title{
   margin-bottom: 32px;
   font-size: 24px;
@@ -50,6 +50,64 @@
 .fill-button:hover{
   box-shadow: 0 0 0 3px #99CBDB;
 }
+
+
+/* common - title */
+.title{
+  margin-bottom: 36px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.333333333333333;
+  letter-spacing: -0.03em;
+}
+
+
+/* common - subtitle */
+.subtitle{
+  width: 100%;
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #319BBC;
+}
+
+
+/* background */
+.background{
+  width: 100%;
+  padding-top: 36px;
+  padding-bottom: 36px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+
+/* dl */
+.mypage-dl{
+  margin-bottom: 36px;
+}
+
+.mypage-dl div{
+  margin-bottom: 16px;
+}
+
+.mypage-dl div:last-child{
+  margin-bottom: 0;
+}
+
+.mypage-term{
+  font-size: 14px;
+  line-height: 1.142857142857143;
+}
+
+.mypage-desc{
+  padding-left: 16px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
 
 
 /* cite */

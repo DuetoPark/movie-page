@@ -78,29 +78,6 @@
     margin-bottom: 48px;
   }
 
-  .title{
-    height: 36px;
-    border-left: 3px solid #319BBC;
-    text-align: left;
-    line-height: 2;
-  }
-
-  /* common - subtitle */
-  .subtitle{
-    transform: translateX(-34px);
-  }
-
-  /* common - background */
-  .background{
-    padding-top: 48px;
-    padding-bottom: 48px;
-  }
-
-  /* common - dl */
-  .mypage-dl{
-    margin-bottom: 48px;
-  }
-
 
   /* #profile */
   #profile{
