@@ -94,7 +94,7 @@ $(document).on('click', '.event-button', function (event) {
 
 
 
-// 배너 중복 처리
+// 배너 & playing - 중복 처리
 let star;
 let genre;
 const prototypeInfo = {
@@ -161,7 +161,7 @@ function infoFactory(section) {
   let info = Object.create(prototypeInfo);
   info.elem = document.querySelector(section);
   info.container = info.elem.querySelector('ol');
-  info.origin = info.elem.querySelector('li:first-child');
+  info.origin = info.elem.querySelector('li:first-of-type');
 
   return info; // 이걸로 30분 삽질
 }

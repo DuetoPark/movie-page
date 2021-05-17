@@ -191,7 +191,7 @@
   color: #fff;
 }
 
-#playing button:hover{
+#playing a:hover{
   background-color: #99CBDB;
   box-shadow: none;
   border: none;
