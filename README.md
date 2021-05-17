@@ -10,8 +10,8 @@
 
 ## 목차
 1. [GNB](#gnb)
-2. [페이지 기능](#페이지-기능)
-3. [사용 언어](#사용-언어)
+2. [페이지별 구현 목표](#페이지별-구현-목표)
+3. [언어](#언어)
 4. [프레임워크](#프레임워크)
 5. [디자인툴](#디자인툴)
 <br>
@@ -65,6 +65,7 @@
   </div>
 </header>
 ```
+<br>
 
 ### 2. 마이 페이지
 ```html
@@ -93,6 +94,7 @@
   </div>
 </header>
 ```
+<br>
 
 ### 3. 그 외 페이지
 ```html
@@ -106,81 +108,55 @@
    </div>
  </header>
 ```
+<br>
 
-## 페이지 기능
+## 페이지별 구현 목표
 ### 1. 메인 페이지
-#### 탭 포커스
+#### CSS
+- 반응형 CSS
+여기에 영상 넣으면 되겠다.
+
+#### JS
+- 탭 포커스
 ```javascript
-function setTabIndex(elem, tabIndex) {
-  elem.setAttribute('tabindex', tabIndex);
-}
-
-function handleTabIndexOfBanner() {
-  onTablet = window.innerWidth >= screen.tablet ? true : false;
-  isActived = header.classList.contains('active');
-
-  setTabIndex(threeLinesButton, 0);
-  setTabIndex(eventButton, 0);
-
-  if (onTablet) {
-    buttons.forEach(function(button) {setTabIndex(button, 0);});
-    setTabIndex(threeLinesButton, -1);
-    setTabIndex(eventButton, -1);
-  } else if (!onTablet && isActived) { // Mobile & 활성화 상태
-    buttons.forEach(function(button) {setTabIndex(button, 0);});
-  } else if (!onTablet && !isActived) { // Mobile & 비활성화 상태
-    buttons.forEach(function(button) {setTabIndex(button, -1);});
-  }
-}
+코드 넣기
 ```
-#### 로그인
-- 버튼 활성화
-- 아이디 다른 페이지로 전송
-  
+- 중복 요소 구현(cloneNode, prototype)
+```javascript
+코드 넣기
+```
 ### 2. 회원가입 페이지
-#### 회원가입
-- 회원가입 버튼 활성화/비활성화
-- 비밀번호 확인
+#### CSS + JS
+- input 포커스에 따른 label CSS 변화
+여기에 영상넣자
+#### JS
+- 비밀번호 일치/불일치 알림 구현
+```javascript
+코드 넣기
+```
 
-### 3. 마이 페이지
-#### 프로필 수정
-- 프로필 사진 수정
-#### 영화 예매
+### 3. 마이 페이지 & 비회원 예매 페이지
+#### JS
 - 웹 스토리지 사용
 - 데이터와 화면 매칭
 ```javascript
-function matchSeatDataAndDomTable() {
-  // 변경된 세션 스토리지 불러옴
-  const optionData = JSON.parse(sessionStorage.getItem('optionData'));
-  const movieName = optionData.movie.name;
-  const movieTime = optionData.movie.time[1];
-
-  // 로컬 스토리지 데이터 초기화
-  // (저장 전에 다른 옵션으로 변경하면 변형된 데이터 초기화)
-  const seatData = JSON.parse(localStorage.getItem("seatData"));
-  const seatTableCheckboxes = document.querySelectorAll('.seat-table .seat-input');
-  // 전역변수로 선언하지 않은 이유
-  // 좌석(.seat-input) 출력은 현재 함수보다 아래에 존재하므로 전역변수로 설정하면 오류가 발생한다.
-  // 동기-좌석 출력, 비동기-데이터와 화면 매칭(현재 함수)
-
-  seatTableCheckboxes.forEach(function(checkbox, index) {
-    const seatKey = checkbox.id.split("-")[0];
-    const seatIndex = Number(checkbox.id.split("-")[1]) - 1;
-    const thisData = seatData[movieName][movieTime][seatKey][seatIndex];
-
-    let isChecked = thisData === 1 ? true : false;
-    if (isChecked) {
-      checkbox.checked = true;
-      checkbox.classList.add('already-booked');
-    } else {
-      checkbox.checked = false;
-      checkbox.classList.remove('already-booked');
-    }
-  });
-}
+코드 넣기
+```
+- 주문번호 생성
+```javascript
+코드 넣기
 ```
 
-## 사용 언어
+### 4. 예매확인 페이지
+#### JS
+- 웹 스토리지 사용
+- 데이터 조회/수정
+```javascript
+코드 넣기
+```
+<br>
+
+## 언어
 - HTML
 - CSS (반응형 디자인 구현)
 - Vanilla Javascript
