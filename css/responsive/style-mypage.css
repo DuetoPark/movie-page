@@ -71,19 +71,17 @@
 
 /* >= 768px (Desktop col-md) */
 @media screen and (min-width:768px) {
-  /* common -title */
-  .title,
-  #change-image,
-  #change-pp{
-    margin-bottom: 48px;
-  }
-
-
   /* #profile */
   #profile{
     padding-top: 32px;
     padding-bottom: 64px;
   }
+
+  #change-image,
+  #change-pp{
+    margin-bottom: 48px;
+  }
+
 
   /* #profile - change-pp */
   #change-pp > div{
