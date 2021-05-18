@@ -44,11 +44,11 @@
   letter-spacing: -0.03%;
   cursor: pointer;
   background-color: #fff;
-  transition: box-shadow 250ms ease-in-out;
 }
 
 .fill-button:hover{
   box-shadow: 0 0 0 3px #99CBDB;
+  transition: box-shadow 250ms ease-in-out;
 }
 
 

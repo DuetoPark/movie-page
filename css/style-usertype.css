@@ -11,18 +11,17 @@
   letter-spacing: 0.05em;
   color: #181818;
   background-color: #E0E0E0;
+  transition: all 250ms ease-in-out;
 }
 
-#confirm-reservation{
-  margin-top: 24px;
-  margin-bottom: 48px;
+#confirm-reservation button:hover{
+  cursor: pointer;
+  background-color: #99CBDB;
+  color: #FFF;
 }
 
-.search.inactive{
-  opacity: 0.25;
-  pointer-events: none;
-}
 
+/* #confirm-reservation - #search-reservation */
 #search-reservation{
   margin-bottom: 36px;
 }
@@ -50,6 +49,13 @@ label[for=order-number]{
   color: #181818;
 }
 
+.search.inactive{
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+
+/* #confirm-reservation - #history */
 #history-seat .mypage-desc{
   text-transform: uppercase;
 }
