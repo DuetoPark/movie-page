@@ -51,8 +51,10 @@ function toggleLoginButton() {
 
   if (isIdTrue && isPwTrue) {
     loginButton.classList.add('active');
+    loginButton.setAttribute('tabindex', 0);
   } else {
     loginButton.classList.remove('active');
+    loginButton.setAttribute('tabindex', -1);
   }
 }
 
