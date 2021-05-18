@@ -1,19 +1,31 @@
 // 모달 열림/닫힘
 const prototypeModal = {
-  handleModal: function() {
-    // bind로 인해 this 변경 (window --> modalFactory의 변수 'modal')
+  toggleModal: function() {
     this.wrapper.classList.toggle('hidden');
     this.wrapper.classList.toggle('modal-active');
-
-    // 아이디 입력창에 포커스
-    if (this.wrapper.classList.contains('modal-active')) {
-      this.wrapper.querySelector('#user-id').focus();
-    }
+  },
+  initInputs: function() {
+    const loginInputs = this.wrapper.querySelectorAll('.modal-form > input');
+    loginInputs.forEach(function(input) {
+      input.value = "";
+    });
+  },
+  inactiveButton: function() {
+    const loginButton = this.wrapper.querySelector('.login-button');
+    loginButton.classList.remove('active');
+  },
+  open: function() {
+    this.toggleModal();
+    this.wrapper.querySelector('#user-id').focus();
+  },
+  close: function() {
+    this.toggleModal();
+    this.initInputs();
+    this.inactiveButton();
   },
   clickEvent: function(openButton, closeButton) {
-    // this: modalFactory의 변수 'modal'
-    openButton.addEventListener('click', this.handleModal.bind(this));
-    closeButton.addEventListener('click', this.handleModal.bind(this));
+    openButton.addEventListener('click', this.open.bind(this));
+    closeButton.addEventListener('click', this.close.bind(this));
   },
 };
 
