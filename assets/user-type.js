@@ -2,6 +2,7 @@
 const history = document.querySelector('#history');
 const searchButton = document.querySelector('.search');
 const searchInput = document.querySelector('#order-number');
+const cancelButton = document.querySelector('#history .cancel');
 
 
 
@@ -75,9 +76,16 @@ function displayCount(data) {
   sectionOfDetails.innerHTML = detailsHTML;
 }
 
-function showHistory() {
-  history.classList.remove('hidden');
-  history.classList.add('active');
+function toggleHistory(active) {
+  if (active) {
+    history.classList.remove('hidden');
+    history.classList.add('active');
+    cancelButton.setAttribute('tabindex', 0);
+  } else {
+    history.classList.add('hidden');
+    history.classList.remove('active');
+    cancelButton.setAttribute('tabindex', -1);
+  }
 }
 
 function searchReservation() {
@@ -88,7 +96,7 @@ function searchReservation() {
   });
 
   if (isincluding >= 0) {
-    showHistory()
+    toggleHistory(true);
     displayName(userOrderData[isincluding]);
     displaySeat(userOrderData[isincluding]);
     displayCount(userOrderData[isincluding]);
@@ -96,7 +104,7 @@ function searchReservation() {
   } else if (isincluding === -1) {
     alert('입력하신 번호를 찾을 수 없습니다. 다시 확인해 주시기 바랍니다.');
     searchInput.value = ''; // 인풋 초기화
-    history.classList.add('hidden');
+    toggleHistory(false);
     return;
   }
 }
@@ -107,7 +115,6 @@ searchButton.addEventListener('click', searchReservation);
 
 
 // 예매확인 - 예매취소
-const cancelButton = document.querySelector('#history .cancel');
 let searchedOrderData;
 let userOrderData;
 
