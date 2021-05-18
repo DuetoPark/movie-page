@@ -82,19 +82,22 @@ label[for=order-number]{
   padding: 16px 0;
 }
 
-#user-type-nav a{
+#user-type-nav a,
+#user-type-nav button{
   width: 220px;
   height: calc((100vh - (36px * 2) - 60px - (16px * 3) - (48px * 2)) / 2);
+  border: none;
   border-radius: 4px;
   background-color: #E0E0E0;
   transition: all 250ms ease-in-out;
 }
 
-#user-type-nav a:first-of-type{
+#user-type-nav a{
   margin-bottom: 16px;
 }
 
-#user-type-nav a:hover{
+#user-type-nav a:hover,
+#user-type-nav button:hover{
   box-shadow: 0 0 0 3px #99CBDB, 0 4px 4px rgba(0, 0, 0, 0.25);
   transform: scale(1.02);
 }
@@ -113,6 +116,16 @@ label[for=order-number]{
   font-weight: 500;
   line-height: 1.333333333333333;
 }
+
+
+
+/* Aside - login */
+/* common CSS */
+.modal-wrapper{
+  transform-origin: center;
+}
+
+
 
 /* Footer */
 #footer{

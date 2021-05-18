@@ -40,14 +40,29 @@
     padding: 0;
   }
 
-  #user-type-nav a{
+  #user-type-nav a,
+  #user-type-nav button{
     width: 220px;
     height: 220px;
   }
 
-  #user-type-nav a:first-of-type{
+  #user-type-nav a{
     margin-bottom: 0;
     margin-right: 16px;
+  }
+
+
+
+  /* Aside - Login */
+  /* Login - active */
+  #login-modal.modal-active {
+    left: 50%; top: 50%;
+    width: 300px;
+    height: 500px;
+    margin: 0 !important;
+    border: 1px solid #F3F3F3;
+    transform: scale(1) translate(-50%, -50%);
+    transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
   }
 }
 
@@ -98,11 +113,12 @@
     margin-bottom: 64px;
   }
 
-  #user-type-nav a{
+  #user-type-nav a,
+  #user-type-nav button{
     height: 150px;
   }
 
-  #user-type-nav a:first-of-type{
+  #user-type-nav a{
     margin-right: 30px;
   }
 }
