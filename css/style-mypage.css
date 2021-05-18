@@ -1,3 +1,21 @@
+/* Element Open Animation */
+@keyframes popup {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+/* #reservation - #step-check */
+#step-check .mypage-dl .mypage-desc > *{
+  animation-name: popup;
+  animation-timing-function: ease-in-out;
+  animation-duration: 250ms;
+}
+
+
 /* common - input & button */
 .profile input,
 .select-file,

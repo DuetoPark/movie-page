@@ -1,5 +1,30 @@
-/* Article - confirm-reservation */
-/* button - common */
+/* Element Open Animation */
+@keyframes popup {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+/* #reservation - #step-check */
+#history.active{
+  animation-name: popup;
+  animation-timing-function: ease-in-out;
+  animation-duration: 250ms;
+}
+
+
+
+
+/* #confirm-reservation */
+#confirm-reservation{
+  margin-top: 24px;
+  margin-bottom: 48px;
+}
+
+/* #confirm-reservation - common */
 #confirm-reservation button{
   width: 220px;
   height: 40px;
@@ -77,7 +102,7 @@ label[for=order-number]{
 
 
 
-/* Article - type */
+/* #type */
 #type{
   margin-top: 48px;
   margin-bottom: 48px;
@@ -126,7 +151,6 @@ label[for=order-number]{
 
 
 /* Aside - login */
-/* common CSS */
 .modal-wrapper{
   transform-origin: center;
 }

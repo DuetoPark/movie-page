@@ -75,6 +75,7 @@ function displayCount(data) {
 
 function showHistory() {
   history.classList.remove('hidden');
+  history.classList.add('active');
 }
 
 function searchReservation() {
@@ -84,7 +85,7 @@ function searchReservation() {
     return element.order === orderNumber;
   });
 
-  if (isincluding > 0) {
+  if (isincluding >= 0) {
     showHistory()
     displayName(userOrderData[isincluding]);
     displaySeat(userOrderData[isincluding]);

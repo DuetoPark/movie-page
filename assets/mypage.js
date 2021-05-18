@@ -957,6 +957,7 @@ const bookedButton = document.querySelector('#booked .show-more');
 function showMoreHistory() {
   const bookedHistory = document.querySelector('#history');
   bookedHistory.classList.remove('hidden');
+  bookedHistory.classList.add('active');
   bookedButton.setAttribute('aria-expanded', true);
 }
 
