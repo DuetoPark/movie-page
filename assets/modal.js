@@ -59,20 +59,3 @@ function toggleLoginButton() {
 loginInputs.forEach(function(input) {
   input.addEventListener('keyup', toggleLoginButton);
 });
-
-
-
-// 로그인 모달 - 아이디(input.value) 전송
-const loginModal = document.querySelector('#login-modal');
-
-if (loginModal) {
-  const loginButton = loginModal.querySelector('.login-button');
-
-  function sendUserId(e) {
-    e.preventDefault();
-    let userId = loginModal.querySelector("#user-id").value;
-    location.href="./01-main-after-login.html?userId="+userId;  //데이터 전송
-  }
-
-  loginButton.addEventListener('click', sendUserId);
-}
