@@ -2,7 +2,7 @@
 @media screen and (min-width: 576px) {
   /* common CSS */
   .modal-form > input,
-  .modal-form > button{
+  .modal-form > a{
     width: 100%;
   }
 
