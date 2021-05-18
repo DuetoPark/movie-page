@@ -12,10 +12,12 @@ function toggleSearchButton() {
   const isInactived = searchButton.classList.contains('inactive') ? true : false;
   if (isFilled && isInactived) {
     searchButton.classList.remove('inactive');
+    searchButton.setAttribute('tabindex', 0);
   }
 
   if (!isFilled && !isInactived) {
     searchButton.classList.add('inactive');
+    searchButton.setAttribute('tabindex', -1);
   }
 }
 
