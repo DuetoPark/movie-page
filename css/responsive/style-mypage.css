@@ -23,7 +23,7 @@
     background-color: #F3F3F3;
   }
 
-  #header a[data-type=menu]{
+  #header a[data-menu=true]{
     position: relative;
     width: 130px;
     margin: 0 30px 0 0;
@@ -36,11 +36,11 @@
     margin: 0;
   }
 
-  #header a[data-type=menu]:hover{
+  #header a[data-menu=true]:hover{
     box-shadow: none;
   }
 
-  #header a[data-type=menu]::after{
+  #header a[data-menu=true]::after{
     content: '';
     position: absolute;
     left: 50%;
@@ -51,7 +51,7 @@
     transition: all 250ms ease-in-out;
   }
 
-  #header a[data-type=menu]:hover::after{
+  #header a[data-menu=true]:hover::after{
     left: 0;
     width: 100%;
   }

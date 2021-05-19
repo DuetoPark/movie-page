@@ -42,11 +42,13 @@
             메뉴
           </button>
 
-          <nav id='menu' class="col-12 col-sm-8 col-md-6 d-flex flex-column flex-sm-row button-group">
-            <a class="fill-button my-page-button" href="./03-mypage.html">My page</a>
-            <a class="fill-button check-button" href="./03-mypage.html#reservation">예매/좌석확인</a>
-            <a class="fill-button logout-button" href="./01-main.html">로그아웃</a>
-            <a class="fill-button event-button" href="#event" aria-label='이벤트 영역으로 건너뛰기'>이벤트</a>
+          <nav id='menu' class="col-12 col-sm-8 col-md-6 d-flex flex-wrap button-group"
+            aria-labelledby='menu-title'>
+            <h2 id='menu-title' class="hidden" data-menu='false'>메뉴</h2>
+            <a class="fill-button my-page-button" href="./03-mypage.html" data-menu='true'>My page</a>
+            <a class="fill-button check-button" href="./03-mypage.html#reservation" data-menu='true'>예매/좌석확인</a>
+            <a class="fill-button logout-button" href="./01-main.html" data-menu='true'>로그아웃</a>
+            <a class="fill-button event-button" href="#event" data-menu='true' aria-label='이벤트 영역으로 건너뛰기'>이벤트</a>
           </nav>
         </div>
       </header>

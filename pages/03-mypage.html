@@ -37,10 +37,10 @@
         </button>
 
         <nav id='menu' class="col-12 d-flex flex-wrap justify-content-sm-center button-group" aria-labelledby="menu-title">
-          <h2 id="menu-title" class="hidden">페이지 내부에서 이동</h2>
-          <a class="fill-button" data-type="menu" href="#profile">프로필 수정</a>
-          <a class="fill-button" data-type="menu" href="#reservation">좌석예매</a>
-          <a class="fill-button" data-type="menu" href="#booked">예매내역</a>
+          <h2 id="menu-title" class="hidden" data-menu='false'>페이지 내부에서 이동</h2>
+          <a class="fill-button" href="#profile" data-menu='true'>프로필 수정</a>
+          <a class="fill-button" href="#reservation" data-menu='true'>좌석예매</a>
+          <a class="fill-button" href="#booked" data-menu='true'>예매내역</a>
 
           <a class="fill-button logout-button col-sm-3 col-lg-2" href="./01-main.html">로그아웃</a>
         </nav>

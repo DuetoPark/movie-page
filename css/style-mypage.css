@@ -84,7 +84,7 @@ main button:focus{
 
 
 /* Header - Active */
-#header.active a[data-type=menu]{
+#header.active a[data-menu=true]{
   height: calc((100vh - 72px - (16px * 5) - 150px) / 3);
 }
 
