@@ -4,9 +4,6 @@ const searchButton = document.querySelector('.search');
 const searchInput = document.querySelector('#order-number');
 const cancelButton = document.querySelector('#history .cancel');
 
-
-
-
 // 예매확인 - 조회하기 버튼 활성화
 function toggleSearchButton() {
   const isFilled = searchInput.value ? true : false;
@@ -24,16 +21,13 @@ function toggleSearchButton() {
 
 searchInput.addEventListener('keyup', toggleSearchButton);
 
-
-
-
 // 예매확인 - 예약번호 조회
 function displayName(data) {
   const section = document.querySelector('#history-name .mypage-desc');
   const koreanName = state.reservation.time[data.movie.name].name;
   const time = data.movie.time[0];
-  const nameHTML = "<strong>" + koreanName + "</strong>";
-  const timeHTML = "<strong>(" + time + ")</strong>";
+  const nameHTML = `<strong>${koreanName}</strong>`;
+  const timeHTML = `<strong>${time}</strong>`;
   section.innerHTML = nameHTML + timeHTML;
 }
 
@@ -52,7 +46,7 @@ function displaySeat(data) {
   });
 
   let arrayOfseatsHTML = sortText.map(function(seat) {
-    return '<span>' + seat.split("-").join("") + '</span>';
+    return `<span>${seat.split("-").join("")}</span>`;
   });
 
   section.innerHTML = "<strong>" + arrayOfseatsHTML + "</strong>";
@@ -67,12 +61,12 @@ function displayCount(data) {
     if (data.count[key] && key != "total") {
       const value = data.count[key];
       const text = state.reservation.count[key].text;
-      const textHTML = "<span>" + text + " " + value + "명</span>";
+      const textHTML = `<span>${text} ${value}명</span>`;
       detailsHTML += textHTML;
     }
   }
 
-  sectionOfTotal.innerHTML = "<strong>총 " + data.count.total + "명</strong>";
+  sectionOfTotal.innerHTML = `<strong>총 ${data.count.total}명</strong>`;
   sectionOfDetails.innerHTML = detailsHTML;
 }
 
@@ -152,9 +146,7 @@ function returnChangedSeastData(seatData) {
 
 function returnChangedUserOrderData() {
   // 일치하는 데이터 찾기
-  const index = userOrderData.findIndex(function(element) {
-    return element.order === searchedOrderData.order;
-  });
+  const index = userOrderData.findIndex(element => element.order === searchedOrderData.order);
 
   // 찾은 데이터 삭제
   userOrderData.splice(index, 1);

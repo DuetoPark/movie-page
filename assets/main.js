@@ -6,8 +6,7 @@ $(document).on('click', '.event-button', function (event) {
     scrollTop: $($.attr(this, 'href')).offset().top
   }, 1000);
 
-  isActived = false;
-  activeOrInactiveHeader();
+  toggleHeader();
 });
 
 
@@ -24,9 +23,9 @@ const prototypeInfo = {
   selectImage: function(data, item) {
     let path;
     if (item.dataset.list) { // playingInfo
-      path = '../assets/images/' + data.poster + '.jpg';
+      path = `../assets/images/${data.poster}.jpg`;
     } else { // bannerInfo
-      path = '../assets/images/' + data.image + '.gif';
+      path = `../assets/images/${data.image}.gif`;
     }
 
     item.querySelector('.image').setAttribute('src', path);
@@ -36,23 +35,15 @@ const prototypeInfo = {
     let star = [];
     const fillStar = Math.floor(data.star);
     const emptyStar = Math.ceil(data.star - Math.floor(data.star));
-    // star = '★'.repeat(fillStar) + '☆'.repeat(emptyStar) + '(';
+    star = '★'.repeat(fillStar) + '☆'.repeat(emptyStar) + '(';
 
-    for (let i=0; i<fillStar; i+=1) {
-      star = star.concat('★');
-    }
-    for (let i=0; i<emptyStar; i+=1) {
-      star = star.concat('☆');
-    }
-
-    const display = star.join("") + "(";
-    item.querySelector('.icon').textContent = display;
+    item.querySelector('.icon').textContent = star;
   },
   selectGenre: function(data, item) {
     const keys = Object.keys(data.genre);
     genre = keys
-      .map(function(key) {return this.genre[key] ? key : '';}, data)
-      .filter(function(item) {return item != ''})
+      .map(function(key) {return data.genre[key] ? key : '';}, data)
+      .filter(item => item != '')
       .join(', ');
 
     item.querySelector('.genre > dd').textContent = genre;
@@ -103,13 +94,7 @@ populateInfo(playingInfo);
 
 
 // 배너 영화정보 활성/비활성
-const banner = document.querySelector('#banner');
-const bannerItems = [];
-
-for (let i=0; i<banner.querySelectorAll('li').length; i+=1) {
-  bannerItems.push(banner.querySelectorAll('li')[i]);
-  // 하루 빨리 모두가 인터넷 익스플로러에서 다른 브라우저로 갈아탔으면 좋겠다.
-}
+const bannerItems = document.querySelectorAll('#banner li');
 
 function showOrHideInfo(state, bannerItem, info) {
   if (state === 'show') {
@@ -132,7 +117,7 @@ function translateInfo(bannerItem, info){
     coords.left = banner.offsetLeft - bannerItem.offsetWidth * 1.5;
     coords.top = bannerItem.offsetTop + banner.offsetTop;
   }
-  info.style.transform = 'translate('+coords.left+'px, '+coords.top+'px)';
+  info.style.transform = `translate(${coords.left}px, ${coords.top}px)`;
 }
 
 function handleMouseEnter() {
@@ -184,7 +169,7 @@ function flipCard() {
   }
 }
 
-imageCards.forEach(function(card) {card.addEventListener('click', flipCard);});
+imageCards.forEach(card => card.addEventListener('click', flipCard));
 
 
 
@@ -194,11 +179,11 @@ function isChangableHeight() {
   const playing = document.querySelector('#playing');
   const imagesCards = playing.querySelectorAll('.image-card');
 
-  imagesCards.forEach(function(card) {
+  imagesCards.forEach(card => {
     const image = card.querySelector('.image');
     const height = image.clientHeight;
 
-    card.style.setProperty('--imageHeight', height + 'px');
+    card.style.setProperty('--imageHeight', `${height}px`);
   });
 }
 
