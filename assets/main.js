@@ -13,58 +13,61 @@ $(document).on('click', '.event-button', function (event) {
 
 
 // 배너 & playing - 중복 처리
-let star;
-let genre;
 const prototypeInfo = {
-  displayName: function(data, item) {
-    if (item.dataset.list) return; // playingInfo
+  changeName: function(data, item) {
+    if (item.dataset.list === "playing") return;
     item.querySelector('.name').textContent = data.name;
   },
-  selectImage: function(data, item) {
+  changeImage: function(data, item) {
     let path;
-    if (item.dataset.list) { // playingInfo
+
+    if (item.dataset.list === "playing") {
       path = `../assets/images/${data.poster}.jpg`;
-    } else { // bannerInfo
+    } else {
       path = `../assets/images/${data.image}.gif`;
     }
 
     item.querySelector('.image').setAttribute('src', path);
     item.querySelector('.image').setAttribute('alt', data.name);
   },
-  selectStar: function(data, item) {
-    let star = [];
+  changeStar: function(data, item) {
+    let star;
     const fillStar = Math.floor(data.star);
     const emptyStar = Math.ceil(data.star - Math.floor(data.star));
     star = '★'.repeat(fillStar) + '☆'.repeat(emptyStar) + '(';
 
     item.querySelector('.icon').textContent = star;
   },
-  selectGenre: function(data, item) {
-    const keys = Object.keys(data.genre);
-    genre = keys
-      .map(function(key) {return data.genre[key] ? key : '';}, data)
+  changeGenre: function(data, item) {
+    const genre = Object
+      .keys(data.genre)
+      .map(key => data.genre[key] ? key : '')
       .filter(item => item != '')
       .join(', ');
 
     item.querySelector('.genre > dd').textContent = genre;
   },
   clone: function(data) {
-    const item = this.origin.cloneNode(true);
-    item.setAttribute('data-origin', false);
-    item.querySelector('.review > p').textContent = data.review;
-    item.querySelector('.review > cite').textContent = data.reviewUser;
-    item.querySelector('.desc-title').textContent = data.name;
-    item.querySelector('.rating').setAttribute('aria-label', data.star + '점');
-    item.querySelector('.rating').textContent =  data.star;
-    item.querySelector('.actor > dd').textContent = data.actor;
-    item.querySelector('.director > dd').textContent = data.director;
+    const clone = this.origin.cloneNode(true);
+    clone.setAttribute('data-origin', false);
+    clone.querySelector('.review > p').textContent = data.review;
+    clone.querySelector('.review > cite').textContent = data.reviewUser;
+    clone.querySelector('.desc-title').textContent = data.name;
+    clone.querySelector('.rating').setAttribute('aria-label', data.star + '점');
+    clone.querySelector('.rating').textContent =  data.star;
+    clone.querySelector('.actor > dd').textContent = data.actor;
+    clone.querySelector('.director > dd').textContent = data.director;
 
-    this.displayName(data, item);
-    this.selectImage(data, item);
-    this.selectStar(data, item);
-    this.selectGenre(data, item);
-    this.container.appendChild(item);
+    this.changeName(data, clone);
+    this.changeImage(data, clone);
+    this.changeStar(data, clone);
+    this.changeGenre(data, clone);
+    this.container.appendChild(clone);
   },
+  populate: function(target) {
+    const keys = Object.keys(state.movieList).slice(1);
+    keys.forEach(key => target.clone(state.movieList[key]));
+  }
 };
 
 function infoFactory(section) {
@@ -73,22 +76,14 @@ function infoFactory(section) {
   info.container = info.elem.querySelector('ol');
   info.origin = info.elem.querySelector('li:first-of-type');
 
-  return info; // 이걸로 30분 삽질
-}
+  info.populate(info);
 
-function populateInfo(subject) {
-  const keys = Object.keys(state.movieList).slice(1);
-
-  keys.forEach(function(key) {
-    subject.clone(state.movieList[key]);
-  });
+  return info;
 }
 
 const bannerInfo = infoFactory('#banner');
 const playingInfo = infoFactory('#playing');
 
-populateInfo(bannerInfo);
-populateInfo(playingInfo);
 
 
 
