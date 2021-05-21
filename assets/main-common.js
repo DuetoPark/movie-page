@@ -1,14 +1,32 @@
+const screenSize = {
+  desktop: 768,
+  tablet: 576,
+};
+
+let onTablet = false;
+let onMobile = false;
+
+function checkScreenSize() {
+  if (window.innerWidth >= screenSize.tablet) {
+    onTablet = true;
+    onMobile = false;
+  } else {
+    onTablet = false;
+    onMobile = true;
+  }
+}
+
+window.addEventListener('resize', checkScreenSize);
+document.addEventListener('DOMContentLoaded', checkScreenSize);
+
+
+
 // 헤더 버튼 보임/숨김 & 탭 포커스 이벤트
 const header = document.querySelector('#header');
 const navButtons = header.querySelectorAll("#menu > *[data-menu=true]");
 const threeLinesButton = header.querySelector('.three-lines-button');
 const eventButton = header.querySelector('.event-button') || '';
 const logoutButton = header.querySelector('.logout-button') || '';
-const screen = {
-  desktop: 768,
-  tablet: 576,
-};
-let onTablet = false;
 let isActivated = false;
 
 function setTabIndex(elem, tabIndex) {
@@ -16,15 +34,17 @@ function setTabIndex(elem, tabIndex) {
 }
 
 function setTabIndexOfHeader() {
-  onTablet = window.innerWidth >= screen.tablet ? true : false;
   isActivated = header.classList.contains('active');
 
-  navButtons.forEach(button => setTabIndex(button, !onTablet && !isActivated ? -1: 0));
-  setTabIndex(threeLinesButton, onTablet ? -1 : 0);
+  setTabIndex(threeLinesButton, onMobile ? 0 : -1);
+  navButtons.forEach(button => {
+    setTabIndex(button, onMobile && !isActivated ? -1 : 0);
+  });
 
   if (eventButton) {
     setTabIndex(eventButton, isActivated ? 0 : -1);
   }
+  
   if (logoutButton) {
     setTabIndex(logoutButton, onTablet || isActivated ? 0 : -1);
   }
@@ -42,21 +62,20 @@ function toggleHeader() {
   setTabIndexOfHeader();
 }
 
-function toggleThreeLinesButton(state) {
-  threeLinesButton.classList[state ? 'remove' : 'add']('hidden');
+function toggleMenuButtons() {
+  threeLinesButton.classList[onMobile ? 'remove' : 'add']('hidden');
   if (eventButton) {
-    eventButton.classList[state ? 'remove' : 'add']('hidden');
+    eventButton.classList[onMobile ? 'remove' : 'add']('hidden');
   }
 }
 
 function handleHeader() {
-  onTablet = window.innerWidth >= screen.tablet ? true : false;
+  toggleMenuButtons();
 
   if (onTablet) {
-    toggleThreeLinesButton(false);
     toggleHeader();
-  } else { // Mobile
-    toggleThreeLinesButton(true);
+  }
+  if (onMobile){
     setTabIndexOfHeader();
   }
 }
