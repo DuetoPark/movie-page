@@ -22,57 +22,56 @@ data = {
 
 // 상영시간표 출력
 const reservationTimeData = state.reservation.time;
-const sectionTime = document.querySelector('#step-time .movie-list');
+const stepTimeLists = document.querySelector('#step-time .movie-list');
 
-function populateTimetableForEachMovie(ol, data, index, key) {
-  const timeListItem = document.createElement('li');
-  const input = document.createElement('input');
-  const label = document.createElement('label');
-
-  timeListItem.setAttribute('aria-label', '시간');
-
-  input.setAttribute('id', key + index);
-  input.setAttribute('class', 'hidden');
-  input.setAttribute('type', 'checkbox');
-  input.setAttribute('name', key);
-  input.setAttribute('value', data);
-
-  label.setAttribute('for', key + index);
-  label.textContent = data;
-
-  ol.appendChild(timeListItem);
-  timeListItem.appendChild(input);
-  timeListItem.appendChild(label);
+function templateTimeTable() {
+  return `<li aria-label='시간'>
+    <input id='' class='hidden' type='checkbox' name='' value=''/>
+    <label></label>
+  </li>`;
 }
 
-function populateListsForEachMovie() {
-  for (key in reservationTimeData) {
+function populateTimetable(data, index, key) {
+  const div = document.createElement('div');
+
+  div.innerHTML = templateTimeTable();
+  div.querySelector('input').setAttribute('id', key + index);
+  div.querySelector('input').setAttribute('name', key);
+  div.querySelector('input').setAttribute('value', data);
+  div.querySelector('label').setAttribute('for', key + index);
+  div.querySelector('label').textContent = data;
+
+  return div.firstChild;
+}
+
+function templateMovieList() {
+  return `<li class='movie' data-timetable='' aria-label='상영 중인 영화'>
+    <h4 class='movie-name'></h4>
+    <ol class='time-list d-flex flex-wrap justify-content-between' aria-label='상영시간'></ol>
+  </li>`;
+}
+
+(function populateMovieList() {
+  for (const key in reservationTimeData) {
     const data = reservationTimeData[key].timetable;
-    const movieListItem = document.createElement('li');
-    const name = document.createElement('h4');
-    const timeList = document.createElement('ol');
 
-    movieListItem.setAttribute('class', 'movie');
-    movieListItem.setAttribute('data-timetable', key);
-    movieListItem.setAttribute('aria-label', '상영 중인 영화');
+    const div = document.createElement('div');
+    const fragment = document.createDocumentFragment();
+    fragment.appendChild(div);
 
-    name.setAttribute('class', 'movie-name');
-    name.textContent = reservationTimeData[key]['name'];
+    div.innerHTML = templateMovieList();
+    div.querySelector('.movie').setAttribute('data-timetable', key);
+    div.querySelector('.movie-name').textContent = reservationTimeData[key].name;
 
-    timeList.setAttribute('class', 'time-list d-flex flex-wrap justify-content-between');
-    timeList.setAttribute('aria-label', '상영시간');
-
-    sectionTime.appendChild(movieListItem);
-    movieListItem.appendChild(name);
-    movieListItem.appendChild(timeList);
-
-    data.forEach(function(data, index) {
-      populateTimetableForEachMovie(timeList, data, index, key);
+    data.forEach((data, index) => {
+      div.querySelector('.time-list').appendChild(populateTimetable(data, index, key));
     });
-  };
-}
 
-populateListsForEachMovie();
+    stepTimeLists.appendChild(fragment.querySelector('div').firstChild);
+  };
+})();
+
+
 
 
 // 상영시간표 영화 선택
