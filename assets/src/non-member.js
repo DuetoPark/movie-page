@@ -409,13 +409,11 @@ function setSeatDataInLocalStorage() {
   window.localStorage.setItem("seatData", JSON.stringify(newObject));
 }
 
-function init() {
+(function init() {
   populateTableHead();
   populateTableBody();
   setSeatDataInLocalStorage();
-}
-
-init();
+})();
 
 
 

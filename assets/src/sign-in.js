@@ -7,7 +7,7 @@ function toggleLabel() {
   label.classList.toggle('focus-in');
 }
 
-signInInputs.forEach(function(input) {
+signInInputs.forEach(input => {
   input.addEventListener('focusin', toggleLabel);
   input.addEventListener('focusout', toggleLabel);
 });
@@ -17,20 +17,15 @@ signInInputs.forEach(function(input) {
 
 
 // 회원가입 버튼 활성화
-const agreePP = document.querySelector("#agree-pp");
+const checkboxForAgreePP = document.querySelector("#agree-pp");
 
 function toggleSignInButton() {
   const signInButton = document.querySelector('#submit button');
-  if (this.checked) {
-    signInButton.classList.add('active');
-    signInButton.setAttribute('tabindex', 0);
-  } else {
-    signInButton.classList.remove('active');
-    signInButton.setAttribute('tabindex', -1);
-  }
+  signInButton.classList[this.checked ? 'add' : 'remove']('active');
+  signInButton.setAttribute('tabindex', this.checked ? 0 : -1);
 }
 
-agreePP.addEventListener('change', toggleSignInButton);
+checkboxForAgreePP.addEventListener('change', toggleSignInButton);
 
 
 
@@ -64,9 +59,7 @@ function populateMessage(state) {
 
 function hideAllMessages() {
   const messages = document.querySelectorAll('#check-pw ~ p');
-  messages.forEach(function(message) {
-    message.classList.add('hidden');
-  });
+  messages.forEach(message => message.classList.add('hidden'));
 }
 
 function checkPassword() {
