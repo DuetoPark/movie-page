@@ -215,7 +215,7 @@ function templateCountList() {
   </li>`;
 }
 
-function populateCountList() {
+(function populateCountList() {
   for (const key in reservationCountData) {
     const data = reservationCountData[key];
     const div = document.createElement('div');
@@ -228,9 +228,9 @@ function populateCountList() {
     fragment.appendChild(div);
     sectionCountList.appendChild(fragment.querySelector('div').firstChild);
   }
-}
+})();
 
-populateCountList();
+
 
 
 // 인원선택 버튼 이벤트
@@ -271,7 +271,7 @@ const prototypeCount = {
   },
   totalHTML: function() {
     const section = document.querySelector('#check-count .total');
-    section.innerHTML = "<strong>총 " + data.count.total + "명</strong>";
+    section.innerHTML = `<strong>총 ${data.count.total}명</strong>`;
   },
   detailsHTML: function(type) {
     const section = document.querySelector('#check-count .details');
@@ -280,7 +280,7 @@ const prototypeCount = {
       if (data.count[key] && key != "total") {
         const value = data.count[key];
         const text = state.reservation.count[key].text;
-        const textHTML = "<span>" + text + " " + value + "명</span>";
+        const textHTML = `<span>${text} ${value}명</span>`;
         detailsHTML += textHTML;
       }
     }
@@ -297,7 +297,7 @@ const prototypeCount = {
     }
     const accountExp = data.price.toLocaleString();
 
-    section.innerHTML = "<strong>" + accountExp + "원</strong>";
+    section.innerHTML = `<strong>${accountExp}원</strong>`;
   },
 };
 
