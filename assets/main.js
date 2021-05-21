@@ -131,15 +131,13 @@ bannerListItems.forEach(item => {
 
 
 
-// New 리사이즈 이벤트
+// New - 첫번째 리뷰 보임/숨김
 const firstReview = document.querySelector('#new .review > p:first-of-type');
 
 function handleReview() {
-  if (window.innerWidth > screen.tablet) {
-    firstReview.classList.remove('hidden');
-  } else {
-    firstReview.classList.add('hidden');
-  }
+  const onTablet = window.innerWidth > screen.tablet ? true : false;
+
+  firstReview.classList[onTablet ? 'remove' : 'add']('hidden');
 }
 
 window.addEventListener('DOMContentLoaded', handleReview);
