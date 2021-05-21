@@ -79,32 +79,22 @@ const timetableForEachMovie = document.querySelectorAll('.movie');
 
 const prototypeTimetable = {
   inActiveAllTimetables: function() {
-    timetableForEachMovie.forEach(function(timetable) {
-      timetable.classList.add('inactive');
-    });
+    timetableForEachMovie.forEach(timetable => timetable.classList.add('inactive'));
   },
   activeSelectedTimeTable: function() {
     this.timetable.classList.remove('inactive');
     this.timetable.classList.add('active');
   },
   inActiveAllTheTime: function() {
-    this.times.forEach(function(time) {
-      time.classList.add('inactive');
-    });
+    this.times.forEach(time => time.classList.add('inactive'));
   },
   activeSelectedTime: function(selectedTime) {
     selectedTime.classList.remove('inactive');
   },
   init: function() {
-    timetableForEachMovie.forEach(function(timetable) {
-      timetable.classList.remove('inactive');
-    });
-
+    timetableForEachMovie.forEach(timetable => timetable.classList.remove('inactive'));
     this.timetable.classList.remove('active');
-
-    this.times.forEach(function(list) {
-      list.classList.remove('inactive');
-    });
+    this.times.forEach(list => list.classList.remove('inactive'));
 
     document.querySelector('#check-name .mypage-desc').innerHTML = "";
     document.querySelector('#check-seat .mypage-desc').innerHTML = "";
@@ -112,25 +102,19 @@ const prototypeTimetable = {
   },
   changeData: function(input) {
     data.movie.name = input.name;
-    data.movie.time[0] = input.value;
-    data.movie.time[1] = input.id;
+    data.movie.time = [input.value, input.id];
   },
   displayData: function() {
     const section = document.querySelector('#check-name .mypage-desc');
     const koreanName = state.reservation.time[data.movie.name].name;
     const time = data.movie.time[0];
-    const nameHTML = "<strong>" + koreanName + "</strong>";
-    const timeHTML = "<strong>(" + time + ")</strong>";
+    const nameHTML = `<strong>${koreanName}</strong>`;
+    const timeHTML = `<strong>(${time})</strong>`;
     section.innerHTML = nameHTML + timeHTML;
   },
   toggleSeatTable: function() {
-    const isChecked = this.seatTableWrapper.classList.contains('inactive') ? true : false;
-
-    if (isChecked) {
-      this.seatTableWrapper.classList.remove('inactive');
-    } else {
-      this.seatTableWrapper.classList.add('inactive');
-    }
+    const isBanned = this.seatTableWrapper.classList.contains('inactive');
+    this.seatTableWrapper.classList[isBanned ? 'remove' : 'add']('inactive');
   },
   alertMessage: function() {
     if (this.classList.contains('inactive')) {
@@ -147,17 +131,16 @@ function movieAndTime(timetable) {
   movie.seatTableWrapper = document.querySelector(".table-wrapper");
 
   // 이벤트 선언
-  movie.labels.forEach(function(label) {
-    label.addEventListener('click', function() {
-      const input = this.previousElementSibling;
-      const selectedTime = this.parentElement;
+  movie.labels.forEach(label => {
+    const input = label.previousElementSibling;
+    const selectedTime = label.parentElement;
 
-      if (input.checked) { // 선택 해제 시
+    input.addEventListener('change', function() {
+      if (input.checked === false) { // 선택 해제 시
         movie.init();
         movie.toggleSeatTable();
         return;
       }
-
       movie.inActiveAllTimetables();
       movie.activeSelectedTimeTable();
       movie.inActiveAllTheTime();
