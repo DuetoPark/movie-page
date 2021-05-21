@@ -199,27 +199,38 @@ checkboxesInTimeList.forEach(checkbox => {
 
 
 
-// 인원 선택 - 클론 노드
+// 인원 선택 - 중복 출력
 const reservationCountData = state.reservation.count;
 const sectionCountList = document.querySelector('#step-count ol');
 const originListItem = sectionCountList.querySelector('li');
 
-function cloneListItems() {
+function templateCountList() {
+  return `<li class="d-flex align-center" data-count="" aria-label='구분'>
+    <p class="count-type"><strong></strong></p>
+    <div class="d-flex button-group">
+      <button class="square count-button down inactive" type="button">-</button>
+      <p class="square"><strong>0</strong></p>
+      <button class="square count-button up" type="button">+</button>
+    </div>
+  </li>`;
+}
+
+function populateCountList() {
   for (const key in reservationCountData) {
     const data = reservationCountData[key];
-    const clone = originListItem.cloneNode(true);
+    const div = document.createElement('div');
+    const fragment = document.createDocumentFragment();
 
-    const p = clone.querySelector('.count-type');
+    div.innerHTML = templateCountList();
+    div.querySelector('li').dataset.count = key;
+    div.querySelector('.count-type').textContent = data.text;
 
-    clone.dataset.count = key;
-    p.textContent = data.text;
-
-    sectionCountList.appendChild(clone);
+    fragment.appendChild(div);
+    sectionCountList.appendChild(fragment.querySelector('div').firstChild);
   }
 }
 
-cloneListItems();
-originListItem.remove();
+populateCountList();
 
 
 // 인원선택 버튼 이벤트
