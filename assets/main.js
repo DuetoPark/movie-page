@@ -114,7 +114,7 @@ function translateInfo(bannerItem){
 }
 
 function handleMouseEnter() {
-  if (window.innerWidth < screen.desktop) return;
+  if (window.innerWidth < screenSize.desktop) return;
   toggleInfo(true, this);
   translateInfo(this);
 }
@@ -135,12 +135,10 @@ bannerListItems.forEach(item => {
 const firstReview = document.querySelector('#new .review > p:first-of-type');
 
 function handleReview() {
-  const onTablet = window.innerWidth > screen.tablet ? true : false;
-
   firstReview.classList[onTablet ? 'remove' : 'add']('hidden');
 }
 
-window.addEventListener('DOMContentLoaded', handleReview);
+document.addEventListener('DOMContentLoaded', handleReview);
 window.addEventListener('resize', handleReview);
 
 
@@ -150,7 +148,7 @@ window.addEventListener('resize', handleReview);
 const imageCards = document.querySelectorAll('.image-card');
 
 function flipCard() {
-  if (window.innerWidth < screen.tablet) {
+  if (onMobile) {
     this.classList.toggle('flipped');
   }
 }
@@ -161,27 +159,27 @@ imageCards.forEach(card => card.addEventListener('click', flipCard));
 
 
 // Playing 높이 조절 이벤트
-function isChangableHeight() {
+function changeHeightOfImageCards() {
   const playing = document.querySelector('#playing');
   const imagesCards = playing.querySelectorAll('.image-card');
 
-  imagesCards.forEach(card => {
-    const image = card.querySelector('.image');
-    const height = image.clientHeight;
+  imagesCards.forEach(imagesCard => {
+    const image = imagesCard.querySelector('.image');
+    const imageHeight = image.clientHeight;
 
-    card.style.setProperty('--imageHeight', `${height}px`);
+    imagesCard.style.setProperty('--imageHeight', `${imageHeight}px`);
   });
 }
 
 // load 이벤트를 사용하는 이유
-// - isChangableHeight()는 이미지의 clientHeight를 이용하는 함수
+// - changeHeightOfImageCards()는 이미지의 clientHeight를 이용하는 함수
 // - img태그를 인식하고 바로 넘겨버리는 DOMContentLoaded는 적합하지 않음
-window.addEventListener("load", isChangableHeight);
-window.addEventListener('resize', isChangableHeight);
+window.addEventListener("load", changeHeightOfImageCards);
+window.addEventListener('resize', changeHeightOfImageCards);
 
 
 // 로컬스토리지 데이터 저장
-function saveData(e) {
+function saveIdIntoLocalStorage(e) {
   let data = new Object();
   const userId = window.location.search.split("=")[1];
 
@@ -191,4 +189,4 @@ function saveData(e) {
   }
 }
 
-saveData();
+saveIdIntoLocalStorage();
