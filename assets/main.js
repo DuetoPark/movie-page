@@ -89,20 +89,17 @@ const playingInfo = infoFactory('#playing');
 
 
 // 배너 영화정보 활성/비활성
-const bannerItems = document.querySelectorAll('#banner li');
+const bannerListItems = document.querySelectorAll('#banner li');
 
-function showOrHideInfo(state, bannerItem, info) {
-  if (state === 'show') {
-    bannerItem.classList.add('active');
-    info.classList.remove('hidden');
-  }
-  if (state === 'hide') {
-    bannerItem.classList.remove('active');
-    info.classList.add('hidden');
-  }
+function toggleInfo(boolean, bannerItem) {
+  const info = bannerItem.querySelector('.info');
+
+  bannerItem.classList[boolean ? 'add' : 'remove']('active');
+  info.classList[boolean ? 'remove' : 'add']('hidden');
 }
 
-function translateInfo(bannerItem, info){
+function translateInfo(bannerItem){
+  const info = bannerItem.querySelector('.info');
   const coords = {};
 
   if (navigator.userAgent.indexOf('Chrome') != -1) { // chrome
@@ -112,25 +109,21 @@ function translateInfo(bannerItem, info){
     coords.left = banner.offsetLeft - bannerItem.offsetWidth * 1.5;
     coords.top = bannerItem.offsetTop + banner.offsetTop;
   }
+
   info.style.transform = `translate(${coords.left}px, ${coords.top}px)`;
 }
 
 function handleMouseEnter() {
   if (window.innerWidth < screen.desktop) return;
-
-  const info = this.querySelector('.info');
-  translateInfo(this, info);
-  showOrHideInfo('show', this, info);
+  toggleInfo(true, this);
+  translateInfo(this);
 }
 
 function handleMouseLeave() {
-  if (window.innerWidth < screen.desktop) return;
-
-  const info = this.querySelector('.info');
-  showOrHideInfo('hide', this, info);
+  toggleInfo(false, this);
 }
 
-bannerItems.forEach(function(item) {
+bannerListItems.forEach(item => {
   item.addEventListener('mouseenter', handleMouseEnter);
   item.addEventListener('mouseleave', handleMouseLeave);
 });
