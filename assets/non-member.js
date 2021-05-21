@@ -44,7 +44,7 @@ function populateTimetable(data, index, key) {
   return div.firstChild;
 }
 
-function templateMovieList() {
+function templateMovieListItem() {
   return `<li class='movie' data-timetable='' aria-label='상영 중인 영화'>
     <h4 class='movie-name'></h4>
     <ol class='time-list d-flex flex-wrap justify-content-between' aria-label='상영시간'></ol>
@@ -59,7 +59,7 @@ function templateMovieList() {
     const fragment = document.createDocumentFragment();
     fragment.appendChild(div);
 
-    div.innerHTML = templateMovieList();
+    div.innerHTML = templateMovieListItem();
     div.querySelector('.movie').setAttribute('data-timetable', key);
     div.querySelector('.movie-name').textContent = reservationTimeData[key].name;
 
