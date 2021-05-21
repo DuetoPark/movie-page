@@ -228,7 +228,7 @@ const sectionCountList = document.querySelector('#step-count ol');
 const originListItem = sectionCountList.querySelector('li');
 
 function cloneListItems() {
-  for (key in reservationCountData) {
+  for (const key in reservationCountData) {
     const data = reservationCountData[key];
     const clone = originListItem.cloneNode(true);
 
@@ -288,7 +288,7 @@ const prototypeCount = {
   detailsHTML: function(type) {
     const section = document.querySelector('#check-count .details');
     let detailsHTML = "";
-    for (key in data.count) {
+    for (const key in data.count) {
       if (data.count[key] && key != "total") {
         const value = data.count[key];
         const text = state.reservation.count[key].text;
@@ -301,7 +301,7 @@ const prototypeCount = {
   priceHTML: function() {
     const section = document.querySelector('#check-price .mypage-desc');
     data.price = 0;
-    for (key in data.count) {
+    for (const key in data.count) {
       if (data.count[key] && key != "total") {
         const calculate = state.reservation.count[key].price * Number(data.count[key]);
         data.price += calculate;
@@ -367,7 +367,7 @@ function populateTableHead() {
 }
 
 function populateTableBody() {
-  for (key in seat) {
+  for (const key in seat) {
     // 열 생성
     const tr = document.createElement('tr');
     const th = document.createElement('th');
@@ -404,7 +404,7 @@ function setSeatDataInLocalStorage() {
 
   if (localStorage.getItem("seatData")) return;
 
-  for (key in resourceData) {
+  for (const key in resourceData) {
     newObject[key] = {};
     const length = resourceData[key].timetable.length;
 
@@ -463,13 +463,13 @@ function changeSeatData() {
 
 function displaySeat() {
   const section = document.querySelector('#check-seat .mypage-desc');
-  sortNumber = data.seat.sort(function(a, b) {
+  let sortNumber = data.seat.sort(function(a, b) {
     const lastNumber = a.split("-")[1];
     const nextNumber = b.split("-")[1];
     return lastNumber - nextNumber < 0 ? -1 : 1;
   });
 
-  sortText = sortNumber.sort(function(a,b) {
+  let sortText = sortNumber.sort(function(a,b) {
     const lastText = a.split("-")[0];
     const nextText = b.split("-")[0];
     return lastText < nextText ? -1 : 1;
@@ -585,7 +585,7 @@ function returnMessage() {
   const infoTime = data.movie.time[0];
   const infoCount = data.count.total;
 
-  message = '영화명: ' +infoName+ '(' +infoTime+ ')\n인원: 총' +infoCount+ '명\n\n계속 진행하시겠습니까?';
+  const message = '영화명: ' +infoName+ '(' +infoTime+ ')\n인원: 총' +infoCount+ '명\n\n계속 진행하시겠습니까?';
   return message;
 }
 
@@ -611,7 +611,7 @@ function initStepTime() {
 }
 
 function initStepCount() {
-  for (key in data.count) {
+  for (const key in data.count) {
     data.count[key] = 0;
   }
 
@@ -643,7 +643,7 @@ function initStepCheck() {
   document.querySelector('#check-price .mypage-desc').innerHTML = "";
   data.movie.name = '';
   data.movie.time = [];
-  for (key in data.count) {
+  for (const key in data.count) {
     data.count[key] = 0;
   }
   data.seat = [];
