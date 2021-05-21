@@ -168,37 +168,31 @@ const truman = movieAndTime("[data-timetable=truman]");
 
 
 // 상영시간표 - 데이터와 화면 매칭
-const timeListCheckboxes = document.querySelectorAll(".time-list input");
+const checkboxesInTimeList = document.querySelectorAll(".time-list input");
 
 function matchSeatDataAndDomTable() {
   const movieName = data.movie.name;
   const movieTime = data.movie.time[1];
 
-  // 로컬 스토리지 데이터 초기화
-  // (저장 전에 다른 옵션으로 변경하면 변형된 데이터 초기화)
   const seatData = JSON.parse(localStorage.getItem("seatData"));
-  const seatTableCheckboxes = document.querySelectorAll('.seat-table .seat-input');
-  // 전역변수로 선언하지 않은 이유
-  // 좌석(.seat-input) 출력은 현재 함수보다 아래에 존재하므로 전역변수로 설정하면 오류가 발생한다.
+  // ㄴ선택완료 하기 전에 다른 옵션으로 변경하면 변형된 데이터 초기화
+  const checkboxesInSeatTable = document.querySelectorAll('.seat-table .seat-input');
+  // checkboxesInSeatTable 전역변수로 선언하지 않은 이유
+  // 좌석(.seat-input) 출력은 현재 함수보다 아래에 존재하므로, 전역변수로 설정하면 오류가 발생한다.
   // 동기-좌석 출력, 비동기-데이터와 화면 매칭(현재 함수)
 
-  seatTableCheckboxes.forEach(function(checkbox, index) {
+  checkboxesInSeatTable.forEach((checkbox, index) => {
     const seatKey = checkbox.id.split("-")[0];
     const seatIndex = Number(checkbox.id.split("-")[1]) - 1;
     const thisData = seatData[movieName][movieTime][seatKey][seatIndex];
-
     let isChecked = thisData === 1 ? true : false;
-    if (isChecked) {
-      checkbox.checked = true;
-      checkbox.classList.add('already-booked');
-    } else {
-      checkbox.checked = false;
-      checkbox.classList.remove('already-booked');
-    }
+
+    checkbox.checked = isChecked ? true : false;
+    checkbox.classList[isChecked ? 'add' : 'remove']('already-booked');
   });
 }
 
-timeListCheckboxes.forEach(function(checkbox) {
+checkboxesInTimeList.forEach(checkbox => {
   checkbox.addEventListener('change', matchSeatDataAndDomTable);
 });
 
