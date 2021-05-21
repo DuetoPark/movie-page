@@ -4,24 +4,17 @@ const prototypeModal = {
     this.wrapper.classList.toggle('hidden');
     this.wrapper.classList.toggle('modal-active');
   },
-  initInputs: function() {
-    const loginInputs = this.wrapper.querySelectorAll('.modal-form > input');
-    loginInputs.forEach(function(input) {
-      input.value = "";
-    });
-  },
-  inactiveButton: function() {
-    const loginButton = this.wrapper.querySelector('.login-button');
-    loginButton.classList.remove('active');
+  initForm: function() {
+    const form = this.wrapper.querySelector('.modal-form');
+    form.reset();
   },
   open: function() {
     this.toggleModal();
-    this.wrapper.querySelector('#user-id').focus();
+    this.wrapper.querySelector('input[type=text]:first-child').focus();
   },
   close: function() {
     this.toggleModal();
-    this.initInputs();
-    this.inactiveButton();
+    this.initForm();
   },
   clickEvent: function(openButton, closeButton) {
     openButton.addEventListener('click', this.open.bind(this));
@@ -52,24 +45,24 @@ let isPwTrue = false;
 
 function toggleLoginButton() {
   const loginButton = document.querySelector("#login-modal .login-button");
-
-  if (this.dataset.type === 'id') {
-    isIdTrue = this.value ? true : false;
+  if (this.tagName === 'BUTTON') { // 로그인 버튼 눌렀을 때
+    isIdTrue = false;
+    isPwTrue = false;
   }
 
-  if (this.dataset.type === 'pw') {
-    isPwTrue = this.value ? true : false;
+  if (this.tagName === 'INPUT') { // 인풋 입력할 때
+    if (this.dataset.loginInput === 'id') {
+      isIdTrue = this.value ? true : false;
+    }
+
+    if (this.dataset.loginInput === 'pw') {
+      isPwTrue = this.value ? true : false;
+    }
   }
 
-  if (isIdTrue && isPwTrue) {
-    loginButton.classList.add('active');
-    loginButton.setAttribute('tabindex', 0);
-  } else {
-    loginButton.classList.remove('active');
-    loginButton.setAttribute('tabindex', -1);
-  }
+  loginButton.classList[isIdTrue && isPwTrue ? 'add' : 'remove']('active');
+  loginButton.setAttribute('tabindex', isIdTrue && isPwTrue ? 0 : -1);
 }
 
-loginInputs.forEach(function(input) {
-  input.addEventListener('keyup', toggleLoginButton);
-});
+login.openButton.addEventListener('click', toggleLoginButton);
+loginInputs.forEach(input => input.addEventListener('keyup', toggleLoginButton));
