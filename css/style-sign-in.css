@@ -83,11 +83,11 @@
 }
 
 .error{
-  color: #E31919; // red
+  color: #E31919; /* red */
 }
 
 .ok{
-  color: #319BBC; // green
+  color: #319BBC; /* green */
 }
 
 .message strong{
