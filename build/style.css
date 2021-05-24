@@ -1,0 +1,339 @@
+:root{
+  --imageHeight: auto;
+}
+
+/* < 576px (Mobile) */
+/* common */
+#banner-container .name,
+#new::after,
+#playing img{
+  -webkit-filter: blur(5px);
+          filter: blur(5px); /* 저작권에 걸리고 싶지 않아요 */
+}
+
+/* Banner */
+#banner-container{
+  height: calc(100vh - 354px);
+  overflow:hidden;
+  background-color: #F3F3F3;
+}
+
+#banner-container .items{
+  max-width: 15%;
+  /* bootstrap flex 클래스 사용 안 한 이유
+   bootstrap 클래스는 display 속성에 important 적용함
+   li:nth-child(n + 2):nth-child(-n + 5)의 display 숨김 효과 적용 안 됨 */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#banner-container > li:nth-child(n + 2):nth-child(-n + 5){
+  display: none;
+}
+
+#banner-container .name{
+  min-width: 500px;
+  height: 700px;
+  background-image: url(../assets/images/록키호러픽쳐쇼.jpg);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
+  color: rgba(0, 0, 0, 0);
+  -webkit-transform: rotateZ(20deg);
+          transform: rotateZ(20deg);
+}
+
+
+
+
+/* Banner - info */
+#banner-container .info{
+  width: 700px;
+  height: 390px;
+  padding: 40px;
+
+  border-radius: 4px;
+  opacity: 0.01;
+  background-color: #fff;
+  -webkit-transition: opacity 250ms ease-out;
+  transition: opacity 250ms ease-out;
+}
+
+#banner-container .image-group{
+  /* flex-basis 대신 width 사용 이유
+  bootstrap에서 flex-basis 지원 안 함 + 크로스 브라우징이 안 됨 */
+  width: calc((100% - (40px * 2)) * 0.7);
+  margin-right: 36px;
+}
+
+#banner-container .image{
+  width: 100%;
+  margin-bottom: 8px;
+  -webkit-filter: blur(5px);
+          filter: blur(5px);
+}
+
+#banner-container .desc-group{
+  /* flex-basis 대신 width 사용 이유
+  bootstrap에서 flex-basis 지원 안 함 + 크로스 브라우징이 안 됨 */
+  width: calc((100% - (40px * 2)) * 0.3);
+}
+
+.info > button{
+  width: 178px;
+}
+
+/* Banner - info - active */
+#banner-container .items.active .info{
+  position: absolute;
+  z-index: 3;
+  opacity: 1;
+}
+
+
+
+
+/* New */
+#new{
+  position: relative;
+  height: 282px;
+  padding: 64px 16px;
+  text-align: center;
+  /* background: url(../assets/images/록키호러픽쳐쇼4.gif) no-repeat center; */
+  background-size: cover;
+  color: #F3F3F3;
+}
+
+#new > * {
+  position: relative;
+}
+
+#new::before{
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#new::after{
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: url(../assets/images/록키호러픽쳐쇼4.gif) no-repeat center;
+  background-size: cover;
+}
+
+.new-title,
+#new .review{
+  position: relative;
+  color: #F3F3F3;
+}
+
+.new-title{
+  font: 24px;
+  font-weight: 500;
+  line-height: 1.333333333333333;
+  letter-spacing: 0.05em;
+}
+
+#new .review{
+  font-size: 14px;
+  line-height: 1.714285714285714;
+  letter-spacing: 0.01em;
+}
+
+
+
+
+/* Playing */
+#playing{
+  padding-top: 64px;
+}
+
+#playing li[data-list='playing']{
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+/* Playing - info */
+#playing .info{
+  padding: 16px;
+  border-radius: 4px;
+  background-color: #fff;
+  -webkit-transition: -webkit-box-shadow 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: -webkit-box-shadow 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  transition: box-shadow 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: box-shadow 250ms ease-in-out, transform 250ms ease-in-out, -webkit-box-shadow 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+}
+
+#playing .info:hover{
+  -webkit-box-shadow: 0 0 0 3px #99CBDB, 0 0 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 0 0 3px #99CBDB, 0 0 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+}
+
+#playing .review{
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 60px;
+          flex: 1 0 60px;
+}
+
+#playing .image-card{
+  width: 100%;
+  height: var(--imageHeight);
+  margin-bottom: 16px;
+  -webkit-perspective: 900px;
+          perspective: 900px;
+  cursor: pointer;
+}
+
+#playing .image-card.flipped .card-inner {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+#playing .card-inner{
+  position: relative;
+  -webkit-transition: -webkit-transform 0.8s;
+  transition: -webkit-transform 0.8s;
+  transition: transform 0.8s;
+  transition: transform 0.8s, -webkit-transform 0.8s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+#playing .image-group,
+#playing .desc-group{
+  position: absolute;
+  width: 100%;
+  height: var(--imageHeight);
+  -webkit-backface-visibility: hidden;  backface-visibility: hidden;
+}
+
+#playing .image{
+  width: 100%;
+  height: auto;
+}
+
+#playing .desc-group{
+  padding: 36px;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  margin-bottom: auto;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+}
+
+#playing a:hover{
+  background-color: #99CBDB;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: none;
+  color: #fff;
+}
+
+
+
+/* Event */
+#event{
+  padding-top: 64px;
+}
+
+#event .row{
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+li[data-event=normal]{
+  position: relative;
+}
+
+.move-to-event{
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%;
+  height: 100%;
+  color: rgba(0, 0, 0, 0);
+}
+
+#event .image{
+  width: 100%;
+  margin: 16px 0;
+  -webkit-transition: -webkit-transform 250ms ease-in-out;
+  transition: -webkit-transform 250ms ease-in-out;
+  transition: transform 250ms ease-in-out;
+  transition: transform 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+}
+
+
+
+
+/* Non-Members Page */
+/* Non-Members */
+.non-members{
+  padding: 40px 0;
+}
+
+.non-members-code-form{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 40px 0;
+  border-radius: 16px;
+  background-color: #FFFFFF;
+}
+
+.non-members-code-form label{
+  display: block;
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+.non-members-code-form input{
+  display: block;
+  padding-left: 11px;
+  margin-bottom: 32px;
+  border-bottom: 2px solid #FCC4C4;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.non-members-code-form input::-webkit-input-placeholder{
+  font-weight: 400;
+}
+
+.non-members-code-form input::-moz-placeholder{
+  font-weight: 400;
+}
+
+.non-members-code-form input:-ms-input-placeholder{
+  font-weight: 400;
+}
+
+.non-members-code-form input::-ms-input-placeholder{
+  font-weight: 400;
+}
+
+.non-members-code-form input::placeholder{
+  font-weight: 400;
+}

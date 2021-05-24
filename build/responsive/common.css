@@ -1,0 +1,58 @@
+/* >= 576px (Tablet) */
+@media screen and (min-width:576px) {
+  /* Header */
+  #header .button-group{
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    opacity: 1;
+  }
+
+  #header .button-group > *{
+    width: calc((100% - 16px) / 2);
+  }
+
+
+  /* Footer */
+  #footer{
+    padding: 32px 0;
+  }
+
+  #footer .info{
+    padding-top: 24px;
+    padding-bottom: 8px;
+  }
+}
+
+
+/* >= 768px (Desktop col-md) */
+@media screen and (min-width:768px) {
+  /* common - title */
+  .title{
+    width: 100%;
+    height: 36px;
+    margin-bottom: 48px;
+    border-left: 3px solid #319BBC;
+    text-align: left;
+    line-height: 2;
+  }
+
+  /* common - subtitle */
+  .subtitle{
+    -webkit-transform: translateX(-34px);
+            transform: translateX(-34px);
+  }
+
+  /* common - background */
+  .background{
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  /* common - dl */
+  .mypage-dl{
+    margin-bottom: 48px;
+  }
+}

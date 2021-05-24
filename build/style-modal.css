@@ -1,0 +1,114 @@
+/* common CSS */
+.modal-wrapper{
+  position: relative;
+  background-color: #fff;
+  opacity: 0.01;
+  -webkit-transform: scale(0.1);
+          transform: scale(0.1);
+  -webkit-transform-origin: right top;
+          transform-origin: right top;
+}
+
+.modal-close{
+  position: absolute;
+  right: 16px; top: 16px;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  overflow: hidden;
+  border: none;
+  background-image: url(../assets/images/cross.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+
+.modal-title{
+  text-align: center;
+  font-size: 18px;
+  line-height: 5.555555555555556;
+}
+
+.modal-form > input,
+.modal-form > a{
+  width: 220px;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #E0E0E0;
+  border-radius: 4px;
+  -webkit-transition: border-color 250ms ease-in-out;
+  transition: border-color 250ms ease-in-out;
+}
+
+.modal-form > input,
+.modal-form > label,
+.modal-form > a{
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.428571428571429;
+}
+
+.modal-form > input:hover{
+  border-color: #319BBC;
+}
+
+.modal-form > a{
+  border: none;
+  text-align: center;
+  line-height: 2.857142857142857;
+  pointer-events: none;
+  background-color: #C4C4C4;
+  opacity: 0.3;
+  -webkit-transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
+}
+
+.modal-form > a.active{
+  cursor: pointer;
+  pointer-events: auto;
+  background-color: #319BBC;
+  color: #fff;
+  opacity: 1;
+}
+
+
+
+
+/* Login */
+#user-id{
+  margin-bottom: 16px;
+}
+
+#user-pw{
+  margin-bottom: 24px;
+}
+
+.login-button{
+  -webkit-transition: background-color 250ms ease-in-out;
+  transition: background-color 250ms ease-in-out;
+}
+
+.move-to-signin{
+  margin: 36px auto;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.333333333333333;
+  letter-spacing: 0.05em;
+  color: #319BBC;
+}
+
+/* Login - active */
+#login-modal.modal-active{
+  position: fixed;
+  right:0; top:0;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  opacity: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: opacity 250ms ease-in-out;
+  transition: opacity 250ms ease-in-out;
+}

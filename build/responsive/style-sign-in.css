@@ -1,0 +1,33 @@
+/* >= 576px (Tablet) */
+@media screen and (min-width: 576px) {
+  :root{
+    --inputWidth: 100%;
+  }
+
+  #sign-in{
+    padding: 90px 0;
+  }
+
+  /* #input */
+  #input label{
+    left: calc(10px + 15px);
+  }
+
+}
+
+/* >= 768px (Desktop) */
+@media screen and (min-width:768px) {
+  :root{
+    --inputWidth: 100%;
+  }
+
+  #sign-in{
+    padding: 90px 0;
+  }
+
+  /* #input */
+  #input label{
+    left: calc(10px + 15px);
+  }
+
+}

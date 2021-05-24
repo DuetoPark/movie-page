@@ -1,0 +1,7 @@
+/* >= 576px (Tablet) */
+@media screen and (min-width: 576px) {
+  /* Header */
+  #header .button-group > *{
+    width: calc((100% - (16px * 2)) / 3);
+  }
+}

@@ -1,0 +1,128 @@
+/* >= 576px (Tablet) */
+@media screen and (min-width:576px) {
+  #header::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    display: block;
+    width: 100%;
+    height: 72px;
+    border-bottom: 1px solid #E0E0E0;
+  }
+
+  /* Article - confirm-reservation */
+  /* button - common */
+  #confirm-reservation button{
+    width: 150px;
+    margin: 0;
+  }
+
+
+  label[for=order-number]{
+    margin-right: 16px;
+  }
+
+  #order-number{
+    margin: 0;
+    margin-right: 16px;
+  }
+
+  #history .cancel{
+    width: 220px;
+    margin: 0 auto;
+  }
+
+
+  /* Article - type */
+  #user-type-nav{
+    padding: 0;
+  }
+
+  #user-type-nav a,
+  #user-type-nav button{
+    width: 220px;
+    height: 220px;
+  }
+
+  #user-type-nav a{
+    margin-bottom: 0;
+    margin-right: 16px;
+  }
+
+
+
+  /* Aside - Login */
+  /* Login - active */
+  #login-modal.modal-active {
+    left: 50%; top: 50%;
+    width: 300px;
+    height: 500px;
+    margin: 0 !important;
+    border: 1px solid #F3F3F3;
+    -webkit-transform: scale(1) translate(-50%, -50%);
+            transform: scale(1) translate(-50%, -50%);
+    -webkit-transition: opacity 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+    transition: opacity 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+    transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
+    transition: opacity 250ms ease-in-out, transform 250ms ease-in-out, -webkit-transform 250ms ease-in-out;
+  }
+}
+
+/* >= 768px (Desktop) */
+@media screen and (min-width:768px) {
+  /* Article - confirm-reservation */
+  #confirm-reservation{
+    margin-top: 32px;
+    margin-bottom: 64px;
+  }
+
+  #history .mypage-dl{
+    width: 100%;
+  }
+
+  #history .mypage-dl div {
+    height: 120px;
+    margin-bottom: 0 !important;
+  }
+
+  #history-name{
+    width: calc(((100% - 30px * 2) / 9) * 4);
+  }
+
+  #history-seat{
+    width: calc(((100% - 30px * 2) / 9) * 3);
+  }
+
+  #history-count{
+    width: calc(((100% - 30px * 2) / 9) * 2);
+  }
+
+  #history-count .details > span{
+    margin-right: 0;
+  }
+
+  #history-count .details > span::before{
+    content: '-';
+  }
+
+
+
+  /* Article - type */
+  #type{
+    padding-top: 48px;
+    padding-bottom: 48px;
+    margin-top: 64px;
+    margin-bottom: 64px;
+  }
+
+  #user-type-nav a,
+  #user-type-nav button{
+    height: 150px;
+  }
+
+  #user-type-nav a{
+    margin-right: 30px;
+  }
+}

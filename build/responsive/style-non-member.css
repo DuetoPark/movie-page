@@ -1,0 +1,96 @@
+/* >= 576px (Tablet col-sm) */
+@media screen and (min-width:576px) {
+  /* Header */
+  #header::after{
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    z-index: -1;
+    display: block;
+    width: 100%;
+    height: 72px;
+    border-bottom: 1px solid #E0E0E0;
+  }
+
+
+  /* #reservation - #step-count */
+  #step-count li:nth-child(n+3){
+    margin-bottom: 0;
+  }
+}
+
+/* >= 768px (Desktop col-md) */
+@media screen and (min-width:768px) {
+  /* #reservation */
+  .reservation{
+    padding-top: 32px;
+    padding-bottom: 64px;
+  }
+
+  .movie{
+    width: calc((100% - 30px) / 2);
+  }
+
+  .step{
+    margin-bottom: 48px;
+  }
+
+  /* #reservation - #step-check */
+  #step-check .mypage-dl div{
+    height: 120px;
+    margin-bottom: 0 !important;
+  }
+
+  #check-name{
+    width: calc(((100% - 30px * 2) / 9) * 4);
+  }
+
+  #check-seat{
+    width: calc(((100% - 30px * 2) / 9) * 3);
+  }
+
+  #check-count{
+    width: calc(((100% - 30px * 2) / 9) * 2);
+  }
+
+  #check-count .details span{
+    margin-right: 0;
+  }
+
+  #check-count .details span::before{
+    content: '-';
+  }
+
+  #check-price{
+    position: absolute;
+    right: 260px;
+    bottom: calc(40px / 2);
+    -webkit-transform: translateY(50%);
+            transform: translateY(50%);
+  }
+
+  .finish{
+    margin: 0;
+    margin-left: auto !important;
+  }
+}
+
+
+/* >= 992px (Desktop col-lg) */
+@media screen and (min-width:992px) {
+  /* #reservation */
+  .movie{
+    width: calc((100% - 30px * 2) / 3);
+  }
+
+
+  /* #reservation - #step-count */
+  #step-count li{
+    margin-bottom: 0;
+  }
+
+  .count-type{
+    width: auto;
+    margin-right: 8px;
+  }
+}
