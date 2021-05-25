@@ -517,7 +517,15 @@ window.addEventListener('click', function(){
 // 선택확인 - 선택 이벤트(주문번호 생성)
 const finishButton = document.querySelector('.finish');
 
-function changeExpression(zeroLength, inputValue, displayLength) {
+function changeExpression(zeroLength, inputValue) {
+  const displayLength;
+
+  if (zeroLength.length === 1) {
+    displayLength = -2;
+  } else if (zeroLength.length === 2) {
+    displayLength = -3;
+  }
+  
   return (zeroLength + inputValue).slice(displayLength);
 }
 
@@ -528,11 +536,11 @@ function saveDataIntoLocalStorage(key, value) {
 function createLeftSideOfOrderNumber() {
   const newDate = new Date();
   const year = newDate.getFullYear();
-  const month = changeExpression('0', (newDate.getMonth() + 1), -2);
-  const date = changeExpression('0', newDate.getDate(), -2);
-  const hours = changeExpression('0', newDate.getHours(), -2);
-  const minutes = changeExpression('0', newDate.getMinutes(), -2);
-  const seconds = changeExpression('0', newDate.getSeconds(), -2);
+  const month = changeExpression('0', (newDate.getMonth() + 1));
+  const date = changeExpression('0', newDate.getDate());
+  const hours = changeExpression('0', newDate.getHours());
+  const minutes = changeExpression('0', newDate.getMinutes());
+  const seconds = changeExpression('0', newDate.getSeconds());
 
   return year + month + date + hours + minutes + seconds;
 }
@@ -554,7 +562,7 @@ function createRightSideOfOrderNumber() {
   saveDataIntoLocalStorage('lastOrder', lastOrder);
   saveDataIntoLocalStorage('lastDate', today);
 
-  return changeExpression('00', lastOrder, -3);
+  return changeExpression('00', lastOrder);
 }
 
 function createOrderNumber() {
