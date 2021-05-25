@@ -518,14 +518,14 @@ window.addEventListener('click', function(){
 const finishButton = document.querySelector('.finish');
 
 function changeExpression(zeroLength, inputValue) {
-  const displayLength;
+  let displayLength;
 
   if (zeroLength.length === 1) {
     displayLength = -2;
   } else if (zeroLength.length === 2) {
     displayLength = -3;
   }
-  
+
   return (zeroLength + inputValue).slice(displayLength);
 }
 
@@ -583,8 +583,12 @@ function returnMessage() {
   const infoTime = data.movie.time[0];
   const infoCount = data.count.total;
 
-  const message = '영화명: ' +infoName+ '(' +infoTime+ ')\n인원: 총' +infoCount+ '명\n\n계속 진행하시겠습니까?';
-  return message;
+  return `
+    영화명: ${infoName}(${infoTime})
+    인원: 총 ${infoCount}명
+
+    계속 진행하시겠습니까?
+  `;
 }
 
 function saveSeatData() {
@@ -593,18 +597,19 @@ function saveSeatData() {
 }
 
 function initStepTime() {
-  const timetables = document.querySelectorAll('.movie-list > li');
-  timetables.forEach(function(timetable) {
-    if (timetable.classList.contains('active')) {
-      const timelistItmes = timetable.querySelectorAll('li');
-      for (let i=0; i<timelistItmes.length; i+=1) {
-        timelistItmes[i].classList.remove('inactive');
-        timelistItmes[i].children[0].checked = false;
-      }
-    }
+  // 선택 안 된 시간표
+  let notSelectedTimeTables = document.querySelectorAll('.movie.inactive');
+  notSelectedTimeTables.forEach(timetable => timetable.classList.remove('inactive'));
 
-    timetable.classList.remove('inactive');
-    timetable.classList.remove('active');
+  // 선택 된 시간표
+  const selectedTimeTable = document.querySelector('.movie.active');
+  selectedTimeTable.classList.remove('active');
+
+  // 선택된 시간표의 시간
+  const allTimes = selectedTimeTable.querySelectorAll('li');
+  allTimes.forEach(time => {
+    time.classList.remove('inactive');
+    time.children[0].checked = false;
   });
 }
 
@@ -614,15 +619,14 @@ function initStepCount() {
   }
 
   const displayCount = document.querySelectorAll('.button-group > p');
-  for (let i=0; i<displayCount.length; i+=1) {
-    displayCount[i].textContent = 0;
+  displayCount.forEach(count => {
+    const downButton = count.previousElementSibling;
+    const upButton = count.nextElementSibling;
 
-    const downButton = displayCount[i].previousElementSibling;
-    const upButton = displayCount[i].nextElementSibling;
-
+    count.textContent = 0;
     downButton.classList.add('inactive');
     upButton.classList.remove('inactive');
-  }
+  });
 }
 
 function initStepSeat() {
@@ -634,11 +638,14 @@ function initStepSeat() {
 }
 
 function initStepCheck() {
+  // 화면
   document.querySelector('#check-name .mypage-desc').innerHTML = "";
   document.querySelector('#check-seat .mypage-desc').innerHTML = "";
   document.querySelector('#check-count .total').innerHTML = "";
   document.querySelector('#check-count .details').innerHTML = "";
   document.querySelector('#check-price .mypage-desc').innerHTML = "";
+
+  // 데이터
   data.movie.name = '';
   data.movie.time = [];
   for (const key in data.count) {
@@ -646,6 +653,10 @@ function initStepCheck() {
   }
   data.seat = [];
   data.price = 0;
+}
+
+function initFinishButton() {
+  finishButton.classList.add('inactive');
 }
 
 function initOrderNumber() {
@@ -674,6 +685,7 @@ function confirmOptionAndInit(e) {
   initStepCount();
   initStepSeat();
   initStepCheck();
+  initFinishButton();
   initOrderNumber();
 }
 
