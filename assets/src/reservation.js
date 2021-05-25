@@ -454,30 +454,30 @@ function changeSeatData() {
   lastOption = [movieName, movieTime];
 }
 
+function compareSeat(data, index) {
+  data.sort((a, b) => {
+    const lastNumber = a.split("-")[index];
+    const nextNumber = b.split("-")[index];
+    return lastNumber < nextNumber ? -1 : 1;
+  });
+  return data;
+}
+
 function displaySeat() {
   const section = document.querySelector('#check-seat .mypage-desc');
-  let sortNumber = data.seat.sort(function(a, b) {
-    const lastNumber = a.split("-")[1];
-    const nextNumber = b.split("-")[1];
-    return lastNumber - nextNumber < 0 ? -1 : 1;
-  });
 
-  let sortText = sortNumber.sort(function(a,b) {
-    const lastText = a.split("-")[0];
-    const nextText = b.split("-")[0];
-    return lastText < nextText ? -1 : 1;
-  });
+  const sortNumber = compareSeat(data.seat, 1);
+  const sortText = compareSeat(sortNumber, 0);
 
-  let arrayOfseatsHTML = sortText.map(function(seat) {
-    return '<span>' + seat.split("-").join("") + '</span>';
-  });
+  let arrayOfseatsHTML = sortText
+    .map(seat => `<span>${seat.split("-").join("")}</span>`);
 
-  section.innerHTML = "<strong>" + arrayOfseatsHTML + "</strong>";
+  section.innerHTML = `<strong>${arrayOfseatsHTML}</strong>`;
 }
 
 function limitCheck() {
   if (data.seat.length > data.count.total) {
-    alert('선택 인원 ' + data.count.total + '명을 초과했습니다.');
+    alert(`선택 인원 ${data.count.total}명을 초과했습니다.`);
     this.checked = false;
     changeSeatData.call(this);
   }
