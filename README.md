@@ -8,164 +8,54 @@
 >이번이 마지막이 될 수도 있습니다.
 <br>
 
-## 목차
-1. [GNB](#gnb)
-2. [페이지별 구현 목표](#페이지별-구현-목표)
-3. [언어](#언어)
-4. [프레임워크](#프레임워크)
-5. [디자인툴](#디자인툴)
-<br>
+![responsive](https://user-images.githubusercontent.com/69448900/119479120-4a532980-bd8b-11eb-832a-78272fae0900.gif)
 
-## GNB
-### 1. 메인 페이지
-- 로그인을 한 경우
-```html
-<header id="header" class="container" aria-label="페이지 상단 영역">
-  <div class="row d-flex justify-content-between align-items-center overflow-hidden">
-    <h1 id='page-title' class="col-12 col-sm-4">
-      <a id='home' href="./01-main-after-login.html" aria-current='page'>
-        Movie
-      </a>
-    </h1>
 
-    <button class="three-lines-button" type='button'
-      aria-controls='menu' aria-expanded='false'>
-      메뉴
-    </button>
-
-    <nav id='menu' class="col-12 col-sm-8 col-md-6 d-flex flex-column flex-sm-row button-group">
-      <a class="fill-button my-page-button" href="./03-mypage.html">My page</a>
-      <a class="fill-button check-button" href="./03-mypage.html#reservation">예매/좌석확인</a>
-      <a class="fill-button logout-button" href="./01-main.html">로그아웃</a>
-      <a class="fill-button event-button" href="#event" aria-label='이벤트 영역으로 건너뛰기'>이벤트</a>
-    </nav>
-  </div>
-</header>
+### 개선할 점
 ```
-- 로그인을 하지 않은 경우
-```html
-<header id="header" class="container" aria-label="페이지 상단 영역">
-  <div class="row d-flex justify-content-between align-items-center overflow-hidden">
-    <h1 id='page-title' class="col-12 col-sm-6">
-      <a id='home' href="./01-main.html" aria-current='page'>
-        Movie
-      </a>
-    </h1>
-
-    <button class="three-lines-button" type='button'
-      aria-controls='menu' aria-expanded='false'>
-      메뉴
-    </button>
-
-    <div id='menu' class="col-12 col-sm-6 col-md-4 d-flex flex-wrap button-group">
-      <a class="fill-button check-button" href="./02-user-type.html">예매/좌석확인</a>
-      <button class="fill-button login-button">로그인</button>
-      <a class="fill-button event-button" href="#event" aria-label='이벤트 영역으로 건너뛰기'>이벤트</a>
-    </div>
-  </div>
-</header>
+데이터 저장 방식
 ```
 <br>
 
-### 2. 마이 페이지
-```html
-<header id="header" class="container" aria-label="페이지 상단 영역">
-  <div class="row overflow-hidden">
-    <h1 id='page-title' class="col-12">
-      <a id='home' href="./01-main-after-login.html">
-        Movie
-      </a>
-    </h1>
 
-    <button class="three-lines-button" type='button'
-      aria-controls='menu' aria-expanded='false' aria-haspopup='menu'>
-      메뉴
-    </button>
+## 기능
+![reservation](https://user-images.githubusercontent.com/69448900/119478745-08c27e80-bd8b-11eb-9306-dbfcf5e48c18.gif)
+>좌석 예매
+1. 상영시간표에서 보고 싶은 영화의 시간을 선택합니다.<br>
+  웹 스토리지에서 데이터를 가져옵니다.<br>
+  이미 선택된 좌석은 CSS 클래스 지정으로 인해 선택 불가합니다.
+2. 인원을 설정합니다.<br>
+  최대 선택 가능 인원은 5명입니다.<br>
+  5명을 초과하면, 알림 메시지를 출력합니다.
+3. 좌석을 선택합니다.<br>
+  설정 인원을 초과하여 선택하면, 마지막에 선택한 좌석은 자동으로 취소되고 알림 메시지를 출력합니다.<br>
+  설정한 인원만큼 선택하면, 선택 완료 버튼이 활성화됩니다.
+4. 선택 완료 버튼을 클릭합니다.<br>
+  웹 스토리지에 선택 사항이 저장됩니다.<br>
+  자동으로 주문 번호가 생성되며 해당 번호로 예매 내역을 검색할 수 있습니다.
 
-    <nav id='menu' class="col-12 d-flex flex-wrap justify-content-sm-center button-group"
-         aria-labelledby="menu-title">
-      <h2 id="menu-title" class="hidden">페이지 내부에서 이동</h2>
-      <a class="fill-button" data-type="menu" href="#profile">프로필 수정</a>
-      <a class="fill-button" data-type="menu" href="#reservation">좌석예매</a>
-      <a class="fill-button" data-type="menu" href="#booked">예매내역</a>
+![cancel](https://user-images.githubusercontent.com/69448900/119478902-2263c600-bd8b-11eb-8584-1b89aae8f20b.gif)
+> 예매 확인
+1. 입력창에 주문번호를 입력합니다.<br>
+2. 일치 여부에 따라 결과 창이 나타납니다.<br>
+  일치: 예매내역 출력<br>
+  불일치: 불일치 메시지 출력
+>예매 취소
+1. 주문번호를 입력한 뒤, 예매 취소 버튼을 클릭합니다.
+2. 웹 스토리지에서 데이터를 가져옵니다.
+3. 주문번호와 일치하는 객체를 삭제합니다.
+4. 변경된 데이터를 웹 스토리지에 저장합니다.
 
-      <a class="fill-button logout-button col-sm-3 col-lg-2" href="./01-main.html">로그아웃</a>
-    </nav>
-  </div>
-</header>
-```
-<br>
-
-### 3. 그 외 페이지
-```html
-<header id="header" class="container" aria-label="페이지 상단 영역">
-   <div class="row d-flex justify-content-between align-items-center overflow-hidden">
-     <h1 id='page-title' class="col-12 col-sm-6">
-       <a id='home' href="./01-main.html">
-         Movie
-       </a>
-     </h1>
-   </div>
- </header>
-```
-<br>
-
-## 페이지별 구현 목표
-### 1. 메인 페이지
-#### CSS
-- 반응형 CSS
-여기에 영상 넣으면 되겠다.
-
-#### JS
-- 탭 포커스
-```javascript
-코드 넣기
-```
-- 중복 요소 구현(cloneNode, prototype)
-```javascript
-코드 넣기
-```
-### 2. 회원가입 페이지
-#### CSS + JS
-- input 포커스에 따른 label CSS 변화
-여기에 영상넣자
-#### JS
-- 비밀번호 일치/불일치 알림 구현
-```javascript
-코드 넣기
-```
-
-### 3. 마이 페이지 & 비회원 예매 페이지
-#### JS
-- 웹 스토리지 사용
-- 데이터와 화면 매칭
-```javascript
-코드 넣기
-```
-- 주문번호 생성
-```javascript
-코드 넣기
-```
-
-### 4. 예매확인 페이지
-#### JS
-- 웹 스토리지 사용
-- 데이터 조회/수정
-```javascript
-코드 넣기
-```
-<br>
 
 ## 언어
 - HTML
 - CSS (반응형 디자인 구현)
-- Vanilla Javascript
+- Javascript
 <br>
 
 ## 프레임워크
-- Bootstrap   
-  - 레이아웃 설정
-  - Flex 설정
+- Bootstrap
+<br>
 
 ## 디자인툴
 피그마: [https://www.figma.com](https://www.figma.com/file/YRCjGUt8kyQv3VvMpmvSNM/Movie?node-id=0%3A1)
