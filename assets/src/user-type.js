@@ -1,5 +1,5 @@
 // 전역변수
-const history = document.querySelector('#history');
+const sectionOfHistory = document.querySelector('#history');
 const searchButton = document.querySelector('.search');
 const searchInput = document.querySelector('#order-number');
 const cancelButton = document.querySelector('#history .cancel');
@@ -7,7 +7,8 @@ const cancelButton = document.querySelector('#history .cancel');
 // 예매확인 - 조회하기 버튼 활성화
 function toggleSearchButton() {
   const isFilled = searchInput.value ? true : false;
-  const isInactived = searchButton.classList.contains('inactive') ? true : false;
+  const isInactived = searchButton.classList.contains('inactive');
+
   if (isFilled && isInactived) {
     searchButton.classList.remove('inactive');
     searchButton.setAttribute('tabindex', 0);
@@ -21,35 +22,37 @@ function toggleSearchButton() {
 
 searchInput.addEventListener('keyup', toggleSearchButton);
 
+
+
+
 // 예매확인 - 예약번호 조회
+function compareSeat(data, index) {
+  data.sort((a, b) => {
+    const lastNumber = a.split("-")[index];
+    const nextNumber = b.split("-")[index];
+    return lastNumber < nextNumber ? -1 : 1;
+  });
+  return data;
+}
+
 function displayName(data) {
   const section = document.querySelector('#history-name .mypage-desc');
   const koreanName = state.reservation.time[data.movie.name].name;
   const time = data.movie.time[0];
-  const nameHTML = `<strong>${koreanName}</strong>`;
-  const timeHTML = `<strong>${time}</strong>`;
-  section.innerHTML = nameHTML + timeHTML;
+  const nameHTML = `<strong>${koreanName}</strong>(<strong>${time}</strong>)`;
+  section.innerHTML = nameHTML;
 }
 
 function displaySeat(data) {
   const section = document.querySelector('#history-seat .mypage-desc');
-  sortNumber = data.seat.sort(function(a, b) {
-    const lastNumber = a.split("-")[1];
-    const nextNumber = b.split("-")[1];
-    return lastNumber - nextNumber < 0 ? -1 : 1;
-  });
 
-  sortText = sortNumber.sort(function(a,b) {
-    const lastText = a.split("-")[0];
-    const nextText = b.split("-")[0];
-    return lastText < nextText ? -1 : 1;
-  });
+  const sortNumber = compareSeat(data.seat, 1);
+  const sortText = compareSeat(sortNumber, 0);
 
-  let arrayOfseatsHTML = sortText.map(function(seat) {
-    return `<span>${seat.split("-").join("")}</span>`;
-  });
+  let arrayOfseatsHTML = sortText
+    .map(seat => `<span>${seat.split("-").join("")}</span>`);
 
-  section.innerHTML = "<strong>" + arrayOfseatsHTML + "</strong>";
+  section.innerHTML = `<strong>${arrayOfseatsHTML}</strong>`;
 }
 
 function displayCount(data) {
@@ -57,7 +60,7 @@ function displayCount(data) {
   const sectionOfDetails = document.querySelector('#history-count .details');
 
   let detailsHTML = "";
-  for (key in data.count) {
+  for (const key in data.count) {
     if (data.count[key] && key != "total") {
       const value = data.count[key];
       const text = state.reservation.count[key].text;
@@ -71,23 +74,16 @@ function displayCount(data) {
 }
 
 function toggleHistory(active) {
-  if (active) {
-    history.classList.remove('hidden');
-    history.classList.add('active');
-    cancelButton.setAttribute('tabindex', 0);
-  } else {
-    history.classList.add('hidden');
-    history.classList.remove('active');
-    cancelButton.setAttribute('tabindex', -1);
-  }
+  sectionOfHistory.classList[active ? 'remove' : 'add']('hidden');
+  sectionOfHistory.classList[active ? 'add' : 'remove']('active');
+  cancelButton.setAttribute('tabindex', [active ? 0 : -1]);
 }
 
 function searchReservation() {
-  const userOrderData = JSON.parse(localStorage.getItem('userOrderData'));
+  const userOrderData = JSON.parse(window.localStorage.getItem('userOrderData'));
   const orderNumber = searchInput.value;
-  let isincluding = userOrderData.findIndex(function(element) {
-    return element.order === orderNumber;
-  });
+  let isincluding = userOrderData
+    .findIndex(element => element.order === orderNumber);
 
   if (isincluding >= 0) {
     toggleHistory(true);
@@ -99,7 +95,6 @@ function searchReservation() {
     alert('입력하신 번호를 찾을 수 없습니다. 다시 확인해 주시기 바랍니다.');
     searchInput.value = ''; // 인풋 초기화
     toggleHistory(false);
-    return;
   }
 }
 
@@ -121,12 +116,11 @@ function saveChangedData(storage, key, changedData) {
 }
 
 function returnCancelMessage() {
-  const orderNumber = '예약 번호: ' + searchedOrderData.order + '\n';
-  const orderMovie = '영화명: ' + searchedOrderData.movie.name;
-  const orderTime = '(' +searchedOrderData.movie.time[0]+ ')\n';
-  const orderCount = '인원: 총' + searchedOrderData.count.total + '명\n';
-
-  return orderNumber + orderMovie + orderTime + orderCount+ '\n예매 취소를 진행하시겠습니까?';
+  return `
+  예약 번호: ${searchedOrderData.order}
+  영화명: ${searchedOrderData.movie.name}(${searchedOrderData.movie.time[0]})
+  인원: 총 ${searchedOrderData.count.total}명
+  `;
 }
 
 function returnChangedSeastData(seatData) {
@@ -134,7 +128,7 @@ function returnChangedSeastData(seatData) {
   const time = searchedOrderData.movie.time[1];
   const seat = searchedOrderData.seat;
 
-  seat.forEach(function(seat) {
+  seat.forEach(seat => {
     const key = seat.split('-')[0];
     const index = seat.split('-')[1] - 1;
 
@@ -146,7 +140,8 @@ function returnChangedSeastData(seatData) {
 
 function returnChangedUserOrderData() {
   // 일치하는 데이터 찾기
-  const index = userOrderData.findIndex(element => element.order === searchedOrderData.order);
+  const index = userOrderData
+    .findIndex(element => element.order === searchedOrderData.order);
 
   // 찾은 데이터 삭제
   userOrderData.splice(index, 1);
@@ -154,8 +149,8 @@ function returnChangedUserOrderData() {
   return userOrderData;
 }
 
-function hiddenHistory() {
-  history.classList.add('hidden');
+function hideHistory() {
+  sectionOfHistory.classList.add('hidden');
   searchInput.value = ''; // input 빈칸
 }
 
@@ -173,7 +168,7 @@ function cancelReservation() {
   userOrderData = getStorageData(localStorage, 'userOrderData');
   saveChangedData(localStorage, 'seatData', returnChangedSeastData(seatData));
   saveChangedData(localStorage, 'userOrderData', returnChangedUserOrderData());
-  hiddenHistory();
+  hideHistory();
 }
 
 cancelButton.addEventListener('click', cancelReservation);
